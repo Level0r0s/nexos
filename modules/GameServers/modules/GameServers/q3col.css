@@ -1,0 +1,47 @@
+<style>
+.q30     {BACKGROUND: none;    COLOR: #000000; filter:glow(Color=#FFFFFF, Strength=3); width:inherit; height:0}
+.q31     {BACKGROUND: none;    COLOR: #DA0120}
+.q32     {BACKGROUND: none;    COLOR: #00B906}
+.q33     {BACKGROUND: none;    COLOR: #E8FF19}
+.q34     {BACKGROUND: none;    COLOR: #170BDB}
+.q35     {BACKGROUND: none;    COLOR: #23C2C6}
+.q36     {BACKGROUND: none;    COLOR: #E201DB}
+.q37     {BACKGROUND: none;    COLOR: #FFFFFF; filter:glow(Color=#000000, Strength=3); width:inherit; height:0}
+.q38     {BACKGROUND: none;    COLOR: #CA7C27}
+.q39     {BACKGROUND: none;    COLOR: #757575}
+.q3a     {BACKGROUND: none;    COLOR: #EB9F53; filter:glow(Color=#000000, Strength=3); width:inherit; height:0}
+.q3b     {BACKGROUND: none;    COLOR: #106F59; filter:glow(Color=#000000, Strength=3); width:inherit; height:0}
+.q3c     {BACKGROUND: none;    COLOR: #5A134F}
+.q3d     {BACKGROUND: none;    COLOR: #035AFF}
+.q3e     {BACKGROUND: none;    COLOR: #681EA7}
+.q3f     {BACKGROUND: none;    COLOR: #5097C1}
+.q3g     {BACKGROUND: none;    COLOR: #BEDAC4}
+.q3h     {BACKGROUND: none;    COLOR: #024D2C}
+.q3i     {BACKGROUND: none;    COLOR: #7D081B}
+.q3j     {BACKGROUND: none;    COLOR: #90243E}
+.q3k     {BACKGROUND: none;    COLOR: #743313}
+.q3l     {BACKGROUND: none;    COLOR: #A7905E; filter:glow(Color=#000000, Strength=3); width:inherit; height:0}
+.q3m     {BACKGROUND: none;    COLOR: #555C26; filter:glow(Color=#000000, Strength=3); width:inherit; height:0}
+.q3n     {BACKGROUND: none;    COLOR: #AEAC97}
+.q3o     {BACKGROUND: none;    COLOR: #C0BF7F}
+.q3p     {BACKGROUND: none;    COLOR: #000000; filter:glow(Color=#FFFFFF, Strength=3); width:inherit; height:0}
+.q3q     {BACKGROUND: none;    COLOR: #DA0120}
+.q3r     {BACKGROUND: none;    COLOR: #00B906}
+.q3s     {BACKGROUND: none;    COLOR: #E8FF19}
+.q3t     {BACKGROUND: none;    COLOR: #170BDB}
+.q3u     {BACKGROUND: none;    COLOR: #23C2C6}
+.q3v     {BACKGROUND: none;    COLOR: #E201DB}
+.q3w     {BACKGROUND: none;    COLOR: #FFFFFF; filter:glow(Color=#000000, Strength=3); width:inherit; height:0}
+.q3x     {BACKGROUND: none;    COLOR: #CA7C27}
+.q3y     {BACKGROUND: none;    COLOR: #757575}
+.q3z     {BACKGROUND: none;    COLOR: #CC8034}
+.q3slash {BACKGROUND: none;    COLOR: #DBDF70}
+.q3star  {BACKGROUND: none;    COLOR: #BBBBBB; filter:glow(Color=#000000, Strength=3); width:inherit; height:0}
+.q3dash  {BACKGROUND: none;    COLOR: #747228}
+.q3plus  {BACKGROUND: none;    COLOR: #993400}
+.q3ques  {BACKGROUND: none;    COLOR: #670504}
+.q3at    {BACKGROUND: none;    COLOR: #623307}
+.q3dol   {BACKGROUND: none;    COLOR: #000000; filter:glow(Color=#FFFFFF, Strength=3); width:inherit; height:0}
+</style>
+<!--q3dol isn't a valid color code according the docs i found but people use it so i put it in here-->
+<!--glow colors aren't set perfect sorry-->

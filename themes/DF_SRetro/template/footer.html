@@ -1,0 +1,49 @@
+<!-- BEGIN bottomblock -->
+<div class="table1">
+  <div class="option" style="text-align:center;">{bottomblock.S_TITLE}</div>
+  {bottomblock.S_CONTENT}
+</div><br />
+<!-- END bottomblock -->
+<!-- IF S_RIGHTBLOCKS -->
+</td><td class="mainside" id="pe601" {B_R_VISIBLE}>
+<!-- BEGIN rightblock -->
+  <div class="blockhead" id="pic{rightblock.S_BID}" onclick="blockslide('{rightblock.S_BID}');" style="cursor:pointer;" title="{S_TOGGLE}">
+    {rightblock.S_TITLE}
+  </div>
+  <div class="blockcontent" id="pe{rightblock.S_BID}" {rightblock.S_VISIBLE}>
+      {rightblock.S_CONTENT}
+  </div>
+  <div class="blockfooter"></div>
+  <br/>
+<!-- END rightblock -->
+<!-- ENDIF -->
+</td></tr></table>
+
+
+
+</td>
+<td class="ctrbdr08"></td>
+</tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+	<td class="ftr01"></td>
+	<td class="ftr02"></td>
+	<td class="ftr03"><div style="text-align:center;">{S_FOOTER}</div></td>
+	<td class="ftr04"></td>
+	<td class="ftr05"></td>
+</tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="creditftr">Created by: Scyber Space Designs</td>
+<td class="creditftr"><a href="http://www.dizfunkshunal.com"> Ported to DragonflyCMS by www.Dizfunkshunal.com</a></td>
+</tr>
+</table>
+
+
+
+
+<!-- IF S_DEBUG_SQL --><div class="table1">{S_DEBUG_SQL}</div><!-- ENDIF -->
+<!-- IF S_DEBUG_PHP --><div class="table1">{S_DEBUG_PHP}</div><!-- ENDIF -->
+</body></html>

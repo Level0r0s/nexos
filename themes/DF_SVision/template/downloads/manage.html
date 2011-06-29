@@ -1,0 +1,148 @@
+<div class="table1">
+{DL_MENU}<br /><hr /><br />
+
+<span class="genmed"><strong>Download Management</strong></span><br /><br />
+<!-- IF IS_NEW_DL -->
+Please review these simple guidelines before submitting your download:
+<ul>
+  <li>All downloads are posted pending admin approval</li>
+  <li>Once approved, you will be responsible for maintaining your download</li>
+  <li>We reserve the right to modify or remove your download at any time</li>
+</ul><br />
+<!-- ENDIF -->
+
+<!-- IF DL_ERRORS -->
+<div style="background-color: #fee; color: #660000; padding: 3px;">Please correct the following errors before continuing<ul>
+<!-- BEGIN dl_errors --><li>{dl_errors.S_ENTRY}</li><!-- END dl_errors -->
+</ul></div><br />
+<!-- ENDIF -->
+<!-- IF DL_WARNINGS -->
+<div style="background-color: #ffa; color: #ff9900; padding: 3px;"><ul>
+<!-- BEGIN dl_warnings --><li>{dl_warnings.S_ENTRY}</li><!-- END dl_warnings -->
+</ul></div><br />
+<!-- ENDIF -->
+
+<form action="{U_DL_FORM}" method="post" name="add_download" enctype="multipart/form-data" accept-charset="utf-8">
+<table border="0" cellpadding="3" cellspacing="1" width="100%" class="forumline">
+<!-- IF B_FETCH_PAD -->
+ <tr>
+  <td class="row1" valign="top"><span class="genmed">Load PAD File</span><br /><a href="http://www.asp-shareware.org/pad/" target="_blank">What is PAD?</a></td>
+  <td class="row2" nowrap="nowrap">
+    URL: <input type="text" name="pad_url" id="pad_url" size="50" maxlength="255" /><br />
+    <!-- IF B_UPL_FILE -->File: <input type="file" name="pad_file" size="59" /><br /><!-- ENDIF --><br />
+    <input type="submit" name="load_pad" id="load_pad" value="Load from URL or File" />
+  </td>
+ </tr>
+<!-- ENDIF -->
+ <tr>
+  <td class="row1" colspan="2">Fields marked with a * are required unless stated otherwise.</td>
+ </tr><tr>
+  <td class="row1"><span class="genmed">* Download Title</span></td>
+  <td class="row2"><input type="text" name="in[title]" id="in[title]" size="50" maxlength="100" value="{DL_TITLE}" /></td>
+ </tr>
+<!-- IF CAN_ADMIN -->
+<tr>
+  <td class="row1" valign="top"><span class="genmed">* Download Access</span></td>
+  <td class="row2" nowrap="nowrap">{DL_ACCESS}</td>
+ </tr>
+<!-- ENDIF -->
+
+ <tr>
+  <td class="row1" valign="top"><span class="genmed">* Download URLs</span></td>
+  <td class="row2" nowrap="nowrap">
+<!-- BEGIN dl_mirror -->
+   {dl_mirror.NUM}.
+    <input type="text" name="mirrors[{dl_mirror.ID}]" id="mirrors[{dl_mirror.ID}]" size="50" maxlength="255" value="{dl_mirror.URL}" />
+    <input type="submit" name="upd_mirror[{dl_mirror.ID}]" value="{L_UPDATE}" />
+    <input type="submit" name="del_mirror[{dl_mirror.ID}]" value="{L_DELETE}" />
+    <!-- IF B_REM_MD5 --><a href="{dl_mirror.MD5_FORM}"><input type="button" name="md5_mirror[{dl_mirror.ID}]" value="{L_MD5}" onclick="javascript:window.open('{dl_mirror.MD5_FORM}', '', 'height=108,resizable=yes,width=400'); return false;" /></a>&nbsp;<!-- ENDIF -->
+    <!-- IF dl_mirror.VALID --><span style="color: #006600; font-weight: bold">OK!<!-- ELSE --><span style="color: #ff8c00; font-weight: bold">Invalid<!-- ENDIF --></span>
+    <!-- IF dl_mirror.PENDING --><a href="{dl_mirror.PEND_FORM}"><input type="button" name="pend_mirror[{dl_mirror.ID}]" value="{L_PENDING}" onclick="javascript:window.open('{dl_mirror.PEND_FORM}', '', 'height=132,resizable=yes,width=400'); return false;" /></a><!-- ENDIF --><br />
+<!-- END dl_mirror -->
+ <!-- IF DL_MIRRORS --><hr /><!-- ENDIF -->
+    URL: <input type="text" name="mirror" id="mirror" size="50" maxlength="255" /><br />
+    <!-- IF B_REM_MD5 -->Remote MD5: <input type="text" name="md5" id="md5" size="50" maxlength="32" /><br /><!-- ENDIF -->
+    <!-- IF B_UPL_FILE -->File: <input type="file" name="upload_file" size="59" /><br /><!-- ENDIF --><br />
+    <input type="submit" name="add_mirror" id="add_mirror" value="Add URL or File" />
+  </td>
+ </tr>
+
+<!-- IF B_SCREENSHOT -->
+ <tr>
+  <td class="row1" valign="top"><span class="genmed">Screenshots</span></td>
+  <td class="row2" nowrap="nowrap">
+<!-- BEGIN dl_image -->
+    <input type="radio" name="in[screen]" id="in[screen]" value="{dl_image.ID}" {dl_image.SELECT} title="Set as default screenshot" />
+    <input type="text" name="images[{dl_image.ID}]" id="images[{dl_image.ID}]" size="50" maxlength="255" value="{dl_image.URL}" />
+    <input type="submit" name="upd_image[{dl_image.ID}]" value="{L_UPDATE}" />
+    <input type="submit" name="del_image[{dl_image.ID}]" value="{L_DELETE}" />
+     <!-- IF dl_image.VALID --><span style="color: #006600; font-weight: bold">OK!<!-- ENDIF --></span><br />
+<!-- END dl_image -->
+ <!-- IF B_ADD_IMAGE -->
+  <!-- IF DL_IMAGES --><hr /><!-- ENDIF -->
+    URL: <input type="text" name="image" id="image" size="50" maxlength="255" /><br />
+    <!-- IF B_UPL_IMAGE -->File: <input type="file" name="upload_image" size="59" /><br /><!-- ENDIF --><br />
+    <input type="submit" name="add_image" id="add_image" value="Add URL or File" />
+ <!-- ENDIF -->
+  </td>
+ </tr>
+<!-- ENDIF -->
+
+ <tr>
+   <td class="row1"><span class="genmed">* {L_CATEGORY}</span></td>
+   <td class="row2">{DL_CATSEL}</td>
+ </tr><tr>
+   <td class="row1"><span class="genmed">* {L_SHORT_DESC}</span><br /><span class="gensmall">{L_MAX_CHARS}</span></td>
+   <td class="row2"><textarea name="in[desc_short]" id="in[desc_short]" cols="63" rows="6">{DL_DESC_SHORT}</textarea></td>
+ </tr><tr>
+   <td class="row1"><span class="genmed">{L_DESCRIPTION}</span></td>
+   <td class="row2">{S_BBCODE}<textarea name="in[desc_long]" id="in[desc_long]" cols="63" rows="14">{DL_DESC_LONG}</textarea></td>
+ </tr>
+<!-- IF B_NOTES -->
+ <tr>
+  <td class="row1"><span class="genmed">Notes</span></td>
+  <td class="row2">
+  <!-- PHP -->echo bbcode_table('in[notes]', 'add_download');<!-- ENDPHP -->
+  <textarea name="in[notes]" id="in[notes]" cols="63" rows="6">{DL_NOTES}</textarea></td>
+ </tr>
+<!-- ENDIF -->
+<!-- IF B_REASON -->
+ <tr>
+  <td class="row1"><span class="genmed">* Reason for Change</span><br /><span class="gensmall"><strong>If</strong> the version number is changed, please describe the changes since the previous version. This field is <u>not</u> required if the version number is not being changed</span></td>
+  <td class="row2"><textarea name="in[reason]" id="in[reason]" cols="63" rows="6">{DL_REASON}</textarea></td>
+ </tr>
+<!-- ENDIF -->
+ <tr>
+   <td class="row1"><span class="genmed">{L_AUTHORNAME}</span></td>
+   <td class="row2"><input type="text" name="in[name]" id="in[name]" size="50" maxlength="60" value="{DL_NAME}" /></td>
+ </tr><tr>
+   <td class="row1"><span class="genmed">{L_AUTHOREMAIL}</span></td>
+   <td class="row2"><input type="text" name="in[email]" id="in[email]" size="50" maxlength="60" value="{DL_EMAIL}" /></td>
+ </tr>
+
+<!-- BEGIN fields -->
+ <tr>
+   <td class="row1"><span class="genmed">{fields.TITLE}</span></td>
+   <td class="row2">
+<!-- IF fields.TYPE == 0 -->
+     <input type="text" name="in[{fields.NAME}]" id="in[{fields.NAME}]" size="50" maxlength="{fields.SIZE}" value="{fields.VALUE}" />
+<!-- ELSEIF fields.TYPE == 2 -->
+     <textarea name="in[{fields.NAME}]" id="in[{fields.NAME}]" cols="47" rows="6">{fields.VALUE}</textarea>
+<!-- ELSE -->
+     <input type="radio" name="in[{fields.NAME}]" id="in[{fields.NAME}]" value="1" {fields.S_YES} />{L_YES} &nbsp;
+     <input type="radio" name="in[{fields.NAME}]" id="in[{fields.NAME}]" value="0" {fields.S_NO} />{L_NO}
+<!-- ENDIF -->
+   </td>
+ </tr>
+<!-- END fields -->
+
+ <tr><td align="center" class="catbottom" colspan="2">
+<!-- IF B_PENDING -->
+    <input type="submit" name="approveDownload" value="Approve" class="mainoption" /> &nbsp; <input type="submit" name="rejectDownload" value="Reject" class="liteoption" />
+<!-- ELSE -->
+   <input type="submit" value="Submit Download" class="mainoption" />
+<!-- ENDIF -->
+ </td></tr>
+</table>
+</form>
+</div>

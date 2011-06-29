@@ -1,0 +1,89 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellspacing="0" cellpadding="1">
+    <tr>
+     <td>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+        <td>
+	     <table width="100%" border="0" cellspacing="1" cellpadding="0">
+          <tr>
+           <td style="height:27px;" class="row1">
+		    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr>
+              <td><div style="text-align:left; white-space:nowrap;" class="storytitle">{S_TITLE}</div></td>
+             </tr>
+            </table>
+		   </td>
+          </tr>
+          <tr>
+           <td class="row2">
+			<table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr>
+              <td><a href="{U_NEWTOPIC}"><img src="{IMG_TOPIC}" alt="{S_TOPIC}" title="{S_TOPIC}" style="float:right;" /></a><span class="storytext">{S_STORY}
+                <!-- IF S_STORYEXT -->
+                <br /><br />{S_STORYEXT}</span>
+                <!-- ENDIF -->
+                <!-- IF S_NOTES -->
+                <br /><br /><b>{S_NOTE}</b> <i>{S_NOTES}</i>
+                <!-- ENDIF --></td>
+             </tr>
+            </table>
+		   </td>
+          </tr>
+          <tr>
+           <td class="cat2">
+			<table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr>
+              <td><div style="text-align:center; white-space:nowrap;">
+                <span class="postedby">{S_POSTEDBY} {S_INFORMANT} {S_ON} {S_TIME} {S_READS}</span><br>
+                <span class="readmore">{S_MORELINK}</span></div></td>
+             </tr>
+            </table>
+		   </td>
+          </tr>
+         </table>
+		</td>
+       </tr>
+      </table>
+	 </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- IF S_ASSOTOPICS -->
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellspacing="0" cellpadding="1">
+    <tr>
+     <td style="background:#006699;">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+        <td style="background:#FFFFFF;">
+		 <table width="100%" border="0" cellspacing="1" cellpadding="0">
+          <tr>
+           <td style="background:#000000;">
+		    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr> 
+              <td>
+               <b>{S_ASSOTOPIC}</b><br /><br />{S_ASSOTOPICS}
+              </td>
+             </tr>
+            </table>
+		   </td>
+          </tr>
+         </table>
+	    </td>
+       </tr>
+      </table>
+	 </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<br />
+<!-- ENDIF -->

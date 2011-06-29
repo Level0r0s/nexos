@@ -1,0 +1,508 @@
+/* based on the original style sheet for the fisubsilver v2 theme for phpbb version 2+
+edited by daz  - http:/www.forumimages.com - last updated 23-03-03 */
+p {
+	font-family: verdana,helvetica;
+	font-size:small;
+}
+/* gets rid of the need for border="0" on hyperlinked images */
+img {
+	border:0;
+}
+
+/* the content of the posts (body of text) */
+body {
+	text-align:left;
+	background:#2e2e2e;
+	color:#e7e7e7;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:11px;
+	margin:8px;
+	padding:0;
+}
+.maintable {
+  background:url(../images/cb_fbr_tex.gif);
+  width: 100%;
+  border-width: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 0;
+}
+.mainside {
+width: 156px;
+vertical-align: top;
+}
+.main {
+	text-align:left;
+	vertical-align: top;
+}
+.pagetitle {
+background: #eaedf4 url('../images/cellpic3.gif');
+height: 27px;
+width: 100%;
+border: 0px;
+vertical-align: middle;
+}
+/* form elements */
+input{
+	border-color: #545454;
+	color:#e7e7e7;
+	background-color: #303030;
+	font:normal 11px Verdana,Arial,Helvetica,sans-serif;
+}
+textarea{
+	border-color: #545454;
+	color:#e7e7e7;
+	background-color: #303030;
+	font:normal 11px Verdana,Arial,Helvetica,sans-serif;
+}
+select{
+	border-color: #545454;
+	color: #e7e7e7;
+	font:normal 11px Verdana,Arial,Helvetica,sans-serif;
+}
+input{
+	text-indent:2px;
+}
+/* the text input fields background colour */
+input.post,textarea.post,select{
+	background-color:#303030;/*#787878*/
+}
+/* the main submit button option */
+input.mainoption{
+	background: #000000;/*#E5EBF3*/
+	font-weight:bold;
+}
+/* the buttons used for bbcode styling in message post */
+input.button{
+	background: #000000;/*#E5EBF3*/
+	color:#9999aa;/*#000000*/
+	font:11.5px Verdana,Arial,Helvetica,sans-serif;
+}
+/* none-bold submit button */
+input.liteoption{
+	background: #000000;
+	font-weight:normal;
+}
+
+/* general text */
+.gensmall{
+	font-size:small;
+}
+td.genmed,.genmed{
+	font-size:11px;
+}
+.explaintitle{
+	font-size:large;
+	font-weight:bold;
+	color:#5c81b1;
+}
+/* general page style */
+a:link,a:active,a:visited,a.postlink{
+	color: #d0a700;
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+
+/* titles for the topics:could specify viewed link colour too */
+.topictitle{
+	font-size:11px;
+	font-weight:bold;
+}
+/*a.topictitle:visited{
+	color:#000000;
+}*/
+a.topictitle:hover{
+	text-decoration:underline;
+}
+/* name of poster in viewmsg.php and viewtopic.php and other places */
+.name{
+	font-size:11px;
+	font-weight: bold;
+}
+hr{
+	border: 0px solid #000000;
+	border-top-width:1px;
+	height:0px;
+}
+/* category gradients*/
+td.cat{
+	font-weight:bold;
+	letter-spacing:1px;
+	background:#191919 url(../images/cellpic1.gif);
+	height:31px;
+	text-indent:4px;
+	border:1px solid;
+	border-color:#707070 #000000 #000000 #707070;
+}
+/* category gradients*/
+td.cat2{
+	background:#191919 url(../images/cellpic1.gif);
+	height:25px;
+	text-indent:4px;
+	border:1px solid;
+	border-color:#707070 #000000 #000000 #707070;
+}
+/* main table cell colours and backgrounds */
+.row1{
+	background:#272727;
+	border:1px solid;
+	 border-color:#707070 #000000 #000000 #707070;
+}
+.row2{
+	background:#303030;
+	border:1px solid;
+	border-color:#707070 #000000 #000000 #707070;
+}
+.helpline{
+	background:#303030;
+}
+.row3{
+	background:#414141;
+	border:1px solid;
+	border-color:#707070 #000000 #000000 #707070;
+}
+td.spacerow{
+	background:#464646;
+	border:1px solid;
+	 border-color:#707070 #000000 #000000 #707070;
+}
+/* this is for the table cell above the topics,post & last posts on the index.php */
+td.rowpic{
+	background:url(../images/cellpic2.jpg) #FFFFFF repeat-y;
+}
+/* table header cells */
+th{
+	background: #171717 url(../images/cb_fbr_tex.gif);
+	color: #FFFFFF;
+	font-size:11px;
+	font-weight:bold;
+	height:27px;
+	white-space:nowrap;
+	text-align:center;
+	padding-left:8px;
+	padding-right:8px;
+	border:1px solid;
+	border-color:#707070 #000000 #000000 #707070;
+}
+/* this is the border line & background colour round the entire page */
+.bodyline{
+	background:#303030 url(../images/cb_fbr_tex.gif);
+	border:1px solid;
+	border-color: #000000 #707070 #707070 #000000;
+}
+/* this is the outline round the main forum tables */
+.forumline{
+	text-align:left;
+	background:#010101;
+	border:1px solid;
+	border-color:#000000 #707070 #707070 #000000;
+}
+
+/* the largest text used in the index page title and toptic title etc. */
+.maintitle,h1{
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	text-decoration:none;
+	color:#d0a700;
+	font-size: large;
+}
+.subtitle,h2{
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-weight:bold;
+	font-size: large;
+	text-decoration:none;
+}
+/* used for the navigation text,(page 1,2,3 etc) and the navigation bar when in a forum */
+.nav{
+	font-size:10px;
+	font-weight:bold;
+}
+.postbody{
+	font-size:small;
+	line-height:125%;
+}
+
+/* location,number of posts,post date etc */
+.postdetails{
+	font-size:10px;
+	color:#ffffff;
+}
+
+/* quote blocks */
+.quote{
+	background:#525252;
+	border:1px solid #000000;
+	color:#e7e7e7;
+	font-size:11px;
+	line-height:125%;
+}
+/* code blocks */
+.code{
+	background:#FFFFFF;
+	color: #006600;
+	border:1px solid #000000;
+	font:12px courier,"courier new",sans-serif;
+	padding:5px;
+}
+/* this is the border line & background colour round the entire page */
+.bodyline{
+	background:#303030 url(../images/cb_fbr_tex.gif);
+	border:1px solid;
+	border-color: #000000 #707070 #707070 #000000;
+}
+/* this is for the error messages that pop up */
+.errorline{
+	background:#add8e6;
+	border:1px solid #006699;
+}
+/* this is the line in the posting page which shows the rollover
+help line. colour value in row2 */
+.helpline{
+	background:#303030;
+	border-style:none;
+}
+/* this is the gradient background at the top of the page */
+.topbkg{
+	background: #000000;
+	font-size:13px;
+	line-height: 140%;
+	font-weight:bold;
+	color:#ff9900;
+}
+.topnav{
+	font-size:10px;
+	background:#1d1c19;
+	color:#dd6900;
+	height:23px;
+	white-space:nowrap;
+	border:1px solid;
+	border-color:#707070 #000000 #000000 #707070;
+}
+.topnav2{
+	font-size:medium;
+	color:#dd6900;
+	height:21px;
+	white-space:nowrap;
+	border: 0px;
+}
+/* admin & moderator colours modification */
+.admin,.mod{
+	font-size:large;
+	font-weight:bold;
+}
+.admin,a.admin,a.admin:visited{
+	color:#ffa34f;
+}
+.mod,a.mod,a.mod:visited{
+	color:#006600;
+}
+a.admin:hover,a.mod:hover{
+	color:#dd6900;
+}
+/* specify the space around images */
+.imgtopic,.imgicon{
+	margin-left:0;
+}
+.imgspace{
+	margin-left:1px;
+	margin-right:2px;
+}
+.imgfolder{
+	margin:1px;
+	margin-left:4px;
+	margin-right:4px;
+}
+/* background images for tables */
+.tbltl{
+	background: #000000 url(../images/tnav_tl.gif); width:14px; height:23px;
+}
+.tbltr{
+	background: #000000 url(../images/tnav_tr.gif); width:15px; height:23px;
+}
+.tbltop{
+	background:#2e2e2e url(../images/tnav_t.gif) repeat-x; height: 23px;
+}
+.tblleft{
+	background:#2e2e2e url(../images/tnav_l.gif) repeat-y; width: 14px;
+}
+.tblright{
+	background:#2e2e2e url(../images/tnav_r.gif) repeat-y; width: 15px;
+}
+.tblbl{
+	background: #000000 url(../images/tnav_bl.gif); width:14px; height:26px;
+}
+.tblbr{
+	background: #000000 url(../images/tnav_br.gif); width:15px; height:26px;
+}
+.tblbot{
+	background:#2e2e2e url(../images/tnav_b.gif) repeat-x; height: 26px;
+}
+.topbutttons{
+	display:run-in;
+	postion:relative;
+	text-align:center;
+	float:left;
+	margin-right:2em;
+	width:55px;
+	height:51px;
+	z-index:5;
+	background: url(../images/leaf.gif) no-repeat;
+	border:1px outset;
+	border-color:#707070 #000000 #000000 #707070;
+}
+
+.adminitem {
+  border: 0;
+  padding: 0;
+  width: 130px;
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: center;
+}
+.adminitem span {
+  color:#000000;
+  display: block;
+  width: 120px;
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #006699;
+  background: #fafafa;
+}
+.table1, .table2 {
+	border: 1px solid #707070;
+	border-spacing: 0;
+	padding: 7px;
+	background: #000000;
+}
+.table2 {
+  width: 50%;
+  text-align: center;
+}
+legend {
+  font-weight: bold;
+}
+fieldset {
+  border: #006699 solid 1px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.title {
+	text-align:center;
+	background: none;
+	color: #ff9900;
+	font-size: 13px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.content {
+	text-align:left;
+	background: none;
+	color: #cccccc;
+	font-size: 11px;
+}
+.block-title {
+	background: none;
+	font-weight: bold;
+	color: #ff9900;	 
+	font-size:x-small;
+    text-align:center;
+	border:1px solid;
+	border-color:#707070 #000000 #000000 #707070;
+}
+.blockcontent {
+	font-size:x-small;	
+    background: #2e2e2e;        
+    border:1px solid; 
+	border-color:#707070 #000000 #000000 #707070;
+}
+.storytitle  {
+	background:  none;
+	color: #ff9900;
+	font-size:12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.storytext  {
+	font-size:10px;
+}
+.storycat{
+	background: none;
+	color: #cccccc;
+	font-size:11px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.boxtitle{
+	background: none;
+	color: #ff9900;
+	font-size:small;
+	font-weight: bold;
+	text-decoration: none}
+.boxcontent  {
+	background: none;
+	color: #cccccc;
+	font-size:small;
+}
+.option  {
+	background: none;
+	color: #FFFFFF;
+	font-size:12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.tiny {
+	background: none;
+	color: #cccccc;
+	font-size:xx-small;
+	font-weight: normal;
+	text-decoration: none;
+}
+.small {
+	background: none;
+	color: #cccccc;
+	font-size: x-small;
+	font-weight: normal;
+	text-decoration: none;
+}
+.navmenu img {
+  margin: 1px 5px;
+}
+.gen {
+  font-size:small;
+}
+.gensmall {	
+  font-size:x-small;
+}
+.postedby{
+  font-size:xx-small;
+}
+.readmore {
+  font-size:x-small;
+  font-weight: bold;
+}
+/* pagination */
+.pagact {
+	color: #000000;
+	font-size: 10px;
+	width: 16px;
+	height: 20px;
+	text-align: center;
+	background: transparent url(../images/pagact.gif) no-repeat scroll 0 1px;
+}
+.paginact, .pagneutral {
+  width: 17px; text-align: center; color: #FF9900;
+}
+.paginact a, .pagneutral a {
+	color: #FF9900;
+	display: block;
+	font-size: 10px;
+	width: 17px;
+	height: 20px;
+	padding-top: 5px;
+	background: transparent url(../images/paginact.gif) no-repeat;
+}
+.pagneutral a {
+	background: transparent url(../images/pagneutral.gif) no-repeat;
+}

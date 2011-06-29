@@ -1,0 +1,20 @@
+<div>
+<!-- IF U_HLIGHT_MAIN --><a href="{U_HLIGHT_MAIN}">Main</a><!-- ELSE --><strong>Main</strong><!-- ENDIF --> |
+<!-- IF U_HLIGHT_AVATAR --><a href="{U_HLIGHT_AVATAR}">Avatars</a><!-- ELSE --><strong>Avatars</strong><!-- ENDIF --> |
+<!-- IF U_HLIGHT_FIELDS --><a href="{U_HLIGHT_FIELDS}">Fields</a><!-- ELSE --><strong>Fields</strong><!-- ENDIF -->
+<!-- IF S_ACTIVE_MLIST --> |
+<!-- IF U_HLIGHT_LIST --><a href="{U_HLIGHT_LIST}">Members List</a><!-- ELSE --><strong>List</strong><!-- ENDIF -->
+<!-- ENDIF -->
+</div><hr/>
+<div>
+<form name="config" action="{U_USERS_CFG}" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+<table style="margin:auto;">
+<!-- INCLUDE admin/users/{S_USERS_CFG_SAVE}.html -->
+	<tr>
+		<td align="center" class="catbottom" colspan="3">
+			<input type="hidden" name="save" value="{S_USERS_CFG_SAVE}" />
+			<input type="submit" value="_(SAVECHANGES)" class="mainoption" />&nbsp;&nbsp;
+			<input type="reset" value="_(RESET)" class="liteoption" />
+		</td>
+	</tr>
+</table></form></div>

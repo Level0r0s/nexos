@@ -1,0 +1,43 @@
+<!-- BEGIN block -->
+<table width="165" border="0" cellspacing="0" cellpadding="4">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellspacing="0" cellpadding="1">
+    <tr>
+     <td>
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+        <td>
+		 <table width="100%" border="0" cellspacing="1" cellpadding="0">
+          <tr>
+           <td style="height:27px;">
+			<table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr>
+              <td class="row1">
+               <img alt="{S_TOGGLE}" title="{S_TOGGLE}" id="pic{block.S_BID}" src="{block.S_IMAGE}.gif" onclick="blockswitch('{block.S_BID}');" style="cursor:pointer; float:right;" />
+               <span class="block-title">{block.S_TITLE}</span>
+              </td>
+             </tr>
+            </table>
+		   </td>
+          </tr>
+          <tr>
+           <td class="blockcontent">
+            <table id="pe{block.S_BID}" {block.S_VISIBLE} width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr>
+              <td>{block.S_CONTENT}</td>
+             </tr>
+            </table>
+           </td>
+          </tr>
+         </table>
+		</td>
+       </tr>
+      </table>
+	 </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- END block -->

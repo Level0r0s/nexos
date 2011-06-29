@@ -1,0 +1,223 @@
+<?php
+/*********************************************
+  CPG Dragonfly™ CMS
+  ********************************************
+  Copyright © 2004-2006 by CPG-Nuke Dev Team
+  http://dragonflycms.org
+
+  Dragonfly is released under the terms and conditions
+  of the GNU GPL version 2 or any later version
+
+  $Source: /cvs/l10n/kurdish/web_links.php,v $
+  $Revision: 9.5 $
+  $Author: nanocaiordo $
+  $Date: 2006/02/26 21:39:57 $
+Encoding test: n-array summation ∑ latin ae w/ acute ǽ
+*******************************************************/
+if (!defined('CPG_NUKE')) { exit; }
+global $sitename, $anonwaitdays, $outsidewaitdays;
+define('_YOURNAME','Navê te');
+define('_CATEGORIES','Kategorî');
+define('_LVOTES','Deng');
+define('_TOTALVOTES','Deng Giştî:');
+define('_LINKTITLE','Navê grêdankê');
+define('_THEREARE','');
+define('_NOMATCHES','Ti encamek lêhatî nehat dîtin');
+define('_SCOMMENTS','Nirxandin');
+define('_ADDLINK','Grêdankek pêvebike');
+define('_POPULAR','Nasdar');
+define('_TOPRATED','Baştirîn');
+define('_RANDOM','Rasthatî');
+define('_LINKSMAIN','Serrûpela Grêdankan');
+define('_LINKCOMMENTS','Nirxandinên li ser Grêdankan');
+define('_ADDITIONALDET','Zêdetir li ser..');
+define('_EDITORREVIEW','Edîtor Lênêrîn');
+define('_REPORTBROKEN','Bo Grêdanek şkestî agahdar bike');
+define('_LINKSMAINCAT','Kategorîya Grêdankan');
+define('_AND','û');
+define('_INDB','hene');
+define('_ADDALINK','Grêdankek nû pêvebike');
+define('_INSTRUCTIONS','Nasîn');
+define('_SUBMITONCE','Grêdankek bo malperek tenê carek bişîne.');
+define('_POSTPENDING','Grêdank giştî ewil têne berçavkirin û dûra jî têne qeydkirin.');
+define('_USERANDIP','Nav û IP-Nimreya bikarhênerê têne qeydkirin.');
+define('_PAGETITLE','Navê malperê');
+define('_PAGEURL','Navnîşana malperê');
+define('_YOUREMAIL','E-maila Te');
+define('_LDESCRIPTION','Nasîn: (Zêdetir 255 nîşan, tîp)');
+define('_ADDURL','URL pêvebike');
+define('_LINKSNOTUSER1','Tu ne qeydkirî yî yan tu têneketî.');
+define('_LINKSNOTUSER2','Eger tu qeydkirî be, tu dikarî grêdankek nû bo malperek bişîne.');
+define('_LINKSNOTUSER3','Bikarhênerek qeydkirîbûn wextê te pirr nakuje û bi rêyek sivik e.');
+define('_LINKSNOTUSER4','Çima bo hinek taybetîyan qeydbûn pêwist e?');
+define('_LINKSNOTUSER5','Çimkî, em dixwazin naverokek hêja û gihiştî bo we amade bikin,');
+define('_LINKSNOTUSER6','her şandinek, her grêdankek ji destê birêveberê malperê tê berçavkirin û piştrastkirin.');
+define('_LINKSNOTUSER7','Em tenê dixwazin bo we zanyarîyên gihîştî pêşkêş bikin.');
+define('_LINKSNOTUSER8','<a href="'.getlink("Your_Account").'">Qeydkirina Hesabê</a>');
+define('_LINKALREADYEXT','ÇEWT: Jixwe ev adres ewil qeydkirî hebû!');
+define('_LINKNOTITLE','ÇEWT: Bo adresê sernivîsek avabike!');
+define('_LINKNOURL','ÇEWT: Bo adresê URL-Navnîşanek pêvebikin!');
+define('_LINKNODESC','ÇEWT: Bo adresê nasînek binivîse!');
+define('_LINKRECEIVED','Me daxwaza grêdanka we bidestxist. Sipasî bo TE!');
+define('_EMAILWHENADD','Eger hat weşandin, emê we bi e-namek agahdar bikin.');
+define('_CHECKFORIT','We e-mail adresek nenivîsand. Dîsa jî emê li grêdanka we binêrin.');
+define('_NEWLINKS','Grêdankên Nû');
+define('_TOTALNEWLINKS','Grêdankên Nû Giştî');
+define('_LASTWEEK','Hefteya Bihûrî');
+define('_LAST30DAYS','30 Rojên Dawî');
+define('_1WEEK','1 Hefte');
+define('_2WEEKS','2 Hefte');
+define('_30DAYS','30 Roj');
+define('_TOTALFORLAST','Lînkên Nû: Dawî');
+define('_ADDEDON','Pêvekirin');
+define('_RATING','Pûan');
+define('_RATESITE','Pûan bide bo malperê');
+define('_DETAILS','Zêdetir..');
+define('_BESTRATED','Grêdankên Baştirîn - Top');
+define('_OF','');
+define('_TRATEDLINKS','Grêdank Giştî');
+define('_TVOTESREQ','kêmtir deng lazim e');
+define('_SHOWTOP','Baştirîn');
+define('_MOSTPOPULAR','Nasdartir - Top');
+define('_OFALL','');
+define('_SORTLINKSBY','Grêdankan birêzbike');
+define('_SITESSORTED','Rêzkirina Niha');
+define('_POPULARITY','Nasdarî');
+define('_SELECTPAGE','Rûpel Hilbijêre');
+define('_MAIN','Serrûpel');
+define('_NEWTODAY','Îro');
+define('_NEWLAST3DAYS','3 Rojên Dawî');
+define('_NEWTHISWEEK','Ev hefte');
+define('_CATNEWTODAY','Grêdankên îro di vê kategorîyê da hatine pêvekirin');
+define('_CATLAST3DAYS','Grêdankên 3 rojan da di vê kategorîyê da hatine pêvekirin');
+define('_CATTHISWEEK','Grêdankên vê hefteyê di vê kategorîyê da hatine pêvekirin');
+define('_POPULARITY1','Nasdarîn (Ji kêmtir ber bi bilintir)');
+define('_POPULARITY2','Nasdarîn (Ji bilindtir ber bi kêmtir)');
+define('_TITLEAZ','Sernivîs (A - Z)');
+define('_TITLEZA','Sernivîs (Z - A)');
+define('_DATE1','Wext (Yên Nû Li Pêşî)');
+define('_DATE2','Wext (Yên Kevn Li Pêşî');
+define('_RATING1','Pûan (Ji jor ber bi jêr)');
+define('_RATING2','Pûan (Ji jêr ber bi jor)');
+define('_SEARCHRESULTS4','Encama Lêgerînê:');
+define('_USUBCATEGORIES','Jêr-Kategorî');
+define('_LINKS','Grêdank');
+define('_TRY2SEARCH','Dîsa lê bigere');
+define('_INOTHERSENGINES','motorên lêgerînê yên din jî bikarbînin');
+define('_EDITORIAL','Edîtorxwaz');
+define('_LINKPROFILE','Profîla Grêdankê');
+define('_EDITORIALBY','Edîtor bi:');
+define('_NOEDITORIAL','Bo vê malperê niha Edîtor tune.');
+define('_VISITTHISSITE','Malperê serêdan bike');
+define('_RATETHISSITE','Pûan bide vê çavkanîyê');
+define('_ISTHISYOURSITE','Ev çavkanîya te yî?');
+define('_ALLOWTORATE','Rê bide bikarhênerên din, ko, ew bikaribin li ser malperên din dengê xwe bidin!');
+define('_LINKRATINGDET','Pûanê Grêdankê');
+define('_OVERALLRATING','Pûan');
+define('_TOTALOF','Giştî');
+define('_USER','Bikarhêner');
+define('_USERAVGRATING','Pûan Zêde-Kêm');
+define('_NUMRATINGS','Hêjmara Pûanan');
+define('_EDITTHISLINK','Grêdankê biguherîne');
+define('_REGISTEREDUSERS','Bikarhênerê Qeydkirî');
+define('_NUMBEROFRATINGS','Hêjmara Pûanan');
+define('_NOREGUSERSVOTES','Bikarhênerê Qeydkirî Tune');
+define('_BREAKDOWNBYVAL','Ji Giranbihabûnê Deng');
+define('_LTOTALVOTES','deng giştî');
+define('_LINKRATING','Reytînga Grêdankê');
+define('_HIGHRATING','Pûana Bilind');
+define('_LOWRATING','Pûana Nîzm');
+define('_NUMOFCOMMENTS','Rûpela Nirxandinê');
+define('_WEIGHNOTE','* Têbinî: Ev grêdank girîngîya xwe dide ser dengê qeydkirîyan û neqeydkirîyan');
+define('_NOUNREGUSERSVOTES','Dengê Neqeydkirîyan Tune');
+define('_WEIGHOUTNOTE','* Têbinî: Ev grêdank girîngîya xwe dide ser dengê neqeydkirîyan û ji derva dengê xwe dayînan');
+define('_NOOUTSIDEVOTES','Ji der-dûr deng Tune');
+define('_OUTSIDEVOTERS','Ji der-dûr Dengdanan');
+define('_UNREGISTEREDUSERS','Bikarhênerên Neqeydkirî');
+define('_PROMOTEYOURSITE','Malpera Xwe Bide Nasîn');
+define('_PROMOTE01','Belkî \'Pûan Bide Sîteyê\'  ji verbijarkên me bala te dikşînî. Ev dikare pûanên we zêde bike. Tika ye, ji vebijarkên li jêr yekî hilbijêre:');
+define('_TEXTLINK','Sernivîsa Grêdankê');
+define('_PROMOTE02','Bo gihîştîna forma pûankirinê rêya nêzîk sernivîsa grêdankê ye:');
+define('_HTMLCODE1','Bo vê yekê, tu dikarî kodê HTML\'ê li jêr bikarbîne:');
+define('_THENUMBER','Hêjmar');
+define('_IDREFER','Di nav kodê HTML \'ê da  referansa '.$sitename.' nimreya ID heye. Bawerîya xwe bi rastbûna nimreyê bike.');
+define('_BUTTONLINK','Grêdanka Butonê');
+define('_PROMOTE03','Eger tu dixwazî kodê grêdankek bigerî, tu dikarî grêdanken piçûk a butonê bikarbîne:');
+define('_RATEIT','Pûan bide bo vê sîteyê!');
+define('_HTMLCODE2','Bo butona jor kodê çavkanîyê:');
+define('_REMOTEFORM','Ji der-dûr forma pûankirinê');
+define('_PROMOTE04','Tu bixwazî fen û fîsk li serê dengdanê bînî, tev deng têne jêderxistin. Dengdana ji der-dûr gerek rast be.');
+define('_VOTE4THISSITE','Deng bide bo vê sîteyê!');
+define('_LINKVOTE','Deng bide!');
+define('_HTMLCODE3','Bi bikaranîna vê forumê bikarhêner û serdanêr dikarin li ser malperên xerîb jî dengê xwe bidin. Tu dikarî vê formê bike ser malpera xwe:');
+define('_PROMOTE05','Sipasî û Serkeftin bo Dengdanê!');
+define('_THANKSBROKEN','Sipasî dikin, tu beşdar bû û te tevkarî kir.');
+define('_THANKSFORINFO','Sipasî bo Zanyarîyan.');
+define('_LOOKTOREQUEST','Daxwaza te di demek nêzîk de tê lênêrîn.');
+define('_ONLYREGUSERSMODIFY','Tenê bikarhênerên qeydkirî dikarin serî bo guhertina programan lê  bidin. Tika ye <a href="'.getlink("Your_Account").'">xwe qeyd bike  yan jî têkeve</a>.');
+define('_REQUESTLINKMOD','Ez dixwazim grêdankê biguherînim');
+define('_LINKID','Grêdank ID');
+define('_SENDREQUEST','Daxwaza guhertina grêdankê bişîne');
+define('_THANKSTOTAKETIME','Sipasî dikin, we bo sîteyek dengê xwe dan:');
+define('_LETSDECIDE','Dengên we ew\'ê alîkarîyek bide me û bikarhênerên din, ko, sîteyên baş, meriv derbixe û binase.');
+define('_RETURNTO','Vegere:');
+define('_RATENOTE1','Tika ye, ji dengek zêdetir nedin.');
+define('_RATENOTE2','Girîngî nav 1 - 10 , 1 xerab û 10 rind.');
+define('_RATENOTE3','Tika ye, bes bêalî bin, her kes 1 an 10 bidestbixe, dengdan bê encam dimîne, bo vê yekê, deng bo hêjmarên din jî bide');
+define('_RATENOTE4','<a href="'.getlink('Web_Links&l_op=TopRated').'">Lîsteya Çavkanîyên Baştirîn</a> tu dikarî bibînî.');
+define('_RATENOTE5','Tu bo çavkanîya xwe deng nede.');
+define('_YOUAREREGGED','Tu bikarhênerek qeydkirî yî û tu têketî yî.');
+define('_FEELFREE2ADD','Tu dikarî li ser vê sîteyê nirxandinek binivîsî.');
+define('_YOUARENOTREGGED','Tu ne qeydkirî yî yan tu têneketî.');
+define('_IFYOUWEREREG','Tu qeydkirî be, tu dikarî li ser sîteyê şîrovek binivîse.');
+define('_MODIFY','Biguherîne');
+define('_COMPLETEVOTE1','Dengê te hat qebulkirin.');
+define('_COMPLETEVOTE2','Jixwe we di '.$anonwaitdays.' nav rojan da dengê xwe dabû.');
+define('_COMPLETEVOTE3','Tenê carek dengê xwe bidin.<br>Deng Giştî têne qeydkirin û lênêrîn.');
+define('_COMPLETEVOTE4','Tu nikarî deng bide tiştek, ko, te şandîbû yan pêşnîyar kiribû.<br>Deng giştî têne qeydkirin û berçavkirin.');
+define('_COMPLETEVOTE5','Pûan Nehatî Hilbijartin - Deng Nehatî Dayîn');
+define('_COMPLETEVOTE6','Her adresa IP\'ê '.$outsidewaitdays.' dikare di nav rojê da carek deng bide.');
+
+/**************************
+  ADMNINISTRATION SECTION
+**************************/
+define('_ADDMAINCATEGORY','Add a MAIN Category');
+define('_ADDSUBCATEGORY','Add a SUB-Category');
+define('_WEBLINKSADMIN','Web Links Administration');
+define('_EZTRANSFERLINKS','Transfer all links from category');
+define('_CLEANLINKSDB','Clean Links Votes');
+define('_EZTRANSFER','Transfer');
+define('_BROKENLINKSREP','Broken Links Reports');
+define('_LINKMODREQUEST','Link Modification Requests');
+define('_ADDNEWLINK','Add a New Link');
+define('_MODLINK','Modify a Link');
+define('_LINKSINDB','Links in our Database');
+define('_LINKSWAITINGVAL','Links Waiting for Validation');
+define('_ERRORURLEXIST','ERROR: This URL is already listed in the Database!');
+define('_ERRORNOTITLE','ERROR: You need to type a TITLE for your URL!');
+define('_ERRORNOURL','ERROR: You need to type a URL for your URL!');
+define('_ERRORNODESCRIPTION','ERROR: You need to type a DESCRIPTION for your URL!');
+define('_NEWLINKADDED','New Link added to the Database');
+define('_YOURLINKAT','Your Link at');
+define('_LINKVALIDATION','Link Validation');
+define('_CHECKALLLINKS','Check ALL Links');
+//define('_VALIDATELINKS','Validate Links');
+//define('_FAILED','Failed!');
+//define('_BEPATIENT','(please be patient)');
+//define('_VALIDATINGCAT','Validating Category (and all subcategories)');
+//define('_VALIDATINGSUBCAT','Validating Sub-Category');
+define("_ADDEDITORIAL","Ji Edîtor Pêvebike");
+define("_EDITORIALTITLE","Ji Edîtor Sernivîs");
+define("_EDITORIALTEXT","ji Edîtor Nivîsar");
+define("_DATEWRITTEN","Wextê Weşandinê");
+define("_NOREPORTEDBROKEN","Grêdankên şkestî Tune.");
+define("_USERREPBROKEN","Grêdankên şkestî:");
+define("_IGNOREINFO","Girîngî pê nede (Giştî <b><i>daxwazan</i></b> bicîhtîne)");
+define("_DELETEINFO","Jêbibe (Giştî <b><i>grêdankên şkestî</i></b> <b><i>li ser daxwazê</i></b> jêdibe)");
+define("_LINK","Grêdank");
+define("_LINKOWNER","xwedîyê Grêdankê");
+define("_IGNORE","Girîngî pê nede");
+define("_USERMODREQUEST","Daxwazên Guhertina Grêdankan");
+define("_ORIGINAL","Orjînal");
+define("_PROPOSED","Pêşnîyar");
+define("_NOMODREQUESTS","Daxwazek bo guhertinê tune");

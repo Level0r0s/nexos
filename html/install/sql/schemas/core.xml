@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema version="1.0" name="dragonfly">
+
+	<table name="acl_actions">
+		<col name="acl_a_id" type="SERIAL" notnull="true"/>
+		<col name="acl_a_name" type="VARCHAR" length="50" binary="true" notnull="true"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="acl_a_id"/>
+		</key>
+		<key name="i_acl_a_name" type="UNIQUE">
+			<col name="acl_a_name"/>
+		</key>
+	</table>
+
+	<table name="acl_groups">
+		<col name="group_id" type="INT" notnull="true"/>
+		<col name="acl_path" type="VARCHAR" length="255" binary="true" notnull="true"/>
+		<col name="acl_a_ids" type="VARCHAR" length="255" notnull="true" comment="comma seperated list of acl_a_id's"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="group_id"/>
+			<col name="acl_path"/>
+		</key>
+	</table>
+
+	<table name="admins">
+		<col name="admin_id" type="SERIAL" notnull="true"/>
+		<col name="aid" type="VARCHAR" length="40" notnull="true"/>
+		<col name="email" type="VARCHAR" length="255" notnull="true"/>
+		<col name="pwd" type="VARCHAR" length="40" notnull="true"/>
+		<col name="counter" type="INT" notnull="true" default="0"/>
+		<col name="radminsuper" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminnews" type="TINYINT" notnull="true" default="0"/>
+		<col name="radmintopics" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminmembers" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminsurveys" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminhistory" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminnewsletter" type="TINYINT" notnull="true" default="0"/>
+		<col name="radmingroups" type="TINYINT" notnull="true" default="0"/>
+		<col name="radmincoppermine" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminmessages" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminblocks" type="TINYINT" notnull="true" default="0"/>
+		<col name="radmincache" type="TINYINT" notnull="true" default="0"/>
+		<col name="radmincpgmm" type="TINYINT" notnull="true" default="0"/>
+		<col name="radmindatabase" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminheadlines" type="TINYINT" notnull="true" default="0"/>
+		<col name="radmininfo" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminl10n" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminmodules" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminranks" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminreferers" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminsecurity" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminsettings" type="TINYINT" notnull="true" default="0"/>
+		<col name="radminsmilies" type="TINYINT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="admin_id"/>
+		</key>
+		<key name="aid">
+			<col name="aid"/>
+		</key>
+	</table>
+
+	<table name="banner">
+		<col name="bid" type="SERIAL" notnull="true"/>
+		<col name="cid" type="INT" notnull="true" default="0"/>
+		<col name="imptotal" type="INT" notnull="true" default="0"/>
+		<col name="impmade" type="INT" notnull="true" default="0"/>
+		<col name="clicks" type="INT" notnull="true" default="0"/>
+		<col name="imageurl" type="VARCHAR" length="100" notnull="true" default=""/>
+		<col name="clickurl" type="VARCHAR" length="200" notnull="true" default=""/>
+		<col name="alttext" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="date" type="INT" notnull="true" default="0"/>
+		<col name="dateend" type="INT" notnull="true" default="0"/>
+		<col name="type" type="TINYINT" notnull="true" default="0"/>
+		<col name="active" type="TINYINT" notnull="true" default="1"/>
+		<col name="textban" type="TINYINT" notnull="true" default="0"/>
+		<col name="text_width" type="INT" notnull="true" default="0"/>
+		<col name="text_height" type="INT" notnull="true" default="0"/>
+		<col name="text_title" type="VARCHAR" length="100" notnull="true" default=""/>
+		<col name="text_bg" type="VARCHAR" length="6" notnull="true" default="FFFFFF"/>
+		<col name="text_clr" type="VARCHAR" length="6" notnull="true" default="000000"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="bid"/>
+		</key>
+		<key name="cid">
+			<col name="cid"/>
+		</key>
+	</table>
+
+	<table name="bbgroups">
+		<col name="group_id" type="SERIAL" notnull="true"/>
+		<col name="group_type" type="TINYINT" notnull="true" default="1"/>
+		<col name="group_name" type="VARCHAR" length="40" notnull="true" default=""/>
+		<col name="group_description" type="TEXT" notnull="true"/>
+		<col name="group_moderator" type="INT" notnull="true" default="0"/>
+		<col name="group_single_user" type="TINYINT" notnull="true" default="1"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="group_id"/>
+		</key>
+		<key name="group_single_user">
+			<col name="group_single_user"/>
+		</key>
+	</table>
+
+	<table name="bbranks">
+		<col name="rank_id" type="SERIAL" notnull="true"/>
+		<col name="rank_title" type="VARCHAR" length="50" notnull="true" default=""/>
+		<col name="rank_min" type="INT" notnull="true" default="0"/>
+		<col name="rank_max" type="INT" notnull="true" default="0"/>
+		<col name="rank_special" type="TINYINT" default="0"/>
+		<col name="rank_image" type="VARCHAR" length="255"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="rank_id"/>
+		</key>
+	</table>
+
+	<table name="bbsmilies">
+		<col name="smilies_id" type="SERIAL" notnull="true"/>
+		<col name="code" type="VARCHAR" length="50" default=""/>
+		<col name="smile_url" type="VARCHAR" length="100" default=""/>
+		<col name="emoticon" type="VARCHAR" length="75" default=""/>
+		<col name="pos" type="SMALLINT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="smilies_id"/>
+		</key>
+	</table>
+
+	<table name="bbuser_group">
+		<col name="group_id" type="INT" notnull="true" default="0"/>
+		<col name="user_id" type="INT" notnull="true" default="0"/>
+		<col name="user_pending" type="TINYINT" default="0"/>
+		<key name="group_id">
+			<col name="group_id"/>
+		</key>
+		<key name="user_id">
+			<col name="user_id"/>
+		</key>
+	</table>
+
+	<table name="blocks">
+		<col name="bid" type="SERIAL" notnull="true"/>
+		<col name="bkey" type="VARCHAR" length="15" notnull="true" default=""/>
+		<col name="title" type="VARCHAR" length="60" notnull="true" default=""/>
+		<col name="content" type="TEXT" notnull="true"/>
+		<col name="url" type="VARCHAR" length="200" notnull="true" default=""/>
+		<col name="bposition" type="CHAR" length="1" notnull="true" default=""/>
+		<col name="weight" type="INT" notnull="true" default="1"/>
+		<col name="active" type="TINYINT" notnull="true" default="1"/>
+		<col name="refresh" type="INT" notnull="true" default="0"/>
+		<col name="time" type="VARCHAR" length="14" notnull="true" default="0"/>
+		<col name="blanguage" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="blockfile" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="view" type="INT" notnull="true" default="0"/>
+		<col name="in_module" type="VARCHAR" length="255" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="bid"/>
+		</key>
+		<key name="title">
+			<col name="title"/>
+		</key>
+	</table>
+
+	<table name="blocks_custom">
+		<col name="bid" type="INT" notnull="true" default="0"/>
+		<col name="mid" type="INT" notnull="true" default="0"/>
+		<col name="side" type="CHAR" length="1" notnull="true" default="l"/>
+		<col name="weight" type="SMALLINT" notnull="true" default="1"/>
+		<col name="page" type="INT" notnull="true" default="0"/>
+		<key name="bid" type="UNIQUE">
+			<col name="bid"/>
+			<col name="mid"/>
+			<col name="weight"/>
+		</key>
+		<key name="page">
+			<col name="page"/>
+		</key>
+	</table>
+
+	<table name="config_custom">
+		<col name="cfg_name" type="VARCHAR" length="20" notnull="true"/>
+		<col name="cfg_field" type="VARCHAR" length="50" notnull="true"/>
+		<col name="cfg_value" type="TEXT" notnull="true"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="cfg_name"/>
+			<col name="cfg_field"/>
+		</key>
+	</table>
+
+	<table name="counter">
+		<col name="type" type="VARCHAR" length="80" notnull="true" default=""/>
+		<col name="var" type="VARCHAR" length="80" notnull="true" default=""/>
+		<col name="count" type="INT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="type"/>
+			<col name="var"/>
+		</key>
+	</table>
+
+	<table name="credits">
+		<col name="cid" type="SERIAL" notnull="true"/>
+		<col name="modname" type="VARCHAR" length="25" notnull="true" default=""/>
+		<col name="description" type="TEXT"/>
+		<col name="author" type="VARCHAR" length="100" notnull="true" default=""/>
+		<col name="url" type="VARCHAR" length="255" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="cid"/>
+		</key>
+	</table>
+
+	<table name="headlines">
+		<col name="hid" type="SERIAL" notnull="true"/>
+		<col name="sitename" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="headlinesurl" type="VARCHAR" length="200" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="hid"/>
+		</key>
+	</table>
+
+	<table name="history">
+		<col name="eid" type="SERIAL" notnull="true"/>
+		<col name="did" type="TINYINT" notnull="true" default="0"/>
+		<col name="mid" type="TINYINT" notnull="true" default="0"/>
+		<col name="yid" type="SMALLINT" notnull="true" default="0"/>
+		<col name="content" type="TEXT" notnull="true"/>
+		<col name="language" type="VARCHAR" length="30" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="eid"/>
+		</key>
+	</table>
+
+	<table name="hooks">
+		<col name="id" type="SERIAL" notnull="true"/>
+		<col name="type" type="TINYINT" notnull="true" default="0"/>
+		<col name="active" type="TINYINT" notnull="true" default="0"/>
+		<col name="cfile" type="VARCHAR" length="70" notnull="true" default=""/>
+		<col name="cfunc" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="hfile" type="VARCHAR" length="70" notnull="true" default=""/>
+		<col name="hfunc" type="VARCHAR" length="30" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="id"/>
+		</key>
+		<key name="active">
+			<col name="active"/>
+		</key>
+	</table>
+
+	<table name="log">
+		<col name="log_id" type="SERIAL" notnull="true"/>
+		<col name="log_time" type="INT" notnull="true" default="0"/>
+		<col name="log_type" type="SMALLINT" notnull="true" default="0"/>
+		<col name="log_mod_id" type="INT" default="0"/>
+		<col name="log_user_id" type="INT" notnull="true" default="0"/>
+		<col name="log_ip" type="VARBINARY" length="17"/>
+		<col name="log_uri" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="log_msg" type="TEXT" notnull="true"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="log_id"/>
+		</key>
+		<key name="type">
+			<col name="log_type"/>
+		</key>
+		<key name="types">
+			<col name="log_mod_id"/>
+			<col name="log_type"/>
+			<col name="log_uri"/>
+		</key>
+		<key name="mod_id">
+			<col name="log_mod_id"/>
+		</key>
+		<key name="time">
+			<col name="log_time"/>
+		</key>
+		<key name="error">
+			<col name="log_ip"/>
+			<col name="log_mod_id"/>
+			<col name="log_type"/>
+			<col name="log_uri"/>
+			<col name="log_user_id"/>
+		</key>
+	</table>
+
+	<table name="message">
+		<col name="mid" type="SERIAL" notnull="true"/>
+		<col name="title" type="VARCHAR" length="100" notnull="true" default=""/>
+		<col name="content" type="TEXT" notnull="true"/>
+		<col name="date" type="VARCHAR" length="14" notnull="true" default=""/>
+		<col name="expire" type="INT" notnull="true" default="0"/>
+		<col name="active" type="TINYINT" notnull="true" default="1"/>
+		<col name="view" type="TINYINT" notnull="true" default="1"/>
+		<col name="mlanguage" type="VARCHAR" length="30" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="mid"/>
+		</key>
+	</table>
+
+	<table name="modules">
+		<col name="mid" type="SERIAL" notnull="true"/>
+		<col name="title" type="VARCHAR" length="255" notnull="true"/>
+		<col name="custom_title" type="VARCHAR" length="255" default=""/>
+		<col name="version" type="VARCHAR" length="10" default=""/>
+		<col name="active" type="TINYINT" notnull="true" default="0"/>
+		<col name="view" type="INT" notnull="true" default="0"/>
+		<col name="inmenu" type="TINYINT" notnull="true" default="1"/>
+		<col name="pos" type="TINYINT" notnull="true" default="0"/>
+		<col name="uninstall" type="TINYINT" notnull="true" default="0"/>
+		<col name="cat_id" type="TINYINT" notnull="true" default="0"/>
+		<col name="blocks" type="TINYINT" notnull="true" default="1"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="mid"/>
+		</key>
+		<key name="title" type="UNIQUE">
+			<col name="title"/>
+		</key>
+	</table>
+
+	<table name="modules_cat">
+		<col name="cid" type="SERIAL" notnull="true"/>
+		<col name="name" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="image" type="VARCHAR" length="50" notnull="true" default=""/>
+		<col name="pos" type="TINYINT" notnull="true" default="0"/>
+		<col name="link_type" type="TINYINT" notnull="true" default="0"/>
+		<col name="link" type="VARCHAR" length="255" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="cid"/>
+		</key>
+	</table>
+
+	<table name="modules_links">
+		<col name="lid" type="SERIAL" notnull="true"/>
+		<col name="title" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="link_type" type="TINYINT" notnull="true" default="0"/>
+		<col name="link" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="active" type="TINYINT" notnull="true" default="0"/>
+		<col name="view" type="TINYINT" notnull="true" default="0"/>
+		<col name="pos" type="TINYINT" notnull="true" default="0"/>
+		<col name="cat_id" type="TINYINT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="lid"/>
+		</key>
+	</table>
+
+	<table name="referer">
+		<col name="url" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="lasttime" type="INT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="url"/>
+		</key>
+		<key name="time">
+			<col name="lasttime"/>
+		</key>
+	</table>
+
+	<table name="security">
+		<col name="ban_ipv4_s" type="INT" notnull="true" default="0"/>
+		<col name="ban_ipv4_e" type="INT" notnull="true" default="0"/>
+		<col name="ban_ipn" type="VARBINARY" length="17" notnull="true" default=""/>
+		<col name="ban_string" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="ban_type" type="TINYINT" notnull="true" default="0"/>
+		<col name="ban_time" type="INT" notnull="true" default="0"/>
+		<col name="ban_details" type="TEXT"/>
+		<col name="log" type="TEXT"/>
+		<key name="ip">
+			<col name="ban_ipv4_s"/>
+		</key>
+		<key name="ui_sec_string_type" type="UNIQUE">
+			<col name="ban_ipv4_s"/>
+			<col name="ban_ipn"/>
+			<col name="ban_string"/>
+			<col name="ban_type"/>
+		</key>
+		<key name="ips">
+			<col name="ban_ipv4_e"/>
+			<col name="ban_ipv4_s"/>
+		</key>
+		<key name="string">
+			<col name="ban_string"/>
+		</key>
+		<key name="level">
+			<col name="ban_type"/>
+		</key>
+	</table>
+
+	<table name="security_agents">
+		<col name="agent_name" type="VARCHAR" length="20" notnull="true" default=""/>
+		<col name="agent_fullname" type="VARCHAR" length="30"/>
+		<col name="agent_hostname" type="VARCHAR" length="30"/>
+		<col name="agent_url" type="VARCHAR" length="60"/>
+		<col name="agent_ban" type="INT" notnull="true" default="0"/>
+		<col name="agent_desc" type="TEXT"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="agent_name"/>
+		</key>
+	</table>
+
+	<table name="security_flood">
+		<col name="flood_ip" type="VARBINARY" length="17"/>
+		<col name="flood_time" type="INT" notnull="true" default="0"/>
+		<col name="flood_count" type="TINYINT" notnull="true" default="0"/>
+		<col name="log" type="TEXT"/>
+		<key name="ip" type="UNIQUE">
+			<col name="flood_ip"/>
+		</key>
+	</table>
+
+	<table name="session">
+		<col name="uname" type="VARCHAR" length="40" notnull="true" default=""/>
+		<col name="time" type="INT" notnull="true" default="0"/>
+		<col name="host_addr" type="VARBINARY" length="17"/>
+		<col name="guest" type="TINYINT" notnull="true" default="0"/>
+		<col name="module" type="VARCHAR" length="64" notnull="true" default=""/>
+		<col name="url" type="VARCHAR" length="255" notnull="true" default=""/>
+		<key name="time">
+			<col name="time"/>
+		</key>
+		<key name="guest">
+			<col name="guest"/>
+		</key>
+	</table>
+
+	<table name="stats_hour">
+		<col name="year" type="SMALLINT" notnull="true" default="0"/>
+		<col name="month" type="TINYINT" notnull="true" default="0"/>
+		<col name="date" type="TINYINT" notnull="true" default="0"/>
+		<col name="hour" type="TINYINT" notnull="true" default="0"/>
+		<col name="hits" type="INT" notnull="true" default="0"/>
+		<key name="full_date">
+			<col name="date"/>
+			<col name="hour"/>
+			<col name="month"/>
+			<col name="year"/>
+		</key>
+	</table>
+
+	<table name="users">
+		<col name="user_id" type="SERIAL" notnull="true"/>
+		<col name="name" type="VARCHAR" length="60" default=""/>
+		<col name="username" type="VARCHAR" length="50" notnull="true" default=""/>
+		<col name="user_email" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="femail" type="VARCHAR" length="255" default=""/>
+		<col name="user_website" type="VARCHAR" length="255" default=""/>
+		<col name="user_avatar" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="user_regdate" type="INT" notnull="true" default="0"/>
+		<col name="user_icq" type="VARCHAR" length="15" default=""/>
+		<col name="user_occ" type="VARCHAR" length="100" default=""/>
+		<col name="user_from" type="VARCHAR" length="100" default=""/>
+		<col name="user_interests" type="VARCHAR" length="150" default=""/>
+		<col name="user_sig" type="TEXT"/>
+		<col name="user_viewemail" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_aim" type="VARCHAR" length="35" default=""/>
+		<col name="user_yim" type="VARCHAR" length="40" default=""/>
+		<col name="user_skype" type="VARCHAR" length="40" default=""/>
+		<col name="user_msnm" type="VARCHAR" length="40" default=""/>
+		<col name="user_password" type="VARCHAR" length="40" notnull="true" default=""/>
+		<col name="storynum" type="TINYINT" notnull="true" default="10"/>
+		<col name="umode" type="VARCHAR" length="10" default=""/>
+		<col name="uorder" type="TINYINT" notnull="true" default="0"/>
+		<col name="thold" type="TINYINT" notnull="true" default="0"/>
+		<col name="noscore" type="TINYINT" notnull="true" default="0"/>
+		<col name="bio" type="TEXT"/>
+		<col name="ublockon" type="TINYINT" notnull="true" default="0"/>
+		<col name="ublock" type="TEXT"/>
+		<col name="theme" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="commentmax" type="INT" notnull="true" default="4096"/>
+		<col name="counter" type="INT" notnull="true" default="0"/>
+		<col name="newsletter" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_posts" type="INT" notnull="true" default="0"/>
+		<col name="user_attachsig" type="TINYINT" notnull="true" default="1"/>
+		<col name="user_rank" type="INT" notnull="true" default="0"/>
+		<col name="user_level" type="TINYINT" notnull="true" default="1"/>
+		<col name="user_active" type="TINYINT" default="1"/>
+		<col name="user_session_time" type="INT" notnull="true" default="0"/>
+		<col name="user_lastvisit" type="INT" notnull="true" default="0"/>
+		<col name="user_timezone" type="VARCHAR" length="6" notnull="true" default="0"/>
+		<col name="user_dst" type="SMALLINT" notnull="true" default="0"/>
+		<col name="user_style" type="TINYINT" default="0"/>
+		<col name="user_lang" type="VARCHAR" length="255" notnull="true" default="english"/>
+		<col name="user_dateformat" type="VARCHAR" length="14" notnull="true" default="D M d, Y g:i a"/>
+		<col name="user_new_privmsg" type="SMALLINT" notnull="true" default="0"/>
+		<col name="user_unread_privmsg" type="SMALLINT" notnull="true" default="0"/>
+		<col name="user_last_privmsg" type="INT" notnull="true" default="0"/>
+		<col name="user_emailtime" type="INT" default="0"/>
+		<col name="user_allowhtml" type="TINYINT" default="1"/>
+		<col name="user_allowbbcode" type="TINYINT" default="1"/>
+		<col name="user_allowsmile" type="TINYINT" default="1"/>
+		<col name="user_allowavatar" type="TINYINT" notnull="true" default="1"/>
+		<col name="user_allow_pm" type="TINYINT" notnull="true" default="1"/>
+		<col name="user_allow_viewonline" type="TINYINT" notnull="true" default="1"/>
+		<col name="user_notify" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_notify_pm" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_popup_pm" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_avatar_type" type="TINYINT" notnull="true" default="3"/>
+		<col name="user_actkey" type="VARCHAR" length="32" default=""/>
+		<col name="user_newpasswd" type="VARCHAR" length="32" default=""/>
+		<col name="user_group_cp" type="INT" notnull="true" default="2"/>
+		<col name="user_group_list_cp" type="VARCHAR" length="100" notnull="true" default="2"/>
+		<col name="user_active_cp" type="TINYINT" notnull="true" default="1"/>
+		<col name="susdel_reason" type="TEXT"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="user_id"/>
+		</key>
+		<key name="uname">
+			<col name="username"/>
+		</key>
+		<key name="user_session_time">
+			<col name="user_session_time"/>
+		</key>
+		<key name="user_regdate">
+			<col name="user_regdate"/>
+		</key>
+		<key name="user_email">
+			<col name="user_email"/>
+		</key>
+		<key name="user_id_level">
+			<col name="user_id"/>
+			<col name="user_level"/>
+		</key>
+		<key name="user_active_level">
+			<col name="user_active"/>
+			<col name="user_level"/>
+		</key>
+	</table>
+
+	<table name="users_fields">
+		<col name="fid" type="SERIAL" notnull="true"/>
+		<col name="field" type="VARCHAR" length="25" notnull="true"/>
+		<col name="section" type="TINYINT" notnull="true" default="0"/>
+		<col name="visible" type="TINYINT" notnull="true" default="0"/>
+		<col name="type" type="TINYINT" notnull="true" default="0"/>
+		<col name="size" type="SMALLINT" notnull="true" default="10"/>
+		<col name="langdef" type="VARCHAR" length="255" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="fid"/>
+		</key>
+		<key name="section">
+			<col name="section"/>
+		</key>
+		<key name="visible">
+			<col name="visible"/>
+		</key>
+	</table>
+
+	<table name="users_temp">
+		<col name="user_id" type="SERIAL" notnull="true"/>
+		<col name="username" type="VARCHAR" length="50" notnull="true" default=""/>
+		<col name="user_email" type="VARCHAR" length="255" notnull="true" default=""/>
+		<col name="user_password" type="VARCHAR" length="40" notnull="true" default=""/>
+		<col name="user_regdate" type="INT" notnull="true" default="0"/>
+		<col name="check_num" type="VARCHAR" length="50" notnull="true" default=""/>
+		<col name="time" type="VARCHAR" length="14" notnull="true" default=""/>
+		<col name="user_website" type="VARCHAR" length="255" default=""/>
+		<col name="name" type="VARCHAR" length="60" default=""/>
+		<col name="femail" type="VARCHAR" length="255" default=""/>
+		<col name="theme" type="VARCHAR" length="255" default=""/>
+		<col name="user_icq" type="VARCHAR" length="15" default=""/>
+		<col name="user_aim" type="VARCHAR" length="35" default=""/>
+		<col name="user_yim" type="VARCHAR" length="40" default=""/>
+		<col name="user_skype" type="VARCHAR" length="40" default=""/>
+		<col name="user_msnm" type="VARCHAR" length="40" default=""/>
+		<col name="user_from" type="VARCHAR" length="100" default=""/>
+		<col name="user_occ" type="VARCHAR" length="100" default=""/>
+		<col name="user_interests" type="VARCHAR" length="150" default=""/>
+		<col name="user_sig" type="TEXT"/>
+		<col name="bio" type="TEXT"/>
+		<col name="user_timezone" type="VARCHAR" length="6" notnull="true" default="0"/>
+		<col name="user_dst" type="SMALLINT" notnull="true" default="0"/>
+		<col name="user_dateformat" type="VARCHAR" length="14" notnull="true" default="D M d, Y g:i a"/>
+		<col name="newsletter" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_viewemail" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_allow_viewonline" type="TINYINT" notnull="true" default="1"/>
+		<col name="user_attachsig" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_allowhtml" type="TINYINT" default="1"/>
+		<col name="user_allowbbcode" type="TINYINT" default="1"/>
+		<col name="user_allowsmile" type="TINYINT" default="1"/>
+		<col name="user_notify" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_notify_pm" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_popup_pm" type="TINYINT" notnull="true" default="0"/>
+		<col name="user_lang" type="VARCHAR" length="255" notnull="true" default="english"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="user_id"/>
+		</key>
+	</table>
+
+</schema>

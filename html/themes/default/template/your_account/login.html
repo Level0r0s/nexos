@@ -1,0 +1,27 @@
+
+<form action="{U_LOGIN}" method="post"  enctype="multipart/form-data" accept-charset="utf-8">
+<table border="0" cellpadding="3" cellspacing="1" width="100%" class="forumline">
+<!-- IF S_LOGIN_ERROR -->
+	<tr><td align="center" class="catleft" colspan="2"><b><span class="gen">_(ERROR)</span></b></td></tr>
+	<tr><td class="row1" colspan="2" align="center">{S_LOGIN_ERROR}</td></tr>
+<!-- ENDIF -->
+	<tr>
+		<td class="row1"><span class="gen"><label for="ulogin2">_(NICKNAME)</label></span>
+		<!-- IF U_REGISTER --><br /><a  href="{U_REGISTER}">_(REGNEWUSER)</a><!-- ENDIF --></td>
+		<td class="row2"><input type="text" name="ulogin" id="ulogin2" class="set" tabindex="1" size="20" maxlength="25" /></td>
+	</tr><tr>
+		<td class="row1"><span class="gen"><label for="user_password2">_(PASSWORD)</label></span><br /><a href="{U_LOSTPASS}">_(PASSWORDLOST)</a></td>
+		<td class="row2"><input type="password" name="user_password" id="user_password2" class="set" tabindex="2" size="20" maxlength="20" /></td>
+	</tr>
+<!-- IF S_SEC_IMG -->
+	<tr>
+		<td class="row1"><span class="gen"><label for="gfx_check">_(SECURITYCODE)</label></span></td>
+		<td class="row2">{S_SEC_IMG}</td>
+	</tr><tr>
+		<td class="row1"><span class="gen"><label for="gfx_check">_(TYPESECCODE)</label></span></td>
+		<td class="row2"><input type="text" name="gfx_check" id="gfx_check" class="set" tabindex="3" size="7" maxlength="6" /></td>
+	</tr>
+<!-- ENDIF -->
+	<tr><td class="catbottom" colspan="2" align="center" height="28">
+	<input type="submit" class="mainoption" value="_(LOGIN)" /></td></tr>
+</table></form>

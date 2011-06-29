@@ -1,0 +1,37 @@
+<div class="table1">
+	<fieldset><legend><span class="title">Installed</span></legend>
+		<!-- BEGIN installed -->
+		<form method="post" action="{S_ACTION}">
+			<p class="title">{installed.TITLE} &nbsp;
+				<input type="submit" name="{installed.NAME}" value="Browse" title="Currently cached files" />
+				<input type="submit" name="{installed.NAME}" value="Clear" title="Clear all cached files" />
+			</p>
+			<!-- <input type="submit" name="mode" value="Encode" title="Encode a file/directory" class="button" />&nbsp; -->
+		</form>
+		<!-- END -->
+		<!-- IF S_CALL == 'show' -->
+		<form method="post" action="{S_ACTION}" style="float:left; display:inline">
+			<input type="hidden" name="tpl" value="delete" />
+			<input type="submit" name="{S_CURRENT_FILE}" value="_(DELETE)" title="Delete the current file" />
+		</form>
+		<!-- ENDIF -->
+	</fieldset>
+<!-- IF S_IS_INDEX -->
+	<fieldset><legend><span class="title">Supported</span></legend>
+		<!-- BEGIN supported -->
+		<dl>
+			<dt>{supported.TITLE}</dt>
+			<dd>Description: {supported.DESC}</dd>
+			<dd>Documentation: <a href="http://{supported.DOCS}">{supported.DOCS}</a></dd>
+			<dd>Tutorials: <a href="http://{supported.TUTORIAL}">{supported.TUTORIAL}</a></dd>
+			<dd>Download: <a href="http://{supported.DOWNLOAD}">{supported.DOWNLOAD}</a></dd>
+		</dl>
+		<!-- END -->
+	</fieldset>
+<!-- ELSE -->
+<fieldset>
+<!-- IF ! S_IS_INDEX --> <!-- INCLUDE admin/cache/{S_COMPILER}.html --> <!-- ENDIF -->
+<!-- ENDIF -->
+</fieldset>
+</div>
+

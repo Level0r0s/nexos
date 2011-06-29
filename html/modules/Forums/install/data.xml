@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema version="1.0" name="dragonfly">
+
+	<table name="bbconfig" onduplicate="IGNORE">
+		<col name="config_name"/>
+		<col name="config_value"/>
+		<tr><td>1</td><td>1</td></tr>
+		<tr><td>allow_html</td><td>0</td></tr>
+		<tr><td>allow_html_tags</td><td>b,i,u,pre</td></tr>
+		<tr><td>allow_bbcode</td><td>1</td></tr>
+		<tr><td>allow_smilies</td><td>1</td></tr>
+		<tr><td>allow_sig</td><td>1</td></tr>
+		<tr><td>allow_namechange</td><td>0</td></tr>
+		<tr><td>allow_theme_create</td><td>0</td></tr>
+		<tr><td>allow_avatar_local</td><td>1</td></tr>
+		<tr><td>allow_avatar_remote</td><td>1</td></tr>
+		<tr><td>allow_avatar_upload</td><td>0</td></tr>
+		<tr><td>override_user_style</td><td>1</td></tr>
+		<tr><td>posts_per_page</td><td>15</td></tr>
+		<tr><td>topics_per_page</td><td>50</td></tr>
+		<tr><td>hot_threshold</td><td>25</td></tr>
+		<tr><td>max_poll_options</td><td>10</td></tr>
+		<tr><td>max_inbox_privmsgs</td><td>100</td></tr>
+		<tr><td>max_sentbox_privmsgs</td><td>100</td></tr>
+		<tr><td>max_savebox_privmsgs</td><td>100</td></tr>
+		<tr><td>board_email_sig</td><td>Thanks, Webmaster@MySite.com</td></tr>
+		<tr><td>require_activation</td><td>0</td></tr>
+		<tr><td>flood_interval</td><td>15</td></tr>
+		<tr><td>board_email_form</td><td>0</td></tr>
+		<tr><td>default_style</td><td>1</td></tr>
+		<tr><td>default_dateformat</td><td>D M d, Y g:i a</td></tr>
+		<tr><td>board_timezone</td><td>0</td></tr>
+		<tr><td>prune_enable</td><td>0</td></tr>
+		<tr><td>coppa_fax</td><td></td></tr>
+		<tr><td>coppa_mail</td><td></td></tr>
+		<tr><td>board_startdate</td><td israw="true">UNIX_TIMESTAMP()</td></tr>
+		<tr><td>default_lang</td><td>english</td></tr>
+		<tr><td>record_online_users</td><td>2</td></tr>
+		<tr><td>record_online_date</td><td>1034668530</td></tr>
+		<tr><td>version</td><td>.0.0</td></tr>
+		<tr><td>enable_confirm</td><td>0</td></tr>
+		<tr><td>sendmail_fix</td><td>0</td></tr>
+		<tr><td>ropm_quick_reply</td><td>1</td></tr>
+		<tr><td>ropm_quick_reply_bbc</td><td>1</td></tr>
+	</table>
+
+	<table name="bbthemes" datamode="ON-EMPTY">
+		<col name="template_name"/>
+		<col name="style_name"/>
+		<col name="head_stylesheet"/>
+		<col name="body_bgcolor"/>
+		<col name="body_text"/>
+		<col name="body_link"/>
+		<col name="body_vlink"/>
+		<col name="body_hlink"/>
+		<col name="tr_color1"/>
+		<col name="tr_color2"/>
+		<col name="tr_color3"/>
+		<col name="th_color1"/>
+		<col name="th_color2"/>
+		<col name="th_color3"/>
+		<col name="th_class1"/>
+		<col name="th_class2"/>
+		<col name="th_class3"/>
+		<col name="td_color1"/>
+		<col name="td_color2"/>
+		<col name="td_class1"/>
+		<col name="td_class2"/>
+		<col name="fontface1"/>
+		<col name="fontface2"/>
+		<col name="fontface3"/>
+		<col name="fontsize1"/>
+		<col name="fontsize2"/>
+		<col name="fontsize3"/>
+		<col name="fontcolor1"/>
+		<col name="fontcolor2"/>
+		<col name="fontcolor3"/>
+		<tr><td>subSilver</td><td>subSilver</td><td>subSilver.css</td><td>0E3259</td><td>000000</td><td>006699</td><td>5493B4</td><td>DD6900</td><td>EFEFEF</td><td>DEE3E7</td><td>D1D7DC</td><td>98AAB1</td><td>006699</td><td>FFFFFF</td><td>cellpic1.gif</td><td>cellpic3.gif</td><td>cellpic2.jpg</td><td>FAFAFA</td><td>FFFFFF</td><td>row1</td><td>row2</td><td>Verdana, Arial, Helvetica, sans-serif</td><td>Trebuchet MS</td><td>Courier, 'Courier New', sans-serif</td><td>10</td><td>11</td><td>12</td><td>444444</td><td>006600</td><td>FFA34F</td></tr>
+	</table>
+
+	<table name="bbtopic_icons" datamode="ON-EMPTY">
+		<col name="icon_id"/>
+		<col name="forum_id"/>
+		<col name="icon_url"/>
+		<col name="icon_name"/>
+		<tr><td>-1</td><td>images/icons/misc/asterix.gif</td><td>asterix</td></tr>
+		<tr><td>-1</td><td>images/icons/misc/arrow_bold_ltr.gif</td><td>Arrow ltr</td></tr>
+		<tr><td>-1</td><td>images/icons/smile/exclaim.gif</td><td>Exclamation</td></tr>
+		<tr><td>-1</td><td>images/icons/smile/question.gif</td><td>Questionmark</td></tr>
+		<tr><td>-1</td><td>images/icons/smile/idea.gif</td><td>Idea</td></tr>
+	</table>
+
+	<table name="bbattachments_config" onduplicate="IGNORE">
+		<col name="config_name"/>
+		<col name="config_value"/>
+		<tr><td>upload_dir</td><td>uploads/forums</td></tr>
+		<tr><td>upload_img</td><td>images/icons/icon_disk.gif</td></tr>
+		<tr><td>topic_icon</td><td>images/icons/icon_clip.gif</td></tr>
+		<tr><td>display_order</td><td>0</td></tr>
+		<tr><td>max_filesize</td><td>262144</td></tr>
+		<tr><td>attachment_quota</td><td>52428800</td></tr>
+		<tr><td>max_filesize_pm</td><td>262144</td></tr>
+		<tr><td>max_attachments</td><td>3</td></tr>
+		<tr><td>max_attachments_pm</td><td>1</td></tr>
+		<tr><td>disable_mod</td><td>0</td></tr>
+		<tr><td>allow_pm_attach</td><td>1</td></tr>
+		<tr><td>attachment_topic_review</td><td>0</td></tr>
+		<tr><td>allow_ftp_upload</td><td>0</td></tr>
+		<tr><td>show_apcp</td><td>0</td></tr>
+		<tr><td>attach_version</td><td>2.3.9</td></tr>
+		<tr><td>default_upload_quota</td><td>0</td></tr>
+		<tr><td>default_pm_quota</td><td>0</td></tr>
+		<tr><td>ftp_server</td><td></td></tr>
+		<tr><td>ftp_path</td><td></td></tr>
+		<tr><td>download_path</td><td></td></tr>
+		<tr><td>ftp_user</td><td></td></tr>
+		<tr><td>ftp_pass</td><td></td></tr>
+		<tr><td>ftp_pasv_mode</td><td>1</td></tr>
+		<tr><td>img_display_inlined</td><td>1</td></tr>
+		<tr><td>img_max_width</td><td>0</td></tr>
+		<tr><td>img_max_height</td><td>0</td></tr>
+		<tr><td>img_link_width</td><td>0</td></tr>
+		<tr><td>img_link_height</td><td>0</td></tr>
+		<tr><td>img_create_thumbnail</td><td>0</td></tr>
+		<tr><td>img_min_thumb_filesize</td><td>12000</td></tr>
+		<tr><td>img_imagick</td><td></td></tr>
+		<tr><td>use_gd2</td><td>0</td></tr>
+		<tr><td>wma_autoplay</td><td>0</td></tr>
+		<tr><td>flash_autoplay</td><td>0</td></tr>
+	</table>
+
+	<table name="bbforbidden_extensions" datamode="ON-EMPTY">
+		<col name="extension"/>
+		<tr><td>php</td></tr>
+		<tr><td>php3</td></tr>
+		<tr><td>phtml4</td></tr>
+		<tr><td>pl</td></tr>
+		<tr><td>asp</td></tr>
+		<tr><td>cgi</td></tr>
+	</table>
+
+	<table name="bbextension_groups" datamode="ON-EMPTY">
+		<col name="group_name"/>
+		<col name="cat_id"/>
+		<col name="allow_group"/>
+		<col name="download_mode"/>
+		<tr><td>Images</td><td>1</td><td>1</td><td>1</td></tr>
+		<tr><td>Archives</td><td>0</td><td>1</td><td>1</td></tr>
+		<tr><td>Plain Text</td><td>0</td><td>0</td><td>1</td></tr>
+		<tr><td>Documents</td><td>0</td><td>0</td><td>1</td></tr>
+		<tr><td>Real Media</td><td>0</td><td>0</td><td>2</td></tr>
+		<tr><td>Streams</td><td>2</td><td>0</td><td>1</td></tr>
+		<tr><td>Flash Files</td><td>3</td><td>0</td><td>1</td></tr>
+	</table>
+
+	<table name="bbextensions" datamode="ON-EMPTY">
+		<col name="group_id"/>
+		<col name="extension"/>
+		<tr><td>1</td><td>gif</td></tr>
+		<tr><td>1</td><td>png</td></tr>
+		<tr><td>1</td><td>jpeg</td></tr>
+		<tr><td>1</td><td>jpg</td></tr>
+		<tr><td>1</td><td>tif</td></tr>
+		<tr><td>1</td><td>tga</td></tr>
+		<tr><td>2</td><td>ace</td></tr>
+		<tr><td>2</td><td>bz2</td></tr>
+		<tr><td>2</td><td>gtar</td></tr>
+		<tr><td>2</td><td>gz</td></tr>
+		<tr><td>2</td><td>tar</td></tr>
+		<tr><td>2</td><td>tbz</td></tr>
+		<tr><td>2</td><td>tgz</td></tr>
+		<tr><td>2</td><td>rar</td></tr>
+		<tr><td>2</td><td>zip</td></tr>
+		<tr><td>3</td><td>txt</td></tr>
+		<tr><td>3</td><td>c</td></tr>
+		<tr><td>3</td><td>h</td></tr>
+		<tr><td>3</td><td>cpp</td></tr>
+		<tr><td>3</td><td>hpp</td></tr>
+		<tr><td>3</td><td>diz</td></tr>
+		<tr><td>4</td><td>xls</td></tr>
+		<tr><td>4</td><td>doc</td></tr>
+		<tr><td>4</td><td>dot</td></tr>
+		<tr><td>4</td><td>pdf</td></tr>
+		<tr><td>4</td><td>ai</td></tr>
+		<tr><td>4</td><td>ps</td></tr>
+		<tr><td>4</td><td>ppt</td></tr>
+		<tr><td>5</td><td>rm</td></tr>
+		<tr><td>6</td><td>asx</td></tr>
+		<tr><td>6</td><td>pls</td></tr>
+		<tr><td>6</td><td>wma</td></tr>
+		<tr><td>7</td><td>swf</td></tr>
+	</table>
+
+	<table name="bbquota_limits" datamode="ON-EMPTY">
+		<col name="quota_desc"/>
+		<col name="quota_limit"/>
+		<tr><td>Low</td><td>262144</td></tr>
+		<tr><td>Medium</td><td>2097152</td></tr>
+		<tr><td>High</td><td>5242880</td></tr>
+	</table>
+
+</schema>

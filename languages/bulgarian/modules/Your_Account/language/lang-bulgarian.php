@@ -1,0 +1,440 @@
+<?php
+
+/**************************************************************************/
+/* Your_Account Module                                                    */
+/*********************************************
+  CPG-NUKE: Advanced Content Management System
+  ********************************************
+  Copyright (c) 2004 by CPG Dev Team
+  http://cpgnuke.com
+
+  Under the GNU General Public License version 2*/
+/* Last modification notes:                                               */
+/* $Id: lang-bulgarian.php,v 1.1 2004/07/16 10:21:22 akamu Exp $        */
+/*    Преведено от :  ИНФОРМАТОР                                          */
+/*        WEB сайт :  http://www.informator.org/                          */
+/*           Email :  info@informator.org                                 */
+/*                                                                        */
+/*            Дата :  06.04.2003                                          */
+/* Преводна версия :  CPG-Nuke 8.02 YourAccount                                  */
+/*            Файл :  /modules/Your_Account/language/lang-bulgarian.php   */
+/*                                                                        */
+/* Please change the second quoted phrase, not the capitalized one        */
+/* If you need to use double quotes (") remember to add a backslash (\),  */
+/* so your entry will look like: This is \"double quoted\" text.          */
+/* Try to stay as close to the meaning of the english phrase.             */
+/**************************************************************************/
+
+
+//lang_translation_info
+
+define("_REQUIREADMIN", "Require Admin Approval");
+define("_ACTALLOWREG", "Allow User Registration");
+define("_ACTNOTIFYADD", "Notify Admin of User Registration");
+define("_ACTALLOWDELETE", "Allow User self-deletion");
+define("_ACTNOTIFYDELETE", "Notify Admin of User Deletion");
+define("_ACTALLOWTHEME", "Allow User Theme Selection");
+define("_ACTALLOWMAIL", "Allow User Email Change");
+define("_SERVERMAIL", "Server can send mail");
+define("_USEACTIVATE", "Use email Activation");
+define("_USEREGISTERMSG", "Use Registration Agreement");
+
+define("_MA_HIDDEN", "Hidden");
+define("_MA_VISIBLE", "Visible");
+define("_MA_REQUIRED", "Required");
+
+// User Registration Config
+define("_MA_PROFILE_INFO", "Profile Information");
+define("_MA_ADDITIONAL", "Additional Information");
+define("_MA_REALNAME", "Real Name");
+define("_MA_FAKEMAIL", "Fake Email");
+define("_MA_HOMEPAGE", "Home Page");
+define("_MA_ICQ", "ICQ Number");
+define("_MA_AIM", "AIM Address");
+define("_MA_YIM", "Yahoo Messenger");
+define("_MA_MSNM", "MSN Messenger");
+define("_MA_LOCATION", "Location");
+define("_MA_OCCUPATION", "Occupation");
+define("_MA_INTERESTS", "Interests");
+define("_MA_SIGNATURE", "Signature");
+define("_MA_EXTRAINFO", "Extra Info");
+define("_MA_PREFERENCES", "Preferences");
+define("_MA_TIMEZONE", "Timezone");
+define("_MA_DATEFORMAT", "Date format");
+define("_MA_RECEIVENEWSLETTER", "Receive Newsletter");
+define("_MA_SHOWEMAIL", "Show my Email Address");
+define("_MA_SHOWONLINE", "Show my online status");
+define("_MA_ALLOWBBCODE", "Always Allow BBCode");
+define("_MA_ALLOWHTML", "Always Allow HTML");
+define("_MA_ALLOWSMILIES", "Always Enable Smilies");
+define("_MA_NOTIFYREPLY", "Notify me of replies");
+define("_MA_NOTIFYPM", "Notify on new Private Message by Email");
+define("_MA_POPUPPM", "Pop up window on new Private Message");
+define("_MA_ATTACHSIG", "Always attach my signature");
+define("_MA_PRIVATE", "Private Information");
+define("_MA_FIRSTNAME", "Firstname");
+define("_MA_LASTNAME", "Lastname");
+define("_MA_GENDER", "Gender");
+define("_MALE", "Male");
+define("_FEMALE", "Female");
+define("_MA_BIRTHDAY", "Date of birth");
+define("_MA_BIRTHDAYMSG", "Fill in as month/day/year");
+define("_MA_TELEPHONE", "Telphone number");
+define("_MA_FAX", "Fax number");
+define("_OSC_NEWSLETTER", "Recieve Shop newsletter");
+define("_OSC_NEWSLETTERMSG", "This is a seperate e-mail about new shop items and discounts");
+
+// License agreement
+define("_BOUNDREGISTRATION", "By clicking Register below you agree to be bound by these conditions.");
+define("_MA_REGISTRATION", "Registration Agreement Terms");
+define("_MA_AGREE_OVER_13", "I Agree to these terms and am <b>over</b> or <b>exactly 13</b> years of age");
+define("_MA_AGREE_UNDER_13", "I Agree to these terms and am <b>under</b> 13 years of age");
+define("_MA_DO_NOT_AGREE", "I do not agree to these terms");
+
+// Registration form
+define("_MA_REGISTRATION_INFO", "Registration Information");
+define("_MA_ITEMS_REQUIRED", "Items marked with a * are required unless stated otherwise.");
+define("_MA_PROFILE_INFO_NOTICE", "This information will be publicly viewable");
+define("_USERNAME", "Username");
+define("_EMAILADDRESS", "Email address");
+define("_BLANKFORAUTO", "Оставете празно, ако желаете автоматично генериране на Вашата парола");
+define("_CONFIRMPASSWORD", "Confirm password");
+define("_SUBMIT", "Submit");
+define("_RESET", "Reset");
+define("_MA_FAKEMAILMSG", "(This Email will be public. Just type what you want, Spam proof)");
+define("_MA_DATEFORMATMSG", "The syntax used is identical to the PHP <a href=\"http://www.php.net/date\">date()</a> function");
+define("_MA_SIGNATUREMSG", "This is a block of text that can be added to posts you make. There is a 255 character limit");
+define("_MA_NOTIFYREPLYMSG", "Sends an email when someone replies to a topic you have posted in. This can be changed whenever you post");
+define("_MA_POPUPPMMSG", "Will open a new popup window to inform you when new private messages arrive");
+
+// config options
+define("_ACTDISABLED", "This function has been <b>DISABLED</b> by the site admin.");
+
+// Register steps
+define("_USERFINALSTEP", "User Registration: Final Step");
+define("_USERCHECKDATA", "please check the following information. If all is correct you can proceed with the registration by clicking on \"Finish\" button, otherwise \"Go Back\" and change whatever information is needed.");
+define("_YOURPASSWORD", "Your Password is");
+define("_YOUWILLRECEIVE", "You will receive a confirmation email with a link to a page you should visit to activate your account in the next 24 hours.");
+define("_YOUWILLRECEIVE2", "You will receive an email with login information.");
+define("_WAITAPPROVAL", "The site Administrator will review your application and send you an activation link if you are approved.");
+define("_FINISH", "Finish");
+
+// Register finish
+define("_YOUUSEDEMAIL", "You or someone else has used your email account");
+define("_TOREGISTER", "to register an account at");
+define("_USERREGLOGIN", "User Registration/Login");
+define("_USERAPPLOGIN", "User Application/Login");
+define("_ACCOUNTCREATED", "New User Account Created!");
+define("_YOUAREREGISTERED", "Welcome! You are now registered as a member.");
+define("_FINISHUSERCONF", "Your request for a new account has been processed. You'll receive an email in the next few seconds with a activation link that should be visited in the next 24 hours to be able to activate your account.");
+define("_FINISHUSERCONF2", "Your request for a new account has been processed. You can now ");
+define("_FINISHUSERCONF3", "login here");
+define("_TOFINISHUSER", "To finish the registration process you should visit the following link in the next 24 hours to activate your user account, otherwise the information will be automaticaly deleted by the system and you should apply again:");
+define("_ACTIVATIONSUB", "User Account Activation");
+define("_REGISTRATIONSUB", "User Account Registration");
+define("_THANKSUSER", "Thank you for registering at");
+define("_FOLLOWINGMEM", "Following is the member information:");
+define("_TOAPPLY", "to apply for an account at");
+define("_APPLICATIONSUB", "User Account Application");
+define("_YOUAREPENDING", "Welcome! Your application as a new member is pending. The site administrator will contact you when your application is processed.");
+define("_THANKSAPPL", "Thank you for appling at");
+define("_MEMADD", "Member Added");
+define("_MEMAPL", "Member Applied");
+
+// Register errors
+define("_ERRORINVEMAIL", "ERROR: Invalid Email");
+define("_NICK2SHORT", "Nickname is too short. It must be more than 3 characters");
+define("_SECCODEINCOR", "Security Code is incorrect, Please go back and type it exactly as given...");
+define("_ERROREMAILSPACES", "ERROR: Email addresses do not contain spaces");
+define("_ERRORINVNICK", "ERROR: Invalid Nickname");
+define("_NICK2LONG", "Nickname is too long. It must be less than 26 characters");
+define("_NAMERESERVED", "ERROR: This Name is Reserved");
+define("_NAMEDENIED","ERROR: This part of your chosen user name may not be used :");
+define("_NICKNOSPACES", "ERROR: There cannot be any spaces in the Nickname");
+define("_NICKTAKEN", "ERROR: Nickname already taken");
+define("_EMAILREGISTERED", "ERROR: Email address already registered");
+define("_PASSDIFFERENT", "Both passwords are different. They need to be identical.");
+define("_YOUPASSMUSTBE", "Your Password must be");
+define("_CHARLONG", "characters long");
+define("_ACCOUNTRESERVED", "New User Account Reserved!");
+define("_EMAILNOTUSABLE", "ERROR: Email address is not usable");
+
+// User activation
+define("_ACTIVATIONYES", "User Activation");
+define("_ACTMSG", "Your account has been activated. Please login from <a href=\"getlink()\">this link</a> using your assigned Username and Password.");
+define("_ACTIVATIONERROR", "User Activation Error");
+define("_ACTERROR1", "User verification number is invalid.<br><br>Please be sure to click on the link you received by email or apply for a new account <a href=\"getlink()\">here</a>.");
+define("_ACTERROR2", "There is no user in the database with this information.<br><br>You can register a new user from <a href=\"getlink()\">here</a>.");
+
+// Edit user profile
+define("_CURRENTPASSWORD", "Current password");
+define("_CURRENTPASSWORDMSG", "You must confirm your current password if you wish to change it or alter your e-mail address");
+define("_NEWPASSWORD", "New password");
+define("_NEWPASSWORDMSG", "You only need to supply a password if you want to change it");
+define("_CONFIRMPASSWORDMSG", "You only need to confirm your password if you changed it above");
+define("_SUREDELETE", "Are you sure you want to delete your account?");
+define("_CURRENT_IMAGE", "Current Image");
+define("_DELETE_IMAGE", "Delete Image");
+define("_AVATAR_CONTROL", "Avatar control panel");
+define("_AVATAR_INFO", "Displays a small graphic image below your details in posts. Only one image can be displayed at a time, its width can be no greater than 80 pixels, the height no greater than 80 pixels, and the file size no more than 6 KB.");
+define("_AVATAR_OFFSITE","Link to off-site Avatar");
+define("_AVATAR_OFFSITEMSG","Enter the URL of the location containing the Avatar image you wish to link to.");
+define("_AVATAR_SELECT", "Select Avatar from gallery");
+define("_SHOW_GALLERY", "Show gallery");
+define("_AVATAR_UPLOAD", "Upload Avatar from your machine");
+
+// Avatar section
+define("_AVATAR_GALLERY", "Avatar gallery");
+define("_CATEGORY_SELECT", "Select category");
+define("_SELECT_AVATAR", "Select avatar");
+define("_CANCEL_AVATAR", "Cancel avatar");
+
+// Profile page
+define("_THISISYOURPAGE", "Това е Вашата персонална страница");
+define("_PERSONALINFO", "Лична Информация");
+define("_ABOUT_USER", "All about ");
+define("_CONTACTINFO", "Contact Information");
+define("_PM", "Private Message");
+define("_JOINED", "Joined");
+define("_RANK", "Rank");
+define("_LAST10BBTOPIC", "Last 10 Forum Topics");
+define("_LAST10BBTOPICS", "Last 10 Forum Topics started by");
+define("_LAST10COMMENT", "Last 10 Comments");
+define("_LAST10DOWNLOAD", "Last 10 Downloads");
+define("_LAST10DOWNLOADS", "Last 10 Downloads by");
+define("_LAST10SUBMISSION", "Last 10 News Submissions");
+define("_LAST10WEBLINK", "Last 10 Web Links");
+define("_LAST10WEBLINKS", "Last 10 Web Links by");
+define("_MEMBERGROUPS", "Group Memberships");
+define("_AVATAR", "Въплащение");
+define("_WEBSITE", "WEB Сайт");
+define("_LOCATION", "Mестонахождение");
+define("_OCCUPATION", "Занятие");
+define("_INTERESTS", "Интереси");
+define("_SIGNATURE", "Сигнатура");
+
+define("_USERSTATUS", "Актуален Потребителски Статус");
+define("_ONLINE", "Онлайн");
+define("_OFFLINE", "Оф-лайн");
+define("_NOTSUBSCRIBED", "Вие не сте абонат на нашият Бюлетин");
+define("_SUBSCRIBED", "Вие сте абонат на нашият Бюлетин");
+
+define("_BROADCAST", "Broadcast Public Message");
+define("_BROADCASTTEXT", "Вие имате възможност да изпращате <i>Публично Съобщение</i> от тук (с максимална дължина от 255 символа). Това съобщение ще бъде показано на всички потребители, които са онлайн, през следващите 10 минути. Всеки потребител онлайн ще види съобщението само веднъж в червено каре под логото на сайта. Всеки потребител може да деактивира тази опция от <a href=\"modules.php?name=Your_Account&amp;op=edithome\">тук</a>.<br> НЕ ЗЛОУПОТРЕБЯВАЙТЕ!<br> HTML код не е разрешен.");
+define("_SEND", "Изпрати");
+define("_BROADCASTSENT", "Вашето Съобщение за Разпостраняване беше изпратено.");
+define("_BROADCASTNOTSENT", "<b>ГРЕШКА:</b> Вашето Съобщение за Разпостраняване е празно или вече сте изпратили неотдаван съобщение. За да публикувате друго съобщение, ако вече сте изпратили, е необходимо да изчакате да свърши времетраенето на предното - около 10 минути.");
+define("_RETURNPAGE", "Връщане във Вашата Лична Страница");
+
+define("_MYHEADLINES", "Моите Заглавия");
+define("_SELECTASITE", "Изберете сайтът на който искате да четете заглавията:");
+define("_SELECTASITE2", "Изберете WEB Сайт");
+define("_ORTYPEURL", "Или въведете URL на RSS/XML за заглавието на предпочитания сайт:");
+define("_GO", "Напред");
+define("_HEADLINESFROM", "Заглавие от");
+
+define("_READMYJOURNAL", "Read My Journal");
+
+// Errors
+define("_ACCDELETED", "Account has been Deleted");
+define("_SERVERNOMAIL", "This server does not have mail access. Please contact the site admin for assistance.");
+define("_ACCSUSPENDED", "Account has been Suspended");
+define("_BESUREACT", "Be sure you have activated your account.");
+define("_MEMDEL", "Member Deleted");
+define("_YOUBAD", "ERROR: You have attempted to perform an illegal operation!");
+define("_NOINFOFOR", "Няма налична информация за");
+define("_SORRYNOUSERINFO", "За съжаление, не бе намерена информация за потребител");
+define("_LOGININCOR", "Некоректно Влизане! Моля, Пробвайте Отново...");
+define("_UPDATEFAILED", "Не можете да обновявате потребителският вход. Моля, Свържете се с Администратора.");
+
+// Navbar
+define("_ACCTCHANGE", "Change<br>Info");
+define("_ACCTCOMMENTS", "Comments<br>Setup");
+define("_ACCTEXIT", "Logout<br>Exit");
+define("_ACCTHOME", "Change<br>Home");
+define("_ACCTJOURNAL", "Your<br>Journals");
+define("_ACCTTHEME", "Select<br>Theme");
+define("_CHANGEHOME", "Промяна на Лична Страница");
+define("_CHANGEYOURINFO", "Промяна на Вашата Информация");
+define("_CONFIGCOMMENTS", "Инсталиране на Коментари");
+define("_DELETEACCT", "Delete<br>Account");
+define("_LOGOUTEXIT", "ИЗХОД");
+define("_MESSAGES", "Съобщения");
+define("_RETURNACCOUNT", "Връщане към старницата на Вашият Акаунт");
+define("_SELECTTHETHEME", "Избор на Изглед");
+
+// Admin area
+define("_DELETEREASON", "Reason for Deletion");
+define("_SUSPENDREASON", "Reason for Suspension");
+define("_DENYREASON", "Reason for Denial");
+define("_CHECKNUM", "Activation #");
+define("_REGDATE", "Date Added");
+define("_ACCTAPPROVE", "Account Approved");
+define("_ACCTDELETE", "Account Deleted");
+define("_ACCTDENY", "Account Denied");
+define("_ACCTREMOVE", "Account Removed");
+define("_ACCTRESTORE", "Account Restored");
+define("_ACCTSUSPEND", "Account Suspended");
+define("_ACTIVEUSERS", "Active Users");
+define("_ADDUSER", "Add a New User");
+define("_ADDUSERBUT", "Add User");
+define("_ALLOWUSERS", "Allow other users to view my email address");
+define("_APPROVE", "Approve");
+define("_APPROVEUSER", "Approve User");
+define("_DELETEUSER", "Delete User");
+define("_DELETEUSERS", "Deleted Users");
+define("_DENY", "Deny");
+define("_DENYUSER", "Deny User");
+define("_DETUSER", "User Details");
+define("_EDITUSER", "Редактиране на Потребител");
+define("_FORCHANGES", "(For Changes Only)");
+define("_FUNCTIONS", "Functions");
+define("_HASAPPROVE", "has been approved.");
+define("_HASDELETE", "has been deleted.");
+define("_HASDENY", "has been denied.");
+define("_HASREMOVE", "has been removed.");
+define("_HASRESTORE", "has been restored.");
+define("_HASSUSPEND", "has been suspended.");
+define("_ID", "ID");
+define("_MODIFY", "Modify");
+define("_NAME", "Name");
+define("_NEWSLETTER", "Newsletter");
+define("_OK", "Ok!");
+define("_OPTION", "Избор");
+define("_OR", "or");
+define("_PERMISSIONS", "Permissions");
+define("_PROMOTE", "Promote");
+define("_PROMOTEUSER", "Promote User");
+define("_REMOVE", "Remove");
+define("_REMOVEUSER", "Remove User");
+define("_REQUIREDNOCHANGE", "(required, can't be changed later)");
+define("_RESEND", "Resend");
+define("_RESENDMAIL", "Resend Activation Email");
+define("_RESTORE", "Restore");
+define("_RESTOREUSER", "Restore User");
+define("_RETYPEPASSWD", "Retype Password");
+define("_SAVECHANGES", "Save Changes");
+define("_SHOWMAIL", "Show Email");
+define("_SORRYTO", "Your account at");
+define("_SURE2APPROVE", "Are you sure you want to approve user");
+define("_SURE2DELETE", "Are you sure you want to delete user");
+define("_SURE2DENY", "Are you sure you want to deny user");
+define("_SURE2PROMOTE", "Are you sure you want to promote user");
+define("_SURE2REMOVE", "Are you sure you want to remove user");
+define("_SURE2RESEND", "Are you sure you want to resend activation email");
+define("_SURE2RESTORE", "Are you sure you want to restore user");
+define("_SURE2SUSPEND", "Are you sure you want to suspend user");
+define("_SUSPEND", "Suspend");
+define("_SUSPENDUSER", "Suspend User");
+define("_SUSPENDUSERS", "Suspended Users");
+define("_URL", "URL");
+define("_USERADMIN", "User's Administration");
+define("_USERID", "User ID");
+define("_USERPROMOTED", "User has been promoted to Admin.");
+define("_USERUPDATE", "Update User");
+define("_WAITINGUSER", "Waiting User");
+define("_WAITINGUSERS", "Waiting Users");
+
+define("_ARTICLES", "Articles");
+define("_BBFORUM", "Forum");
+define("_CONTENT", "Content");
+define("_DOWNLOAD", "Downloads");
+define("_ENCYCLOPEDIA", "Encyclopedia");
+define("_FAQ", "FAQ");
+define("_REVIEWS", "Reviews");
+define("_SECTIONS", "Sections");
+define("_SURVEYS", "Surveys");
+define("_TOPICS", "Topics");
+define("_WEBLINKS", "Web Links");
+
+// Admin errors
+define("_ADDERROR", "ERROR: There was a problem with the database.");
+define("_NAMEERROR", "ERROR: This Admin name is already in use.");
+define("_NEEDTOCOMPLETE", "You need to complete all required fields");
+define("_PASSWDNOMATCH", "Sorry, the new passwords doesn't match. Go Back and Try Again");
+define("_USERNOEXIST", "User Doesn't Exists!");
+
+/*****************************************************/
+/* Originals : modules/Your_Account/*.*              */
+/*****************************************************/
+define("_USERLOGIN", "Включване на Потребител ");
+define("_USERREGLOGIN", "User Registration/Login");
+define("_REGNEWUSER", "Регистриране на Нов Потребител");
+define("_PASSWORDLOST", "Загубили сте си Паролата?");
+
+define("_NOPROBLEM", "Няма проблем. Само напишете Вашият Псевдоним и щракнете на бутона за изпращане. Ще бъде изпратен автоматичен E-M@IL към Вас със Вашият Потвърждаващ Код, тогава Вие ще трябва да напишете отново Вашите Псевдоним и Потвърждаващ Код и ние ще ви изпратим нова парола.");
+define("_CONFIRMATIONCODE", "Потвърждаващ Код");
+define("_SENDPASSWORD", "Изпращане на Парола");
+
+define("_YOUARELOGGEDOUT", "Вие излязохте!Заповядайте отново!");
+
+define("_USERACCOUNT", "Потребителски Акаунт");
+define("_AT", "на");
+define("_HASTHISEMAIL", "притежава тази E-M@IL асоциация към нея.");
+define("_AWEBUSERFROM", "WEB потребител от");
+define("_HASREQUESTED", "необходима е онази парола която ще бъде изпратена.");
+define("_YOURNEWPASSWORD", "Вашата Нова Парола е:");
+define("_YOUCANCHANGE", "Можете да я промените след като влезете");
+define("_IFYOUDIDNOTASK", "Ако не сте поискали това, не се безпокойте. Само Вие виждате това съобщение. Ако считате това за грешка, само влезте с Вашата нова парола.");
+
+define("_PASSWORD4", "Парола за");
+define("_MAILED", "изпращане на E-M@IL.");
+
+define("_CODEREQUESTED", "изисквасе само Потвърждаващият Код за да се промени паролата.");
+define("_YOURCODEIS", "Вашият Потвърждаващ Код е:");
+define("_WITHTHISCODE", "С този код Вие можете сега да определите нова парола");
+define("_IFYOUDIDNOTASK2", "Ако не сте поискали това, не се безпокойте. Само изтрийте този E-M@IL.");
+
+define("_CODEFOR", "Потвърждаващ Код за");
+define("_USERPASSWORD4", "Потребителска Парола за");
+
+define("_255CHARMAX", "(max. 255 знака. Можете да включите HTML код във Вашата сигнатура)");
+define("_CANKNOWABOUT", "(max. 255 знака. Напишете това което искате другите да узнаят за Вас)");
+define("_SOMETHINGWRONG", "Нещо се прецаква... не мразите ли това?");
+define("_CHARLONG", "characters long");
+
+// Edit comments view
+define("_COMMENTSCONFIG", "Конфигурация за Коментари");
+define("_DISPLAYMODE", "Показване на Режим");
+define("_NOCOMMENTS", "Без Коментари");
+define("_NESTED", "Вместено");
+define("_FLAT", "Плоско");
+define("_THREAD", "Тънко");
+define("_SORTORDER", "Ред на Сортиране");
+define("_OLDEST", "Наи-старият");
+define("_NEWEST", "Най-новият");
+define("_HIGHEST", "С Най-висок Резултат");
+define("_THRESHOLD", "В началото");
+define("_COMMENTSWILLIGNORED", "Коментари, отбелязани с по-малка от тази сатойност ще бъдат игнорирани.");
+define("_UNCUT", "Необработено и Нецензурирано");
+define("_EVERYTHING", "Почти Всички");
+define("_FILTERMOSTANON", "Филтър на Повечето Анонимни");
+define("_USCORE", "Резултат");
+define("_SCORENOTE", "Анонимното публикуване започва от 0, а от влязъл регистриран потребител - започва от 1. Модераторите прибавят и изваждат точки.");
+define("_NOSCORES", "Забрана на Извеждане на Резултатите");
+define("_HIDDESCORES", "(Скрити резултати: Те се използват, но Вие не ги виждате.)");
+define("_MAXCOMMENT", "Максимална Дължина за Коментари");
+define("_TRUNCATES", "(Отрязва дълги коментари, и добавя връзка \"Прочети още...\". Останалото е изключено)");
+define("_BYTESNOTE", "bytes (1024 байта = 1K)");
+
+define("_PRIVATEMESSAGES", "Вашето Лично Съобщение");
+define("_BROWSEUSERS", "Преглед на Потребители");
+define("_SEARCHUSERS", "Търсене за Потребители");
+define("_SENDPRIVATEMSG", "Send a Private Message to");
+
+// Change theme
+define("_THEMESELECTION", "Избор на Изглед");
+define("_SELECTTHEME", "Избор на Изглед");
+define("_THEMETEXT1", "Тази опция ще промени изгледа на целият сайт.");
+define("_THEMETEXT2", "Промените ще бъдат валидни само за Вас.");
+define("_THEMETEXT3", "Всеки потребител може да разглежда сайта с различен изглед.");
+
+// Edit home
+define("_HOMECONFIG", "Конфигурация за Лична Страница");
+define("_NEWSINHOME", "Количество на Новините в Личната Страница");
+define("_MAX127", "(макс. 127):");
+define("_MESSAGEACTIVATE", "Ще Активирате ли Разпостраняване на Публично Съобщение?");
+define("_ACTIVATEPERSONAL", "Активиране на Лично Меню");
+define("_CHECKTHISOPTION", "(Проверете тези опции и следващият текст как ще изглеждат на Личната Страница)");
+define("_YOUCANUSEHTML", "(Можете да използвате HTML код за връзка, например)");
+?>

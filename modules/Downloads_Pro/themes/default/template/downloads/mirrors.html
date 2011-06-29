@@ -1,0 +1,24 @@
+<div class="table1">
+{DL_DETAIL_MENU}<br /><br />
+
+<span class="genmed"><strong>{L_DL_FILE}</strong></span><br />
+{S_DL_DESC1} {S_DL_DESC2}<br /><br />
+
+<table border="0" width="100%" class="forumline">
+ <tr>
+   <th align="left">&nbsp;{L_LOCATION}</th>
+   <th align="left">&nbsp;{L_FILENAME}</th>
+   <th align="left">&nbsp;{L_FILESIZE}</th>
+   <!-- IF MD5_SET --><th align="left">&nbsp;{L_MD5_SUM}</th><!-- ENDIF -->
+ </tr>
+<!-- BEGIN mirror -->
+<tr>
+  <td class="row1">{mirror.S_SITE}</td>
+  <td class="row2"><span style="float: left;"><a href="{mirror.U_GET}" rel="nofollow">{mirror.FILENAME}</a></span><span style="float: right;"><a href="{mirror.U_BROKEN}">Report broken</a></span></td>
+  <td class="row1"><a onclick="javascript:window.open('{mirror.U_POPUP}', '', 'height=215,resizable=yes,width=400'); return false;" href="{mirror.U_POPUP}" title="{L_VIEW_ESTIMATE}" rel="nofollow">{mirror.S_SIZE}</a></td>
+  <!-- IF MD5_SET --><td class="row2">{mirror.S_MD5}</td><!-- ENDIF -->
+</tr>
+<!-- END mirror -->
+</table>
+
+</div>

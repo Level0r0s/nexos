@@ -1,0 +1,762 @@
+<?php
+/*********************************************
+   Coppermine 1.3.1 for CPG Dragonfly™
+  ********************************************
+   Port Copyright © 2004-2006 CPG-Nuke Dev Team
+  http://dragonflycms.org
+  ********************************************
+   v1.1 (c) by Grégory Demar http://coppermine.sf.net/
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+  ********************************************
+  $Source: /cvs/l10n/finnish/coppermine.php,v $
+  $Revision: 9.6 $
+  $Author: djmaze $
+  $Date: 2006/02/12 16:01:51 $
+Encoding test: n-array summation ∑ latin ae w/ acute ǽ
+*******************************************************/
+if (!defined('CPG_NUKE')) { exit; }
+global $module_name, $lang_usermgr_php, $lang_config_php, $lang_config_data, $lang_byte_units, $lang_day_of_week, $lang_month, $lang_bad_words, $lang_meta_album_names, $lang_config_data;
+define('PIC_VIEWS', 'Katsottu');//new in 1.2.2nuke
+define('PIC_VOTES', 'Ääniä');//new in 1.2.2nuke
+define('PIC_COMMENTS', 'Kommentteja');//new in 1.2.2nuke
+
+// lang_translation_info
+define('LANG_NAME_ENGLISH', 'Finnish');
+define('LANG_NAME_NATIVE', 'Suomi');
+define('LANG_COUNTRY_CODE', 'fi');
+define('TRANS_NAME', 'V.Taavila');
+define('TRANS_EMAIL', 'quandox@kastema.to');
+define('TRANS_WEBSITE', 'http://');
+define('TRANS_DATE', '2003-10-14');
+define('TRANS2_NAME', 'Tomppa');
+define('TRANS2_EMAIL', 'smack@nic.fi');
+define('TRANS2_WEBSITE', 'http://turkiat.com/');
+define('TRANS2_DATE', '2005-03-25');define('CHARSET', 'UTF-8');
+define('TEXT_DIR', 'ltr');
+// left is for port compliancy
+define('YES', 'Kyllä');
+define('NO', 'Ei');
+// some common strings
+define('BACK', 'TAKAISIN');
+define('CONTINU', 'JATKA');
+define('INFO', 'Info');
+//define('ERROR', 'Virhe');
+define('ALBUM_DATE_FMT', '%B %d, %Y');
+define('LASTCOM_DATE_FMT', '%m/%d/%y at %H:%M');
+define('LASTUP_DATE_FMT', '%B %d, %Y');
+define('REGISTER_DATE_FMT', '%B %d, %Y');
+define('LASTHIT_DATE_FMT', '%B %d, %Y at %I:%M %p');
+define('COMMENT_DATE_FMT', '%B %d, %Y at %I:%M %p');
+
+// lang_meta_album_names
+define('RANDOM', 'Satunaiset kuvat');
+define('LASTUP', 'Uusimmat kuvat');
+define('LASTUPBY', 'Omat uusimmat kuvat');
+define('LASTALB', 'Viimeksi päivitetyt albumit');
+define('LASTCOM', 'Uusimmat komentit');
+define('LASTCOMBY', 'Omat uusimmat kommentit');
+define('TOPN', 'Katsotuimmat');
+define('TOPRATED', 'Suosituimmat');
+define('LASTHITS', 'Viimeksi tarkasteltu');
+define('SEARCH', 'Haun tulokset');
+define('FAVPICS', 'Suosikkikini');
+
+// lang_errors
+define('ACCESS_DENIED', 'Ei oikeuksia tälle sivulle.');
+define('PERM_DENIED', 'Ei oikeuksia kyseisen toiminnon suorittamiseen.');
+define('PARAM_MISSING', 'Scriptiä kutsuttu ilman vaadittavia parametrejä.');
+define('NON_EXIST_AP', 'Valittua albumia/kuvaa ei löydy !');
+define('QUOTA_EXCEEDED', 'Levytilasi on täynnä<br /><br />Levytilasi on täynnä [quota]K, kuviesi vievä tila [space]K, lisäämällä tämän kuvan tilasi koko ylittyisi.');
+define('GD_FILE_TYPE_ERR', 'Kun käytät GD:tä sallitut tiedostomuodot ovat JPEG ja PNG.');
+define('INVALID_IMAGE', 'Kuva on korruptoitunut eikä sitä voi käsitellä GD:llä');
+define('RESIZE_FAILED', 'Ongelma thumbnailien luomisessa.');
+define('NO_IMG_TO_DISPLAY', 'Ei näyttettäviä kuvia');
+define('NON_EXIST_CAT', 'Valittua kategoriaa ei löydy');
+define('ORPHAN_CAT', 'Ongelmia kategoriassa, aja kategoria manageri selvitääksesi ongelma.');
+define('DIRECTORY_RO', 'Hakemistoon \'%s\' ei ole määritelty kirjoitusoikeuksia. Kuvia ei voi poistaa');
+define('NON_EXIST_COMMENT', 'Valittua kommenttia ei löydy.');
+define('PIC_IN_INVALID_ALBUM', 'Kuvaa ei ole albumissa (%s)!?');
+define('BANNED', 'Sinulta on evätty pääsy tälle sivulle.');
+define('NOT_WITH_UDB', 'Tämä toiminto on poistettu käytöstä Coppermine gallerissa koska tämä on integroitu foorumi ohjelmistoon. Toiminto jota eritit tehdä ei ole tuettuna tässä kokoonpanossa, toiminto löytyy mahdollisesti foorumi ohjelmistosta.');
+define('MEMBERS_ONLY', 'This function is for members only, please join.');
+define('MUSTBE_GOD', 'This function is only for the site admin. You must be logged in as superadmin, god account to access this function');
+define('NO_IMG_TO_APPROVE', 'No images to approve');
+
+// lang_main_menu
+define('ALB_LIST_TITLE', 'Mene albumi listaan');
+define('ALB_LIST_LNK', 'Albumi lista');
+define('MY_GAL_TITLE', 'Mene omaan galleriaan');
+define('MY_GAL_LNK', 'Oma galleria');
+define('MY_PROF_LNK', 'Omat asetukset');
+define('MY_PROF_TITLE','Tarkista levyn käyttötilasi ja ryhmä');
+define('ADM_MODE_TITLE', 'Vaihda ylläpitotilaan');
+define('ADM_MODE_LNK', 'Ylläpitotila');
+define('USR_MODE_TITLE', 'Vaihda käyttäjätilaan');
+define('USR_MODE_LNK', 'Käyttäjätila');
+define('UPLOAD_PIC_TITLE', 'Lisää kuva albumiin');
+define('UPLOAD_PIC_LNK', 'Lisää kuva');
+define('REGISTER_TITLE', 'Luo uusi tili');
+define('REGISTER_LNK', 'Rekisteröidy');
+define('LOGIN_LNK', 'Kirjaudu');
+define('LOGOUT_LNK', 'Poistu');
+define('LASTUP_LNK', 'Viimeksi lisätty');
+define('LASTUP_TITLE', 'Viimeksi lisätyt kuvat');
+define('LASTCOM_TITLE',  'Uusimmat kommentit kuvissa');
+define('LASTCOM_LNK',  'Uusimmat kommentit');
+define('TOPN_TITLE', 'Katsotuimmat kuvat');
+define('TOPN_LNK', 'Katsotuimmat');
+define('TOPRATED_TITLE', 'Suosituimmat kuvat');
+define('TOPRATED_LNK', 'Suosituimmat');
+define('SEARCH_TITLE', 'Hae kuvakokoelmasta');
+define('SEARCH_LNK', 'Haku');
+define('FAV_TITLE', 'Omat suosikkini');
+define('FAV_LNK', 'Suosikkini');
+define('HELP_TITLE', 'APUA');
+define('HELP_LNK', "<img src=\"modules/$module_name/images/help.gif\"  vspace=\"2\" height=\"20\" width=\"20\" align=\"middle\" alt=\"".HELP_TITLE."\"  border=\"0\" />");
+
+// lang_gallery_admin_menu
+define('UPL_APP_LNK', 'Tarkistettavat');
+define('CONFIG_LNK', 'Asetukset');
+define('ALBUMS_LNK', 'Albumit');
+define('CATEGORIES_LNK', 'Kategoriat');
+define('USERS_LNK', 'Käyttäjät');
+define('GROUPS_LNK', 'Ryhmät');
+define('COMMENTS_LNK', 'Kommentit');
+define('SEARCHNEW_LNK', 'Lisää "FTP" kuvat');
+define('UTIL_LNK', 'Käsittele Kuvia');
+define('BAN_LNK', 'Kiellä Käyttäjiä');
+
+// lang_user_admin_menu
+define('ALBMGR_LNK', 'Luo / muokkaa albumeita');
+define('MODIFYALB_LNK', 'Muokkaa omaa albumia');
+//define('MY_PROF_LNK', 'Omat asetukset');
+
+// lang_cat_list
+define('CATEGORY', 'Kategoria');
+define('ALBUMS', 'Albumit');
+//define('PICTURES', 'Kuvat');
+
+// lang_album_list
+define('ALBUM_ON_PAGE', '%d albumia %d sivu(a)');
+// lang_thumb_view
+define('DATE', 'Päivämäärä');
+define('NAME', 'Nimi');
+define('TITLE', 'Otsikko');
+define('SORT_DA', 'Järjestä päivämäärittäin nousevasti');
+define('SORT_DD', 'Järjestä päivämäärittäin laskevasti');
+define('SORT_NA', 'Järjestä nimellä nousevasti');
+define('SORT_ND', 'Järjestä nimellä laskevasti');
+define('SORT_TA', 'Järjestä otsikolla nousevasti');
+define('SORT_TD', 'Järjestä otsikolla laskevasti');
+define('PIC_ON_PAGE', '%d kuvaa %d sivu(a)');
+define('USER_ON_PAGE', '%d käyttäjää %d sivu(a)');
+define('SORT_RA', 'Järjestä arvosteluittain nousevasti');
+define('SORT_RD', 'Järjestä arvosteluittain laskevasti');
+define('THUMB_RATING', 'Äänestä');
+define('SORT_TITLE', 'Järjestä kuvat:');
+
+// lang_img_nav_bar
+define('THUMB_TITLE', 'Takaisin thumbnail sivulle');
+define('PIC_INFO_TITLE', 'Näytä/piilota kuvan tiedot');
+define('SLIDESHOW_TITLE', 'Diashow');
+define('SLIDESHOW_DISABLED', 'Diashow on pois käytöstä');
+define('SLIDESHOW_DISABLED_MSG', 'Tämä toiminto on vain rekisteröityneille käyttäjille.');
+define('ECARD_TITLE', 'Lähetä tämä kuva e-korttina');
+define('ECARD_DISABLED', 'e-kortit pois päältä');
+define('ECARD_DISABLED_MSG', 'Sinulla ei ole oikeuksia lähettää e-kortteja');
+define('PREV_TITLE', 'Näytä edellinen kuva');
+define('NEXT_TITLE', 'Näytä seuraava kuva');
+define('PIC_POS', 'Kuva %s/%s');
+define('NO_MORE_IMAGES', 'Tässä galleriassa ei ole enempää kuvia');
+define('NO_LESS_IMAGES', 'Tämä on gallerian ensimmäinen kuva');
+
+// lang_rate_pic
+define('RATE_THIS_PIC', 'Äänestä tätä kuvaa ');
+define('NO_VOTES', '(ei ääniä vielä)');
+define('RATING', '(nykyinen taso : %s / 5 ja %s ääntä)');
+define('RUBBISH', 'Täyttä roskaa');
+define('POOR', 'Melko huono');
+define('FAIR', 'Keskitasoa');
+define('GOOD', 'Hyvä');
+define('EXCELLENT', 'Loistava');
+define('GREAT', 'Mahtava');
+
+// lang_cpg_die
+//define('INFORMATION', 'Info');
+//define('ERROR', 'Virhe');
+define('_CRITICAL_ERROR', 'Kriittinen Virhe');
+define('FILE', 'Tiedosto: ');
+define('LINE', 'Rivi: ');
+
+// lang_display_thumbnails
+define('FILENAME', 'Tiedostonimi : ');
+define('FILESIZE', 'Tiedostokoko : ');
+define('DIMENSIONS', 'Tarkkuus : ');
+define('DATE_ADDED', 'Lisätty : ');
+
+// lang_get_pic_data
+define('N_COMMENTS', '%s kommenttia');
+define('N_VIEWS', '%s tarkastelua');
+define('N_VOTES', '(%s ääntä)');
+
+
+// lang_albmgr_php
+define('ALB_NEED_NAME', 'Albumi tarvitsee nimen !');
+define('CONFIRM_MODIFS', 'Haluatko varmasti tehdä nämä muutokset ?');
+define('NO_CHANGE', 'Et tehnyt yhtään muutosta !');
+define('NEW_ALBUM', 'Uusi albumi');
+define('CONFIRM_DELETE1', 'Haluatko varmasti poistaa tämän albumin albumin ?');
+define('CONFIRM_DELETE2', '\\nKaikki kuvat ja kommentit tulevat poistumaan !');
+define('SELECT_FIRST', 'Valitse albumi ensin');
+define('ALB_MRG', 'Albumi Manageri');
+define('MY_GALLERY', '* Oma galleria *');
+define('NO_CATEGORY', '* Ei kategoriaa *');
+define('DELETE', 'Poista');
+define('NEW', 'Uusi');
+define('APPLY_MODIFS', 'Hyväksy muutokset');
+define('SELECT_CATEGORY', 'Valitse Kategoria');
+
+// lang_catmgr_php
+define('MISS_PARAM', 'Toimintoa \'%s\'ei voitu suorittaa !');
+define('UNKNOWN_CAT', 'Valittua kategoriaa ei ole enää tietokannassa');
+define('USERGAL_CAT_RO', 'Käyttäjien gallerioiden kategorioita ei voi poistaa !');
+define('MANAGE_CAT', 'Hallitse kategorioita');
+define('CONFIRM_DELETE_CAT', 'Haluatko varmasti POISTAA tämän kategorian');
+//define('CATEGORY', 'Kategoria');
+define('OPERATIONS', 'Toiminnot');
+define('MOVE_INTO', 'Siirrä');
+define('UPDATE_CREATE', 'Päivitä/Luo kategoria');
+define('PARENT_CAT', 'Pääkategoria');
+define('CAT_TITLE', 'Kategorian otsikko');
+define('CAT_DESC', 'Kategorian tarkenne');
+
+// lang_config_php
+define('CONFIG_TITLE', 'Asetukset');
+define('RESTORE_CFG', 'Palauta oletukset');
+define('SAVE_CFG', 'Tallenna muutokset');
+define('NOTES', 'Huomio');
+//define('INFO', 'Information');
+define('UPD_SUCCESS', 'Gallerian asetukset päivitetty');
+define('RESTORE_SUCCESS', 'Gallerian oletusasetukset palautettu');
+define('NAME_A', 'Nimi nousevasti');
+define('NAME_D', 'Nimi laskevasti');
+define('TITLE_A', 'Otsikko nousevasti');
+define('TITLE_D', 'Otsikko laskevasti');
+define('DATE_A', 'Päivä nousevasti');
+define('DATE_D', 'Päivä laskevasti');
+define('RATING_A', 'Äänet nousevasti');
+define('RATING_D', 'Äänet laskevasti');
+define('TH_ANY', 'Max Aspect');
+define('TH_HT', 'Korkeus');
+define('TH_WD', 'Leveys');
+
+
+// lang_db_input_php
+define('EMPTY_NAME_OR_COM', 'Sinun on kirjoitettava nimesi kommenttiin');
+define('COM_ADDED', 'Kommentti lisätty');
+define('ALB_NEED_TITLE', 'Albumin otsikko puuttuu !');
+define('NO_UDP_NEEDED', 'Päivitysta ei tarvita.');
+define('ALB_UPDATED', 'Albumi päivitetty');
+define('UNKNOWN_ALBUM', 'Valittua albumia ei löydy tai sinulla ei ole oikeuksia siihen');
+define('NO_PIC_UPLOADED', 'Ei lisättyä kuvaa !<br /><br />Jos todella valitsit lisättävän kuvan pyydä ylläpitäjää tarkistamaan palvelimen asetukset...');
+define('ERR_MKDIR', 'Virhe hakemiston luomisessa %s !');
+define('DEST_DIR_RO', 'Lähde hakemisto %s ei ole luettavissa !');
+define('ERR_MOVE', 'Mahdotonta siirtää %s - %s !');
+define('ERR_FSIZE_TOO_LARGE', 'Tiedosto jota yritit lisätä oli liian suuri (suurin sallittu koko %s x %s) !');
+define('ERR_IMGSIZE_TOO_LARGE', 'Tiedosto jota yritit lisätä oli liian suuri (suurin sallittu koko on %s KB) !');
+define('ERR_INVALID_IMG', 'Tiedosto jota yritit lisätä ei hyväksytä !');
+define('ALLOWED_IMG_TYPES', 'Voit lisätä ainostaan %s kuvia.');
+define('ERR_INSERT_PIC', 'Kuvaa \'%s\' ei voi liittää albumiin ');
+define('UPLOAD_SUCCESS', 'Kuva lisätty onnistuneesti<br /><br />Se tulee julkiseksi jos ylläpitäjä hyväksyy sen.');
+//define('INFO', 'Info');
+define('ERR_COMMENT_EMPTY', 'Kommenttisi oli tyhjä !');
+define('ERR_INVALID_FEXT', 'Vain seuraavat tiedostopäätteet ovat sallittuja : <br /><br />%s.');
+define('NO_FLOOD', 'Viimeinen kommentti on jo lisätty<br /><br />Muokkaa kommenttia jos haluat muuttaa sitä');
+define('REDIRECT_MSG', 'Sinut siirretään.<br /><br /><br />Klikkaa \'JATKA\' jos sivu ei päivity automaattisesti');
+define('UPL_SUCCESS', 'Kuvasi lisätty onnistuneesti');
+
+// lang_delete_php
+define('CAPTION', 'Kuvateksti');
+define('FS_PIC', 'täysikokoinen kuva');
+define('DEL_SUCCESS', 'onnistuneesti poistettu');
+define('NS_PIC', 'normaali kokoinen kuva');
+define('ERR_DEL', 'ei voi poistaa');
+define('THUMB_PIC', 'thumbnaili');
+//define('COMMENT', 'kommentti');
+define('IM_IN_ALB', 'kuva albumissa');
+define('ALB_DEL_SUCCESS', 'Albumi \'%s\' poistettu');
+define('ALB_MGR', 'Albumin Hallinta');
+define('ERR_INVALID_DATA', 'Virhellistä dataa välitetty \'%s\'');
+define('CREATE_ALB', 'Luodaan albumia \'%s\'');
+define('UPDATE_ALB', 'Päivitetään albumia \'%s\' otsikko \'%s\' ja indeksi \'%s\'');
+define('DEL_PIC', 'Poista kuva');
+define('DEL_ALB', 'Poista albumi');
+define('DEL_USER', 'Poista käyttäjä');
+//define('ERR_UNKNOWN_USER', 'Valittua käyttäjää ei löydy !');
+define('COMMENT_DELETED', 'Komentti poistettu onnistuneesti');
+
+// lang_display_image_php
+define('PIC_CONFIRM_DEL', 'Haluatko varmasti POISTAA tämän kuvan ? \\nKommentit poistetaan samalla.');
+define('DEL_THIS_PIC', 'POISTA TÄMÄ KUVA');
+define('SIZE', '%s x %s pikseliä');
+define('VIEWS', '%s kertaa');
+define('SLIDESHOW', 'Diashow');
+define('STOP_SLIDESHOW', 'PYSÄYTÄ DIASHOW');
+define('VIEW_FS', 'Klikkaamalla kuvaa voit tarkastella sitä täysikokoisena');
+define('EDIT_PIC', 'EDIT PICTURE INFO');
+
+// lang_picinfo
+define('PIC_INF_TITLE', 'Kuvan tiedot');
+define('PIC_INF_FILENAME', 'Tiedostonimi');
+define('ALBUM NAME', 'Albumin nimi');
+define('PIC_INFO_RATING', 'Arvo (%s ääntä)');
+define('KEYWORDS', 'Hakusanat');
+define('PIC_INF_FILE SIZE', 'Tiedostokoko');
+define('PIC_INF_DIMENSIONS', 'Tarkkuus');
+define('DISPLAYED', 'Tarkasteltu');
+define('CAMERA', 'Kamera');
+define('DATE_TAKEN', 'Kuva otettu');
+define('APERTURE', 'Aukko');
+define('EXPOSURE_TIME', 'Valotusaika');
+define('FOCAL LENGTH', 'Polttoväli');
+define('COMMENT', 'Kommentti');
+define('ADDFAV', 'Lisää suosikkeihin');
+define('ADDFAVPHRASE', 'Suosikit');
+define('REMFAV', 'Poista suosikeista');
+define('IPTCTITLE', 'IPTC Otsikko');
+define('IPTCCOPYRIGHT', 'IPTC Copyright');
+define('IPTCKEYWORDS', 'IPTC hakusanat');
+define('IPTCCATEGORY', 'IPTC kategoria');
+define('IPTCSUBCATEGORIES', 'IPTC Alakategoriat');
+define('BOOKMARK_PAGE', 'Lisää kuva suosikkeihin');
+define('REMOVEFAV', 'Poista suosikeista');
+define('ADDEDTOFAV', 'Lisää suosikkeihin');
+
+// lang_display_comments
+define('OK', 'OK');
+define('COM_EDIT_TITLE', 'Muokkaa kommenttia');
+define('CONFIRM_DELETE_COM', 'Haluatko varmasti poistaa tämän kommentin ?');
+define('ADD_YOUR_COMMENT', 'Lisää kommenttisi');
+define('COM_NAME', 'Nimi');
+//define('COMMENT', 'Komenti');
+define('YOUR_NAME', 'Nimesi');
+
+// lang_fullsize_popup
+define('CLICK_TO_CLOSE', 'Klikkaa kuvaa sulkeaksesi tämä ikkuna');
+
+// lang_ecard_php
+define('E_TITLE', 'lähetä e-kortti');
+define('INVALID_EMAIL', '<b>Varoitus</b> : virheellinen sähköposti osoite!');
+define('E_ECARD_TITLE', 'E-kortti %s sinulle');
+define('VIEW_ECARD', 'Jos e-kortti näkyy virheellisesti klikkaa tästä');
+define('VIEW_MORE_PICS', 'Klikkaa tästa nähdäksesi lisää kuvia !');
+define('SEND_SUCCESS', 'E-kortti lähetetty');
+define('SEND_FAILED', 'Palvelin ei salli e-korttien lähetystä...');
+define('FROM', 'Lähettäjä');
+define('_YOUR_NAME', 'Nimesi');
+define('YOUR_EMAIL', 'Sähköposti');
+define('TO', 'Vastaanottaja');
+define('RCPT_NAME', 'Vastaanottajan nimi');
+define('RCPT_EMAIL', 'Vastaanottaja sähköposti');
+define('GREETINGS', 'Terveiset');
+define('MESSAGE', 'Viesti');
+define('ECARD_LINK_CORRUPT', 'Olemme pahoillamme koska e-kortti on korruptoitunut matkalla, yritä kopioida ja liittää osoite suoraan selaimesi osoiteriville'); //NEW
+
+// lang_editpics_php
+define('PIC_INFO', 'Tiedot');
+define('ALBUM', 'Albumi');
+define('EDIT_TITLE', 'Otsikko');
+define('DESC', 'Tarkenne');
+//define('KEYWORDS', 'Hakusanat');
+define('PIC_INFO_STR', '%sx%s - %sKB - %s tarkastelua - %s ääntä');
+define('APPROVE', 'Hyväksy kuva');
+define('POSTPONE_APP', 'Lykkää vahvistamista');
+//define('DEL_PIC', 'Delete picture');
+define('READ_EXIF', 'Read EXIF info again');
+define('RESET_VIEW_COUNT', 'Nollaa laskuri');
+define('RESET_VOTES', 'Nollaa äänet');
+define('DEL_COMM', 'Poista kommentit');
+define('UPL_APPROVAL', 'Lisätyt hyväksyttävät');
+define('EDIT_PICS', 'Muokkaa kuvia');
+define('SEE_NEXT', 'Näytä seuraavat kuvat');
+define('SEE_PREV', 'Näytä edelliset kuvat');
+define('N_PIC', '%s kuvat');
+define('N_OF_PIC_TO_DISP', 'Kuinka monta kuvaa näytetään');
+define('APPLY', 'Hyväksy muutokset');
+
+// lang_groupmgr_php
+define('GROUP_NAME', 'Ryhmän nimi');
+define('DISK_QUOTA', 'Levytila');
+define('CAN_RATE', 'Voi äänestää kuvia');
+define('CAN_SEND_ECARDS', 'Voi lähettää e-kortteja');
+define('CAN_POST_COM', 'Voi kommentoida');
+define('CAN_UPLOAD', 'Voi lisätä kuvia');
+define('CAN_HAVE_GALLERY', 'Voi saada oman gallerian');
+//define('APPLY', 'Hyväksy muutokset');
+define('CREATE_NEW_GROUP', 'Luo uusi ryhmä');
+define('DEL_GROUPS', 'Poista valitut ryhmät');
+define('CONFIRM_DEL', 'Varoitus, kun poistat ryhmän, käyttäjät ketkä kuuluvat ryhmään siirretään \'Rekisteröidyt\' ryhmään !\\n\\nHaluatko jatkaa ?');
+define('GROUP_TITLE', 'Muokkaa käyttäjä ryhmiä');
+define('APPROVAL_1', 'Hyväksyntä asetus (1)');
+define('APPROVAL_2', 'Hyväksyntä asetus (2)');
+define('NOTE1', '<b>(1)</b> Lisäykset julkiseen albumiin tarvitsevat ylläpidon hyväksynnän');
+define('NOTE2', '<b>(2)</b> Lisäykset käyttäjän albumiin tarvitsevat ylläpidon hyväksynnän');
+//define('NOTES', 'Huomio');
+
+// lang_index_php
+define('WELCOME', 'Tervetuloa !');
+
+// lang_album_admin_menu
+define('CONFIRM_DELETE_ALB', 'Haluatko varmasti POISTAA tämän albumin ? \\nKaikki kuvat ja kommentit poistetaan myös.');
+//define('DELETE', 'POISTA');
+define('MODIFY', 'MUOKKAA');
+//define('EDIT_PICS', 'MUOKKAA KUVIA');
+
+// lang_list_categories
+define('HOME', 'Etusivu');
+define('STAT1', '<b>[pictures]</b> kuvaa <b>[albums]</b> albumia ja <b>[cat]</b> kategoriaa sekä <b>[comments]</b> kommentia. Kuvia tarkasteltu <b>[views]</b> kertaa');
+define('STAT2', '<b>[pictures]</b> kuvaa <b>[albums]</b> albumia tarkasteltu <b>[views]</b> kertaa');
+define('XX_S_GALLERY', '%s\'s Galleria');
+define('STAT3', '<b>[pictures]</b> kuvaa <b>[albums]</b> albumia jossa <b>[comments]</b> kommenttia. Kuvia tarkasteltu <b>[views]</b> kertaa');
+
+// lang_list_users
+define('USER_LIST', 'Käyttäjä lista');
+define('NO_USER_GAL', 'Ei ole käyttäjiä joilla oikeus albumiin');
+define('N_ALBUMS', '%s albumi(t)');
+define('N_PICS', '%s kuva(a)');
+
+// lang_list_albums
+define('N_PICTURES', '%s kuvaa');
+define('LAST_ADDED', ', viimeisin lisätty %s');
+
+// lang_modifyalb_php
+define('UPD_ALB_N', 'Päivitä albumi %s');
+define('GENERAL_SETTINGS', 'Yleiset asetukset');
+define('ALB_TITLE', 'Albumin otsikko');
+define('ALB_CAT', 'Albumin kategoria');
+define('ALB_DESC', 'Albumin tarkenne');
+define('ALB_THUMB', 'Albumi thumbnailit');
+define('ALB_PERM', 'Albumin oikeudet');
+define('CAN_VIEW', 'Albumia voi tarkastella');
+define('MOD_CAN_UPLOAD', 'Vierailijat voivat lisätä kuvia');
+define('CAN_POST_COMMENTS', 'Vierailijat voivat kommentoida');
+define('MOD_CAN_RATE', 'Vieräilijat voivat arvostella');
+define('USER_GAL', 'Käyttäjän Galleria');
+define('NO_CAT', '* Ei kategoriaa *');
+define('ALB_EMPTY', 'Albumi on tyhja');
+define('LAST_UPLOADED', 'Viimeksi lisätty');
+define('PUBLIC_ALB', 'Kaikki (julkinen albumi)');
+define('ME_ONLY', 'Minä ainoastaan');
+define('OWNER_ONLY', 'Albumin omistaja (%s) ainoastaan');
+define('GROUPP_ONLY', 'Jäsenet ryhmästä \'%s\' ');
+define('ERR_NO_ALB_TO_MODIFY', 'Ei muokattavia albumeita tietokannassa.');
+define('UPDATE', 'Päivitä albumi');
+
+// lang_rate_pic_php
+define('ALREADY_RATED', 'Olet jo arvostellut tämän kuvan');
+define('RATE_OK', 'Äänesi hyväksytty');
+
+// lang_register_php
+define('USERNAME', 'Käyttäjänimi');
+define('GROUP', 'Ryhmä');
+define('DISK_USAGE', 'Levyn käyttö');
+define('X_S_PROFILE', '%s\' asetukset');
+
+// lang_reviewcom_php
+define('REVIEW_TITLE', 'Näytä kommentit');
+define('NO_COMMENT', 'Ei kommentteja');
+define('N_COMM_DEL', '%s kommentti poistettu');
+define('N_COMM_DISP', 'Kuinka monta kommenttia näytetään');
+define('R_SEE_PREV', 'Edellinen');
+define('R_SEE_NEXT', 'Seuraava');
+define('R_DEL_COMM', 'Poista valitut kommentit');
+
+// lang_search_php
+define('S_SEARCH', 'Hae kuva');
+
+// lang_search_new_php
+define('PAGE_TITLE', 'Etsi uusia kuvia');
+define('SELECT_DIR', 'Valitse hakemisto');
+define('SELECT_DIR_MSG', 'Voit lisätä FTP:llä lisätyt kuvat hakemistoihin<br /><br />Valitse hakemisto johon laitoit kuvat');
+define('NO_PIC_TO_ADD', 'Ei lisättäviä kuvia');
+define('NEED_ONE_ALBUM', 'Tarvitset vähintään yhden albumin voidaksesi käyttää toimintoa');
+define('WARNING', 'Varoitus');
+define('CHANGE_PERM', 'scripti ei voi kirjoittaa tähän hakemistoon. Oikeuksien täytyy olla 755 tai 777 ennen kuin yrität lisätä kuvia !');
+define('TARGET_ALBUM', '<b>Laita kuvat hakemistosta &quot;</b>%s<b>&quot;</b>%s albumiin');
+define('FOLDER', 'Hakemisto');
+define('IMAGE', 'Kuva');
+//define('ALBUM', 'Album');
+define('RESULT', 'Tulos');
+define('DIR_RO', 'Ei kirjoitettavissa. ');
+define('DIR_CANT_READ', 'Ei luettavissa. ');
+define('INSERT', 'Lisätään uusia kuvia galleriaan');
+define('LIST_NEW_PIC', 'Lista uusista kuvista');
+define('INSERT_SELECTED', 'Lisää valitut kuvat');
+define('NO_PIC_FOUND', 'Uusia kuvia ei löytynyt');
+define('BE_PATIENT', 'Odota hetki. Menee pikkuisen aikaa kuvien käsittelyssä');
+define('SN_NOTES', '<ul><li><b>OK</b> : tarkoittaa kuva lisätty onnistuneesti<li><b>DP</b> : tarkoittaa kuva on jo aiemmin lisätty<li><b>PB</b> : tarkoittaa kuvaa ei voitu lisätä, tarkista asetukset ja oikeudet<li>Jos OK, DP, PB \'merkit\' eivät ilmesty klikkaa rikkinäistä kuvaa nähdäksesi PHP: virheilmoituksen<li>Jos selaimesi menee timeouttiin, lataa sivu uudestaan</ul>');
+define('SELECT_ALBUM', 'Select album');
+define('NO_ALBUM', 'No album name was selected, click back and select an album to put your pictures in');
+
+// lang_upload_php
+define('UP_TITLE', 'Lisää kuva');
+define('MAX_FSIZE', 'Suurin sallittu tiedostokoko %s KB');
+//define('ALBUM', 'Albumi');
+define('PICTURE', 'Kuva');
+define('PIC_TITLE', 'Kuvan otsikko');
+define('DESCRIPTION', 'Kuvan tarkenne');
+define('UP_KEYWORDS', 'Hakusana (erota välilyönnillä)');
+define('ERR_NO_ALB_UPLOADABLES', 'Ei albumeita joille oikeus lisätä kuvia');
+
+// lang_usermgr_php
+define('U_TITLE', 'Muokkaa käyttäjiä');
+//define('NAME_A', 'Nimellä nousevasti');
+//define('NAME_D', 'Nimellä laskevasti');
+define('GROUP_A', 'Ryhmittäin nousevasti');
+define('GROUP_D', 'Ryhmittäin laskevasti');
+define('REG_A', 'Rekisteröinti päivällä nousevasti');
+define('REG_D', 'Rekisteröinti päivällä laskevasti');
+define('PIC_A', 'Kuvien määrällä nousevasti');
+define('PIC_D', 'Kuvien määrällä laskevasti');
+define('DISKU_A', 'Levyn käyttö nousevasti');
+define('DISKU_D', 'Levyn käyttö laskevasti');
+define('SORT_BY', 'Järjestä käyttäjät');
+define('ERR_NO_USERS', 'Käyttäjätaulu on tyhjä !');
+define('ERR_EDIT_SELF', 'Et voi muokata profiiliasi täältä \'Omat asetukset\' linkistä pääset tekemään sen');
+define('EDIT', 'MUOKKAA');
+//define('DELETE', 'POISTA');
+define('U_NAME', 'Tunnus');
+//define('GROUP', 'Ryhmä');
+define('INACTIVE', 'Passiivinen');
+//define('OPERATIONS', 'Toiminto');
+define('PICTURES', 'Kuvat');
+define('DISK_SPACE', 'Tilaa käytetty / Maksimi');
+define('REGISTERED_ON', 'Rekisteröitynyt');
+define('U_USER_ON_P_PAGES', '%d käyttäjää %d sivu(a)');
+define('CONFIRM_DEL', 'Haluatko varmasti POISTAA tämän käyttäjän ? \\nKaikki albumit ja kuvat poistuvat myös.');
+define('MAIL', 'POSTI');
+define('ERR_UNKNOWN_USER', 'Valittua käyttäjää ei löydy !');
+define('MODIFY_USER', 'Muokkaa käyttäjää');
+//define('NOTES', 'Huomio');
+define('NOTE_LIST', '<li>Jos et halua vaihtaa salasanaa, jätä "salasana" kenttä tyhjäksi');
+define('PASSWORD', 'Salasana');
+define('USER_ACTIVE_CP', 'Käyttäjä aktiivinen');
+define('USER_GROUP_CP', 'Käyttäjän ryhmä');
+define('USER_EMAIL', 'Käyttäjän sähköposti');
+define('USER_WEB_SITE', 'Käyttäjän kotisivu');
+define('CREATE_NEW_USER', 'Luo uusi käyttäjä');
+define('USER_FROM', 'Käyttäjän sijainti');
+define('USER_INTERESTS', 'Käyttäjän kiinnostukset');
+define('USER_OCC', 'Käyttäjän koulutus');
+
+// lang_util_php
+define('UTIL_TITLE', 'Pienennä kuvia');
+define('WHAT_IT_DOES', 'Ominaisuudet');
+define('WHAT_UPDATE_TITLES', 'Päivittää otsikot tiedostonimiin');
+define('WHAT_DELETE_TITLE', 'Poistaa otsikot');
+define('WHAT_REBUILD', 'Tekee uudet thumbnailit ja pienentää kuvat');
+define('WHAT_DELETE_ORIGINALS', 'Poistaa alkuperäisen kokoiset kuvat ja korvaa ne pienennetyillä versioilla');
+define('U_FILE', 'Tiedosto');
+define('TITLE_SET_TO', 'otsikon asetti');
+define('SUBMIT_FORM', 'lähetä');
+define('UPDATED_SUCCESFULLY', 'päivitetty onnistuneesti');
+define('ERROR_CREATE', 'VIRHE tapahtumassa');
+define('CONTIN', 'Käsittele lisää kuvia');
+define('MAIN_SUCCESS', 'Tiedostoa %s on onnistuneesti käytetty pääkuvana');
+define('ERROR_RENAME', 'Virhe uudelleen nimeämisessä %s ei voitu nimetä %s');
+define('ERROR_NOT_FOUND', 'Tiedostoa %s ei löydy');
+define('U_BACK', 'takaisin');
+define('THUMBS_WAIT', 'Päivitää thumbnaileja ja/tai pienentää kuvia, odota hetki...');
+define('THUMBS_CONTINUE_WAIT', 'Jatkaa thumbnailien päivittämistä ja/tai kuvien pienentämistä...');
+define('TITLES_WAIT', 'Päivittää otsikoita, odota hetki...');
+define('DELETE_WAIT', 'Poistaa otsikoita, odota hetki...');
+define('REPLACE_WAIT', 'Poistaa alkuperäisia kuvia ja korvaa ne pienennetyillä, odota hetki..');
+define('INSTRUCTION', 'Pikaohje');
+define('INSTRUCTION_ACTION', 'Valitse toiminto');
+define('INSTRUCTION_PARAMETER', 'Aseta arvot');
+define('INSTRUCTION_ALBUM', 'Valitse albumi');
+define('INSTRUCTION_PRESS', 'Paina %s');
+define('U_UPDATE', 'Päivitä thumbnailit ja/tai pienennä kuvat');
+define('UPDATE_WHAT', 'Mitä päivitetään');
+define('UPDATE_THUMB', 'Ainoastaan thumbnailit');
+define('UPDATE_PIC', 'Pienennetään pelkät kuvat');
+define('UPDATE_BOTH', 'Pienennetään kuvat ja päivitetään thumbnailit');
+define('UPDATE_NUMBER', 'Kuinka monta kuvaa käsitellään joka klikkauksella');
+define('UPDATE_OPTION', '(Kokeile säätää toimintoa pienemmälle jos tulee timeout ongelmia)');
+define('FILENAME_TITLE', 'Tiedostonimi ? Kuvan otsikko');
+define('FILENAME_HOW', 'Kuinka tiedostonimet muokatann');
+define('FILENAME_REMOVE', 'Poista .jpg pääte ja korvaa välit _ (alleviivaus)');
+define('FILENAME_EURO', 'Muuta 2003_11_23_13_20_20.jpg tämmöiseksi 23/11/2003 13:20');
+define('FILENAME_US', 'Muuta 2003_11_23_13_20_20.jpg tämmöiseksi 11/23/2003 13:20');
+define('FILENAME_TIME', 'Muuta 2003_11_23_13_20_20.jpg tämmöiseksi 13:20');
+define('UT_DELETE', 'Poista otsikot tai alkuperäisen kokoiset kuvat');
+define('DELETE_TITLE', 'Poista kuvien otsikot');
+define('DELETE_ORIGINAL', 'Poista alkuperäisen kokoiset kuvat');
+define('DELETE_REPLACE', 'Poistaa alkuperäiset kuvat ja korvaa ne pienennetyillä versioilla');
+//define('SELECT_ALBUM', 'Valitse albumi');
+
+// lang_pagetitle_php
+define('VIEWING', 'Katsoo kuvaa');
+define('USR', '\'jän albumi');
+define('PHOTOGALLERY', 'Kuva galleria');
+$lang_usermgr_php = array(
+    'name_a' => 'Järjestä nimellä nousevasti',
+    'name_d' => 'Järjestä nimellä laskevasti',
+    'group_a' => 'Järjestä ryhmät nousevasti',
+    'group_d' => 'Järjestä ryhmät laskevasti',
+    'reg_a' => 'Järjestä rek. päivän mukaan nousevasti',
+    'reg_d' => 'Järjestä rek. päivän mukaan laskevasti',
+    'pic_a' => 'Järjestä äänet nousevasti',
+    'pic_d' => 'Järjestä äänet laskevasti',
+    'disku_a' => 'Levynkäyttö nousevasti',
+    'disku_d' => 'Levynkäyttö laskevasti',
+    );
+$lang_byte_units = array('Bytes', 'KB', 'MB');
+// Day of weeks and months
+$lang_day_of_week = array('Sun', 'Maa', 'Tii', 'Kes', 'Tor', 'Per', 'Lau');
+$lang_month = array('Tammikuu', 'Helmikuu', 'Maaliskuu', 'Huhtikuu', 'Toukokuu', 'Kesäkuu', 'Heinäkuu', 'Elokuu', 'Syyskuu', 'Lokakuu', 'Marraskuu', 'Joulukuu');
+$lang_meta_album_names = array(
+	'random' => 'Satunaiset kuvat',
+    'lastup' => 'Uusimmat kuvat',
+    'lastupby' => 'Omat uusimmat kuvat', // new 1.2.2
+    'lastalb' => 'Viimeksi päivitetyt albumit',
+    'lastcom' => 'Uusimmat komentit',
+    'lastcomby' => 'Omat uusimmat kommentit', // new 1.2.2
+    'topn' => 'Katsotuimmat',
+    'toprated' => 'Suosituimmat',
+    'lasthits' => 'Viimeksi tarkasteltu',
+    'search' => 'Haun tulokset',
+    'favpics' => 'Suosikkikini'
+    );
+// ------------------------------------------------------------------------- //
+// File config.php
+// ------------------------------------------------------------------------- //
+$lang_config_php = array(
+	'title' => 'Asetukset',
+    'restore_cfg' => 'Palauta oletukset',
+    'save_cfg' => 'Tallenna muutokset',
+    'notes' => 'Huomio',
+    'info' => 'Info',
+    'upd_success' => 'Gallerian asetukset päivitetty',
+    'restore_success' => 'Gallerian oletusasetukset palautettu',
+    'name_a' => 'Nimi nousevasti',
+    'name_d' => 'Nimi laskevasti',
+    'title_a' => 'Otsikko nousevasti',
+    'title_d' => 'Otsikko laskevasti',
+    'date_a' => 'Päivä nousevasti',
+    'date_d' => 'Päivä laskevasti',
+    'rating_a' => 'Äänet nousevasti', // new in cpg1.2.0nuke
+    'rating_d' => 'Äänet laskevasti', // new in cpg1.2.0nuke
+    'th_any' => 'Max Aspect',
+    'th_ht' => 'Korkeus',
+    'th_wd' => 'Leveys',
+    );
+// start left side interpretation
+$lang_config_data = array(
+    // General settings
+'Yleiset asetukset',
+    array('Gallerian nimi', 'gallery_name', 0),
+    array('Gallerian tarkenne', 'gallery_description', 0),
+    array('Gallerian ylläpitäjän sähköposti', 'gallery_admin_email', 0),
+    array('Kohdeosoite \'Näytä enemmän kuvia\' -linkissä e-korteissa', 'ecards_more_pic_target', 0), // new in cpg1.2.0nuke
+    array('Teema', 'theme', 6),
+    array('Sivun nimi esim. >Coppermine', 'nice_titles', 1),
+    // Album list view
+'Albumin "näyttö" asetukset',
+    array('Päätaulukon leveys (pikseleissä tai %)', 'main_table_width', 0),
+    array('Kuinka monta kategoriaa näytetään tasolla', 'subcat_level', 0),
+    array('Kuinka monta albumia näytetään sivulla', 'albums_per_page', 0),
+    array('Kuinka monta saraketta näytetään albumi listassa', 'album_list_cols', 0),
+    array('Thumbnailien koko pikseleissä', 'alb_list_thumb_size', 0),
+    array('Mitä tietoja etusivulla näytetään', 'main_page_layout', 0),
+    array('Näytä ensimmäisen tason albumin thumbnailit kategoriassa', 'first_level', 1), 
+    // Thumbnail view
+'Thumbnailien näyttö',
+    array('Sarakkeita thumbnail sivulla', 'thumbcols', 0),
+    array('Rivejä thumbnail sivulla', 'thumbrows', 0),
+    array('Kaistaleiden maksimi määrä', 'max_tabs', 0),
+    array('Näytä kuvateksti thumbnaileissa', 'caption_in_thumbview', 1),
+    array('Näytä kommenttien määrä thumbnaileissa', 'display_comment_count', 1),
+    array('Kuvien oletus järjestys', 'default_sort_order', 3),
+    array('Tarvittavien äänien määrä ennen \'suosituimmat\' listalle pääsyä', 'min_votes_for_rating', 0),
+    array('Alts and title tags of thumbnail show title and keyword instead of picinfo', 'seo_alts', 1), // new in cpg1.2.0nuke
+    // Display Image & Comment settings
+'Kuvien näyttö &amp; Kommentti asetukset',
+    array('Kuvan näyttö taulukon leveys (pikseleinä tai %)', 'picture_table_width', 0),
+    array('Kuvan info oletuksena piilotettu', 'display_pic_info', 1),
+    array('Rumasana filtteri', 'filter_bad_words', 1),
+    array('Hyväksy hymiöt kommentissa', 'enable_smilies', 1),
+    array('Allow several consecutive comments on one pic from the same user', 'disable_flood_protection', 1), // new in cpg1.2.0nuke
+    array('Email site admin upon comment submission' , 'comment_email_notification', 1), // new in cpg1.2.0nuke
+    array('Kuvatekstin maksimi pituus', 'max_img_desc_length', 0),
+    array('Maksimi määrä merkkejä sanassa', 'max_com_wlength', 0),
+    array('Kommentti rivien maksimi määrä', 'max_com_lines', 0),
+    array('Kommentin maksimi pituus', 'max_com_size', 0),
+    array('Näytä thumbnaileja kuva sivulla', 'display_film_strip', 1),
+    array('Thumbnaileja kuva sivulla', 'max_film_strip_items', 0),
+    array('Allow viewing of full size pic by anonymous', 'allow_anon_fullsize', 1), // new in cpg1.2.0nuke
+    array('Number of days between being able to vote on the same image','keep_votes_time',0), // new in cpg1.2.2c nuke
+    array('Show fullsize picture in slideshow','fullsize_slideshow',1),
+    array('Show blocks on the right of displayimage if right blocks are on at module level?', 'right_blocks', 1), // new 1.2.2
+//'Pictures and thumbnails settings',
+'Kuvien ja thumbnailien asetukset',
+    array('Tarkkuus JPEG tiedostoilla', 'jpeg_qual', 0),
+    array('Place watermark on image', 'watermark', 1),
+    array('Thumbnail maksimi leveys tai korkeus <b>*</b>', 'thumb_width', 0),
+    array('Käytä mittaa ( leveys tai korkeus tai Maksimi mitta thumbnaileissa )<b>*</b>', 'thumb_use', 7),
+    array('Luo väliaikaiset kuvat', 'make_intermediate', 1),
+    array('Väliaikaiset kuvien maksimi leveys tai korkeus <b>*</b>', 'picture_width', 0),
+    array('Ladattavien kuvien maksimi koko (KB)', 'max_upl_size', 0),
+    array('Ladattavien kuvien maksimi leveys (pikseleinä)', 'max_upl_width_height', 0), 
+    array('Allow multiple Files to be upload with same file name', 'samename', 1), 
+// 'User settings',
+'Käyttäjä asetukset',
+    array('Allow new user registrations', 'allow_user_registration', 1),
+/*
+    array('User registration requires email verification', 'reg_requires_valid_email', 1),
+    array('Allow two users to have the same email address', 'allow_duplicate_emails_addr', 1),
+*/
+    array('Käyttäjät saavat yksityiset albumit', 'allow_private_albums', 1), 
+    array('Show Users avatar instead of private album picture', 'avatar_private_album', 1),
+	// Custom fields for image description
+'Valinnaiset kentät kuvan näytössä (jätä tyhjäksi jos et halua käyttää)',
+    array('Kenttä 1 nimi', 'user_field1_name', 0),
+    array('Kenttä 2 nimi', 'user_field2_name', 0),
+    array('Kenttä 3 nimi', 'user_field3_name', 0),
+    array('Kenttä 4 nimi', 'user_field4_name', 0), 
+    // Pictures and thumbnails advanced settings
+'Kuvien ja thumbnailien lisä asetukset',
+    array('Näytä yksityisessa albumissa Ikoni kirjautumattomalle käyttäjälle', 'show_private', 1),
+    array('Kielletyt merkit tiedostonimissä', 'forbiden_fname_char', 0),
+    array('Hyväksytyt tiedotopäätteet', 'allowed_file_extensions', 0),
+    array('Kuvien koot muutetaan käyttämällä', 'thumb_method', 2),
+    array('Täydellinen ImageMagick polku \'konventteri\' (esimerkiksi /usr/bin/X11/)', 'impath', 0),
+    array('Kyväksytyt kuva tyypit (kelpaa vain ImageMagickia käytettäessä)', 'allowed_img_types', 0),
+    array('ImageMagick komentorivin asetukset', 'im_options', 0),
+    array('Lue EXIF tiedot JPEG kuvista', 'read_exif_data', 1),
+    array('Read IPTC data in JPEG files', 'read_iptc_data', 1), // new in cpg1.2.0nuke
+    array('Albumi hakemisto <b>*</b>', 'fullpath', 0),
+    array('Käyttäjien kuvien hakemisto <b>*</b>', 'userpics', 0),
+    array('Väliaikaisten kuvien etuliite <b>*</b>', 'normal_pfx', 0),
+    array('Thumbnailien etuliite <b>*</b>', 'thumb_pfx', 0),
+    array('Näytä kuvatiedoissa tiedostonimi', 'picinfo_display_filename', 1),
+    array('Näytä kuvatiedoissa albumin nimi', 'picinfo_display_album_name', 1),
+    array('Kuvatiedot display_file_size', 'picinfo_display_file_size', 1),
+    array('Kuvatiedot display_dimensions', 'picinfo_display_dimensions', 1),
+    array('Kuvatiedot display_count_displayed', 'picinfo_display_count_displayed', 1),
+    array('Kuvatiedot display_URL', 'picinfo_display_URL', 1),
+    array('Kuvatiedot display URL as bookmark link', 'picinfo_display_URL_bookmark', 1), 
+    array('Kuvatiedot display fav album link', 'picinfo_display_favorites', 1), 
+    // Cookies & Charset settings
+'Eväste &amp; koodaus asetukset',
+    array('Evästeen nimi', 'cookie_name', 0),
+    array('Evästeen polku', 'cookie_path', 0),
+// 'Miscellaneous settings',
+'Muut asetukset',
+    array('Näytä palvelimen virheilmoitukset', 'debug_mode', 1),
+   '<br /><div align="center">(*) Kentät joissa on * merkki ei saa muuttaa jos galleriassa on jo kuvia.</div><br />'
+    );
+// end left side interpretation

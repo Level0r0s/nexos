@@ -1,0 +1,34 @@
+<!-- IF DL_SUB -->
+<table class="forumline" cellspacing="1" style="clear:left; width:100%;">
+  <tr>
+    <th style="width:40px;"> </th>
+    <th><!-- IF DL_ROOT -->{L_CATEGORIES}<!-- ELSE -->{L_SUBCATEGORY}<!-- ENDIF -->&nbsp;</th>
+    <th style="width:50px;">&nbsp;{L_DL}&nbsp;</th>
+    <th style="width:50px;">&nbsp;{L_SUB}&nbsp;</th>
+    <th style="width:110px;">&nbsp;{L_LATEST_ADD}&nbsp;</th>
+</tr>
+<!-- BEGIN dl_cat -->
+<tr>
+  <td class="row1" style="background-image:url({dl_cat.FOLDER}); background-repeat:no-repeat; width:40px; height:30px;"> </td>
+  <td class="row1"><a class="forumlink" href="{dl_cat.URL}">{dl_cat.TITLE}</a><!-- IF dl_cat.MARK_NEW -->&nbsp;&nbsp;<span style="font-size:9px; color:green;">{L_NEW}</span><!-- ENDIF --><!-- IF dl_cat.MARK_UPD -->&nbsp;&nbsp;<span style="font-size:9px; color:green;">{L_UPD}</span><!-- ENDIF -->
+    <br /><span class="small"><em>{dl_cat.DESC}</em></span>
+	<!-- IF dl_cat.SUB --><br />{L_SUBCATEGORIES}: {dl_cat.SUB}<!-- ENDIF -->
+  </td>
+  <td class="row2" align="center"><span class="gensmall">{dl_cat.DL_COUNT}</span></td>
+  <td class="row2" align="center"><span class="gensmall">{dl_cat.SUB_COUNT}</span></td>
+  <td class="row2" align="center" style="text-align:right; white-space:nowrap;"><span class="gensmall">{dl_cat.LAST_DATE} {dl_cat.U_LAST}</span></td>
+</tr>
+<!-- END dl_cat -->
+</table><br />
+<!-- ENDIF -->
+<!-- IF DL_ROOT -->
+<table style="margin:auto;">
+<tr>
+  <td align="center" style="width:40px; height:30px; background-image: url({THEME_PATH}/images/downloads/folders/folder_new.png);"></td>
+  <td class="gensmall">New/updated in past 5 days</td>
+  <td>&nbsp;&nbsp;</td>
+  <td align="center" style="width:40px; height:30px; background-image: url({THEME_PATH}/images/downloads/folders/folder.png);"></td>
+  <td class="gensmall">No changes past 5 days</td>
+</tr>
+</table>
+<!-- ENDIF -->

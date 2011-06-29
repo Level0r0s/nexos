@@ -1,0 +1,52 @@
+/**
+* Downloads Pro: Designed exclusively for Dragonfly CMS
+* Copyright (c) 2005 - 2006 by Trevor Eckart and DJMaze, dragonflycms.org
+* Please see the included LICENSE.txt for the terms and conditions that govern your use of this module
+* $Id: INSTALL.txt,v 1.4 2007/10/09 11:10:05 phoenix Exp $
+*/
+
+Downloads Pro Setup
+--------------------------------------------------------------------------------
+FIRST-TIME
+==========
+If this is your first experience with Downloads Pro, don't worry! This module
+is easy to setup.
+
+Step 1.
+	Upload the following folders to your website root directory:
+	blocks/		=> public_html/
+	language/	=> public_html/
+	modules/	=> public_html/
+	themes/		=> public_html/
+	uploads/	=> public_html/
+	
+	If you are warned "Do you want to overwrite the files/folders?" just say "Yes"
+-------------------------------------------------------
+Do NOT upload the "xtras" folder:
+It contains an alternative main page categories layout,
+themes/default/template/downloads/categories.html
+This can be copied to overwrite the orgiginal file.
+-------------------------------------------------------
+
+Step 2.
+	Login to the administration menu on your website, navigate to the Modules page
+	and look for the Downloads module on that page. Click "Install" when you find it.
+
+Step 3.
+	That's all! The module is installed; go play around with it!
+
+--------------------------------------------------------------------------------
+UPGRADE
+=======
+Upgrading from a previous version is just as easy as installing the module for
+the first time.
+
+Follow step 1 as described in the first-time installation.
+
+Step 2. Login to the administration menu on your website, navigate to the Modules page
+	and look for the Downloads module on that page. Click "Edit" when you find it. You
+	will see something similar to "Version 3.0.0.6  Upgrade to 3.0.0.8"
+	Click "Upgrade to..."
+
+Step 3. That's all! The module is upgraded and ready!
+--------------------------------------------------------------------------------

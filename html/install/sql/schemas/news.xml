@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema version="1.0" name="dragonfly">
+
+	<table name="autonews">
+		<col name="anid" type="SERIAL" notnull="true"/>
+		<col name="catid" type="INT" notnull="true" default="0"/>
+		<col name="aid" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="title" type="VARCHAR" length="80" notnull="true" default=""/>
+		<col name="time" type="INT" notnull="true" default="1133334197"/>
+		<col name="hometext" type="TEXT" notnull="true"/>
+		<col name="bodytext" type="TEXT" notnull="true"/>
+		<col name="topic" type="INT" notnull="true" default="1"/>
+		<col name="informant" type="VARCHAR" length="40" notnull="true" default=""/>
+		<col name="notes" type="TEXT" notnull="true"/>
+		<col name="ihome" type="TINYINT" notnull="true" default="0"/>
+		<col name="alanguage" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="acomm" type="TINYINT" notnull="true" default="0"/>
+		<col name="associated" type="TEXT" notnull="true"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="anid"/>
+		</key>
+	</table>
+
+	<table name="comments">
+		<col name="tid" type="SERIAL" notnull="true"/>
+		<col name="pid" type="INT" notnull="true" default="0"/>
+		<col name="sid" type="INT" notnull="true" default="0"/>
+		<col name="date" type="INT" notnull="true" default="0"/>
+		<col name="name" type="VARCHAR" length="60" notnull="true" default=""/>
+		<col name="email" type="VARCHAR" length="60" default=""/>
+		<col name="url" type="VARCHAR" length="60" default=""/>
+		<col name="host_name" type="VARBINARY" length="17"/>
+		<col name="subject" type="VARCHAR" length="85" notnull="true" default=""/>
+		<col name="comment" type="TEXT" notnull="true"/>
+		<col name="score" type="TINYINT" notnull="true" default="0"/>
+		<col name="reason" type="TINYINT" notnull="true" default="0"/>
+		<col name="msg_author" type="VARCHAR" length="25" notnull="true" default=""/>
+		<col name="msg_body" type="TEXT" notnull="true"/>
+		<col name="msg_date" type="INT" notnull="true" default="0"/>
+		<col name="author_md5_id" type="VARCHAR" length="32" notnull="true" default=""/>
+		<col name="author_id" type="INT" notnull="true" default="0"/>
+		<col name="msg_raw_ip" type="VARBINARY" length="17"/>
+		<col name="msg_hdr_ip" type="VARBINARY" length="17"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="tid"/>
+		</key>
+		<key name="pid">
+			<col name="pid"/>
+		</key>
+		<key name="sid">
+			<col name="sid"/>
+		</key>
+		<key name="com_pic_id">
+			<col name="pid"/>
+		</key>
+	</table>
+
+	<table name="queue">
+		<col name="qid" type="SERIAL" notnull="true"/>
+		<col name="uid" type="INT" notnull="true" default="0"/>
+		<col name="uname" type="VARCHAR" length="40" notnull="true" default=""/>
+		<col name="subject" type="VARCHAR" length="100" notnull="true" default=""/>
+		<col name="story" type="TEXT"/>
+		<col name="storyext" type="TEXT" notnull="true"/>
+		<col name="timestamp" type="INT" notnull="true" default="1133334197"/>
+		<col name="topic" type="TINYINT" notnull="true" default="0"/>
+		<col name="alanguage" type="VARCHAR" length="30" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="qid"/>
+		</key>
+		<key name="uid">
+			<col name="uid"/>
+		</key>
+		<key name="uname">
+			<col name="uname"/>
+		</key>
+	</table>
+
+	<table name="related">
+		<col name="rid" type="SERIAL" notnull="true"/>
+		<col name="tid" type="INT" notnull="true" default="0"/>
+		<col name="name" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="url" type="VARCHAR" length="200" notnull="true" default=""/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="rid"/>
+		</key>
+		<key name="tid">
+			<col name="tid"/>
+		</key>
+	</table>
+
+	<table name="stories">
+		<col name="sid" type="SERIAL" notnull="true"/>
+		<col name="catid" type="INT" notnull="true" default="0"/>
+		<col name="aid" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="title" type="VARCHAR" length="80" default=""/>
+		<col name="time" type="INT" notnull="true" default="1133334197"/>
+		<col name="hometext" type="TEXT"/>
+		<col name="bodytext" type="TEXT" notnull="true"/>
+		<col name="comments" type="INT" default="0"/>
+		<col name="counter" type="INT" default="0"/>
+		<col name="topic" type="TINYINT" notnull="true" default="1"/>
+		<col name="informant" type="VARCHAR" length="40" notnull="true" default=""/>
+		<col name="notes" type="TEXT" notnull="true"/>
+		<col name="ihome" type="TINYINT" notnull="true" default="0"/>
+		<col name="alanguage" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="acomm" type="TINYINT" notnull="true" default="0"/>
+		<col name="haspoll" type="TINYINT" notnull="true" default="0"/>
+		<col name="poll_id" type="INT" notnull="true" default="0"/>
+		<col name="score" type="INT" notnull="true" default="0"/>
+		<col name="ratings" type="INT" notnull="true" default="0"/>
+		<col name="associated" type="TEXT" notnull="true"/>
+		<col name="display_order" type="TINYINT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="sid"/>
+		</key>
+		<key name="catid">
+			<col name="catid"/>
+		</key>
+		<key name="counter">
+			<col name="counter"/>
+		</key>
+		<key name="topic">
+			<col name="topic"/>
+		</key>
+	</table>
+
+	<table name="stories_cat">
+		<col name="catid" type="SERIAL" notnull="true"/>
+		<col name="title" type="VARCHAR" length="20" notnull="true" default=""/>
+		<col name="counter" type="INT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="catid"/>
+		</key>
+	</table>
+
+	<table name="topics">
+		<col name="topicid" type="SERIAL" notnull="true"/>
+		<col name="topicimage" type="VARCHAR" length="20" default=""/>
+		<col name="topictext" type="VARCHAR" length="40" default=""/>
+		<col name="counter" type="INT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="topicid"/>
+		</key>
+	</table>
+
+</schema>

@@ -1,0 +1,44 @@
+<table width="100%" cellpadding="0" border="0" cellspacing="0">
+	<tr>
+		<td style="width:15px; height:33px;" class="story-01"></td>
+		<td class="story-02">{S_TITLE}</td>
+		<td style="width:14px; height:33px;" class="story-03"></td>
+	</tr>
+	<tr>
+		<td style="width:15px;" class="story-04"></td>
+		<td class="story-05">
+			<p>
+				<a href="{U_NEWTOPIC}"><img src="{IMG_TOPIC}" alt="{S_TOPIC}" style="padding:3px 0 0 3px; float:right;" /></a>
+				{S_STORY}
+				<!-- IF S_STORYEXT -->
+  				<br /><br />{S_STORYEXT}
+  				<!-- ENDIF -->
+				<!-- IF S_NOTES -->
+				<br /><b>{S_NOTE}</b> <i>{S_NOTES}</i>
+				<!-- ENDIF -->
+			</p>
+		</td>
+		<td style="width:14px;" class="story-06"></td>
+	</tr>
+	<tr>
+		<td style="width:15px; height:43px;" class="story-07"></td>
+		<td class="story-08">
+			<div class="readmore">
+				<div style="text-align:center;">
+					{S_POSTEDBY} 
+					{S_INFORMANT} 
+					{S_ON} 
+					{S_TIME} 
+					{S_READS}
+					<br />{S_MORELINK}
+				</div>
+			</div>
+		</td>
+		<td style="width:14px; height:43px;" class="story-09"></td>
+	</tr>
+</table>
+<!-- IF S_ASSOTOPICS -->
+<table class="table1" width="100%"><tr><td align="center">
+  <b>{S_ASSOTOPIC}</b><br /><br />{S_ASSOTOPICS}
+</td></tr></table><br />
+<!-- ENDIF -->

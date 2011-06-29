@@ -1,0 +1,33 @@
+<!-- BEGIN newsempty -->
+<table class="newsindex"><tr><td>
+    <center><font class="title">{newsempty.S_SITENAME}</font><br /><br />
+    {newsempty.S_NOTOPIC}<br /><br />
+    [ <a href="{newsempty.U_NEWSINDEX}">{newsempty.S_GONEWS}</a> | <a href="{newsempty.U_TOPICS}">{newsempty.S_SELECT}</a> ]</center>
+</td></tr></table><br />
+<!-- END newsempty -->
+<!-- BEGIN newscat -->
+<table class="newsindex"><tr><td>
+  <center><font class="title">{newscat.S_SITENAME}: {newscat.S_TOPIC_T}</font><br /><br />
+  <form action="{newscat.U_SEARCH}" method="post" {I18N}>
+  <input type="hidden" name="topic" value="{newscat.I_TOPIC}" />
+    {newscat.S_SEARCHON}: <input type="name" name="search" size="30" maxlength="255" />&nbsp;&nbsp;
+    <input type="submit" value="{newscat.S_SEARCH}" />
+  </form>
+  [ <a href="{newscat.U_HOME}">{newscat.S_GOHOME}</a> | <a href="{newscat.U_TOPICS}">{newscat.S_SELECT}</a> ]</center>
+</td></tr></table><br />
+<!-- END newscat -->
+<!-- BEGIN newstopic -->
+<br /><table class="newsindex"><tr><td width="60%" class="newstitle"><span style="font-size:large">{newstopic.S_TITLE}</span><br /><span style="font-size:x-small">{newstopic.S_TIME}</span>
+</td>
+  <td width="40%" class="newsindexhide"><img src="images/spacer.gif"  alt=""  border="0" />
+  </td></tr>
+  <tr><td class="newsstory" colspan="2">
+  <a href="{newstopic.U_NEWTOPIC}"><img src="{newstopic.IMG_TOPIC}"  alt="{newstopic.S_TOPIC}" align="right" border="0" /></a>
+  {newstopic.S_STORY}
+  <!-- IF newstopic.S_NOTES -->
+  <br /><br /><b>{newstopic.S_NOTE}</b> <i>{newstopic.S_NOTES}</i>
+  <!-- ENDIF -->
+  </td></tr>
+  <tr><td colspan="2" class="newsfooter"><font size="-2">{newstopic.S_POSTEDBY} {newstopic.S_INFORMANT} {newstopic.S_READS} {newstopic.S_MORELINK}</font><img src="images/spacer.gif"  alt="" width="50" height="1"  border="0" />
+</td></tr></table>
+<!-- END newstopic -->

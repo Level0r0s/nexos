@@ -1,0 +1,35 @@
+<div class="table1">
+{DL_MENU}<br /><hr /><br />
+
+<span class="genmed"><strong>Broken Download Reports</strong></span><br />
+Manage reports filed claiming your downloads are broken.<br /><br />
+
+<!-- IF DL_NO_ITEMS -->
+<div style="background-color:#FFEEEE; color:#660000; padding:3px;">{DL_NO_ITEMS}</div><br />
+<!-- ELSE -->
+<strong>Dismiss</strong><br />Dismiss the specified report<br /><br />
+<table align="center" border="0" cellspacing="0" width="100%">
+  <tr style="background:{TABLE_BGCOLOR};">
+	<td><strong>Date</strong></td>
+	<td><strong>Download</strong></td>
+	<td><strong>Mirror</strong></td>
+	<td><strong>Submitter</strong></td>
+	<td><strong>Comments</strong></td>
+	<td align="center" width="10">&nbsp;&nbsp;<strong>Dismiss</strong>&nbsp;&nbsp;</td>
+	<td align="center" width="10">&nbsp;&nbsp;<strong>Edit</strong>&nbsp;&nbsp;</td>
+  </tr>
+<!-- BEGIN dl_item -->
+  <tr style="background:{dl_item.BGCOLOR};">
+	<td>{dl_item.DATE}</td>
+	<td><a href="{dl_item.URL}" target="_blank">{dl_item.TITLE}</a></td>
+	<td><a href="{dl_item.MIRROR}" target="_blank">{dl_item.MIRROR_SITE}</a></td>
+	<td><a href="{dl_item.U_USER}">{dl_item.USERNAME}</a></td>
+	<td>{dl_item.REPORT}</td>
+	<td align="center" width="10">&nbsp;&nbsp;<a href="{dl_item.U_DISMISS}">(-)</a>&nbsp;&nbsp;</td>
+	<td align="center" width="10">&nbsp;&nbsp;<a href="{dl_item.U_EDIT}">(-)</a>&nbsp;&nbsp;</td>
+  </tr>
+<!-- END dl_item -->
+</table>
+<!-- ENDIF -->
+
+</div>

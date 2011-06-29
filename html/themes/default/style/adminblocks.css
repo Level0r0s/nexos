@@ -1,0 +1,142 @@
+.bform { margin-right: 210px; }
+.bform ul {
+	display: inline;
+	list-style-type: none;
+	white-space: nowrap;
+}
+.bform td {
+	width: 30%;
+	vertical-align: top;
+}
+.bform span {
+	display: block;
+	width: 99%;
+	cursor:pointer;
+}
+
+#blist, #blist_fixed, #mlist, .newblock {
+	padding: 0;
+	background: #FFF;
+}
+#blist table, #blist_fixed table, #mlist table {
+	width: 99%;
+}
+
+#blist {
+	float: right;
+	width: 200px;
+	position: relative;
+	margin-right: 1px;
+}
+#blist_fixed {
+	float: right;
+	right: 14px;
+	width: 200px;
+	position: fixed;
+}
+#ciao { border-spacing: 0; border-collapse:collapse;}
+#ciao td { border-bottom: 1px solid #009; border-left: 1px solid #009; font-size:12px; font-weight: bold; padding: 3px 0;}
+#ciao td + td { border-left: 0 }
+
+#mlist {
+	padding-bottom: 10px;
+}
+
+.parent {
+	width: 100px;
+	cursor: pointer;
+	border: 1px solid #D1D7DC;
+	background: #FAFAFA;
+	color: #444;
+	font-size: 11px/125%;
+}
+.active_parent {
+	width: 100px;
+	cursor: pointer;
+	border: 1px solid #F00;
+	background: #FAFAFA;
+	color: #444;
+	font: 11px/125%;
+}
+.bcode {
+	border: 1px solid #D1D7DC;
+	color: #060;
+	font: 11px Courier, 'Courier New', sans-serif;
+}
+.nodrag {
+	cursor: not-allowed;
+}
+.grab {
+	cursor: move;
+	cursor: grab;
+	cursor: url(../images/cursors/grab.cur), url(themes/default/images/cursors/grab.cur), -moz-grab;
+}
+.grabbing {
+	cursor: move;
+	cursor: grabbing;
+	cursor: url(../images/cursors/grabbing.cur), url(themes/default/images/cursors/grabbing.cur), -moz-grabbing;
+}
+.copy {
+	cursor: move;
+	cursor: url(../images/cursors/copy.cur), url(themes/default/images/cursors/copy.cur), copy;
+}
+.drag_img {
+	background: transparent url(../images/drag.png) no-repeat center;
+}
+
+#mlist, .mgroup, .newblock {
+	border: 1px solid #069;
+}
+
+.newblock {
+	width: 500px;
+	position: relative;
+	left: 15%;
+}
+
+.mgroup {
+	border-left: 0;
+	border-top: 0;
+	padding: 2px;
+}
+
+.spacer_div {
+	height: 20px;
+	display: block;
+}
+
+.rec_bin {
+	float:right;
+	display: block;
+	width:32px;
+	height:32px;
+	background: transparent url(../images/recycle_empty.png) no-repeat center;
+}
+
+#tack, #tack_home, #tack_holiday {
+	display: block;
+	width: 40px;
+	height: 32px;
+	position: absolute;
+	z-index: 2;
+}
+/* ie6.css background:none */
+#tack { background: transparent url(../images/thumbtack.gif) no-repeat center; }
+#tack_home { right: 0; top: -20px; }
+#tack_holiday { right: 0; top: -40px; }
+
+.infoarea { position: relative; cursor:help; }
+.infoarea span {
+	background-color: #fff;
+	display: none;
+	position: absolute;
+	top: -4px;
+	left: -404px;
+	width: 400px;
+	border: 1px solid #000;
+	padding: 0 4px 0 4px;
+	z-index: 100;
+	-moz-border-radius: 10px;
+}
+span.infoarea:hover span { display: block; }
+table#ciao img  { vertical-align:text-bottom; }

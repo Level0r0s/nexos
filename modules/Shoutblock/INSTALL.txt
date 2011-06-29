@@ -1,0 +1,28 @@
+/**
+* CPG Dragonfly CMS
+* Copyright (c) 2004-2005 by CPG-Nuke Dev Team, dragonflycms.org
+* Released under the GNU GPL version 2 or any later version
+* $Id: INSTALL.txt,v 9.2 2007/09/14 00:23:45 phoenix Exp $
+*/
+
+This module is easy to install with no hassle from SQL files. It's a new
+system we release in Dragonfly to make it easier for everyone.
+
+Just upload the content of this zip to your "root" directory:
+modules => modules
+blocks  => blocks
+etc.
+You may be warned: "Do you want to overwrite the folders?"... just say yes;
+these won't replace or remove the wrong files.
+
+Login as admin and go to the "Modules" page, which will autodetect the new
+module and checks if cpg_inst.php file exists, and if so it will "include"
+that file.
+
+The cpg_inst.php runs the necessary SQL commands to setup the tables and make
+the appropriate changes to the database.
+
+When you see the module in the list of modules, everything is setup and you
+can begin to use it.
+
+That's all!

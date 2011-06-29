@@ -1,0 +1,222 @@
+<?php
+/*********************************************
+  CPG Dragonfly™ CMS
+  ********************************************
+  Copyright © 2004-2006 by CPG-Nuke Dev Team
+  http://dragonflycms.org
+
+  Dragonfly is released under the terms and conditions
+  of the GNU GPL version 2 or any later version
+
+  $Source: /cvs/l10n/latvian/web_links.php,v $
+  $Revision: 9.6 $
+  $Author: nanocaiordo $
+  $Date: 2006/02/26 21:39:57 $
+Encoding test: n-array summation ∑ latin ae w/ acute ǽ
+*******************************************************/
+if (!defined('CPG_NUKE')) { exit; }
+global $sitename, $anonwaitdays, $outsidewaitdays;
+define('_YOURNAME','Tavs vārds');
+define('_CATEGORIES','Kategorijas');
+define('_LVOTES','balsis');
+define('_TOTALVOTES','Kopējais balsu skaits:');
+define('_LINKTITLE','Saites nosaukums');
+define('_THEREARE','Mūsu datu bāzē ir');
+define('_NOMATCHES','Pēc Tava pieprasījuma nav atrasts neviens ieraksts');
+define('_SCOMMENTS','Komentāri');
+define('_ADDLINK','Pievienot saiti');
+define('_POPULAR','Populārākās');
+define('_TOPRATED','Augstāk novērtētās');
+define('_RANDOM','Nejaušas saites');
+define('_LINKSMAIN','Galvenā lapa');
+define('_LINKCOMMENTS','Saites komentāri');
+define('_ADDITIONALDET','Papildus informācija');
+define('_EDITORREVIEW','Rediģēšanas pirmsskatījums');
+define('_REPORTBROKEN','Ziņot par nedarbojošos saiti');
+define('_LINKSMAINCAT','Saišu kategorijas');
+define('_AND','un');
+define('_INDB','mūsu datu bāzē');
+define('_ADDALINK','Pievienot jaunu saiti');
+define('_INSTRUCTIONS','Instrukcijas');
+define('_SUBMITONCE','Saiti pievienot tikai vienreiz.');
+define('_POSTPENDING','Pirms pievienošanas saites apstiprinās administrators.');
+define('_USERANDIP','Tavs lietotāja vārds un IP adrese tiek pierakstīti. Nedari muļķības!');
+define('_PAGETITLE','Lapas virsraksts');
+define('_PAGEURL','Lapas URL adrese');
+define('_YOUREMAIL','Tava e-pasta adrese');
+define('_LDESCRIPTION','Apraksts: (līdz 255 simboliem)');
+define('_ADDURL','Pievienot šo saiti');
+define('_LINKSNOTUSER1','Tu neesi reģistrētais lietotājs vai arī neesi autorizējies sistēmā.');
+define('_LINKSNOTUSER2','Ja Tu būtu reģistrēts lietotājs, varētu pievienot saiti uz šo tīmekļa vietni.');
+define('_LINKSNOTUSER3','Kļūt par reģistrētu lietotāju ir ātri un vienkārši.');
+define('_LINKSNOTUSER4','Kādēļ mēs pieprasām būt reģistrētam lietotājam, lai piekļūtu šai informācijai?');
+define('_LINKSNOTUSER5','Tā mēs varam piedāvāt pašas augstākās kvalitātes saturu,');
+define('_LINKSNOTUSER6','jebkuru informāciju mēs apskatām un apstiprinām individuāli.');
+define('_LINKSNOTUSER7','Mēs ceram Tev piedāvāt tikai noderīgu informāciju.');
+define('_LINKSNOTUSER8','<a href="'.getlink("Your_Account").'">Reģistrēt kontu</a>');
+define('_LINKALREADYEXT','KĻŪDA: Šāda URL adrese jau ir mūsu datu bāzē!');
+define('_LINKNOTITLE','KĻŪDA: Tev ir jāpievieno nosaukums URL adresei!');
+define('_LINKNOURL','KĻŪDA: Tev jāievada URL adrese!');
+define('_LINKNODESC','KĻŪDA: Tev jāpievieno apraksts URL adresei!');
+define('_LINKRECEIVED','Saites pievienošanas pieprasījumu esam saņēmuši. Paldies!');
+define('_EMAILWHENADD','Tu saņemsi e-pasta ziņojumu, kad mēs to apstiprināsim.');
+define('_CHECKFORIT','Tu nenorādīji savu e-pasta adresi, bet Tevis iesūtīto saiti mēs pārbaudīsim tuvākajā laikā.');
+define('_NEWLINKS','Jaunās saites');
+define('_TOTALNEWLINKS','Jauno saišu skaits');
+define('_LASTWEEK','Pēdējā nedēļā');
+define('_LAST30DAYS','Pēdējās 30 dienās');
+define('_1WEEK','1 nedēļas');
+define('_2WEEKS','2 nedēļām');
+define('_30DAYS','30 dienām');
+define('_TOTALFORLAST','Jauno saišu skaits, kas pievienotas pirms');
+define('_ADDEDON','Pievienots');
+define('_RATING','Novērtējums');
+define('_RATESITE','Novērtēt šo lapu');
+define('_DETAILS','Detaļas');
+define('_BESTRATED','Labāko saišu saraksts');
+define('_OF','no');
+define('_TRATEDLINKS','novērtēto saišu skaits');
+define('_TVOTESREQ','nepieciešamo balsu skaits');
+define('_SHOWTOP','Rādīt atzītākos');
+define('_MOSTPOPULAR','Populārāko saraksts');
+define('_OFALL','no visiem');
+define('_SORTLINKSBY','Saites atlasītas pēc');
+define('_SITESSORTED','Lapas atlasītas pēc');
+define('_POPULARITY','Popularitāte');
+define('_SELECTPAGE','Izvēlies lapu');
+define('_MAIN','Galvenā lapa');
+define('_NEWTODAY','Ievietots šodien');
+define('_NEWLAST3DAYS','Ievietots pēdējo 3 dienu laikā');
+define('_NEWTHISWEEK','Ievietots šīs nedēļas laikā');
+define('_CATNEWTODAY','Šajā kategorijā šodien pievienotās saites');
+define('_CATLAST3DAYS','Šajā kategorijā pēdējo 3 dienu laikā pievienotās saites');
+define('_CATTHISWEEK','Šajā kategorijā pēdējās nedēļas laikā pievienotās saites');
+define('_POPULARITY1','Popularitāte (sākot ar zemāko)');
+define('_POPULARITY2','Popularitāte (sākot ar lielāko)');
+define('_TITLEAZ','Nosaukums (alfabēta secībā)');
+define('_TITLEZA','Nosaukums (pretēji alfabēta secībai)');
+define('_DATE1','Datums (sākot ar agrāk pievienotajām saitēm)');
+define('_DATE2','Datums (sākot ar vēlak pievienotajām saitēm)');
+define('_RATING1','Novērtējums (sākot ar mazāko punktu skaitu)');
+define('_RATING2','Novērtējums (sākot ar lielāko punktu skaitu)');
+define('_SEARCHRESULTS4','Meklēt rezultātus');
+define('_USUBCATEGORIES','Apakškategorijas');
+define('_LINKS','Saites');
+define('_TRY2SEARCH','Meklēt');
+define('_INOTHERSENGINES','izmantojot citus meklēšanas resursus');
+define('_EDITORIAL','Rediģējams');
+define('_LINKPROFILE','Saites profils');
+define('_EDITORIALBY','Rediģējams pēc');
+define('_NOEDITORIAL','Pašreiz šīs tīmekļa lapas rediģējumi nav pieejami.');
+define('_VISITTHISSITE','Apmeklēt šo tīmekļa lapu');
+define('_RATETHISSITE','Novērtēt šo resursu');
+define('_ISTHISYOURSITE','Vai šis ir Tavs resurss?');
+define('_ALLOWTORATE','Atļaut citiem lietotājiem to novērtēt no savas tīmekļa lapas!');
+define('_LINKRATINGDET','Detalizēta informācija par saišu novērtējumiem');
+define('_OVERALLRATING','Kopējais novērtējums');
+define('_TOTALOF','Kopā no');
+define('_USER','Lietotājs');
+define('_USERAVGRATING','Lietotāja vidējais novērtējums');
+define('_NUMRATINGS','no novērtējumu skaita');
+define('_EDITTHISLINK','Rediģēt šo saiti');
+define('_REGISTEREDUSERS','Reģistrētie lietotāji');
+define('_NUMBEROFRATINGS','Novērtējumu skaits');
+define('_NOREGUSERSVOTES','Reģistrēto lietotāju balsis nav');
+define('_BREAKDOWNBYVAL','Sakārtot novērtējumu pēc vērtējumiem');
+define('_LTOTALVOTES','balsu skaits');
+define('_LINKRATING','Saišu novērtējums');
+define('_HIGHRATING','Augsts novērtējums');
+define('_LOWRATING','Zems novērtējums');
+define('_NUMOFCOMMENTS','Komentāru skaits');
+define('_WEIGHNOTE','* Piezīme: Šeit tiek veikta salīdzināšana starp reģistrētiem un nereģistrētiem lietotājiem');
+define('_NOUNREGUSERSVOTES','Nereģistrēto lietotāju balsis nav');
+define('_WEIGHOUTNOTE','* Piezīme: Šeit tiek veikta salīdzināšana starp reģistrētiem lietotājiem un pārējiem balsotājiem');
+define('_NOOUTSIDEVOTES','Nav citu balsotāju balsis');
+define('_OUTSIDEVOTERS','Citi balsotāji');
+define('_UNREGISTEREDUSERS','Nereģistrētie lietotāji');
+define('_PROMOTEYOURSITE','Paaugstināt savu tīmekļa lapu');
+define('_PROMOTE01','Varbūt Tevi interesē dažas attālinātās \'Novērtē tīmekļa lapu\' iespējas, kuras ir pieejamas. Tās ļauj Tev ievietot attēlu (vai pat vērtēšanas formu) savā tīmekļa lapā, lai palielinātu sava resursa novērtējumu. Lūdzu izvēlies vienu no zemāk piedāvātajām iespējām:');
+define('_TEXTLINK','Teksta saite');
+define('_PROMOTE02','Viena no iespējām pievienot saiti vērtējuma formai ir izmantojot teksta saiti:');
+define('_HTMLCODE1','HTML kods, kuru Tev vajadzētu šajā gadījumā izmantot, ir sekojošs:');
+define('_THENUMBER','Skaits');
+define('_IDREFER','HTML kods Tavas lapas ID ievieto '.$sitename.' datu bāzē. Pārliecinies par tā atbilstību īstenībai.');
+define('_BUTTONLINK','Spiedpogas saite');
+define('_PROMOTE03','Ja vēlies kaut ko vairāk par parastu teksta saiti, vari izmantot mazās spiedpogas saiti:');
+define('_RATEIT','Novērtēt šo lapu!');
+define('_HTMLCODE2','Šīs spiedpogas pirmkods ir:');
+define('_REMOTEFORM','Attālinātās vērtēšanas forma');
+define('_PROMOTE04','Ja Tu šajā gadījumā krāpies, mēs izdzēsīsim Tavu saiti.');
+define('_VOTE4THISSITE','Balsot par šo lapu!');
+define('_LINKVOTE','Balsot!');
+define('_HTMLCODE3','Izmantojot šo formu, vari atļaut lietotajiem balsot par resursu no savas lapas, un novērtējums saglabāsies mūsu sistēmā. Forma ir deaktivizēta, bet, ievietojot šo pirmkoda gabalu savā tīmekļa lapā, tas strādās.');
+define('_PROMOTE05','Paldies! Lai veicas Tev ar novērtējumiem!');
+define('_THANKSBROKEN','Paldies par palīdzību, uzlabojot šo mūsu sistēmas informāciju.');
+define('_THANKSFORINFO','Paldies par informāciju.');
+define('_LOOKTOREQUEST','Tavu pieprasījumu mēs izskatīsim tuvākajā laikā.');
+define('_ONLYREGUSERSMODIFY','Tikai reģistrētiem lietotājiem ir atļauts ieteikt saišu uzlabojumus. Lūdzu <a href="'.getlink("Your_Account").'">autorizējies sistēmā vai reģistrē kontu</a>.');
+define('_REQUESTLINKMOD','Saites uzlabojuma pieprasījums');
+define('_LINKID','Saites ID');
+define('_SENDREQUEST','Nosūtīt pieprasījumu');
+define('_THANKSTOTAKETIME','Paldies, ka nobalsoju par tīmekļa lapu šeit');
+define('_LETSDECIDE','Ievadot lietotāju, tas var palīdzēt citiem apmeklētājiem izlemt, kuru saiti izmantot.');
+define('_RETURNTO','Atgriezties uz');
+define('_RATENOTE1','Lūdzu nebalso atkārtoti par vienu un to pašu resursu.');
+define('_RATENOTE2','Vērtēšanas skala ir no 1 (ļoti slikti) līdz 10 (izcili).');
+define('_RATENOTE3','Lūdzu vērtē objektīvi! Ja būs vērtējumi tikai ar 1 un 10 - tas nebūs lietderīgi..');
+define('_RATENOTE4','Apskati <a href="'.getlink("&amp;l_op=TopRated").'">atzītāko resursu sarakstu</a>.');
+define('_RATENOTE5','Nebalso par savu vai pretinieka resursu.');
+define('_YOUAREREGGED','Tu esi reģistrēts lietotājs un esi autorizējies sistēmā.');
+define('_FEELFREE2ADD','Pievieno komentāru par šo tīmekļa lapu! Drošāk, drošāk!!!');
+define('_YOUARENOTREGGED','Tu neesi reģistrēts lietotājs vai arī neesi autorizējies sistēmā.');
+define('_IFYOUWEREREG','Ja Tu būtu reģistrēts lietotājs, varētu pievienot komentāru šajā tīmekļa lapā.');
+define('_MODIFY','Rediģēt');
+define('_COMPLETEVOTE1','Paldies par Tavu balsi.');
+define('_COMPLETEVOTE2','Tu jau esi balsojis par šo resursu pēdējo '.$anonwaitdays.' dienu laikā.');
+define('_COMPLETEVOTE3','Balso tikai vienreiz par katru resursu.<br />Visas balsis tiek uzskaitītas un caurskatītas.');
+define('_COMPLETEVOTE4','Tu nedrīksti balsot par šo resursu.<br />Visas balsis tiek uzskaitītas un caurskatītas.');
+define('_COMPLETEVOTE5','Izvēlies novērtējumu');
+define('_COMPLETEVOTE6','Tikai viena balss no katras IP adreses atļauta  '.$outsidewaitdays.' dienu laikā.');
+
+/**************************
+  ADMNINISTRATION SECTION
+**************************/
+define('_ADDMAINCATEGORY','Add a MAIN Category');
+define('_ADDSUBCATEGORY','Add a SUB-Category');
+define('_WEBLINKSADMIN','Web Links Administration');
+define('_EZTRANSFERLINKS','Transfer all links from category');
+define('_CLEANLINKSDB','Clean Links Votes');
+define('_EZTRANSFER','Transfer');
+define('_BROKENLINKSREP','Broken Links Reports');
+define('_LINKMODREQUEST','Link Modification Requests');
+define('_ADDNEWLINK','Add a New Link');
+define('_MODLINK','Modify a Link');
+define('_LINKSINDB','Links in our Database');
+define('_LINKSWAITINGVAL','Links Waiting for Validation');
+define('_ERRORURLEXIST','ERROR: This URL is already listed in the Database!');
+define('_ERRORNOTITLE','ERROR: You need to type a TITLE for your URL!');
+define('_ERRORNOURL','ERROR: You need to type a URL for your URL!');
+define('_ERRORNODESCRIPTION','ERROR: You need to type a DESCRIPTION for your URL!');
+define('_NEWLINKADDED','New Link added to the Database');
+define('_YOURLINKAT','Your Link at');
+define('_LINKVALIDATION','Link Validation');
+define('_CHECKALLLINKS','Check ALL Links');
+//define('_VALIDATELINKS','Validate Links');
+//define('_FAILED','Failed!');
+//define('_BEPATIENT','(please be patient)');
+//define('_VALIDATINGCAT','Validating Category (and all subcategories)');
+//define('_VALIDATINGSUBCAT','Validating Sub-Category');
+define("_ADDEDITORIAL","Add Editorial");
+define("_EDITORIALTITLE","Editorial Title");
+define("_EDITORIALTEXT","Editorial Text");
+define("_DATEWRITTEN","Date Written");
+define("_NOREPORTEDBROKEN","No reported broken links.");
+define("_USERREPBROKEN","User Reported Broken Links");
+define("_IGNOREINFO","Ignore (Deletes all <b><i>requests</i></b> for a given link)");
+define("_DELETEINFO","Delete (Deletes <b><i>broken link</i></b> and <b><i>requests</i></b> for a given link)");
+define("_LINK","Link");
+define("_LINKOWNER","Link Owner");
+define("_USERMODREQUEST","User Link Modification Requests");
+define("_ORIGINAL","Original");
+define("_PROPOSED","Proposed");
+define("_NOMODREQUESTS","There are not any modification requests right now");

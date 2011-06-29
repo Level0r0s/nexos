@@ -1,0 +1,11 @@
+# CPG Dragonfly CMS
+# Copyright (c) 2004-2005 by CPG-Nuke Dev Team, dragonflycms.org
+# Released under the GNU GPL version 2 or any later version
+
+# $Source: /cvs/html/admin/.htaccess,v $
+# $Revision: 10.0 $
+# $Author: djmaze $
+# $Date: 2010/11/05 00:56:54 $
+
+# deny most common
+deny from all

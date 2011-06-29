@@ -1,0 +1,222 @@
+<?php
+/*********************************************
+  CPG Dragonfly™ CMS
+  ********************************************
+  Copyright © 2004-2006 by CPG-Nuke Dev Team
+  http://dragonflycms.org
+
+  Dragonfly is released under the terms and conditions
+  of the GNU GPL version 2 or any later version
+
+  $Source: /cvs/l10n/farsi/web_links.php,v $
+  $Revision: 9.5 $
+  $Author: nanocaiordo $
+  $Date: 2006/02/26 21:39:53 $
+Encoding test: n-array summation ∑ latin ae w/ acute ǽ
+*******************************************************/
+if (!defined('CPG_NUKE')) { exit; }
+global $sitename, $anonwaitdays, $outsidewaitdays;
+define('_YOURNAME','نام شما');
+define('_CATEGORIES','شاخه ');
+define('_LVOTES','امتیاز');
+define('_TOTALVOTES','جمع امتیازات:');
+define('_LINKTITLE','عنوان لینک');
+define('_THEREARE','در حال حاضر');
+define('_NOMATCHES','نظیری برای پرسش شما یافت نشد');
+define('_SCOMMENTS','نظرها');
+define('_ADDLINK','اضافه کردن لینک');
+define('_POPULAR','متداول');
+define('_TOPRATED','بیشترین امتیاز');
+define('_RANDOM','لینک های اتفاقی');
+define('_LINKSMAIN','صفحه اصلی');
+define('_LINKCOMMENTS','نظر های لينک');
+define('_ADDITIONALDET','جزئیات اضافی');
+define('_EDITORREVIEW','مرور نشر کننده');
+define('_REPORTBROKEN','گزارش لینک خراب');
+define('_LINKSMAINCAT','شاخه اصلی لينک ها');
+define('_AND','و');
+define('_INDB','در بانک اطلاعاتی وجود دارد');
+define('_ADDALINK','اضافه کردن لینک جدید');
+define('_INSTRUCTIONS','توضيحات');
+define('_SUBMITONCE','لينک های خود را فقط 1 بار ارسال کنيد ( از سلش "/" در انتهای آدرس خود استفاده کنيد)');
+define('_POSTPENDING','تمامی لینک ها ابتدا توسط مدیریت کنترل و سپس در لیست قرار می گیرد.');
+define('_USERANDIP','هنگام ارسال لینک نام کاربری و شماره آی پی شما در بانک اطلاعاتی ما ذخیره می شود.');
+define('_PAGETITLE','عنوان صفحه');
+define('_PAGEURL','آدرس صفحه');
+define('_YOUREMAIL','ایمیل شما');
+define('_LDESCRIPTION','توضیح: (255 کلمه حداکثر)');
+define('_ADDURL','اضافه کردن این آدرس');
+define('_LINKSNOTUSER1','شما کاربر ما نیستید یا اینکه هنوز وارد سیستم کاربری خود نشده اید.');
+define('_LINKSNOTUSER2','کاربرانی که ثبت نام کرده اند قادر به ارسال لینک می باشند.');
+define('_LINKSNOTUSER3','بنابراین شایسته است که خیلی سریع و آسان ثبت نام کنید.');
+define('_LINKSNOTUSER4','چرا ما بعضی از امکانات سايت را فقط در اختيار کاربران عضو شده قرار می دهيم؟');
+define('_LINKSNOTUSER5','به علت اينکه ما ميتوانيد بهترين مطالب را در اختيار ازو ها قرار دهيم,');
+define('_LINKSNOTUSER6','هر مطلب ارسالی توسط مديرن بازديد ميشود و آنها می توانند آن مطالب را رد يا قبول نمايند..');
+define('_LINKSNOTUSER7','و ما اميدوار هستيم که به شما اطلاعات قابل قبولی را هميشه ارايه دهيم.');
+define('_LINKSNOTUSER8','<a href="'.getlink("Your_Account").'">عضويت در سايت</a>');
+define('_LINKALREADYEXT','خطا: این لینک قبلا در بانک اطلاعاتی ثبت شده!');
+define('_LINKNOTITLE','خطا: شما باید یک عنوان برای آدرس خود وارد کنید!');
+define('_LINKNOURL','خطا: شما باید آدرس مورد نظر را وارد کنید!');
+define('_LINKNODESC','خطا: شما باید یک توضیح مختصر راجب به آدرس وارد کنید!');
+define('_LINKRECEIVED','ما لینک ارسالی شما را دریافت کردیم. متشکریم!');
+define('_EMAILWHENADD','نوشته شما وقتی تائید شد شما باید ایمیلی دریافت کنید.');
+define('_CHECKFORIT','شما ایمیل خود ا وارد نکردید اما ما به زودی لینک شما را چک خواهیم کرد.');
+define('_NEWLINKS','لینک های جدید');
+define('_TOTALNEWLINKS','جمع لینک های جدید');
+define('_LASTWEEK','هفته گشته');
+define('_LAST30DAYS','30 روز گذشته');
+define('_1WEEK','1 هفته');
+define('_2WEEKS','2 هفته');
+define('_30DAYS','30 روز');
+define('_TOTALFORLAST','جمع لینک های گذشته');
+define('_ADDEDON','اضافه شده در');
+define('_RATING','امتیاز');
+define('_RATESITE','امتیاز دادن به این سایت');
+define('_DETAILS','جزئیات');
+define('_BESTRATED','بهترین لینک های دارای امتیاز - برتر');
+define('_OF','از');
+define('_TRATEDLINKS','جمع امتیازات لینک ها');
+define('_TVOTESREQ','کمترین رای مورد نیاز');
+define('_SHOWTOP','نمایش برترین ها');
+define('_MOSTPOPULAR','محبوب ترين');
+define('_OFALL','از همه');
+define('_SORTLINKSBY','مرتب کردن لینک ها بر اساس');
+define('_SITESSORTED','سايت ها در حال حاضر مرتب شده اند با ');
+define('_POPULARITY','محبوبیت');
+define('_SELECTPAGE','انتخاب صفحه');
+define('_MAIN','اصلی');
+define('_NEWTODAY','جدید امروز');
+define('_NEWLAST3DAYS','جدید 3 روز گذشته');
+define('_NEWTHISWEEK','جدید این هفته');
+define('_CATNEWTODAY','در این شاخه امروز لینک جدید اضافه شد');
+define('_CATLAST3DAYS','در این شاخه در 3 روز گذشته لینک جدید اضافه شد');
+define('_CATTHISWEEK','در این شاخه در این هفته لینک جدید اضافه شد');
+define('_POPULARITY1','محبوبیت (کمترین به بیشترین بازدید)');
+define('_POPULARITY2','محبوبیت (بیشترین به کمترین بازدید)');
+define('_TITLEAZ','عنوان (A to Z)');
+define('_TITLEZA','عنوان (Z to A)');
+define('_DATE1','تاریخ (لینک های قدیمی اول لیست شود)');
+define('_DATE2','تارخ (لینک های جدید اول لیست شود)');
+define('_RATING1','امتیاز (کمترین  به بیشترین امتیاز)');
+define('_RATING2','امتیاز (بیشترین  به کمترین امتیاز)');
+define('_SEARCHRESULTS4','نتیجه جستجو برای');
+define('_USUBCATEGORIES','زیر شاخه');
+define('_LINKS','لینک');
+define('_TRY2SEARCH','جستجو برای');
+define('_INOTHERSENGINES','در سایر موتور های جستجو');
+define('_EDITORIAL','سر مقاله');
+define('_LINKPROFILE','اطلاعات لینک');
+define('_EDITORIALBY','سرمقاله توسط');
+define('_NOEDITORIAL','در حال حاضر سر مقاله ای وجود ندارد.');
+define('_VISITTHISSITE','مشاهده این سایت');
+define('_RATETHISSITE','امتیاز دادن به این منبع');
+define('_ISTHISYOURSITE','این منبع شماست؟');
+define('_ALLOWTORATE','به کاربران اجازه دهيد که به آن در سايت خودتان امتياز دهند. ');
+define('_LINKRATINGDET','جزئیات امتیازها');
+define('_OVERALLRATING','متیازات روی هم رفته');
+define('_TOTALOF','همه از');
+define('_USER','کاربر');
+define('_USERAVGRATING','میانگین امتیازات کاربران');
+define('_NUMRATINGS',' # از امتياز ها');
+define('_EDITTHISLINK','ویرایش این لینک');
+define('_REGISTEREDUSERS','کاربران ثبت نام کرده');
+define('_NUMBEROFRATINGS','تعداد امتیازات');
+define('_NOREGUSERSVOTES','رایی از کاربران ثبت نام کرده وجود ندارد');
+define('_BREAKDOWNBYVAL','تفکیک بر حسب رای های داده شده');
+define('_LTOTALVOTES','جمع رای ها');
+define('_LINKRATING','جمع امتیازات');
+define('_HIGHRATING','بیشترین امتیاز');
+define('_LOWRATING','کمترین امتیاز');
+define('_NUMOFCOMMENTS','تعداد نظرها');
+define('_WEIGHNOTE','* توجه: این منبع امتیازات کاربران عضو وغیرعضو را مقایسه می کند به نسبت');
+define('_NOUNREGUSERSVOTES','رایی از کاربران ثبت نام نکرده وجود ندارد');
+define('_WEIGHOUTNOTE','* توجه: این منبع امتیازات کاربران عضو وکاربران سایت دیگر را مقایسه می کند به نسبت');
+define('_NOOUTSIDEVOTES','رایی از بیرون سایت دریافت نشده');
+define('_OUTSIDEVOTERS','رای های ارسالی سایت های دیگر');
+define('_UNREGISTEREDUSERS','کاربران ثبت نام نکرده"');
+define('_PROMOTEYOURSITE','بالا بردن امتیاز سایت شما');
+define('_PROMOTE01','ممکن است برای شما جالب باشد که بتوانید از سایت خود به لینک موجود در سایت ما رای دهید . ما این امکان را برای شما فراهم کرده ایم برای این کا ر ما سه روش را پیشنهاد می کنیم:');
+define('_TEXTLINK','لینک به صورت متن');
+define('_PROMOTE02','یک روش برای انجام این کار به صورت یک متن ساده می باشد:');
+define('_HTMLCODE1','کد HTML مورد نیاز به صورت زیر می باشد:');
+define('_THENUMBER','شماره');
+define('_IDREFER','موجود در کد بالا شماره لینک شما در بانک اطلاعاتی ما می باشد. از درست بودن این شماره اطمینان حاصل کنید.');
+define('_BUTTONLINK','لینک به صورت کلید');
+define('_PROMOTE03','یک روش دیگر برای این کار, استفاده از لینک به صورت کلید است:');
+define('_RATEIT','رای به این سایت!');
+define('_HTMLCODE2','کد لازم برای ایجاد دکمه:');
+define('_REMOTEFORM','رای دادن به صورت مستقیم');
+define('_PROMOTE04','این روش برای رای دادن مستقیم به سایت شما می باشد توجه داشته باشید در صورت تخلف لینک شما حذف خواهد شد.');
+define('_VOTE4THISSITE','رای دادن به این سایت!');
+define('_LINKVOTE','رای!');
+define('_HTMLCODE3','با استفاده از این روش کاربران سایت شما می توانند به لینک رای داده و نتایج آن در بانک اطلاعاتی ما ثبت شود. فرم بالا غیر فعال است, اما کد زیر فعال است و شما باید آن را در صفحه مورد نظر خود قرار دهید.');
+define('_PROMOTE05','تشکر و آرزوی موفقيت برای امتيازات شما ');
+define('_THANKSBROKEN','Thank you for helping to maintain this directory\'s integrity.');
+define('_THANKSFORINFO','با تشکر از اطلاعات شما.');
+define('_LOOKTOREQUEST','ما درخواست شما را به زودی بررسی  خواهيم کرد.');
+define('_ONLYREGUSERSMODIFY','فقط کاربران عضو شده می توانند پيشنهاد ويرايش لينک را بدهند <a href="'.getlink("Your_Account").'">لطفاً يا به سيستم وارد شويد يا عضو شويد.</a>.');
+define('_REQUESTLINKMOD','درخواست اصلاح لینک');
+define('_LINKID','شماره لینک');
+define('_SENDREQUEST','ارسال درخواست');
+define('_THANKSTOTAKETIME','از وقتی که برای رای دادن به سایت صرف کردید متشکریم');
+define('_LETSDECIDE','قطعا رای ارسالی شما در انتخاب بهتر دیگران تاثیر خواهد داشت.');
+define('_RETURNTO','برگشت به');
+define('_RATENOTE1','لطفا بیش از یک بار رای ندهید.');
+define('_RATENOTE2','مقیاس به این صورت می باشد که شماره 1 کمترین امتیاز و 10 بیشترین امتیاز را دارد.');
+define('_RATENOTE3','لطفا رای خود را با دقت انتخاب کنید, تا موجب گمراهی دیگران نشوید.');
+define('_RATENOTE4',' برای دیدن لینک های معتبر <a href=\"".getlink("Web_Links&amp;l_op=TopRated")."\">اینجا را کلیک کنید</a>.');
+define('_RATENOTE5','لطفا به لینک های خود رای ندهید.');
+define('_YOUAREREGGED','شما عضو رسمی سایت می باشید و وارد حساب کاربری خود شده اید');
+define('_FEELFREE2ADD','اگر نظر خاصی در مورد این لینک دارید آن را برای ما وارد کنید.');
+define('_YOUARENOTREGGED','شما عضور رسمی سایت نمی باشید یا اینکه هنوز وارد حساب کاربری خود نشده اید.');
+define('_IFYOUWEREREG','اگر شما عضو بوديد  ميتوانستيد در اين سايت نظر دهيد.');
+define('_MODIFY','اصلاح');
+define('_COMPLETEVOTE1','امتیاز شما برای ما محترم می باشد.');
+define('_COMPLETEVOTE2','شما به اين لينک در '.$anonwaitdays.' روز گذشته رأی داده ايد');
+define('_COMPLETEVOTE3','به هر منبع فقط یک بار می توانید رای دهید.<br>تمام رأی ها بزرسی می شوند');
+define('_COMPLETEVOTE4','شما نمی توانيد به لينک هايی که خودتن ارسال کرده ايد رأی دهيد');
+define('_COMPLETEVOTE5','امتیازی انتخاب نشده"');
+define('_COMPLETEVOTE6','در هر '.$outsidewaitdays.' روز فقط يک رأی از يک آدرس آی پی قبول ميشود.');
+
+/**************************
+  ADMNINISTRATION SECTION
+**************************/
+define('_ADDMAINCATEGORY','اضافه کردن يک شاخه اصلی');
+define('_ADDSUBCATEGORY','اضافه کردن يک زيرشاخه');
+define('_WEBLINKSADMIN','مديريت لينک ها');
+define('_EZTRANSFERLINKS','انتقال همه لينک ها از شاخه');
+define('_CLEANLINKSDB','پاک کردن رأی های لينک ها');
+define('_EZTRANSFER','انتقال');
+define('_BROKENLINKSREP','اطلاع لينک های خراب');
+define('_LINKMODREQUEST','درخواست های اصلاح لينک ها');
+define('_ADDNEWLINK','اضافه کردن يک لينک');
+define('_MODLINK','اصلاح يک لينک');
+define('_LINKSINDB','لينک در بانک اطلاعاتی ما وجود دارد');
+define('_LINKSWAITINGVAL','لينک های در حال انتظار برای موافقت با آنها');
+define('_ERRORURLEXIST','خطا: اين آدرس قبلاً در بانک اطلاعاتی ما ثبت شده است');
+define('_ERRORNOTITLE','خطا: لازم است که شما يک عنوان برای لينک خود وارد کنيد');
+define('_ERRORNOURL','خطا: لازم است که شما يک آدرس برای لينک خود وارد کنيد !');
+define('_ERRORNODESCRIPTION','خطا: لازم است که شما يک توضيح مختصر در باره لينک خود بنويسيد');
+define('_NEWLINKADDED','لينک جديد به بانک اطلاعاتی اضافه شد');
+define('_YOURLINKAT','لينک جديد در');
+define('_LINKVALIDATION','اصلاح لينک');
+define('_CHECKALLLINKS','انتخاب همه لينک ها');
+//define('_VALIDATELINKS','اصلاح لينک ها');
+//define('_FAILED','انجام نشد!');
+//define('_BEPATIENT','(لطفاً صبور باشيد)');
+//define('_VALIDATINGCAT','اصلاح شاخه( و همه زير شاخه ها)');
+//define('_VALIDATINGSUBCAT','اصلاح زير شاخه');
+define("_ADDEDITORIAL","اضافه کردن سر مقاله");
+define("_EDITORIALTITLE","Editorial Title");
+define("_EDITORIALTEXT","Editorial Text");
+define("_DATEWRITTEN","تاريخ نوشته شده ");
+define("_NOREPORTEDBROKEN","لينک خرابی اطلاع داده نشده است.");
+define("_USERREPBROKEN","کاربر لينک خراب اطلاع داده است");
+define("_IGNOREINFO","Ignore (Deletes all <b><i>requests</i></b> for a given link)");
+define("_DELETEINFO","Delete (Deletes <b><i>broken link</i></b> and <b><i>requests</i></b> for a given link)");
+define("_LINK","لينک");
+define("_LINKOWNER","لينک owner");
+define("_USERMODREQUEST","درخواست کاربر برای اصلاح لينک");
+define("_ORIGINAL","اصل");
+define("_PROPOSED","Proposed");
+define("_NOMODREQUESTS","هيچ درخواست اصلاحی در حال حاضر وجود ندارد");

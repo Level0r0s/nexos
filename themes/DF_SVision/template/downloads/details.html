@@ -1,0 +1,158 @@
+<div class="table1">
+{DL_MENU}<br /><br />
+
+<table border="0" width="100%">
+ <tr>
+   <td valign="top" width="80%">
+
+<!-- IF DL_IS_OWNER -->
+<div style="background-color: {BGCOLOR3}; width: 57%;"><span class="genmed">{L_ISDLOWNER}</span></div><br />
+<!-- ELSEIF DL_SUB_MIRRORS -->
+<div style="background-color: {BGCOLOR3}; width: 57%;"><span class="genmed">{L_MIRSUB}</span></div><br />
+<!-- ENDIF -->
+
+<table border="0" cellpadding="3" cellspacing="1" width="57%" class="forumline">
+<tr>
+	<td class="row1" width="30%"><span class="genmed">{L_CATEGORY}</span></td>
+	<td class="row2">{DL_CATEGORY}</td>
+</tr><tr>
+	<td class="row1"><span class="genmed">{L_SUBMITTEDBY}</span></td>
+	<td class="row2">{DL_SUBMITTER}</td>
+</tr>
+<!-- IF DL_AUTHORNAME -->
+<tr>
+	<td class="row1"><span class="genmed">{L_AUTHORNAME}</span></td>
+	<td class="row2"><div style="float: left;">{DL_AUTHORNAME}</div>
+	<!-- IF DL_AUTHOREMAIL --><div style="float: right;">{DL_AUTHOREMAIL}</div><!-- ENDIF --></td>
+</tr>
+<!-- ENDIF -->
+
+<!-- BEGIN dl_field -->
+<tr>
+	<td class="row1"><span class="genmed">{dl_field.TITLE}</span></td>
+	<td class="row2">{dl_field.VALUE}</td>
+</tr>
+<!-- END dl_field -->
+<tr>
+	<td class="row1"><span class="genmed">{L_PUBLISHED}</span></td>
+	<td class="row2"><div style="float: left;">{DL_PUBLISHED}</div>{DL_PUBLISHTYPE}</td>
+</tr>
+<!-- IF DL_UPDATED -->
+<tr>
+	<td class="row1"><span class="genmed">{L_UPDATED}</span></td>
+	<td class="row2"><div style="float: left;">{DL_UPDATED}</div>{DL_UPDATE_TYPE}</td>
+</tr>
+<!-- ENDIF -->
+</table><br />
+
+<div class="genmed" style="width: 90%;">{DL_DESCRIPTION}</div>
+<!-- IF DL_NOTES -->
+<br /><br /><span class="genmed"><em>{L_EDNOTE}:</em></span><br />
+<div class="genmed" style="width: 90%;">{DL_NOTES}</div>
+<!-- ENDIF -->
+
+<!-- IF DL_REVIEWS -->
+<br /><br />
+<span class="gen"><strong><a name="reviews"></a>{L_MEMREVIEWS}</strong></span><br /><br />
+<div style="width: 90%;">
+<table border="0" width="100%" class="forumline">
+<!-- BEGIN dl_review -->
+<!-- IF dl_review.SPACER --><tr><td class="spaceRow"><img src="images/spacer.gif" alt="" height="1" /></td></tr><!-- ENDIF -->
+<tr>
+	<td class="row1" colspan="2">
+	  <div style="float: left;">
+		<a name="r{dl_review.ID}" href="{dl_review.U_ID}"><img src="{dl_review.IMG_RATE}" border="0" alt="{dl_review.RATING}" title="{dl_review.RATING}" /></a>
+		{L_BY} <a href="{dl_review.U_MEMBER}">{dl_review.MEMBERNAME}</a>
+		{L_ON} {dl_review.DATE}</div>
+	  <!-- IF dl_review.U_EDIT --><div style="float: right;">IP: {dl_review.IP} &nbsp; {dl_review.U_EDIT}</div><!-- ENDIF --><br />
+	  <hr width="99%" />
+	  <span class="gen"><strong>{dl_review.TITLE}</strong></span><br /><br />
+	  <span class="genmed">{dl_review.COMMENT}</span>
+	</td>
+</tr>
+<!-- END dl_review -->
+</table>
+</div>
+<!-- IF DL_REVIEW_PAGES --><br />{L_PAGE}: {DL_REVIEW_PAGES}<!-- ENDIF -->
+<!-- ENDIF -->
+
+<!-- IF DL_P_REVIEWS -->
+<br /><br />
+<span class="gen"><strong><a name="p_reviews"></a>{L_PENDREVIEWS}</strong></span><br /><br />
+<div style="width: 90%;">
+<table border="0" width="100%" class="forumline">
+<!-- BEGIN dl_p_review -->
+<!-- IF dl_p_review.SPACER --><tr><td class="spaceRow"><img src="images/spacer.gif" alt="" height="1" /></td></tr><!-- ENDIF -->
+<tr>
+	<td class="row1" colspan="2">
+	  <div style="float: left;">
+		<a name="r{dl_p_review.ID}" href="{dl_p_review.U_ID}"><img src="{dl_p_review.IMG_RATE}" border="0" alt="{dl_p_review.RATING}" title="{dl_p_review.RATING}" /></a>
+		{L_BY} <a href="{dl_p_review.U_MEMBER}">{dl_p_review.MEMBERNAME}</a>
+		{L_ON} {dl_p_review.DATE}</div>
+	  <!-- IF dl_p_review.U_APPR --><div style="float: right;">IP: {dl_p_review.IP} &nbsp; {dl_p_review.U_APPR} {dl_p_review.U_DEL}</div><!-- ENDIF --><br />
+	  <hr width="99%" />
+	  <span class="gen"><strong>{dl_p_review.TITLE}</strong></span><br /><br />
+	  <span class="genmed">{dl_p_review.COMMENT}</span>
+	</td>
+</tr>
+<!-- END dl_p_review -->
+</table>
+</div>
+<!-- IF DL_P_REVIEW_PAGES --><br />{L_PAGE}: {DL_P_REVIEW_PAGES}<!-- ENDIF -->
+<!-- ENDIF -->
+
+<!-- start the right column -->
+</td><td valign="top" width="20%">
+
+<!-- IF IMG_DL_SCREENSHOT -->
+<a href="{U_DL_SCREENSHOT}"><img src="{IMG_DL_SCREENSHOT}" border="0" alt="{L_VIEWALLSCREENS}" title="{L_VIEWALLSCREENS}" /></a><br /><br />
+<!-- ENDIF -->
+<!-- IF DL_REVIEWS_ACTIVE -->
+<table border="0" cellpadding="3" cellspacing="1" width="100%" class="forumline">
+<tr>
+	<td class="row1" width="50%">{L_RATING}</td>
+	<td align="center" class="row2">{IMG_DL_RATING}</td>
+</tr><!--<tr>
+	<td class="row1" width="50%">{L_VOTES}</td>
+	<td align="center" class="row2">{DL_VOTES}</td>
+</tr>-->
+<!--</table><br />-->
+<!-- ENDIF -->
+<!--<table border="0" cellpadding="3" cellspacing="1" width="100%" class="forumline">-->
+<tr>
+	<td class="row1" width="50%">{L_POPULARITY}</td>
+	<td align="center" class="row2">{DL_POPULARITY}</td>
+</tr><tr>
+	<td class="row1" width="50%">{L_DOWNLOADS}</td>
+	<td align="center" class="row2">{DL_HITS}</td>
+</tr><tr>
+	<td class="row1" width="50%">{L_PAGEVIEWS}</td>
+	<td align="center" class="row2">{DL_VIEWS}</td>
+</tr>
+</table><br />
+<!-- IF B_DL_ADMIN -->
+<table border="0" cellpadding="3" cellspacing="1" width="100%" class="forumline">
+<tr>
+	<td class="row1" width="50%">{L_ADMINTOOLS}</td>
+	<td align="center" class="row2"><a href="{U_DL_EDIT}">{L_EDIT}</a> / <a href="{U_DL_DELETE}">{L_DELETE}</a></td>
+</tr><tr>
+	<td class="row1" width="50%">{L_ACTIVE}</td>
+	<td align="center" class="row2"><a href="{U_DL_ACTIVE}"><img src="{IMG_DL_ACTIVE}" border="0" alt="{S_DL_ACTIVE}" title="{S_DL_ACTIVE}" /></a></td>
+</tr><tr>
+	<td class="row1" width="50%">{L_EDPICK}</td>
+	<td align="center" class="row2"><a href="{U_DL_PICK}"><img src="{IMG_DL_PICK}" border="0" alt="{S_DL_PICK}" title="{S_DL_PICK}" /></a></td>
+</tr>
+</table><br />
+<!-- ENDIF -->
+<div align="center">
+<a class="forumlink" href="{U_DL_MIRRORS}"><img src="{IMG_DL_MIRRORS}" border="0" alt="{S_DL_MIRRORS}" title="{S_DL_MIRRORS}" /></a>
+<!-- BEGIN dl_image -->
+<br /><br /><img src="{dl_image.SRC}" border="0" alt="{dl_image.TITLE}" title="{dl_image.TITLE}" />
+<!-- END dl_image -->
+
+</div>
+
+   </td>
+ </tr>
+</table>
+</div>

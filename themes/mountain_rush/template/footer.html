@@ -1,0 +1,26 @@
+<!-- BEGIN bottomblock -->
+<div class="blockhead" style="width:99%; text-align:center;" id="pic{bottomblock.S_BID}" onclick="blockslide('{bottomblock.S_BID}');">
+ {bottomblock.S_TITLE}
+</div>
+<div class="centerblockcontent" id="pe{bottomblock.S_BID}" {bottomblock.S_VISIBLE}>
+  {bottomblock.S_CONTENT}
+</div>
+<br />
+<!-- END bottomblock -->
+<!-- IF S_RIGHTBLOCKS -->
+</td><td class="mainside" id="pe601" {B_R_VISIBLE}>
+<!-- BEGIN rightblock -->
+  <div class="blockhead" id="pic{rightblock.S_BID}" onclick="blockslide('{rightblock.S_BID}');" style="cursor:pointer;" title="{S_TOGGLE}">
+    {rightblock.S_TITLE}
+  </div>
+  <div class="blockcontent" id="pe{rightblock.S_BID}" {rightblock.S_VISIBLE}>
+      {rightblock.S_CONTENT}
+  </div>
+  <br />
+<!-- END rightblock -->
+<!-- ENDIF -->
+</td></tr></table>
+<div style="text-align:center;"><!-- IF S_BANNER -->{S_BANNER}<br /><!-- ENDIF -->{S_FOOTER}</div>
+<!-- IF S_DEBUG_SQL --><div class="table1">{S_DEBUG_SQL}</div><!-- ENDIF -->
+<!-- IF S_DEBUG_PHP --><div class="table1">{S_DEBUG_PHP}</div><!-- ENDIF -->
+</body></html>

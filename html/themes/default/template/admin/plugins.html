@@ -1,0 +1,22 @@
+<p class="legend">
+<span style="background-color:#DDFFDD">Installed &amp; Current</span>
+<span style="background-color:#FFDDDD">Installed &amp; OutDated</span>
+<span style="background-color:#DDDDFF">Installed CVS</span>
+<span style="background-color:#DDDDDD">Disabled or Not Installed</span>
+</p>
+<ul class="tabs blocklabels">
+<!-- BEGIN channel -->
+<li class="t0<!-- IF channel.S_NAME == 'core' --> current<!-- ENDIF -->"><a class="tab" style="width:25%;">{channel.S_NAME}</a>
+<div class="tabcontent">
+	<!-- BEGIN item -->
+	<dl style="background-color:{channel.item.S_STATUS_BG}" title="{channel.item.S_STATUS_TXT}">
+	<dt>{channel.item.S_TITLE}</dt>
+	<dt><!-- IF channel.S_NAME == 'core' && channel.item.S_INSTALLED_V == 'N/A' -->Against<!-- ELSE -->Online<!-- ENDIF --> L_(VERSION): {channel.item.S_VERSION}</dt>
+	<!-- IF channel.item.S_INSTALLED_V --><dt>Installed L_(VERSION): {channel.item.S_INSTALLED_V}</dt><!-- ENDIF --><br />
+	<dt>L_(DATE): {channel.item.S_DATE}</dt>
+	<!-- IF channel.item.S_URL --><dt>L_(URL): <a href="{channel.item.S_URL}">{channel.item.S_URL_SHORT}</a></dt><!-- ENDIF --><br />
+	<dd>L_(DESCRIPTION): {channel.item.S_DESCRIPTION}</dd>
+	</dl><hr />
+	<!-- END -->
+</div>
+<!-- END -->

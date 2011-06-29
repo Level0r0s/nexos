@@ -1,0 +1,31 @@
+	<tr><th class="thHead" colspan="3">Add custom userinfo field</th></tr>
+	<tr>
+		<td class="row1">Fieldname</td>
+		<td class="row2" colspan="2"><input type="text" name="fieldname" size="25" maxlength="25" /> ("my_age" for example)</td>
+	</tr><tr>
+		<td class="row1">Type</td>
+		<td class="row2" colspan="2">
+			<select name="fieldtype">
+			<option value="0">Text</option>
+			<option value="1">_(YES)/_(NO)</option>
+			<option value="2">Textarea</option>
+			<option value="4">Number</option>
+			<option value="5">Gender</option>
+			<option value="8" disabled="disabled">List</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td class="row1">Private</td>
+		<td class="row2" colspan="2">
+			<select name="section">
+			<option value="3">_(YES)</option>
+			<option value="2">_(NO)</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td class="row1">Size</td>
+		<td class="row2"><input type="text" name="fieldsize" size="10" maxlength="3" /> Between 0 and 255</td>
+	</tr><tr>
+		<td class="row1">Description</td>
+		<td class="row2"><input type="text" name="fieldlang" size="50" maxlength="255" /> ("My age" for example)</td>
+	</tr>

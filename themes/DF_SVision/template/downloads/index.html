@@ -1,0 +1,27 @@
+<div class="table1">
+{DL_MENU}<br /><br />
+	<!-- IF B_EDITORSPICK -->
+	<div class="forumline" style="width:37%; float:left; border-left:0px; border-right:0px;">
+	   <div class="row1"><span class="genmed"><em>{L_FEATURED}:</em> {TITLE}</span></div>
+	   <div><!-- IF SRC_IMG --><a href="{DETAILS}"><img src="{SRC_IMG}" width="100" alt="{L_READ_MORE}" title="{L_READ_MORE}" style="margin-right:5px; float:left; border:0;" /></a><!-- ENDIF -->{DESC}<br /><span style="float: right;"><a href="{DETAILS}">{L_READ_MORE}</a> - <a href="{U_MOREPICKS}">{L_MOREPICKS}</a></span></div>
+	</div>
+	<!-- ENDIF -->
+
+	<!-- IF B_LATEST_TOP -->
+	<div class="forumline" style="width:30%; margin-left:3%; float:left; border-left:0px; border-right:0px;">
+	   <div class="row1"><span class="genmed"><em>{LATEST_DOWNLOADS}:</em></span></div>
+	    <!-- BEGIN latest -->
+	    <div style="padding:2px{latest.COLOR}">{latest.NUM}. <a href="{latest.U_DETAILS}">{latest.S_TITLE}</a> <span style="font-size:9px; color:green;">{latest.S_TYPE}</span></div>
+	    <!-- END latest -->
+	</div>
+	<div class="forumline" style="width:30%; float:left; border-left:0px; border-right:0px;">
+	   <div class="row1"><span class="genmed"><em>{TOP_DOWNLOADS}:</em></span></div>
+	    <!-- BEGIN top -->
+	    <div style="padding:2px{top.COLOR}">{top.NUM}. <a href="{top.U_DETAILS}">{top.S_TITLE}</a></div>
+	    <!-- END top -->
+	</div><br /><br />
+	<!-- ENDIF -->
+
+<!-- INCLUDE downloads/categories.html -->
+
+</div>

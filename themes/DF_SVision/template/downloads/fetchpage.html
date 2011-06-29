@@ -1,0 +1,18 @@
+<div class="table1">
+{DL_DETAIL_MENU}<br /><br />
+
+<span class="genmed"><strong>{L_DL_FILE}</strong></span><br /><br />
+<!-- IF S_DL_NOW -->
+{S_DL_NOW}
+<!-- ELSE -->
+{S_ERRORS}
+{S_DL_DESC1} {S_DL_DESC2}<br /><br />
+<form action="{U_DL_FORM}" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+<label class="ulog">{L_SECURITYCODE}</label>{IMG_SECCODE}<br />
+<label class="ulog" for="gfx_check">{L_TYPESECCODE}</label>
+<input type="text" name="gfx_check" id="gfx_check" size="9" maxlength="6" />
+<br /><br />
+<input type="submit" value="{L_GET_DOWNLOAD}" />
+</form>
+<!-- ENDIF -->
+</div>

@@ -1,0 +1,34 @@
+.::COMPLETE::.
++Installer (djdevon3 SCROFT)
+++ test installer (SCROFT)
++Language file ported and cleaned up (djdevon3 SCROFT)
++Clean old files out of the zip/rar (djdevon3 SCROFT)
++finish rewriting the admin section (SCROFT is working on this) about 90% done
+++full testing of admin section (djdevon3 SCROFT)
++Finish Porting / code rewrite of module section (djdevon3 SCROFT DssTrainer?)
+
+.::INCOMPLETE::.
+- full test of module section
+- Finish Porting / code rewrite of blocks(who?)
+-- Test Block Code
+
+.::CHANGES::.
+= add menu to server info pages(djdevon3)
+= redesign admin layout? (djdevon3)
+= Add ET
+= Add UO
+
+Assigned:
+Blocks rewrite (DJDevon3)
+Documentation rewrite (DJDevon3)
+
+.::Files considered complete but untested::.
+modules\GameServers\admin\index.inc
+modules\GameServers\index.php
+
+.::Files completed and fully tested::.
+modules\GameServers\admin\adlinks.inc
+language\english\gameservers.php
+
+Fix the cvs file structure.  All blank folders in root: /admin, /output_templates, and list_templates, and gameq folder must be deleted.
+They belong in /GameServers/modules which they are already there and have the correct data in the folders and files.  The folders in root are blank duplicates.

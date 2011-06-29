@@ -1,0 +1,127 @@
+<!-- BEGIN newsempty -->
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+  <tr>
+   <td>
+     <table width="100%" border="0" cellspacing="0" cellpadding="1">
+       <tr>
+         <td style="background:#006699;">
+		   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+             <tr>
+               <td style="background:#FFFFFF;">
+			     <table width="100%" border="0" cellspacing="1" cellpadding="0">
+                   <tr> 
+                     <td style="background:#FFFFFF;">
+					   <table width="100%" border="0" cellspacing="0" cellpadding="4">
+                         <tr>
+                           <td>
+    <div style="text-align:center;"><span class="title">{newsempty.S_SITENAME}</span><br /><br />
+    {newsempty.S_NOTOPIC}<br /><br />
+    [ <a href="{newsempty.U_NEWSINDEX}">{newsempty.S_GONEWS}</a> | <a href="{newsempty.U_TOPICS}">{newsempty.S_SELECT}</a> ]</div></td>
+                         </tr>
+                       </table>
+					 </td>
+                   </tr>
+                 </table>
+			   </td>
+             </tr>
+           </table>
+		 </td>
+       </tr>
+     </table>
+     <table border="0" cellpadding="0" cellspacing="0" class="tbl">
+	  <tr>
+	   <td class="tbll"><img src="images/spacer.gif" alt="" width="8" height="4" /></td>
+	   <td class="tblbot"><img src="images/spacer.gif" alt="" width="8" height="4" /></td>
+	   <td class="tblr"><img src="images/spacer.gif" alt="" width="8" height="4" /></td>
+	  </tr>
+     </table>
+   </td>
+ </tr>
+</table>
+<!-- END newsempty -->
+<!-- IF B_PAGINATION -->
+<!-- INCLUDE pagination.html -->
+<!-- ENDIF -->
+<!-- BEGIN newscat -->
+<table class="newsindex">
+ <tr>
+  <td>
+  <div style="text-align:center"><span class="title">{newscat.S_SITENAME}: {newscat.S_TOPIC_T}</span><br /><br />
+  <form action="{newscat.U_SEARCH}" method="post" {I18N}><div>
+  <input type="hidden" name="topic" value="{newscat.I_TOPIC}" />
+    {newscat.S_SEARCHON}: <input type="name" name="search" size="30" maxlength="255" />&nbsp;&nbsp;
+    <input type="submit" value="{newscat.S_SEARCH}" />
+  </div></form>
+  [ <a href="{newscat.U_HOME}">{newscat.S_GOHOME}</a> | <a href="{newscat.U_TOPICS}">{newscat.S_SELECT}</a> ]</div>
+  </td>
+ </tr>
+</table><br />
+<!-- END newscat -->
+<!-- BEGIN newstopic -->
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellspacing="0" cellpadding="1">
+    <tr>
+     <td>
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+        <td>
+		 <table width="100%" border="0" cellspacing="1" cellpadding="0">
+          <tr>
+           <td style="height:27px;" class="row1">
+		    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr>
+              <td><div style="text-align=:left; white-space:nowrap;" class="storytitle"><b>{newstopic.S_TITLE}</b></div></td>
+             </tr>
+            </table>
+		   </td>
+          </tr>
+          <tr>
+           <td class="row2">
+			<table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr>
+              <td align="left"><a href="{newstopic.U_NEWTOPIC}"><img src="{newstopic.IMG_TOPIC}" alt="{newstopic.S_TOPIC}" title="{newstopic.S_TOPIC}" style="float:right;" /></a><span class="storytext">{newstopic.S_STORY}</span></td>
+             </tr>
+            </table>
+		   </td>
+          </tr>
+          <tr>
+           <td class="cat2">
+		    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr>
+              <td><div style="text-align:center; white-space:nowrap;">
+                  <span class="postedby">{newstopic.S_POSTEDBY} {newstopic.S_INFORMANT} {newstopic.S_ON} {newstopic.S_TIME} {newstopic.S_READS}</span><br />
+                  <span class="readmore">{newstopic.S_MORELINK}{newstopic.S_COMMLINK}{newstopic.S_PRNTLINK}{newstopic.S_FRNDLINK}{newstopic.S_CATLINK}{newstopic.S_SCORLINK}</span></div></td>
+             </tr>
+            </table>
+		   </td>
+          </tr>
+         </table>
+		</td>
+       </tr>
+      </table>
+	 </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- END newstopic -->
+<!-- IF B_PAGINATION -->
+<table width="100%"><tr>
+<!-- IF PAGINATION_PREV --><td class="pagneutral"><a href="{PAGINATION_PREV}" title="{L_PREVIOUS}"><b>&laquo;</b></a></td><!-- ENDIF -->
+<td><br /></td>
+<!-- BEGIN pagination -->
+	<!-- IF pagination.URL -->
+	<td class="paginact"><a href="{pagination.URL}">{pagination.PAGE}</a></td>
+	<!-- ELSE -->
+	<td class="pagact">{pagination.PAGE}</td>
+	<!-- ENDIF -->
+<!-- END pagination -->
+<td><br /></td>
+<!-- IF PAGINATION_NEXT -->
+<td class="pagneutral"><a href="{PAGINATION_NEXT}" title="{L_NEXT}"><b>&raquo;</b></a></td>
+<!-- ENDIF -->
+</tr></table>
+<!-- ENDIF -->

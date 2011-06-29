@@ -1,0 +1,16 @@
+<!-- IF DL_SUB -->
+<h3><!-- IF DL_ROOT -->{L_CATEGORIES}<!-- ELSE -->{L_SUBCATEGORIES}<!-- ENDIF --></h3>
+<div style="display:block; width:100%;">
+	<!-- BEGIN dl_cat -->
+	<!-- IF dl_cat.POS_NEW --><div style="float:left; width:33.3%;"><!-- ENDIF -->
+	<a class="forumlink" href="{dl_cat.URL}">{dl_cat.TITLE}</a><!-- IF dl_cat.MARK_NEW -->&nbsp;&nbsp;<span style="font-size:9px; color:green;">{L_NEW}</span><!-- ENDIF --><!-- IF dl_cat.MARK_UPD -->&nbsp;&nbsp;<span style="font-size:9px; color:green;">{L_UPD}</span><!-- ENDIF -->
+	<!-- IF dl_cat.DESC --><br /><span class="genmed"><em>{dl_cat.DESC}</em></span><!-- ENDIF -->
+	<!-- IF dl_cat.SUB --><br />{dl_cat.SUB}<!-- ENDIF -->
+	<!-- IF dl_cat.POS_BEFORE --></div><!-- ELSE --><br /><br /><!-- ENDIF -->
+	<!-- END dl_cat -->
+<br />
+</div>
+<div style="display:block; width:100%; clear:both;"></div>
+<!-- ENDIF -->
+
+<!-- IF DL_SUBROOT --><br /><!-- ENDIF -->

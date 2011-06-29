@@ -1,0 +1,15 @@
+/**
+* CPG Dragonfly CMS
+* Copyright (c) 2004-2005 by CPG-Nuke Dev Team, dragonflycms.org
+* Released under the GNU GPL version 2 or any later version
+* $Id: opera.css,v 1.4 2008/04/19 12:42:29 nanocaiordo Exp $
+*/
+.adminitem {
+display: inline-table;
+}
+.maintable {
+border-collapse: separate;
+}
+span.infoarea:hover  {
+display:block;
+}

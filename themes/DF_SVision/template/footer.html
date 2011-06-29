@@ -1,0 +1,27 @@
+<!-- BEGIN bottomblock -->
+<div class="table1">
+  <div class="option" style="text-align:center;">{bottomblock.S_TITLE}</div>
+  {bottomblock.S_CONTENT}
+</div><br />
+<!-- END bottomblock -->
+<!-- IF S_RIGHTBLOCKS -->
+</td><td class="mainside" id="pe601" {B_R_VISIBLE}>
+<!-- BEGIN rightblock -->
+  <div class="blockhead" id="pic{rightblock.S_BID}" onclick="blockslide('{rightblock.S_BID}');" style="cursor:pointer;" title="{S_TOGGLE}">
+    {rightblock.S_TITLE}
+  </div>
+  <div class="blockcontent" id="pe{rightblock.S_BID}" {rightblock.S_VISIBLE}>
+      {rightblock.S_CONTENT}
+  </div>
+  <div class="blockfooter"></div>
+  <br/>
+<!-- END rightblock -->
+<!-- ENDIF -->
+</td></tr></table>
+<div class="footer">{S_FOOTER}</div>
+
+<div class="footer1" >Created by: <a href="http://www.scyberspace.com">ScyberSpace Designs</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Theme was ported To DragonflyCMS by: <a href="http://www.dizfunkshunal.com">Dizfunkshunal's Place</a></div>
+
+<!-- IF S_DEBUG_SQL --><div class="table1">{S_DEBUG_SQL}</div><!-- ENDIF -->
+<!-- IF S_DEBUG_PHP --><div class="table1">{S_DEBUG_PHP}</div><!-- ENDIF -->
+</body></html>

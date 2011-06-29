@@ -1,0 +1,222 @@
+<?php
+/*********************************************
+  CPG Dragonfly™ CMS
+  ********************************************
+  Copyright © 2004-2006 by CPG-Nuke Dev Team
+  http://dragonflycms.org
+
+  Dragonfly is released under the terms and conditions
+  of the GNU GPL version 2 or any later version
+
+  $Source: /cvs/l10n/catalan/web_links.php,v $
+  $Revision: 1.3 $
+  $Author: nanocaiordo $
+  $Date: 2006/02/26 21:39:50 $
+Encoding test: n-array summation ∑ latin ae w/ acute ǽ
+*******************************************************/
+if (!defined('CPG_NUKE')) { exit; }
+global $sitename, $anonwaitdays, $outsidewaitdays;
+define('_YOURNAME','El teu nom');
+define('_CATEGORIES','Categories');
+define('_LVOTES','Vots');
+define('_TOTALVOTES','Vots totals:');
+define('_LINKTITLE','Títol de l\'enllaç');
+define('_THEREARE','Hi ha');
+define('_NOMATCHES','No hi ha registres per a la seva consulta');
+define('_SCOMMENTS','Comentaris');
+define('_ADDLINK','Afegir enllaç');
+define('_POPULAR','Popular');
+define('_TOPRATED','Millor valorats');
+define('_RANDOM','Aleatori');
+define('_LINKSMAIN','Índex');
+define('_LINKCOMMENTS','Comentaris de l\'enllaç');
+define('_ADDITIONALDET','Detalls addicionals');
+define('_EDITORREVIEW','Ressenya de l\'editor');
+define('_REPORTBROKEN','Informar d\'un enllaç trencat');
+define('_LINKSMAINCAT','Principals categories d\'enllaços');
+define('_AND','i');
+define('_INDB','a la nostra base de dades');
+define('_ADDALINK','Afegir nou enllaç');
+define('_INSTRUCTIONS','Instruccions');
+define('_SUBMITONCE','Enviar un únic enllaç de cada vegada');
+define('_POSTPENDING','Tots els enllaços enviats seran verificats.');
+define('_USERANDIP','El nom d\'usuari i l\'IP seran registrats, així que si us plau, no abuseu del sistema.');
+define('_PAGETITLE','Títol de la pàgina');
+define('_PAGEURL','Pàgina de la URL');
+define('_YOUREMAIL','El teu email');
+define('_LDESCRIPTION','Descripció: (255 caràcters màxim)');
+define('_ADDURL','Afegir aquesta URL');
+define('_LINKSNOTUSER1','No ets usuari registrat o no t\'has connectat.');
+define('_LINKSNOTUSER2','Si estiguessis registrat podries afegir enllaços a aquest espai web.');
+define('_LINKSNOTUSER3','Ser un usuari registrat és ràpid i fàcil.');
+define('_LINKSNOTUSER4','Per què es requereix registre per accedir a algunes funcions?');
+define('_LINKSNOTUSER5','Només oferim el contingut de major qualitat,');
+define('_LINKSNOTUSER6','cada article és vist i aprovat individualment per la nostra plantilla.');
+define('_LINKSNOTUSER7','Esperem oferir-li només informació de valor.');
+define('_LINKSNOTUSER8','<a href="'.getlink("Your_Account").'">Registrar-se</a>');
+define('_LINKALREADYEXT','ERROR: Aquesta URL ja està llistada a la base de dades!');
+define('_LINKNOTITLE','ERROR: Necessites escriure un títol per aquest enllaç!');
+define('_LINKNOURL','ERROR: Necessites escriure una URL per aquest enllaç!');
+define('_LINKNODESC','ERROR: Necessites escriure una descripció per aquest enllaç!');
+define('_LINKRECEIVED','Hem rebut les dades de l\'enllaç que has enviat. Gràcies!');
+define('_EMAILWHENADD','Rebràs un e-mail quan l\'enllaç sigui aprovat.');
+define('_CHECKFORIT','No has escrit un e-mail. De totes maneres, revisarem el teu enllaç aviat.');
+define('_NEWLINKS','Nous enllaços');
+define('_TOTALNEWLINKS','Total de nous enllaços');
+define('_LASTWEEK','Darrera setmana');
+define('_LAST30DAYS','Darrers 30 dies');
+define('_1WEEK','1 setmana');
+define('_2WEEKS','2 setmanes');
+define('_30DAYS','30 dies');
+define('_TOTALFORLAST','Nombre total de nous enllaços pels darrers');
+define('_ADDEDON','Agregat el');
+define('_RATING','Valoració');
+define('_RATESITE','Valori aquest espai');
+define('_DETAILS','Detalls');
+define('_BESTRATED','Enllaços millor valorats - Top');
+define('_OF','de');
+define('_TRATEDLINKS','total d\'enllaços valorats');
+define('_TVOTESREQ','mínim de vots necessaris');
+define('_SHOWTOP','Mostrar Top');
+define('_MOSTPOPULAR','Més popular - Top');
+define('_OFALL','de tot');
+define('_SORTLINKSBY','Ordenar enllaços per');
+define('_SITESSORTED','Espais classificats per');
+define('_POPULARITY','Popularitat');
+define('_SELECTPAGE','Seleccionar pàgina');
+define('_MAIN','Principal');
+define('_NEWTODAY','Nou avui');
+define('_NEWLAST3DAYS','Nou en els darrers 3 dies');
+define('_NEWTHISWEEK','Nou aquesta setmana');
+define('_CATNEWTODAY','Nous enllaços afegits a aquesta categoria avui');
+define('_CATLAST3DAYS','Nous enllaços afegits a aquesta categoria en els darrers 3 dies');
+define('_CATTHISWEEK','Nous enllaços afegits a aquesta categoria en aquesta setmana');
+define('_POPULARITY1','Popularitat (de menys a més hits)');
+define('_POPULARITY2','Popularitat (de més a menys hits)');
+define('_TITLEAZ','Títol (A - Z)');
+define('_TITLEZA','Títol (Z - A)');
+define('_DATE1','Data (primer els enllaços més antics)');
+define('_DATE2','Data (primer els enllaços més nous)');
+define('_RATING1','Valoració (de menor a major)');
+define('_RATING2','Valoració (de major a menor)');
+define('_SEARCHRESULTS4','Cercar resultats per');
+define('_USUBCATEGORIES','Subcategories');
+define('_LINKS','Enllaços');
+define('_TRY2SEARCH','Intenta cercar');
+define('_INOTHERSENGINES','en altres motors de cerca');
+define('_EDITORIAL','Editorial');
+define('_LINKPROFILE','Perfil de l\'enllaç');
+define('_EDITORIALBY','Editorial per');
+define('_NOEDITORIAL','L\'editorial no està actualment disponible en aquest espai web.');
+define('_VISITTHISSITE','Visitar aquest espai web');
+define('_RATETHISSITE','Valorar aquest espai web');
+define('_ISTHISYOURSITE','És aquet el teu recurs?');
+define('_ALLOWTORATE','Permeti que els usuaris el valorin des del seu espai web!');
+define('_LINKRATINGDET','detall de valoració d\'enllaços');
+define('_OVERALLRATING','Valoració general');
+define('_TOTALOF','Total de');
+define('_USER','Usuari');
+define('_USERAVGRATING','Valoració promitja dels usuaris');
+define('_NUMRATINGS','Núm. de valoracions');
+define('_EDITTHISLINK','Editar enllaç');
+define('_REGISTEREDUSERS','Usuaris registrats');
+define('_NUMBEROFRATINGS','Número de valoracions');
+define('_NOREGUSERSVOTES','No hi ha vots d\'usuaris registrats');
+define('_BREAKDOWNBYVAL','Histograma per valoració');
+define('_LTOTALVOTES','vots totals');
+define('_LINKRATING','Enllaços valorats');
+define('_HIGHRATING','Alta valoració');
+define('_LOWRATING','Baixa valoració');
+define('_NUMOFCOMMENTS','Número de comentaris');
+define('_WEIGHNOTE','* Nota: Aquest espai diferencia els vots dels usuaris registrats dels no registrats');
+define('_NOUNREGUSERSVOTES','No hi ha vots de no registrats');
+define('_WEIGHOUTNOTE','* Nota: Aquest espai diferencia els vots dels usuaris registrats dels foranis');
+define('_NOOUTSIDEVOTES','Vots d\'usuaris');
+define('_OUTSIDEVOTERS','Vots d\'anònims');
+define('_UNREGISTEREDUSERS','Usuaris no registrats');
+define('_PROMOTEYOURSITE','Promoure el teu espai web');
+define('_PROMOTE01',' Potser t\'interessa alguna de les opcions que tenim per a la "Valoració d\'altres espais". Aquestes et permeten posar una imatge (o un formulari de votació) al teu espai web per incrementar els seus vots. Si us plau, trieu una d\'aquestes opcions:');
+define('_TEXTLINK',' Text de l\'enllaç');
+define('_PROMOTE02','Una manera de lligar el formulari d\'avaluació és posar un simple text:');
+define('_HTMLCODE1','El codi HTML que pots utilitzar en aquest cas, és el següent:');
+define('_THENUMBER','El número');
+define('_IDREFER','en el codi HTML de referència la teva ID de l\'espai a la Base de Dades de '.$sitename.'. Verifica que aquest número estigui present.');
+define('_BUTTONLINK','Botó d\'enllaç');
+define('_PROMOTE03','Si vols més que un simple text, pots utilitzar un petit botó com:');
+define('_RATEIT','Vota per aquest espai');
+define('_HTMLCODE2','El codi font pel botó anterior és:');
+define('_REMOTEFORM','Formulari de valoració remota');
+define('_PROMOTE04','Si fas trampes en això, treurem el teu enllaç. Una vegada aclarat això, així és com es veu el formulari de valoració.');
+define('_VOTE4THISSITE','Votar per aquest espai');
+define('_LINKVOTE','Votar!');
+define('_HTMLCODE3','Utilitzant aquest formulari permetrà als usuaris valorar el seu espai directament des de la seva pàgina, i serà desada aquí. El formulari anterior està desconnectat, però el següent codi treballarà si el copies i enganxes a la teva pàgina. El codi és el següent:');
+define('_PROMOTE05','Gràcies!, i bona sort amb la teva valoració.');
+define('_THANKSBROKEN','Gràcies per ajudar a mantenir la integritat d\'aquest directori.');
+define('_THANKSFORINFO','Gràcies per la informació.');
+define('_LOOKTOREQUEST','Analitzarem la teva petició aviat.');
+define('_ONLYREGUSERSMODIFY','Només els usuaris registrats poden proposar modificacions. Si us plau, <a href="'.getlink("Your_Account").'">Registra\'t o Connecta\'t</a>.');
+define('_REQUESTLINKMOD','Demanar modificació de l\'enllaç');
+define('_LINKID','ID de l\'enllaç');
+define('_SENDREQUEST','Enviar petició');
+define('_THANKSTOTAKETIME','Gràcies pel teu temps en l\'avaluació d\'aquest espai a');
+define('_LETSDECIDE','La teva informació permetrà a altres visitants decidir millor sobre quins enllaços escollir.');
+define('_RETURNTO','Tornar a');
+define('_RATENOTE1','Si us plau, no votis pel mateix enllaç més d\'una vegada');
+define('_RATENOTE2','L\'escala va de 1 a 10, essent 1 Pobre i 10 Excel·lent.');
+define('_RATENOTE3','Provi de ser objectiu en el seu vot, si rep sempre 1 o 10, la valoració no serà útil.');
+define('_RATENOTE4','Pots veure una llista dels <a href="'.getlink("&amp;l_op=TopRated").'">recursos més valorats</a>.');
+define('_RATENOTE5','No votis pel teu propi recurs o el del teu competidor.');
+define('_YOUAREREGGED','Ets un usuari registrat i estás desconnectat.');
+define('_FEELFREE2ADD','Sigues lliure d\'afegir un comentari sobre aquest espai.');
+define('_YOUARENOTREGGED','No ets un usuari registrat o no estàs connectat.');
+define('_IFYOUWEREREG','Si estiguessis registrat podràs haver publicat comentaris en aquest espai web.');
+define('_MODIFY','Modificar');
+define('_COMPLETEVOTE1','El teu vot és preuat.');
+define('_COMPLETEVOTE2','Tu ja has votat per aquest recurs en els passats '.$anonwaitdays.' dies.');
+define('_COMPLETEVOTE3','Vota per un recurs una sola vegada<br>Tots els vots seran revisats.');
+define('_COMPLETEVOTE4','No pots votar per un recurs que tu hagis enviat.<br>Tots els vots seran revisats.');
+define('_COMPLETEVOTE5','No has seleccionat un valor - Vot no registrat');
+define('_COMPLETEVOTE6','Només es permet un vot per direcció IP cada '.$outsidewaitdays.' dies.');
+
+/**************************
+  ADMNINISTRATION SECTION
+**************************/
+define('_ADDMAINCATEGORY','Afegir una categoria principal');
+define('_ADDSUBCATEGORY','Afegir una subcategoria');
+define('_WEBLINKSADMIN','Administració d\'enllaços');
+define('_EZTRANSFERLINKS','Transferir tots els enllaços des de la categoria');
+define('_CLEANLINKSDB','Esborrar vots');
+define('_EZTRANSFER','Transferir');
+define('_BROKENLINKSREP','Informes d\'enllaços trencats');
+define('_LINKMODREQUEST','Peticions de modificació d\'enllaços');
+define('_ADDNEWLINK','Afegir un nou enllaç');
+define('_MODLINK','Modificar un enllaç');
+define('_LINKSINDB','Enllaços a la nostra Base de Dades');
+define('_LINKSWAITINGVAL','Enllaços esperant l\'aprovació');
+define('_ERRORURLEXIST','ERROR: Aquesta URL ja existeix a la base de dades!');
+define('_ERRORNOTITLE','ERROR: Has de posar un títol per la URL!');
+define('_ERRORNOURL','ERROR: Has de posar una URL per la URL!');
+define('_ERRORNODESCRIPTION','ERROR: Has de posar una descripció per la URL!');
+define('_NEWLINKADDED','Nou enllaç afegit a la base de dades');
+define('_YOURLINKAT','El teu enllaç a');
+define('_LINKVALIDATION','Validació de l\'enllaç');
+define('_CHECKALLLINKS','Voalidar tots els enllaços');
+//define('_VALIDATELINKS','Valida els enllaços');
+//define('_FAILED','Error!');
+//define('_BEPATIENT','(si et plau, sigues pacient)');
+//define('_VALIDATINGCAT','Validant la Categoria (i totes les subcategories)');
+//define('_VALIDATINGSUBCAT','Validant la Sub-Categoria');
+define("_ADDEDITORIAL","Afegir ressenya");
+define("_EDITORIALTITLE","Títol de la ressenya");
+define("_EDITORIALTEXT","Text de la ressenya");
+define("_DATEWRITTEN","Data");
+define("_NOREPORTEDBROKEN","No hi ha un informe d'enllaç trencat.");
+define("_USERREPBROKEN","Informe d'enllaços trencats");
+define("_IGNOREINFO","Ignorar (Esborra totes les <b><i>peticions</i></b> per a un enlaç donat)");
+define("_DELETEINFO","Esborrar (Esborra els <b><i>enllaços trencats</i></b> i les <b><i>peticions</i></b> per a un enllaç donat)");
+define("_LINK","Enllaç");
+define("_LINKOWNER","Propietari de l'enllaç");
+define("_USERMODREQUEST","User Link Modification Requests");
+define("_ORIGINAL","Original");
+define("_PROPOSED","Proposat");
+define("_NOMODREQUESTS","No hi ha propostes de modificar ara");

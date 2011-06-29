@@ -1,0 +1,68 @@
+<!-- BEGIN newsempty -->
+<table class="newsindex"><tr><td>
+    <div style="text-align:center;" class="title">{newsempty.S_SITENAME}</div><br /><br />
+    {newsempty.S_NOTOPIC}<br /><br />
+    [ <a href="{newsempty.U_NEWSINDEX}">{newsempty.S_GONEWS}</a> | <a href="{newsempty.U_TOPICS}">{newsempty.S_SELECT}</a> ]</center>
+</td></tr></table><br />
+<!-- END newsempty -->
+
+<!-- IF B_PAGINATION -->
+<table width="100%"><tr>
+<!-- IF PAGINATION_PREV --><td class="pagneutral"><a href="{PAGINATION_PREV}" title="{L_PREVIOUS}">&lt;</a></td><!-- ENDIF -->
+<td><br /></td>
+<!-- BEGIN pagination -->
+	<!-- IF pagination.URL -->
+	<td class="paginact"><a href="{pagination.URL}">{pagination.PAGE}</a></td>
+	<!-- ELSE -->
+	<td class="pagact">{pagination.PAGE}</td>
+	<!-- ENDIF -->
+<!-- END pagination -->
+<td><br /></td>
+<!-- IF PAGINATION_NEXT -->
+<td class="pagneutral"><a href="{PAGINATION_NEXT}" title="{L_NEXT}">&gt;</a></td>
+<!-- ENDIF -->
+</tr></table>
+<!-- ENDIF -->
+
+<!-- BEGIN newscat -->
+<table class="newsindex"><tr><td>
+  <div style="text-align:center;" class="title">{newscat.S_SITENAME}: {newscat.S_TOPIC_T}</div><br /><br />
+  <form action="{newscat.U_SEARCH}" method="post" {I18N}>
+  <input type="hidden" name="topic" value="{newscat.I_TOPIC}" />
+    {newscat.S_SEARCHON}: <input type="name" name="search" size="30" maxlength="255" />&nbsp;&nbsp;
+    <input type="submit" value="{newscat.S_SEARCH}" />
+  </form>
+  [ <a href="{newscat.U_HOME}">{newscat.S_GOHOME}</a> | <a href="{newscat.U_TOPICS}">{newscat.S_SELECT}</a> ]
+</td></tr></table><br />
+<!-- END newscat -->
+<!-- BEGIN newstopic -->
+<table class="table1" border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr>
+	<td class="bdr1a"></td>
+	<td class="bdr1b">
+  <span style="font-size:12px;"><b>{newstopic.S_TITLE}</b></span></td>
+	<td class="bdr1c"></td>
+</tr>
+<tr>
+	<td class="bdr1d"></td>
+	<td class="bdr1e"><a href="{newstopic.U_NEWTOPIC}"><img src="{newstopic.IMG_TOPIC}" alt="{newstopic.S_TOPIC}" style="border:0; float:right;" /></a> 
+	   <span style="font-size:10px; color:#000000;">{newstopic.S_POSTEDBY} {newstopic.S_INFORMANT} {newstopic.S_ON} {newstopic.S_TIME} {newstopic.S_READS}</span><br /><br />
+  <span style="font-size:10px; color:#000000;">{newstopic.S_STORY}
+  <!-- IF newstopic.S_NOTES -->
+  <br /><br /><b>{newstopic.S_NOTE}</b> <i>{newstopic.S_NOTES}</i>
+  <!-- ENDIF -->
+  </span><br /><br />
+  <span style="font-size:10px;">{newstopic.S_MORELINK}</span></td>
+	<td class="bdr1f"></td>
+</tr>
+<tr>
+	<td class="bdr1g"></td>
+	<td class="bdr1h"></td>
+	<td class="bdr1i"></td>
+</tr>
+</table>
+<!-- END newstopic -->
+
+<!-- IF B_PAGINATION -->
+<!-- INCLUDE pagination.html -->
+<!-- ENDIF -->

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="{S_CONTENT_DIRECTION}">
+<head>
+<base href="{S_CONTENT_BASE}">
+	<title>{TITLE}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"  />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<link rel="stylesheet" href="{THEME_PATH}/style/style.css" type="text/css" />
+</head>
+<body>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="4" class="forumline">
+ <tr>
+  <td><table width="100%" border="0" cellspacing="0" cellpadding="5">
+   <tr align="center" valign="middle">
+	<td>
+	 <span class="gen">{TITLE}</span><br /><br />
+	 <!-- IF DL_TITLE --><span class="genmed"><strong>{DL_TITLE}</strong></span><br />{DL_SIZE}<br /><br /><!-- ENDIF -->
+	 <table border="0" cellpadding="5" cellspacing="1" class="forumline" width="70%">
+<!-- BEGIN connection --> 
+	  <tr>
+	   <td class="row1" width="50%">{connection.TYPE}</td>
+	   <td align="center" class="row2">{connection.ESTIMATE}</td>
+	  </tr>
+<!-- END connection --> 
+     <!-- IF MD5_FORM -->
+		<!-- IF NOT_REM -->
+		{L_MD5NOTREM}
+		<!-- ELSEIF SUCCESS -->
+		{L_MD5UPDATED}
+		<!-- ELSE -->
+        <form action="{U_FORM}" method="post" name="edit_md5" enctype="multipart/form-data" accept-charset="utf-8">
+        <input type="text" name="md5" id="md5" size="35" maxlength="32" value="{B_MD5}" /> <input type="submit" value="Submit" />
+        </form>
+		<!-- ENDIF -->
+     <!-- ELSEIF PEND_FORM -->
+        <!-- IF ACTIVE -->
+        {L_MIRRORACTIVE}
+        <!-- ELSEIF APPROVED -->
+        {L_MIRRORAPP}
+        <!-- ELSEIF REJECTED -->
+        {L_MIRRORREJ}
+        <!-- ELSE -->
+        {L_SUBMITTEDBY} <strong>{B_SUBMITTER}</strong><br /><br />
+        <form action="{U_FORM}" method="post" name="pend_mirror" enctype="multipart/form-data" accept-charset="utf-8">
+        <input type="submit" name="approve" value="{L_APPROVE}" /> <input type="submit" name="reject" value="{L_REJECT}" />
+        </form>
+        <!-- ENDIF -->
+     <!-- ENDIF -->
+	 </table><br />
+	 <a href="javascript:window.close();">{L_CLOSE}</a>
+	</td>
+   </tr>
+  </table></td>
+ </tr>
+</table>
+
+</body></html>

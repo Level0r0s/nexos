@@ -1,0 +1,52 @@
+<div class="table1">
+
+<form action="U_(Search)" method="post" enctype="multipart/form-data" accept-charset="utf-8" style="margin:0;">
+
+   <div style="text-align:center;">
+      <span class="genmed" style="font-weight: bold">_(ACTIVETOPICS)</span><br /><br />
+      <input type="text" name="search" size="30" maxlength="255" />&nbsp;&nbsp;<input type="submit" value="_(SEARCH)" />
+      <input type="hidden" name="modules[]" value="News" />
+   </div>
+</form><br />
+
+<table style="border:0; width:100%;" cellpadding="3">
+
+<!-- BEGIN topic -->
+<tr>
+	<td style="vertical-align: top; width:25%; background-color: {BGCOLOR2}">
+		<a href="{topic.URL}"><img src="{topic.IMAGE}" alt="{topic.TITLE}" title="{topic.TITLE}" style="margin:5px 0 0 5px;" /></a><br /><br />
+      <ul class="content">
+         <li><b>_(TOPIC):</b> {topic.TITLE}</li>
+         <li><b>_(TOTNEWS):</b> {topic.TOTAL_NEWS}</li>
+         <li><b>_(TOTREADS):</b> {topic.TOTAL_READS}</li>
+      </ul>
+   </td>
+   <td style="vertical-align: top; background-color: {BGCOLOR3}">
+	<!-- IF topic.B_STORIES -->
+	<ul style="margin:0;padding:0;list-style-position:inside;">
+		<!-- BEGIN news_story -->
+		<li>
+		<!-- IF topic.news_story.B_IN_CATEGORY -->
+		<a href="{topic.news_story.U_CATEGORY}" style="font-weight: bold;">{topic.news_story.CATEGORY_TITLE}</a>:&nbsp;
+		<!-- ENDIF -->
+		<a href="{topic.news_story.URL}">{topic.news_story.TITLE}</a>
+		</li>
+		<!-- END news_story -->
+	</ul>
+
+   <!-- IF topic.B_MORE -->
+	<div style="text-align:right; font-weight:bold;">
+	&#8226;&nbsp;<a href="{topic.URL}">_(MORE) --&gt;</a>
+	</div>
+	<!-- ENDIF -->
+
+	<!-- ELSE -->
+	{NO_STORIES}
+	<!-- ENDIF -->
+
+	</td>
+</tr>
+<!-- END topic -->
+
+</table><br />
+</div>

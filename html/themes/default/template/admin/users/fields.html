@@ -1,0 +1,22 @@
+
+<!-- BEGIN section -->
+<!-- IF section.S_PROFILE --><tr><th class="thSides" colspan="3" height="25" valign="middle">_(MA_PROFILE_INFO)</th></tr>
+<!-- ELSEIF section.S_ADDITIONAL --><tr><th class="thSides" colspan="3" height="25" valign="middle">_(MA_ADDITIONAL)</th></tr>
+<!-- ELSEIF section.S_PRIVATE --><tr><th class="thSides" colspan="3" height="25" valign="middle">_(MA_PRIVATE)</th></tr>
+<!-- ELSEIF section.S_PREFERENCES --><tr><th class="thSides" colspan="3" height="25" valign="middle">_(MA_PREFERENCES)</th></tr>
+<!-- ENDIF -->
+	<tr>
+		<td class="row1">{section.S_INFO}</td>
+		<td class="row2">{section.S_SELECT}</td>
+		<td class="row2">
+		<!-- IF section.S_SECTION == 2 || section.S_SECTION == 3 -->
+			<a href="{section.U_DELFIELD}">_(DELETE)</a>
+		<!-- ENDIF -->
+		</td>
+	</tr>
+<!-- END section -->		
+	<tr>
+		<td class="catbottom" align="center" colspan="3">
+			<input type="submit" name="addfield" value="Add custom field" class="liteoption" />
+		</td>
+	</tr>

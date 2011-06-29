@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" 
+          "http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd" >
+<html dir="{S_TEXTDIR}" xml:lang="{S_LANGCODE}">
+<head>
+{S_HEADER_TAGS}
+<link rel="stylesheet" type="text/css" href="{THEME_PATH}/style/style.css" />
+<!-- IF S_MAIN_MENU or S_ADMIN_CSSMENU -->
+<link rel="stylesheet" type="text/css" href="{THEME_PATH}/style/cpgmm.css" />
+<!-- ENDIF -->
+{CSS_IE}
+</head>
+<body>
+<!-- IF S_ADMIN_CSSMENU -->
+	<img src="images/spacer.gif" style="height:20px; float:left;" alt="Admin Menu Spacer" />
+	<div id="menu" style="float:left;">{S_MAIN_MENU}</div><br /><br />
+<!-- ELSEIF S_ADMIN_MENU -->
+	<div id="adminmenu"></div>
+	<script type="text/javascript">/*<![CDATA[*/
+	{S_ADMIN_MENU}
+	cmDraw ('adminmenu', adminMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
+	/*]]>*/</script>
+<!-- ELSE -->
+<table class="bodyline" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td style="text-align:center;" valign="top">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td class="tbltl"></td><td class="tbltop"></td><td class="tbltr"></td>
+	</tr>
+	<tr>
+	<td class="tblleft"></td>
+	<td align="center">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<td style="height:145px; width:365px; background:#000000 url(images/{S_LOGO}) no-repeat; background-position:32% 50%;">&nbsp;</td>
+		<td valign="middle" style="text-align:center; background:#000000;">
+		{S_BANNER}
+		</td>
+		</tr>
+		</table>
+	</td>
+	<td class="tblright"></td>
+	</tr>
+	<tr>
+	<td class="tblbl"></td><td class="tblbot"></td><td class="tblbr"></td>
+	</tr>
+	</table>
+<!-- IF S_MAIN_MENU -->
+  <table class="topnav" width="100%"><tr><td>{G_LEFTIMAGE}{G_RIGHTIMAGE}
+	<div id="menu" style="float:left;">{S_MAIN_MENU}</div>
+  </td></tr></table>
+<!-- ELSE -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tr><td class="topnav" style="width:14px;">{G_LEFTIMAGE}</td>
+<td class="topnav" style="width:120px; white-space:nowrap;" valign="middle">
+<!-- IF S_IS_USER -->Welcome <a href="{U_MY_ACCOUNT}">{S_USERNAME}</a><!-- ELSE --><a href="{U_MY_ACCOUNT}">Login</a> or <a href="{U_REGISTER}">Register</a><!-- ENDIF -->
+</td>
+<td style="text-align:center; white-space:nowrap;" class="topnav">
+&#8226; <a href="{U_MAININDEX}">{S_HOME}</a>
+    <!-- IF S_DOWNLOADS -->
+    &#8226; <a href="{U_DOWNLOADS}">{S_DOWNLOADS}</a>
+    <!-- ENDIF -->
+    <!-- IF S_GALLERY -->
+    &#8226; <a href="{U_GALLERY}">{S_GALLERY}</a>
+    <!-- ENDIF -->
+    &#8226; <a href="{U_FORUMS}">{S_FORUMS}</a> 
+<!-- IF S_IS_ADMIN -->
+  &#8226; <a href="{U_ADMININDEX}">{S_ADMIN}</a>
+<!-- ENDIF -->
+</td>
+<td class="topnav" style="width:120px; white-space:nowrap;" class="content">
+<script type="text/javascript">
+<!--   // Array ofmonth Names
+var monthNames = new Array( "January","February","March","April","May","June","July","August","September","October","November","December");
+var now = new Date();
+thisYear = now.getYear();
+if(thisYear < 1900) {thisYear += 1900}; // corrections if Y2K display problem
+document.write(monthNames[now.getMonth()] + " " + now.getDate() + ", " + thisYear);
+// -->
+</script>
+</td><td class="topnav" style="width:14px;">{G_RIGHTIMAGE}</td>
+</tr>
+</table>
+<!-- ENDIF -->
+<table border="0" cellpadding="0" cellspacing="0" class="tbl"><tr>
+<td style="width:15px; height:20px;" class="tblleft"></td>
+<td class="tbltop" style="width:100%;">&nbsp;</td>
+<td style="width:15px; height:20px;" class="tblright"></td>
+</tr></table>
+<!-- ENDIF -->
+
+<table class="maintable"><tr>
+<!-- IF S_LEFTBLOCKS -->
+  <td  style="text-align:left;" class="mainside" id="pe600" {B_L_VISIBLE}>
+  <!-- BEGIN leftblock -->
+<table style="text-align:left;" width="180" border="0" cellspacing="0" cellpadding="4">
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="1">
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><table width="100%" border="0" cellspacing="1" cellpadding="0">
+                    <tr>
+                      <td class="row1" style="height:27px;">
+                      	<table width="100%" border="0" cellspacing="0" cellpadding="4">
+                          <tr>
+                            <td class="block-title">
+                           <img alt="{S_TOGGLE}" title="{S_TOGGLE}" id="pic{leftblock.S_BID}" src="{leftblock.S_IMAGE}.gif" onclick="blockswitch('{leftblock.S_BID}');" style="cursor:pointer; float:right;" />
+                            {leftblock.S_TITLE}
+                            </td>
+                          </tr>
+                        </table>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td  class="blockcontent">
+                      <table id="pe{leftblock.S_BID}" {leftblock.S_VISIBLE} width="100%" border="0" cellspacing="0" cellpadding="4">
+                          <tr>
+                            <td>
+                            {leftblock.S_CONTENT}
+                            </td>
+                          </tr>
+                        </table>
+
+                        </td>
+                    </tr>
+                  </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</td>
+  </tr>
+</table>
+  <!-- END leftblock -->
+  </td>
+<!-- ENDIF -->
+<td class="main">
+<!-- IF IMPORTANT_MESSAGE -->
+<div style="text-align:center; font-size:12px; color:#FF0000;">{IMPORTANT_MESSAGE}</div><br />
+<!-- ENDIF -->
+<!-- BEGIN messageblock -->
+<table width="100%" border="0" cellspacing="0" cellpadding="4"> 
+<tr> <td><table width="100%" border="0" cellspacing="0" cellpadding="1">  <tr>   
+<td style="background:#000000;"><table width="100%" border="0" cellspacing="0" cellpadding="0">    
+<tr> <td><table width="100%" border="0" cellspacing="1" cellpadding="0">
+<tr><td><table width="100%" border="0" cellspacing="0" cellpadding="4">                         
+<tr>                       
+<td><div class="option" style="text-align:center;">
+{messageblock.S_TITLE}</div><br />
+<div class="content">
+{messageblock.S_CONTENT}</div>
+<br />
+<br /><div style="text-align:center;">
+ <!-- IF S_IS_ADMIN -->
+ [ {messageblock.S_OUTPUT} - {messageblock.S_REMAIN} - <a href="{messageblock.U_EDITMSG}">{messageblock.S_EDIT}</a> ]</div>
+  <!-- ELSE -->
+  {messageblock.S_DATE}
+  <!-- ENDIF --></div></td></tr></table></td></tr></table>
+</td></tr></table></td></tr></table>
+<br style="clear:both;" /></td>
+</tr></table>
+<!-- END messageblock -->
+<!-- BEGIN centerblock -->
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+<tr><td>
+ <table width="100%" border="0" cellspacing="0" cellpadding="1">
+  <tr><td style="background:#000000;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="row1" style="height:27px;">
+   <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+	 <td><div class="storytitle" style="text-align:center;">
+     <img alt="{S_TOGGLE}" title="{S_TOGGLE}" id="pic{centerblock.S_BID}" src="{centerblock.S_IMAGE}.gif" onclick="blockswitch('{centerblock.S_BID}');" style="cursor:pointer; float:right;" />{centerblock.S_TITLE}</div>
+     </td>
+	</tr>
+   </table>
+  </td></tr>
+  <tr><td>
+   <table width="100%" border="0" cellspacing="1" cellpadding="0" id="pe{centerblock.S_BID}" {centerblock.S_VISIBLE}>
+    <tr>
+	 <td><div class="content">{centerblock.S_CONTENT}</div></td>
+	</tr>
+   </table>
+  </td></tr>
+ </table>
+</td></tr></table>
+<br style="clear:both;" /></td>
+</tr></table>
+<!-- END centerblock -->

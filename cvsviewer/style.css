@@ -1,0 +1,50 @@
+select, input, textarea { font: 13px geneva, verdana, arial, sans-serif; color: #3D3D3D; }
+
+A.small:link, A.small:visited, A.small:active { font: 9px geneva, verdana, arial, sans-serif; color: #972400; text-decoration: none; }
+
+A.small:hover { font: 9px geneva, verdana, arial, sans-serif; color: #4F0000; text-decoration: underline; }
+
+A.newsarc:link, A.newsarc:visited, A.newsarc:active { font: 13px geneva, verdana, arial, sans-serif; color: #4E4E4E; text-decoration: underline; }
+
+A.newsarc:hover { font: 13px geneva, verdana, arial, sans-serif; color: #262626; text-decoration: underline; }
+
+A.lsrc        { color: #0000ee; text-decoration: underline; }
+A.lall        { color: #0000ee; text-decoration: underline; }
+DIV.addh    { font-family: monospace; color: #006000;  }
+DIV.subh    { font-family: monospace; color: #e00000; }
+DIV.addl    { font-family: monospace; color: #006000;  }
+DIV.subl    { font-family: monospace; color: #e00000; }
+DIV.ctxt    { font-family: monospace; color: black; }
+DIV.meta    { font-family: monospace; font-style: italic; color: #808080; }
+DIV.hunk    { font-family: monospace; font-style: italic; color: #606060; font-weight: bold; }
+DIV.stat    { font-family: monospace; color: #808080; }
+DIV.stat SPAN.sadd    { color: #006000; }
+DIV.stat SPAN.ssub    { color: #e00000; }
+DIV.stat SPAN.smod    { color: #000; }
+DIV.stat A        { color: #00e; text-decoration: none; }
+
+tr.file1    { background-color: #F3F3F3; }
+tr.file2    { background-color: #FFF; }
+tr.dir1    { background-color: #FFFFF3; }
+tr.dir2    { background-color: #FFF3F3; }
+
+a:link.filehead,a:active.filehead,a:visited.filehead {
+    color: #AEFF00;
+}
+.filehead {
+    background-color: #069;
+    background-image: url(../themes/default/images/cellpic3.gif);
+    color      : #FFF;
+    font-size  : 12px;
+    font-weight: bold;
+    height: 20px;
+    width : 100%;
+    border-width : 0px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    padding: 1px;
+}
+.filebox {
+    border: 1px dashed #999;
+    background-color: #FFF;
+}

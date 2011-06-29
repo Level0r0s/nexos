@@ -1,0 +1,81 @@
+<!-- BEGIN newsempty -->
+<div class="opentable1" align="center">
+	<font class="title">{newsempty.S_SITENAME}</font><br /><br />
+	{newsempty.S_NOTOPIC}<br /><br />
+	[ <a href="{newsempty.U_NEWSINDEX}">{newsempty.S_GONEWS}</a> | <a href="{newsempty.U_TOPICS}">{newsempty.S_SELECT}</a> ]
+</div><br />
+<!-- END newsempty -->
+<!-- IF B_PAGINATION -->
+<table width="100%"><tr>
+<!-- IF PAGINATION_PREV --><td class="pagneutral"><a href="{PAGINATION_PREV}" title="{L_PREVIOUS}">&lt;</a></td><!-- ENDIF -->
+<td><br /></td>
+<!-- BEGIN pagination -->
+	<!-- IF pagination.URL -->
+	<td class="paginact"><a href="{pagination.URL}">{pagination.PAGE}</a></td>
+	<!-- ELSE -->
+	<td class="pagact">{pagination.PAGE}</td>
+	<!-- ENDIF -->
+<!-- END pagination -->
+<td><br /></td>
+<!-- IF PAGINATION_NEXT -->
+<td class="pagneutral"><a href="{PAGINATION_NEXT}" title="{L_NEXT}">&gt;</a></td>
+<!-- ENDIF -->
+</tr></table>
+<!-- ENDIF -->
+<!-- BEGIN newscat -->
+<div class="opentable1" align="center">
+	<font class="title">{newscat.S_SITENAME}: {newscat.S_TOPIC_T}</font><br /><br />
+  <form action="{newscat.U_SEARCH}" method="post" {I18N}>
+  <input type="hidden" name="topic" value="{newscat.I_TOPIC}" />
+	{newscat.S_SEARCHON}: <input type="name" name="search" size="30" maxlength="255" />&nbsp;&nbsp;
+	<input type="submit" value="{newscat.S_SEARCH}" />
+  </form>
+  [ <a href="{newscat.U_HOME}">{newscat.S_GOHOME}</a> | <a href="{newscat.U_TOPICS}">{newscat.S_SELECT}</a> ]
+</div><br />
+<!-- END newscat -->
+<!-- BEGIN newstopic -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #444444;">
+	<tr>
+		<td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="newsbar_top"><font class="storytitle"><strong>&nbsp;{newstopic.S_TITLE}</strong></font></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="newsbar_middle"><table border="0" width="100%"><tr><td>
+			<br /><a href="{newstopic.U_NEWTOPIC}"><img src="{newstopic.IMG_TOPIC}" alt="{newstopic.S_TOPIC}" border="0" align="right" hspace="10" /></a>
+
+			{newstopic.S_STORY}
+			<!-- IF newstopic.S_NOTES -->
+			<br /><br /><b>{newstopic.S_NOTE}</b> {newstopic.S_NOTES}
+  			<!-- ENDIF -->
+		</td></tr></table></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="newsbar_bottom"><font class="content">{newstopic.S_MORELINK}<br />{newstopic.S_POSTEDBY} {newstopic.S_INFORMANT} {newstopic.S_TIME}</font></td>
+	</tr>
+</table>
+</td></tr></table>
+<br />
+<!-- END newstopic -->
+<!-- IF B_PAGINATION -->
+<table width="100%"><tr>
+<!-- IF PAGINATION_PREV --><td class="pagneutral"><a href="{PAGINATION_PREV}" title="{L_PREVIOUS}">&lt;</a></td><!-- ENDIF -->
+<td><br /></td>
+<!-- BEGIN pagination -->
+	<!-- IF pagination.URL -->
+	<td class="paginact"><a href="{pagination.URL}">{pagination.PAGE}</a></td>
+	<!-- ELSE -->
+	<td class="pagact">{pagination.PAGE}</td>
+	<!-- ENDIF -->
+<!-- END pagination -->
+<td><br /></td>
+<!-- IF PAGINATION_NEXT -->
+<td class="pagneutral"><a href="{PAGINATION_NEXT}" title="{L_NEXT}">&gt;</a></td>
+<!-- ENDIF -->
+</tr></table>
+<!-- ENDIF -->

@@ -1,0 +1,26 @@
+
+
+<!-- IF S_CALL == 'browse' -->
+<div style="height:25px;display:block">
+	<form method="post" action="{S_ACTION}">
+	<input type="hidden" name="bcompiler" value="browse" />
+	<input type="submit" name="{S_PARENT}" value="Up one level" title="{S_PARENT}" />
+	</form>
+</div>
+<div style="float:left;width:500px;line-height:30px"><!-- BEGIN dir --><span class="title">{dir.S_NAME}</span><em>{dir.S_COMPILED}</em><br /><!-- END --></div>
+<div style="float:left;width:70px;line-height:30px;text-align:right"><form method="post" action="{S_ACTION}">
+	<!-- BEGIN dir --><input type="hidden" name="bcompiler" value="browse" /><input type="submit" name="{dir.S_NAME}" value="Browse" /><br /><!-- END -->
+</form></div>
+<div style="float:left;width:70px;line-height:30px;text-align:right"><form method="post" action="{S_ACTION}">
+	<!-- BEGIN dir --><input type="hidden" name="bcompiler" value="compile" /><input type="submit" name="{dir.S_NAME}" value="Compile" /><br /><!-- END -->
+</form></div>
+<hr style="clear:both" />
+<div style="float:left;width:500px;line-height:30px"><!-- BEGIN file --><span class="title">{file.S_NAME}</span><em>{file.S_COMPILED}</em><br /><!-- END --></div>
+<div style="float:left;width:70px;line-height:30px;text-align:right"><form method="post" action="{S_ACTION}">
+	<!-- BEGIN file --><input type="hidden" name="bcompiler" value="browse" /><input type="submit" name="{file.S_NAME}" value="Browse" /><br /><!-- END -->
+</form></div>
+<div style="float:left;width:70px;line-height:30px;text-align:right"><form method="post" action="{S_ACTION}">
+	<!-- BEGIN file --><input type="hidden" name="bcompiler" value="compile" /><input type="submit" name="{file.S_NAME}" value="Compile" /><br /><!-- END -->
+</form></div>
+
+<!-- ENDIF -->

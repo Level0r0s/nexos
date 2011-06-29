@@ -1,0 +1,45 @@
+<div class="table1">
+{DL_MENU}<br /><hr /><br />
+
+<span class="genmed"><strong>Mirror Submission</strong></span><br /><br />
+
+<!-- IF DL_ERRORS -->
+<div style="background-color: #fee; color: #660000; padding: 3px;">Please correct the following errors before continuing<ul>
+<!-- BEGIN dl_errors --><li>{dl_errors.S_ENTRY}</li><!-- END dl_errors -->
+</ul></div><br />
+<!-- ENDIF -->
+<!-- IF DL_WARNINGS -->
+<div style="background-color: #ffa; color: #ff9900; padding: 3px;"><ul>
+<!-- BEGIN dl_warnings --><li>{dl_warnings.S_ENTRY}</li><!-- END dl_warnings -->
+</ul></div><br />
+<!-- ENDIF -->
+
+<form action="{U_DL_FORM}" method="post" name="add_download" enctype="multipart/form-data" accept-charset="utf-8">
+<table border="0" cellpadding="3" cellspacing="1" width="100%" class="forumline">
+ <tr>
+  <td class="row1"><span class="genmed">Download Title</span></td>
+  <td class="row2">{DL_TITLE}</td>
+ </tr><tr>
+  <td class="row1" valign="top"><span class="genmed">Download URLs</span></td>
+  <td class="row2" nowrap="nowrap">
+<!-- BEGIN dl_mirror -->
+   {dl_mirror.NUM}.
+    <input type="text" name="mirrors[{dl_mirror.ID}]" id="mirrors[{dl_mirror.ID}]" size="50" maxlength="255" value="{dl_mirror.URL}" />
+    <input type="submit" name="upd_mirror[{dl_mirror.ID}]" value="{L_UPDATE}" />
+    <input type="submit" name="del_mirror[{dl_mirror.ID}]" value="{L_DELETE}" />
+    <!-- IF B_REM_MD5 --><a href="{dl_mirror.MD5_FORM}"><input type="button" name="md5_mirror[{dl_mirror.ID}]" value="{L_MD5}" onclick="javascript:window.open('{dl_mirror.MD5_FORM}', '', 'height=108,resizable=yes,width=400'); return false;" /></a>&nbsp;<!-- ENDIF -->
+    <!-- IF dl_mirror.VALID --><span style="color: #006600; font-weight: bold;">OK!<!-- ELSE --><span style="color: #ff8c00; font-weight: bold;">Invalid<!-- ENDIF --></span>
+    <!-- IF dl_mirror.PENDING --><span style="color: #ae0000; font-weight: bold;">Pending</span><!-- ENDIF --><br />
+<!-- END dl_mirror -->
+ <!-- IF DL_MIRRORS --><hr /><!-- ENDIF -->
+    URL: <input type="text" name="mirror" id="mirror" size="50" maxlength="255" /><br />
+    <!-- IF B_REM_MD5 -->Remote MD5: <input type="text" name="md5" id="md5" size="50" maxlength="32" /><br /><!-- ENDIF -->
+    <!-- IF B_UPL_FILE -->File: <input type="file" name="upload_file" size="59" /><br /><!-- ENDIF --><br />
+    <input type="submit" name="add_mirror" id="add_mirror" value="Add URL or File" />
+  </td>
+ </tr><tr><td align="center" class="catbottom" colspan="2">
+    <input type="submit" name="submit_mirrors" value="Submit Mirrors" class="mainoption" />
+ </td></tr>
+</table>
+</form>
+</div>

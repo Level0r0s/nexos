@@ -1,0 +1,222 @@
+<?php
+/*********************************************
+  CPG Dragonfly™ CMS
+  ********************************************
+  Copyright © 2004-2006 by CPG-Nuke Dev Team
+  http://dragonflycms.org
+
+  Dragonfly is released under the terms and conditions
+  of the GNU GPL version 2 or any later version
+
+  $Source: /cvs/l10n/castellano/web_links.php,v $
+  $Revision: 1.5 $
+  $Author: nanocaiordo $
+  $Date: 2006/02/26 21:39:49 $
+Encoding test: n-array summation ∑ latin ae w/ acute ǽ
+*******************************************************/
+if (!defined('CPG_NUKE')) { exit; }
+global $sitename, $anonwaitdays, $outsidewaitdays;
+define('_YOURNAME','Tu nombre');
+define('_CATEGORIES','Categorías');
+define('_LVOTES','Votos');
+define('_TOTALVOTES','Votos Totales:');
+define('_LINKTITLE','Título del Enlace');
+define('_THEREARE','Hay');
+define('_NOMATCHES','No hay registros para su consulta');
+define('_SCOMMENTS','Comentarios');
+define('_ADDLINK','Añadir Enlace');
+define('_POPULAR','Popular');
+define('_TOPRATED','Mejores valorados');
+define('_RANDOM','Aleatorio');
+define('_LINKSMAIN','Índice');
+define('_LINKCOMMENTS','Comentarios del enlace');
+define('_ADDITIONALDET','Detalles adicionales');
+define('_EDITORREVIEW','Análisis del editor');
+define('_REPORTBROKEN','Informar de un enlace roto');
+define('_LINKSMAINCAT','Principales Categorías de Enlaces');
+define('_AND','y');
+define('_INDB','en nuestra base de datos');
+define('_ADDALINK','Añadir Nuevo Enlace');
+define('_INSTRUCTIONS','Instrucciones');
+define('_SUBMITONCE','Enviar un único enlace de cada vez');
+define('_POSTPENDING','Todos los enlaces enviados serán verificados.');
+define('_USERANDIP','El nombre de usuario y el IP serán registrados, así que por favor no abuses del sistema.');
+define('_PAGETITLE','Título de la Página');
+define('_PAGEURL','Página de la URL');
+define('_YOUREMAIL','Tu Correo');
+define('_LDESCRIPTION','Descripción: (255 caracteres máx.)');
+define('_ADDURL','Añadir esta URL');
+define('_LINKSNOTUSER1','No eres un usuario registrado o no te has conectado.');
+define('_LINKSNOTUSER2','Si estuvieras registrado podrías añadir enlaces a este sitio web.');
+define('_LINKSNOTUSER3','Ser un usuario registrado es rápido y fácil.');
+define('_LINKSNOTUSER4','¿Por qué se requiere registro para acceder a algunas funciones?');
+define('_LINKSNOTUSER5','Solo le ofrecemos el contenido de mayor calidad,');
+define('_LINKSNOTUSER6','cada artículo es visto y aprobado individualmente por nuestra plantilla.');
+define('_LINKSNOTUSER7','Esperamos ofrecerte solo información de valor.');
+define('_LINKSNOTUSER8','<a href="index.php?name=Your_Account">Regístrate</a>');
+define('_LINKALREADYEXT','ERROR: ¡Esta URL ya está listado en la Base de Datos!');
+define('_LINKNOTITLE','ERROR: ¡Necesitas escribir un Título para este Enlace!');
+define('_LINKNOURL','ERROR: ¡Necesitas escribir una URL para este Enlace!');
+define('_LINKNODESC','ERROR: ¡Necesitas escribir una Descripción para este Enlace!');
+define('_LINKRECEIVED','Hemos recibido los datos del enlace que enviaste. ¡Gracias!');
+define('_EMAILWHENADD','Recibirás un Correo cuando el enlace sea aprobado.');
+define('_CHECKFORIT','No has escrito un Correo. De todas maneras, revisaremos tu enlace pronto.');
+define('_NEWLINKS','Nuevos enlaces');
+define('_TOTALNEWLINKS','Total de Nuevos Enlaces');
+define('_LASTWEEK','Última Semana');
+define('_LAST30DAYS','Últimos 30 días');
+define('_1WEEK','1 Semana');
+define('_2WEEKS','2 Semanas');
+define('_30DAYS','30 Días');
+define('_TOTALFORLAST','Total de nuevos enlaces');
+define('_ADDEDON','Agregado el');
+define('_RATING','Valoración');
+define('_RATESITE','Valore esta Web');
+define('_DETAILS','Detalles');
+define('_BESTRATED','Enlaces mejor valorados - Top');
+define('_OF','de');
+define('_TRATEDLINKS','total enlaces Valorados');
+define('_TVOTESREQ','mínimo de votos necesarios');
+define('_SHOWTOP','Mostrar Top');
+define('_MOSTPOPULAR','Más Popular - Top');
+define('_OFALL','de todo');
+define('_SORTLINKSBY','Ordenar enlaces por');
+define('_SITESSORTED','Webs clasificadas por');
+define('_POPULARITY','Popularidad');
+define('_SELECTPAGE','Seleccionar Página');
+define('_MAIN','Principal');
+define('_NEWTODAY','Nuevo Hoy');
+define('_NEWLAST3DAYS','Nuevo en los últimos 3 días');
+define('_NEWTHISWEEK','Nuevo esta semana');
+define('_CATNEWTODAY','Nuevos enlaces añadidos a esta categoría hoy');
+define('_CATLAST3DAYS','Nuevos enlaces añadidos a esta categoría en los últimos 3 días');
+define('_CATTHISWEEK','Nuevos enlaces añadidos a esta categoría en esta semana');
+define('_POPULARITY1','Popularidad (de menos a más visitas)');
+define('_POPULARITY2','Popularidad (de más a menos visitas)');
+define('_TITLEAZ','Título (A - Z)');
+define('_TITLEZA','Título (Z - A)');
+define('_DATE1','Fecha (primero los enlaces más antiguos)');
+define('_DATE2','Fecha (primero los enlaces más nuevos)');
+define('_RATING1','Valoración (de menor a mayor)');
+define('_RATING2','Valoración (de mayor a menor)');
+define('_SEARCHRESULTS4','Buscar resultados por');
+define('_USUBCATEGORIES','Subcategorías');
+define('_LINKS','Enlaces');
+define('_TRY2SEARCH','Intenta buscar');
+define('_INOTHERSENGINES','en otros Motores de Búsqueda');
+define('_EDITORIAL','Editorial');
+define('_LINKPROFILE','Perfil del enlace');
+define('_EDITORIALBY','Editorial por');
+define('_NOEDITORIAL','El editorial no está actualmente disponible en esta web.');
+define('_VISITTHISSITE','Visitar esta web');
+define('_RATETHISSITE','Valorar este Enlace');
+define('_ISTHISYOURSITE','¿Es este tu enlace?');
+define('_ALLOWTORATE','Permita que los usuarios lo valoren desde tu Web!');
+define('_LINKRATINGDET','detalle de valoración de enlaces');
+define('_OVERALLRATING','Valoración General');
+define('_TOTALOF','Total de');
+define('_USER','Usuario');
+define('_USERAVGRATING','Valoración media de los usuarios');
+define('_NUMRATINGS','Núm. de valoraciones');
+define('_EDITTHISLINK','Editar Enlace');
+define('_REGISTEREDUSERS','Usuarios registrados');
+define('_NUMBEROFRATINGS','Número de valoraciones');
+define('_NOREGUSERSVOTES','No hay votos de usuarios registrados');
+define('_BREAKDOWNBYVAL','Histograma por valoración');
+define('_LTOTALVOTES','votos totales');
+define('_LINKRATING','Enlaces valorados');
+define('_HIGHRATING','Alta valoración');
+define('_LOWRATING','Baja valoración');
+define('_NUMOFCOMMENTS','Número de comentarios');
+define('_WEIGHNOTE','* Nota: Este sitio diferencia los votos de los usuarios registrados de los no registrados');
+define('_NOUNREGUSERSVOTES','No hay votos de no registrados');
+define('_WEIGHOUTNOTE','** Nota: Este sitio diferencia los votos de los usuarios registrados de los foráneos');
+define('_NOOUTSIDEVOTES','Votos de usuarios');
+define('_OUTSIDEVOTERS','Votos de anónimos');
+define('_UNREGISTEREDUSERS','Usuarios no registrados');
+define('_PROMOTEYOURSITE','Promociona tu Web');
+define('_PROMOTE01','Tal vez te interesa unas de la opciones que tenemos para la \'Valoración de otras webs\'. Estas te permiten poner una imagen (o un formulario de votación) en tu Web para incrementar los votos. Por favor elije una de estas opciones:');
+define('_TEXTLINK','Texto del enlace');
+define('_PROMOTE02','Una manera de enlazar el formulario de evaluación es poner un simple enlace de texto:');
+define('_HTMLCODE1','El código HTML que puedes usar en este caso, es el siguiente:');
+define('_THENUMBER','El Número');
+define('_IDREFER','en el código HTML se hace referencia a tu ID de sitio en la Base de Datos de '.$sitename.'. Verifica que este número este presente.');
+define('_BUTTONLINK','Botón de Enlace');
+define('_PROMOTE03','Si quieres más que un simple texto, puedes utilizar un pequeño botón como:');
+define('_RATEIT','Vota por este sitio');
+define('_HTMLCODE2','El código fuente para el botón anterior es:');
+define('_REMOTEFORM','Formulario de valoración remota');
+define('_PROMOTE04','Si haces trampas, quitaremos tu enlace. Una vez aclarado esto, así es como se ve el formulario de valoración.');
+define('_VOTE4THISSITE','Votar por esta web');
+define('_LINKVOTE','Votar');
+define('_HTMLCODE3','Usando este formulario permitirá a los usuarios valorar tu sitio directamente desde tu página y será guardado aquí. El formulario anterior está desconectado, pero el siguiente código funcionará si lo copias y pegas en tu página. El código es el siguiente:');
+define('_PROMOTE05','¡Gracias!, y buena suerte con tu valoración.');
+define('_THANKSBROKEN','Gracias por ayudar a mantener la integridad de este directorio.');
+define('_THANKSFORINFO','Gracias por la información.');
+define('_LOOKTOREQUEST','Analizaremos tu petición pronto.');
+define('_ONLYREGUSERSMODIFY','Solamente los usuarios registrados pueden proponer modificaciones. Por favor, <a href="index.php?name=Your_Account">Regístrate o Conéctate</a>.');
+define('_REQUESTLINKMOD','Pedir modificación de Enlace');
+define('_LINKID','ID del Enlace');
+define('_SENDREQUEST','Enviar Petición');
+define('_THANKSTOTAKETIME','Gracias por el tiempo de evaluación de esta en');
+define('_LETSDECIDE','Tu información permitirá a otros visitantes decidir mejor sobre que enlaces escoger.');
+define('_RETURNTO','Volver a');
+define('_RATENOTE1','Por favor no votes por el mismo enlace más de una vez');
+define('_RATENOTE2','La escala va de 1 a 10, siendo 1 Pobre y 10 Excelente.');
+define('_RATENOTE3','Trata de ser objetivo/a en tu voto, si se recibe siempre 1 o 10, la valoración no será útil.');
+define('_RATENOTE4','Puedes ver una lista de <a href="index.php?name=Downloads&d_op=TopRated">los recursos más valorados</a>.');
+define('_RATENOTE5','No votes por tu propio recurso o el de tu competidor.');
+define('_YOUAREREGGED','Eres un usuario registrado y estás conectado.');
+define('_FEELFREE2ADD','Siéntete libre de añadir un comentario sobre esta web.');
+define('_YOUARENOTREGGED','No eres un usuario registrado o no estás conectado.');
+define('_IFYOUWEREREG','Si te registras podrás hacer comentarios en esta web.');
+define('_MODIFY','Modificar');
+define('_COMPLETEVOTE1','Tu voto es apreciado.');
+define('_COMPLETEVOTE2','Tú ya has votado por este recurso en los pasados '.$anonwaitdays.' día(s).');
+define('_COMPLETEVOTE3','Vota por un recurso sólo una vez.<br>Todos los votos serán revisados.');
+define('_COMPLETEVOTE4','No puedes votar por un recurso que tú enviaste.<br>Todos los votos serán revisados.');
+define('_COMPLETEVOTE5','No has seleccionado un valor - Voto no registrado');
+define('_COMPLETEVOTE6','Sólo se admite un voto por dirección IP cada '.$outsidewaitdays.' día(s).');
+
+/**************************
+  ADMNINISTRATION SECTION
+**************************/
+define('_ADDMAINCATEGORY','Añadir una Categoría Principal');
+define('_ADDSUBCATEGORY','Añadir una Subcategoría');
+define('_WEBLINKSADMIN','Administración de Enlaces');
+define('_EZTRANSFERLINKS','Transferir todos los enlaces desde la categoría');
+define('_CLEANLINKSDB','Borrar Votos');
+define('_EZTRANSFER','Transferir');
+define('_BROKENLINKSREP','Informes de Enlaces rotos');
+define('_LINKMODREQUEST','Peticiones de Modificación de Enlaces');
+define('_ADDNEWLINK','Añadir un nuevo Enlace');
+define('_MODLINK','Modificar un Enlace');
+define('_LINKSINDB','Enlaces en nuestra Base de Datos');
+define('_LINKSWAITINGVAL','Enlaces esperando aprobación');
+define('_ERRORURLEXIST','ERROR: ¡Esta URL ya existe en la Base de Datos!');
+define('_ERRORNOTITLE','ERROR: ¡Necesitas poner un Título para la URL!');
+define('_ERRORNOURL','ERROR: ¡Necesitas poner una URL para la URL!');
+define('_ERRORNODESCRIPTION','ERROR: ¡Necesitas poner una Descripción para la URL!');
+define('_NEWLINKADDED','Nuevo enlace agregado a la Base de Datos');
+define('_YOURLINKAT','Tu enlace en');
+define('_LINKVALIDATION','Aprobación de enlace');
+define('_CHECKALLLINKS','Aprobar todos los enlaces');
+//define('_VALIDATELINKS','Aprobar enlaces');
+//define('_FAILED','¡Falló!');
+//define('_BEPATIENT','(por favor se paciente)');
+//define('_VALIDATINGCAT','Aprobando categoría (y todas las subcategorías)');
+//define('_VALIDATINGSUBCAT','Aprobando Subcategoría');
+define("_ADDEDITORIAL","Añadir reseña");
+define("_EDITORIALTITLE","Título de la reseña");
+define("_EDITORIALTEXT","Texto de la reseña");
+define("_DATEWRITTEN","Fecha");
+define("_NOREPORTEDBROKEN","No hay informes de enlaces rotos");
+define("_USERREPBROKEN","Informe de enlaces rotos");
+define("_IGNOREINFO","Ignorar (Borra todas las <b><i>peticiones</i></b> para un enlace dado)");
+define("_DELETEINFO","Borrar (Borra los <b><i>enlaces rotos</i></b> y las <b><i>peticiones</i></b> para un enlace dado)");
+define("_LINK","Enlace");
+define("_LINKOWNER","Propietario del enlace");
+define("_USERMODREQUEST","Petición de modificación de enlace");
+define("_ORIGINAL","Original");
+define("_PROPOSED","Propuesto");
+define("_NOMODREQUESTS","No hay peticiones de modificación");

@@ -1,0 +1,80 @@
+<div class="table1">
+ <form method="post" name="backup" action="{U_ACTION}" enctype="multipart/form-data" accept-charset="utf-8">
+  <table>
+   <tr>
+    <td>
+     <select name="tablelist[]" size="20" multiple="multiple">
+<!-- BEGIN tables -->
+     <option value="{tables.S_NAME}">{tables.S_NAME}</option>
+<!-- END tables -->
+     </select>
+    </td>
+    <td valign="middle">
+     <script type="text/javascript">/*<![CDATA[*/
+      function admin_database(value) {
+       if (value == 'BackupDB') {
+        $('backuptasks').style.display = '';
+        $('installertasks').style.display = 'none';
+        return;
+       }
+       if (value == 'Installer') {
+        $('backuptasks').style.display = 'none';
+        $('installertasks').style.display = '';
+        return;
+       }
+       $('backuptasks').style.display = 'none';
+       $('installertasks').style.display = 'none';
+       return;
+      }
+     /*]]>*/</script>
+     <label class="ulog" for="mode"><span class="genmed">Action</span></label>
+     <select name="mode" id="mode" onchange="admin_database(this.options[this.selectedIndex].value)">
+      <option value="AnalyzeDB">Analyze</option>
+      <option value="BackupDB" selected="selected">L_(SAVEDATABASE)</option>
+      <option value="CheckDB">Check</option>
+      <option value="OptimizeDB">Optimize</option>
+      <option value="RepairDB">Repair</option>
+      <option value="StatusDB">Status</option>
+      <option value="Installer">Installer</option>
+     </select>
+     <input type="submit" value="L_(GO)" />
+     <br /><br />
+     <div id="backuptasks" style="float:center;">Backup Tasks:<br />
+      <input type="checkbox" value="1" name="dbdata" checked="checked" style="margin-left: 10px;" />Save Data<br />
+      <input type="checkbox" value="1" name="dbstruct" checked="checked" style="margin-left: 10px;" />Include CREATE statement<br />
+      <input type="checkbox" value="1" name="drop" checked="checked" style="margin-left: 10px;" />Include DROP statement<br />
+      <!-- IF ZLIB --><input type="checkbox" value="1" name="gzip" checked="checked" style="margin-left: 10px;" />Use GZIP compression
+		  <!-- ELSE -->GZIP Compression not supported<!-- ENDIF -->
+     </div>
+     <div id="installertasks" style="float:center; display:none">Installer Tasks:<br />
+      <input type="checkbox" value="1" name="dbdata" checked="checked" style="margin-left: 10px;" />Save Data<br />
+      <!-- IF ZLIB --><input type="checkbox" value="1" name="gzip" checked="checked" style="margin-left: 10px;" />Use GZIP compression
+		  <!-- ELSE -->GZIP Compression not supported<!-- ENDIF -->
+     </div>
+    </td>
+    <td valign="top" width="50%">
+     <div class="table">
+      <div style="text-align:center;" class="genmed"><strong>OPTIMIZE</strong></div>
+      <br />
+      <div align="justify">Should be used if you have deleted a large part of a table or if you have made many changes to a table with variable-length rows (tables that have VARCHAR, BLOB, or TEXT columns). Deleted records are maintained in a linked list and subsequent INSERT operations reuse old record positions. You can use OPTIMIZE to reclaim the unused space and to defragment the datafile.
+      <br />In most setups you don't have to run OPTIMIZE at all. Even if you do a lot of updates to variable length rows it's not likely that you need to do this more than once a month/week and only on certain tables.</div>
+      <br />OPTIMIZE works in the following way:
+      <ul>
+       <li>If the table has deleted or split rows, repair the table.</li>
+       <li>If the index pages are not sorted, sort them.</li>
+       <li>If the statistics are not up to date (and the repair couldn't be done by sorting the index), update them.</li>
+      </ul>
+      <strong>Note:</strong> the table is locked during the time in which OPTIMIZE is running!
+      <hr />INSTALLER: for developer only, create a backup using our installer type format.
+     </div>
+    </td>
+   </tr>
+  </table>
+ </form>
+ <br /><br />
+ <span class="genmed"><strong>Import SQL File</strong></span>
+ <br /><br />
+ <form method="post" action="{U_ACTION}" name="restore" enctype="multipart/form-data" accept-charset="utf-8">
+  <input type="file" name="sqlfile" size="100" /> <input type="hidden" name="mode" value="RestoreDB" /><input type="submit" value="Import" />
+ </form>
+</div>

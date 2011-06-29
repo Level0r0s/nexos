@@ -1,0 +1,13 @@
+# CPG-Nuke: Advanced Content Management System
+# Copyright (c) 2004 by CPG-Nuke Dev Team, www.cpgnuke.com
+# Released under the GNU GPL version 2 or any later version
+
+# $Source: /cvs/wysiwyg/spaw/.htaccess,v $
+# $Revision: 1.1 $
+# $Author: djmaze $
+# $Date: 2005/01/21 05:34:12 $
+
+# deny most common
+<filesmatch "\.php$">
+Allow from all
+</filesmatch>

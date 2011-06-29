@@ -1,0 +1,73 @@
+<!-- IF S_NOCOMMENTS -->
+	<div class="opentable1" align="center"><font class="content">{S_NOCOMMENTS}</font></div>
+<!-- ENDIF -->
+<!-- IF S_THRESHOLD -->
+	<div class="opentable1" align="center">
+<!-- IF S_TITLE -->
+	{S_TITLE} | <a href="{U_USER}">{S_USER}</a> | <b></b>{S_COUNT} {S_COMMENTS}<br /><br />
+<!-- ENDIF -->
+	<form method="post" action="{U_ARTICLE}" {I18N}>{S_THRESHOLD} {S_SELTHOLD} {S_SELMODE} {S_SELORDER} <input type="submit" value="{S_REFRESH}"></form>
+<!-- IF S_POSTCOMM -->
+	<form action="{U_TOPREPLY}" method="post">{F_NEWSHIDE}<input type="submit" value="{S_POSTCOMM}"></form>
+<!-- ENDIF -->
+	<font class="tiny">{S_COMMWARN}</font>
+</div><br />
+<!-- ENDIF -->
+<!-- IF U_MODERATE -->
+<form action="{U_MODERATE}" method="post">
+<!-- ENDIF -->
+
+<!-- BEGIN comment -->
+<!-- IF comment.IS_NESTED -->
+<ul>
+<!-- ELSEIF comment.IS_FIRST -->
+<div class="opentable1">
+<!-- ENDIF -->
+
+<!-- IF comment.IS_NESTED_END -->
+</ul>
+<!-- ELSEIF comment.IS_FIRST_END -->
+<br />
+<!-- ELSEIF comment.IS_LIST -->
+    <li><font class="content"><a href="{comment.U_READCOMM}">{comment.S_READCOMM}</a> {comment.S_BYNAME} {comment.S_ON} {comment.S_DATE}</font><br />
+<!-- ELSE -->
+  <a name="{comment.I_COMMENTID}"></a>
+  <div style="background-color: #EFEFEF;">
+    <b>{comment.S_SUBJECT}</b> <font class="content">
+    <!-- IF comment.I_SCORE -->
+    ({comment.S_SCORE} {comment.I_SCORE}
+    <!-- IF comment.S_REASON -->
+    , {comment.S_REASON}
+    <!-- ENDIF -->
+    )
+    <!-- ENDIF -->
+    <br /> {comment.S_BYNAME} {comment.S_ON} {comment.S_DATE} {comment.S_IP}
+    <!-- IF comment.U_USERINFO -->
+    <br />(<a href="{comment.U_USERINFO}">{comment.S_USERINFO}</a> | <a href="{comment.U_USERPM}">{comment.S_USERPM}</a>)
+    <!-- ENDIF -->
+    </font>
+  </div>
+    {comment.S_COMMENT}
+    <!-- IF comment.U_COMMENTEXT -->
+    <br /><br /><b><a href="{comment.U_COMMENTEXT}">{comment.S_COMMENTEXT}</a></b>
+    <!-- ENDIF -->
+  <br /><br /><div align="right">
+  <font class="content">
+    <!-- IF comment.U_REPLY -->
+    <a href="{comment.U_REPLY}">{comment.S_REPLY}</a>
+    <!-- ENDIF -->
+  | <a href="{comment.U_PARENT}">{comment.S_PARENT}</a>
+    <!-- IF comment.S_MODERATE -->
+  | {comment.S_MODERATE}
+    <!-- ENDIF -->
+    <!-- IF comment.U_DELETE -->
+  | <a href="{comment.U_DELETE}">{comment.S_DELETE}</a>
+    <!-- ENDIF -->
+  </font><br />
+  </div>
+<!-- ENDIF -->
+<!-- END comment -->
+<!-- IF U_MODERATE -->
+<div align="center">{F_MODHIDE}<input type="image" src="images/moderate.gif" border="0" name="submit" /></form></div>
+<!-- ENDIF -->
+

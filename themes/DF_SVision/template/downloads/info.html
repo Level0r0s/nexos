@@ -1,0 +1,72 @@
+<style type="text/css">
+.swatch {
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	/*color: #369;*/
+	cursor: pointer;
+	padding: 2px;
+	margin-top: 3px;
+	background-color; #fff;
+}
+.swatch .normal {
+	/*border: 1px solid #369;*/
+	border: solid 1px #ccc;
+	color: #808080;
+}
+.swatch .hover, .selected {
+	/*border: 1px solid #369;*/
+	border-top: 2px solid #808080;
+	border-left: 2px solid #808080;
+	border-bottom: 1px solid #808080;
+	border-right: 1px solid #808080;
+	/*background-color: #CCE6FF;*/
+	background-color: {BGCOLOR};
+	color: {TXTCOLOR};
+	
+}
+</style>
+<div class="table1">
+{DL_MENU}<br /><hr /><br />
+<script language="javascript" type="text/javascript">
+function swap_img(image_url) {
+	var obj_img;
+	obj_img = document.getElementById("img_open");
+	obj_img.src = '{THEME_PATH}/images/downloads/throbber.gif'
+	obj_img.src = screenies[image_url];
+}
+function change(id, newClass, click) {
+	identity = document.getElementById(id);
+	if (identity.className != 'selected') {
+		if (click) {
+			for (loop=1; loop<screenies.length; loop++) {
+				identity2 = document.getElementById(loop);
+				identity2.className = 'normal';
+			}
+		}
+		identity.className = newClass;
+	}
+}
+function changeback(id) {
+	identity = document.getElementById(id);
+	if (identity.className != 'selected') {
+		identity.className = 'normal';
+	}
+}
+</script>
+<span class="genmed">{L_SCREENSHOT} for <a href="{DL_LINK}">{DL_TITLE}</a></strong></span><br />
+<!-- IF MULT_SCREENS -->
+	<script language="javascript" type="text/javascript">
+	var screenies = new Array();
+	<!-- BEGIN screenies -->
+	screenies[{screenies.NUM}] = '{screenies.URL}';
+	<!-- END screenies -->
+	</script>
+	<!-- BEGIN screenies -->
+	<a href="javascript:swap_img({screenies.NUM});"><div class="swatch"><div id="{screenies.NUM}" class="<!-- IF screenies.SEL -->selected<!-- ELSE -->normal<!-- ENDIF -->" style="width: 35px; height: 15px;" onmouseover="javascript:change('{screenies.NUM}', 'hover', false);" onclick="javascript:change('{screenies.NUM}', 'selected', true);" onmouseout="javascript:changeback('{screenies.NUM}', 'normal', false);">{screenies.NUM}</div></div></a>
+	<!-- END screenies --><br /><br />
+<!-- ELSE -->
+<br />
+<!-- ENDIF -->
+<img src="{IMG_SCREEN}" id="img_open" name="img_open" alt="" />
+</div>

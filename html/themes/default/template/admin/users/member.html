@@ -1,0 +1,66 @@
+<!-- IF S_ADMIN_HELP -->
+<tr><td colspan="3">
+<script type="text/javascript">/*<![CDATA[*/
+maketip('my_headlines','_(MYHEADLINES)','Allow members to fetch RSS headlines from other sites, as well as choose from a pre-selected list of headline sites set by me');
+maketip('user_news','_(USERSHOMENUM)','Allow members to change the number of news articles displayed on the homepage');
+maketip('allowusertheme','_(ACTALLOWTHEME)','Allow members to choose a different theme');
+maketip('allowmailchange','_(ACTALLOWMAIL)','Allow members to change their email address');
+maketip('allowuserdelete','_(ACTALLOWDELETE)','Allow members to delete themselves');
+maketip('minpass','_(PASSWDLEN)','The minimum length a password can be on new user registration');
+maketip('allowuserreg','_(ACTALLOWREG)','Allow new user registrations');
+maketip('useactivate','_(USEACTIVATE)','Use email activation for new user registrations, in order to prevent fraudulent registrations');
+maketip('requireadmin','_(REQUIREADMIN)','Require the approval of an administrator before adding a new user to the database');
+maketip('sendaddmail','_(ACTNOTIFYADD)','Send a notification email to the site owner upon new user registration');
+maketip('senddeletemail','_(ACTNOTIFYDELETE)','Send a notification email to the site owner upon user self-deletion');
+maketip('show_registermsg','_(USEREGISTERMSG)','Require members to accept an agreement before continuing with the registration process');
+maketip('send_welcomepm','_(SENDWELCOMEPM)','Send a welcome private message to a new user upon registration');
+/*]]>*/</script></td></tr>
+<!-- ENDIF -->
+	<tr><th class="thHead" colspan="3">_(USER_CONFIG)</th>
+	</tr><tr{S_HEADLINES_TIP}>
+		<td class="row1">_(MYHEADLINES)</td>
+		<td class="row2">
+			{S_HEADLINES_CFG}
+		</td>
+	</tr><tr{S_USER_NEWS_TIP}>
+		<td class="row1">_(USERSHOMENUM)</td>
+		<td class="row2" colspan="2">{S_USER_NEWS_CFG}</td>
+	</tr><tr{S_THEME_TIP}>
+		<td class="row1">_(ACTALLOWTHEME)</td>
+		<td class="row2" colspan="2">{S_THEME_CFG}</td>
+	</tr><tr{S_MAILCHANGE_TIP}>
+		<td class="row1">_(ACTALLOWMAIL)</td>
+		<td class="row2" colspan="2">{S_MAILCHANGE_CFG}</td>
+	</tr><tr{S_MINPASS_TIP}>
+		<td class="row1">_(PASSWDLEN)</td>
+		<td class="row2" colspan="2">{S_MINPASS_CFG}</td>
+	</tr><tr{S_USERREG_TIP}>
+		<td class="row1">_(ACTALLOWREG)</td>
+		<td class="row2" colspan="2">{S_USERREG_CFG}</td>
+	</tr><tr{S_USER_ACTIVATE_TIP}>
+		<td class="row1">_(USEACTIVATE)</td>
+		<td class="row2" colspan="2">{S_USER_ACTIVATE_CFG}</td>
+	</tr><tr{S_REQUIRE_ADMIN_TIP}>
+		<td class="row1">_(REQUIREADMIN)</td>
+		<td class="row2" colspan="2">{S_REQUIRE_ADMIN_CFG}</td>
+	</tr><tr{S_SENDMAIL_TIP}>
+		<td class="row1">_(ACTNOTIFYADD)</td>
+		<td class="row2" colspan="2">{S_SENDMAIL_CFG}</td>
+	</tr><tr{S_SHOW_REGMSG_TIP}>
+		<td class="row1">_(USEREGISTERMSG)</td>
+		<td class="row2" colspan="2">{S_SHOW_REGMSG_CFG}</td>
+	</tr><tr>
+		<td class="row1" colspan="3" valign="top">_(MA_REGISTRATION)<br />
+			<textarea name="registermsg" cols="63" rows="20">{S_REGMSG_CFG}</textarea>
+		</td>
+	</tr><tr>
+		<td class="spaceRow" height="5" colspan="3"><img src="images/spacer.gif" alt="" width="5" height="5" /></td>
+	</tr><tr{S_WELCOME_PM_TIP}>
+		<td class="row1">_(SENDWELCOMEPM)</td>
+		<td class="row2" colspan="2">{S_WELCOME_PM_CFG}</td>
+	</tr><tr>
+		<td class="row1" colspan="3" valign="top">_(WELCOMEPMBODY)<br />
+			{S_WELCOME_MSG_BB}
+			<textarea name="welcomepm_msg" cols="63" rows="20">{S_WELCOME_MSG_CFG}</textarea>
+		</td>
+	</tr>

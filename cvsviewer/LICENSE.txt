@@ -1,0 +1,86 @@
+/**
+* MA CVS: Designed exclusively for Dragonfly CMS
+* Copyright (c) 2005 - 2006 by DJMaze and Akamu, dragonflycms.org
+*/
+
+LICENSE
+CPG Dev. Team (known further as CPG) grants you a non-exclusive license to use
+this Software for CPG Dragonfly CMS (known further as CMS) components that use
+CVS to the provisions in all sections of this Agreement.
+
+TERM
+This Software is offered as freeware to use aside your Dragonfly CMS to provide
+an easy webinterface for your CVS.
+
+SCOPE OF GRANT
+You may:
+
+    * customize the Software's design and operation to suit the internal needs
+      of your web site except to the extent not permitted in this Agreement
+    * produce and distribute modification instructions, Skin packs, or Language
+      packs. The modifications instructions you personally create are not
+      owned by CPG.
+    * release snippets for educational purposes.
+
+You may not:
+
+    * permit other individuals to use the Software except under the terms
+      listed above
+    * create derivative works based on the Software for distribution or usage
+      outside your web site
+    * use the Software in such a way as to condone or encourage terrorism,
+      promote or provide pirated software, or any other form of illegal or
+      damaging activity
+    * modify and/or remove any copyright notices or labels in the Software on
+      each page and in the header of each script source file
+    * remove all links to the "credits" page of the CMS which outputs the
+	  Software copyright notices
+    * distribute the Software without written permission from CPG
+    * distribute individual copies of files, libraries, or other programming
+      material in the Software package
+    * distribute or modify proprietary graphics packaged with the Software for
+      use in Software applications other than CPG Dragonfly or web sites
+      without written permission from CPG
+    * create applications which interface with the Software
+
+
+DISCLAIMER OF WARRANTY
+The Software is provided on an "AS IS" basis, without warranty of any kind,
+including without limitation the warranties of merchantability, fitness for a
+particular purpose, and non-infringement. The entire risk as to the quality and
+performance of the Software is borne by you. Should the Software prove
+defective, you and not CPG assume the entire cost of any service and repair.
+In addition, the security mechanisms implemented by CPG Software have inherent
+limitations, and you must determine that the Software sufficiently meets your
+requirements. This disclaimer of warranty constitutes an essential part of the
+Agreement.
+
+TITLE
+Title, ownership rights, and intellectual property rights in the Software shall
+remain with CPG. The Software is protected by copyright laws and treaties.
+Title and related rights in the content generated through the Software is the
+property of the applicable content owner and may be protected by applicable law.
+This License gives CPG no rights to such content.
+
+TERMINATION
+This Agreement will terminate automatically upon failure to comply with the
+limitations described herein or on written notice from an authorized
+representative of CPG. On termination, you must destroy all copies of the
+Software within 48 hours. Termination of the license due to noncompliance will
+not result in any refunds of license fees.
+
+MISCELLANEOUS
+CPG reserves the right to change the terms of this Agreement at any time.
+Changes to the Agreement will be announced via email using the CPG email
+notification list. Failure to receive notification of a change does not make
+those changes invalid. A current copy of this Agreement will be available on
+the CPG Dragonfly web site.
+
+Skin packs and Language packs are defined as the group of code, text, and
+graphics that are exported from the Software.
+
+Technical support will not be provided for third-party modifications to the
+Software including modifications to code, Skin packs, and Language packs to any
+freeware holder. If the Software is modified using a third-party modification
+instruction or otherwise, technical support may be refused to any freeware
+holder.

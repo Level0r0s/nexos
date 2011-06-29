@@ -1,0 +1,570 @@
+/**
+* CPG Dragonfly CMS
+* Copyright (c) 2004-2005 by CPG-Nuke Dev Team, dragonflycms.org
+* Released under the GNU GPL version 2 or any later version
+* $Id: style.css,v 1.13 2010/02/21 10:45:36 nanocaiordo Exp $
+*/
+font, th, td, p {
+  font: 10px Verdana, Arial, Helvetica, sans-serif;
+  /*text-align:left;temp disabled*/
+}
+img {
+  border: 0;
+}
+legend {
+  font-weight: bold;
+}
+fieldset {
+  border: #999;
+  border-style: double;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+br {
+  clear: left;
+}
+label.set,radio.set,input.set {
+  display: block;
+  float: left;
+}
+radio.set {
+  vertical-align: text-bottom;
+}
+label.set {
+  text-align: left;
+  width: 300px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+}
+label.ulog, input.ulog {
+  display: block;
+  float: left;
+}
+label.ulog {
+  text-align: left;
+  width: 125px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+}
+.rd {
+  text-align: left;
+  width: 60px;
+  padding-left: 3px;
+  padding-right: 10px;
+}
+.no {
+  text-align: right;
+  width: 8px;
+  padding-right: 10px;
+}
+.yes {
+  text-align: left;
+  width: 20px;
+  padding-right: 10px;
+  vertical-align: bottom;
+}
+input.sub {
+  left: 20px;
+  float: none;
+}
+.title {
+  background: none;
+  color: #444;
+  text-decoration: none;
+  font: bold 14px Verdana, Helvetica, sans-serif;
+}
+.content {
+  background: none;
+  color: #000;
+  font: 10px Verdana, Helvetica, sans-serif;
+}
+.storytitle {
+  background: none;
+  color: #363636;
+  text-decoration: none;
+  font: bold 12px Verdana, Helvetica, sans-serif;
+}
+.storycat {
+  background: none;
+  color: #F00;
+  text-decoration: underline;
+  font: bold 10px Verdana, Helvetica, sans-serif;
+}
+.option {
+  background: none;
+  color: #000;
+  text-decoration: none;
+  font: bold 10px Verdana, Helvetica, sans-serif;
+}
+.tiny {
+  background: none;
+  color: #000;
+  text-decoration: none;
+  font: normal 10px Verdana, Helvetica, sans-serif;
+}
+body {
+  color: #000;
+  background: #E5E5E5;
+  font: 10px Verdana, Helvetica, sans-serif;
+}
+.helphead {
+  color: #FFF;
+  font-size: 10px;
+  width: 244px;
+  padding: 3px;
+  vertical-align: middle;
+  background: #0065DE;
+}
+.helpcontent {
+  width: 240px;
+  border: 1px solid #069;
+  padding: 4px;
+  background: #FFF;
+}
+.headtable {
+  width: 100%;
+  border-width: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 0;
+}
+.head {
+  height: 135px;
+  border-width: 0;
+  border-spacing: 2px;
+  padding: 2px;
+  width: 100%;
+  background: #069 url(../images/back1.gif);
+}
+.headmenu {
+  font-weight: bold;
+  text-align: center;
+}
+.maintable {
+  width: 100%;
+  border-width: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 0;
+}
+.mainside {
+  width: 164px;
+  vertical-align: top;
+}
+.main {
+  width: 100%;
+  vertical-align: top;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+/* table inside the the td that holds the block title */
+.blockhead {
+  color: #FFF;
+  font-size: 10px;
+  font-weight: bold;
+  height: 14px;
+  width: 156px;
+  padding: 3px;
+  vertical-align: middle;
+  background: #069 url(../images/cellpic3.gif);
+}
+/* table that holds the content in blocks */
+.blockcontent {
+  width: 152px;
+  border: 1px solid #069;
+  padding: 4px;
+  background: #EFEFEF;
+}
+/* div at the top of modules holding the page title if one... */
+.pagetitle {
+  color: #AEFF00;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  border-width: 0;
+  height: 16px;
+  padding: 6px;
+  background: #069 url(../images/cellpic3.gif);
+}
+/* fieldset around each admin item */
+.adminitem {
+    border: 0px;
+    padding: 0px;
+  width: 130px;
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: center;
+}
+.adminitem span {
+  display: block;
+  width: 120px;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #069;
+  background: #FAFAFA;
+}
+.table1,.table2 {
+  border: 1px solid #069;
+  border-spacing: 0;
+  padding: 7px;
+  background: #FFF;
+}
+/* div called from function OpenTable2 */
+.table2 {
+  width: 50%;
+  text-align: center;
+}
+.newsindex,.newsarticle {
+  border: 1px solid #069;
+  border-spacing: 0;
+  padding: 5px;
+}
+/* tables that hold newscat, newsempty newstopic in themes/x/template/news/index.html */
+.newsindex {
+  width: 100%;
+  background: #EFEFEF;
+}
+/* table that holds the news stories in themes\x\template\news\article.html */
+.newsarticle {
+  background: #FFF;
+}
+a:link, a:active, a:visited {
+  color: #069;
+  text-decoration: none;
+}
+a:hover {
+  color: #F60;
+  text-decoration: underline;
+}
+.statlink {
+  font-weight: bold;
+}
+.statlink, a.statlink,.statlink a {
+  color: #FFF;
+  text-decoration: none;
+}
+a:hover.statlink,.statlink a:hover {
+  color: #FFF;
+  text-decoration: underline;
+}
+.navmenu {
+  color: #FFF;
+  background: #0E72A4;
+  border-style: none;
+  font-weight: bold;
+  font-size: 12px;
+}
+.navmenu img {
+  margin: 1px 5px;
+}
+.navmenu a {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: #FFF;
+  padding: 2px 5px;
+}
+.navmenu a:hover {
+  background: #EFEFEF;
+  text-decoration: none;
+  color: #000;
+}
+hr {
+  height: 0;
+  border: solid #D1D7DC 0;
+  border-top-width: 1px;
+}
+.bodyline,.forumline {
+  border: 1px #98AAB1 solid;
+  background: #FFF;
+}
+td.row1,td.row2,td.row3 {
+  background: #EFEFEF;
+}
+td.rowpic {
+  background: #FFF url(../images/cellpic2.jpg) repeat-y;
+}
+th {
+  color: #AEFF00;
+  font-size: 11px;
+  font-weight: bold;
+  height: 30px;
+  background: #069 url(../images/cellpic3.gif);
+}
+td.cat, td.catHead, td.catSides, td.catleft, td.catright, td.catbottom, td.catBottom {
+  background: #D1D7DC url(../images/cellpic1.gif);
+}
+td.catHead, td.catSides, td.catleft, td.catright {
+  border: #FFF;
+  border-style: solid;
+  height: 30px;
+}
+td.cat,td.catHead,td.catbottom {
+  height: 25px;
+}
+th.thHead,th.thSides,th.thtop,th.thleft,th.thright,th.thbottom,th.thCornerL,th.thCornerR {
+  font-weight: bold;
+  border: #FFF;
+  border-style: solid;
+  height: 28px;
+}
+td.row3right, td.spaceRow {
+  border: #FFF;
+  border-style: solid;
+  background: #D1D7DC;
+}
+th.thHead, td.catHead {
+  font-size: 12px;
+}
+th.thHead,td.catHead,td.spaceRow,td.row3right,
+td.catSides,td.catleft,td.catright,td.catbottom,
+th.thSides,th.thleft,th.thright,th.thtop,th.thbottom,th.thCornerL,th.thCornerR {
+  border-width: 0;
+}
+td.attachrow {
+  font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+  color : #000000;
+  border-color : #000000; 
+}
+td.attachheader {
+  font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+  color : #000000;
+  border-color : #000000;
+  background-color: #D1D7DC;
+}
+table.attachtable {
+  font: normal 12px Verdana, Arial, Helvetica, sans-serif;
+  color : #000000;
+  border-color : #000000;
+  border-collapse : collapse;
+}
+.maintitle, h1, h2 {
+  text-decoration: none;
+  color: #000;
+  font: bold 22px/120% "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+.gen {
+  font-size: 12px;
+}
+.genmed {
+  font-size: 11px;
+}
+.gensmall {
+  font-size: 10px;
+}
+.gen, .genmed, .gensmall {
+  color: #000;
+}
+a.gen, a.genmed, a.gensmall {
+  color: #069;
+  text-decoration: none;
+}
+a.gen:hover, a.genmed:hover, a.gensmall:hover {
+  color: #AE0000;
+  text-decoration: underline;
+}
+/* Forum category titles */
+.cattitle {
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #069;
+}
+a.cattitle {
+  text-decoration: none;
+  color: #069;
+}
+a.cattitle:hover {
+  text-decoration: underline;
+  color: #AE0000;
+}
+.forumlink {
+  font-weight: bold;
+  font-size: 12px;
+  color: #069;
+}
+a.forumlink {
+  text-decoration: none;
+  color: #069;
+}
+a.forumlink:hover {
+  text-decoration: none;
+  color: #AE0000;
+}
+.nav {
+  font-weight: bold;
+  font-size: 11px;
+  color: #000;
+}
+a.nav {
+  text-decoration: none;
+  color: #069;
+}
+a.nav:hover {
+  text-decoration: underline;
+  color: #F60;
+}
+.topictitle {
+  font-weight: bold;
+  font-size: 11px;
+  color: #000;
+}
+a.topictitle:link {
+  text-decoration: none;
+  color: #069;
+}
+a.topictitle:visited {
+  text-decoration: none;
+  color: #5493B4;
+}
+a.topictitle:hover {
+  text-decoration: underline;
+  color: #AE0000;
+}
+.name {
+  font-size: 11px;
+  color: #000;
+}
+.postdetails {
+  font-size: 10px;
+  color: #000;
+}
+.postbody {
+  font-size: 12px;
+}
+a.postlink:link {
+  text-decoration: none;
+  color: #069;
+}
+a.postlink:visited {
+  text-decoration: none;
+  color: #5493B4;
+}
+a.postlink:hover {
+  text-decoration: underline;
+  color: #AE0000;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+}
+.code,.quote {
+  border: #D1D7DC;
+  border-style: solid;
+  border-width: 1px;
+  background: #FAFAFA;
+  padding:2px 10px;
+  width:85%;
+  max-height:200px;
+  overflow:scroll;
+}
+.code {
+  color: #060;
+  font: 11px Courier, 'Courier New', sans-serif;
+}
+.quote {
+  color: #444;
+  font-size: 11px;
+  line-height: 125%;
+}
+.copyright {
+  color: #444;
+  letter-spacing: -1px;
+  font-size: 10px;
+}
+a.copyright {
+  color: #444;
+  text-decoration: none;
+}
+a.copyright:hover {
+  color: #000;
+  text-decoration: underline;
+}
+input, textarea, select {
+  color: #000;
+  font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+}
+input.post, textarea.post, select {
+  background: #FFF;
+}
+input {
+  text-indent: 2px;
+}
+input.button {
+  color: #000;
+  background: #EFEFEF;
+  font: 11px Verdana, Arial, Helvetica, sans-serif;
+}
+input.mainoption {
+  background: #FAFAFA;
+  font: bold 11px Verdana, Arial, Helvetica, sans-serif;
+}
+input.liteoption {
+  background: #FAFAFA;
+  font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+}
+.helpline {
+  border-style: none;
+  background: #DEE3E7;
+}
+.bbcbutton {
+  border-style: outset;
+  border-width: 1px;
+}
+
+/* pagination */
+.pagact {
+	font-size: 10px;
+	width: 16px;
+	height: 20px;
+	text-align: center;
+	background: transparent url(../images/pagact.gif) no-repeat scroll 0 1px;
+}
+.paginact, .pagneutral {width: 17px; text-align: center; }
+.paginact a, .pagneutral a {
+	display: block;
+	font-size: 10px;
+	width: 17px;
+	height: 20px;
+	padding-top: 5px;
+	background: transparent url(../images/paginact.gif) no-repeat;
+}
+.pagneutral a {
+	background: transparent url(../images/pagneutral.gif) no-repeat;
+}
+div#messagesbox {
+ z-index:110;
+ position:fixed;
+ border-style: double;
+ bottom: 0;
+ right: 0;
+ width: 300px;
+ display:none;
+ background-color: #F00;
+}
+#messagesbox div.apply {
+ padding: 10px 0;
+ font-size: 12px;
+ font-weight: bold;
+ color: #FFF;
+ text-align: center;
+ cursor: pointer;
+}
+.blocklabels p, .blocklabels br {
+	clear: left;
+}
+.label, .blocklabels em {
+	float: left;
+	padding-top: 2px;
+}
+.blocklabels label {
+	clear: left;
+	float: left;
+	text-align: right;
+	width: 10em;
+	padding-right: 10px;
+}
+.blocklabels em { padding-left: 2px; }
+.blocklabels input, .blocklabels select, .blocklabels textarea, .blocklabels .wysiwyg { float: left; }

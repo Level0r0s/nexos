@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>GameServers Version 2.0.1 for PHP-Nuke 7.5+</title>
+<style>
+body {
+background: #222288 url(images/background.jpg);
+font-family: Verdana,Helvetica,Arial,sans-serif;
+font-size: 12px;
+color: #000000;
+font-weight: normal;
+margin: 40px;
+scrollbar-base-color: #222288;
+scrollbar-arrow-color: #8790ff;
+}
+th {
+background-color: #222288;
+font-family: Verdana,Helvetica,Arial,sans-serif;
+font-size: 12px;
+color: #8790CC;
+font-weight: bold;
+}
+td {
+background-color: #222288;
+font-family: Verdana,Helvetica,Arial,sans-serif;
+font-size: 12px;
+color: #8790ff;
+font-weight: normal;
+}
+hr {
+color: #8790ff;
+height: 1px;
+width: 50%;
+}
+hr.2 {
+color: #8790ff;
+height: 1px;
+width: 25%;
+}
+a:active, a:link, a:visited {
+font-family: Verdana,Helvetica,Arial,sans-serif;
+color: #FFFFFF;
+font-weight: normal;
+text-decoration: underline;
+}
+a:hover {
+font-family: Verdana,Helvetica,Arial,sans-serif;
+color: #336600;
+font-weight: normal;
+text-decoration: underline;
+}
+</style>
+</head>
+<body bgcolor="#222288" text="#DDDD44" link="#DDDD44" alink="#DDDD44" vlink="#DDDD44">
+<img src="images/header.gif"><br>
+&nbsp;[&nbsp;<a href=games.htm>Supported Games</a>&nbsp;|&nbsp;<a href=install.htm>Installation</a>&nbsp;]&nbsp;<br><br>
+
+Welcome to Dragonfly GameServers 2.0.2!<br>
+This module was specifically modified with permission from the author to bring it to Dragonfly CMS.<br>
+The Dragonfly port is based on GameServers Version 2.0.2 for PHP-Nuke 7.5+<br>
+ By Neil Myers <a href="http://www.voicesinmyhead.net">http://www.voicesinmyhead.net</a><br>
+ Powered by gameq by Tom Buskens <a href="http://gameq.sourceforge.net">http://gameq.sourceforge.net</a><br>
+  Released under the <a href="license.txt">GNU General Public License</a><br>
+<br>
+  Although you are allowed to under the GPL, I ask that you<br>
+  Please do not mirror this file on your site. My webserver is<br>
+  more than capable of handling this download and is rarely down.<br>
+  The reason for this is simply version control.<br>
+<br>
+  If you obtained this file from a site other than<br>
+  <a href="http://www.voicesinmyhead.net">http://www.voicesinmyhead.net</a> , I strongly advise you to<br>
+  redownload it. It'll save both of us time in the long run.<br>
+<br>
+  If you choose to distribute any of the code contained in this release<br>
+  even if it has been modified, translated or otherwise altered, you must<br>
+  include an unedited copy of all files in this folder.<br>
+  Failure to do so will get me on your bad side and we dont need that.<br>
+<br>
+  90% of the work I do on phpnuke stuff is based on or encouraged<br>
+  by the feedback I get from people so if you like this module,<br>
+  send me an email telling what or like or don't like about it.<br>
+<br>
+<br>
+Credits<br>
+<hr noshade align="left">
+<br>
+<br>
+  Since 2.0.0 I usually spend anywhere from 3-15 hours a week either testing, supporting,<br>
+  debugging, and adding new code to this module.  At one point, shortly after starting 1.0<br>
+  I realized I had worked more on GameServers than I did at my real job. -and that was just<br>
+  to get it functional!  To make it worthy of release to the public, thats another story entirely.<br>
+  So if you use this module and have the means to do so, please donate.<br><br>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="image" src="x-click-but04.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+</form>
+  Any amount you choose will be fine. Don't worry about me being offended by a 2$ donation.<br>
+  I am not a professional webdesigner and Ihave never taken a single class on PHP or HTML so every dollar I get is a compliment.<br><br>
+
+ Everyone that contributing to the porting of the Dragonfly GameServers Module:<br>
+
+  <table cellpadding="3">
+<tr><th>Thanks To:</th><th>Reason</th><th>URL</th></tr>
+<tr><td>Devil</td><td>The installer, getlinks, adminlinks, documentation.</td><td><a href="http://www.LegendaryGamers.net/">http://www.LegendaryGamers.net/</a></td></tr>
+<tr><td>Scroft</td><td>Cleaning up most of the coding for this project.<br>
+Scroft has been instrumental in Dragonfly GS.</td><td><a href="http://visioneer.activision.com">http://visioneer.activision.com</a></td></tr>
+<tr><td>DSS Trainer</td><td>Getting op links to work and converting a lot of parsed urls.</td><td><a href="http://www.rythmnation.net">http://www.rythmnation.net</a></td></tr>
+<tr><td>DJMaze</td><td>For developing Dragonfly CMS and for showing us the path but not walking it for us.<br>
+Cleaned up the tablesort function and provided the porting team with a CVS system</td><td><a href="http://www.DragonflyCMS.com">http://www.DragonflyCMS.com</a></td></tr>
+<tr><td>SafeCracker4Hire</td><td>Helping with the auto installer function</td><td><a href="http://www.kylestubbins.com">http://www.kylestubbins.com</a></td></tr>
+</table>
+<br><br>
+ Neil Myers Thanks for contributing to the development process:<br>
+<table cellpadding="3">
+<tr><th>Thanks To:</th><th>Reason</th><th>URL</th></tr>
+<tr><td>Tom Buskens</td><td>Writing the gameq class</td><td><a href="http://gameq.sourceforge.net/">http://gameq.sourceforge.net/</a></td></tr>
+<tr><td>Erik Arvidsson</td><td>Writing the tablesort code</td><td><a href="http://webfx.eae.net/">http://webfx.eae.net/</a></td></tr>
+<tr><td>Francisco Burzi(aka nukelite)</td><td>Creating php-nuke</td><td><a href="http://www.phpnuke.org/">http://www.phpnuke.org/</a></td></tr>
+<tr><td>Bob at Leetservers</td><td>Providing me with several test servers</td><td><a href="http://www.leetservers.com/">http://www.leetservers.com/</a></td></tr>
+<tr><td>TrexGaming</td><td>Providing me with test servers for CS:S</td><td><a href="http://www.trexgaming.com/">http://www.trexgaming.com/</a></td></tr>
+<tr><td>Excubitor</td><td>ASE Join Info</td><td>Unknown</td></tr>
+</table>
+<br>
+<br>
+
+Thanks to those contributing to the GameServers Admin Community:
+<table cellpadding="3">
+<tr><th>Thanks To:</th><th>Reason</th><th>URL</th></tr>
+<tr><td>[RA] Butterbean</td><td>Starsiege & Tribes Vengance Support</td><td><a href="http://www.starsiegeplayers.com/">http://www.starsiegeplayers.com/</a></td></tr>
+<tr><td>PrimalFear</td><td>MOH logo & icon, Rvs icon, BF1942 icon</td><td><a href="http://www.clanselite.com/">http://www.clanselite.com/</a></td></tr>
+<tr><td>BigWah</td><td>CS:S Map Pictures</td><td>Unknown</td></tr>
+<tr><td>CozmicShredder</td><td>CS:S Icon</td><td><a href="http://www.cozmicshredder.net/">http://www.cozmicshredder.net/</a></td></tr>
+<tr><td>trampi3</td><td>Halo Map Pictures</td><td><a href="http://www.chosen-reborn.com/chosen/">http://www.chosen-reborn.com/chosen/</a></td></tr>
+<tr><td>Mimicvii</td><td>Cod Map Pictures</td><td>Unknown</td></tr>
+<tr><td>DogsBody</td><td>UT2004 Map Pictures</td><td><a href="http://www.dogsbody.org/">http://www.dogsbody.org/ut2003/mappics.html</a></td></tr>
+</table>
+<br>
+<br>
+
+Products used to create the GameServers module:<br>
+<table cellpadding="3">
+<tr><td><a href="http://www.editplus.com" target="_blank"><img border="0" src="images/editplus.gif" hspace="10"></a></td><td>Practically every line was coded for the Dragonfly port using Editplus or Ultraedit</td></tr>
+<tr><td><a href="http://www.getfirefox.com" target="_blank"><img border="0" src="images/getFF.gif" hspace="10"></a></td><td>Just like IE but with 200% less crap</td></tr>
+<tr><td><a href="http://www.tortoisecvs.org" target="_blank"><img border="0" src="images/tortoise.gif" hspace="10"></a></td><td>TortoiseCVS is what allowed to the porting team be organized and swap files in a development team environment.<br>A huge thanks to DJMaze & DragonflyCMS.com for hosting our CVS for this project.</td></tr>
+<tr><td><a href="http://www.bpftp.com" target="_blank"><img border="0" src="images/bpftp.gif" hspace="10"></a></td><td>BulletProof FTP™ is a fully automated FTP client.</td></tr>
+</table>
+<br>
+<br>
+LIABILITY<br>
+<hr noshade align="left">
+NO WARRANTIES.  ALL BRANDS, LOGOS, ICONS, AND SCREENSHOTS ARE THE PROPERTY OF THEIR CREATORS.  THE PRODUCT IS PROVIDED
+"AS IS" WITHOUT WARRANTY OF ANY KIND, INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NON-INFRINGEMENT.  WE ARE NOT REQUIRED TO PROVIDE ANY UPDATES OR SUPPORT, BUT WE MIGHT ANYWAY. ENTIRE
+LIABILITY AND YOUR EXCLUSIVE REMEDY SHALL NOT EXCEED THE PRICE PAID FOR THE PRODUCT - THIS INCLUDES LEGAL FEES AND
+COURT COSTS.  TO THE MAXIMUM EXTENT PROVIDED BY ALL APPLICABLE LAWS, WE (AND OUR AGENTS, SUPPLIERS, FAMILY, AND PETS)
+ARE NOT TO BLAME IF THIS PRODUCT DOESN'T WORK, DOESN'T DO WHAT YOU WANT IT TO DO, RESULTS IN LOSS OF DATA, OR CAUSES UNREPAIRABLE EMOTIONAL DAMAGE.
+THERE ARE MILLIONS OF DIFFERENT PEOPLE IN THE WORLD BUT HOW MANY ACTUALLY TAKE THE TIME TO READ THE LIABILITY OF A PRODUCT ESPECIALLY ON THE INTERNET.  YOU SEE AN INSTALLER AND YOU CLICK I AGREE AUTOMATICALLY WITHOUT ACTUALLY READING THE TERMS OF A PRODUCT.  FOR ALL YOU KNOW YOU COULD BE SELLING YOUR SOUL TO THE DEVIL AND YOU WOULD NEVER EVEN KNOW IT.  SO FROM NOW ON LETS BE GOOD GEEKS AND READ THE EULA BEFORE EVER AGREEING TO ANOTHER WEB PRODUCT AGAIN.  THIS EULA IS IN COMPLIANCE WITH THE RULES AND REGULATIONS SET FORTH BEFORE US IN THE GUN/GRAPPLE LICENSE.  I MEAN THE GNU/GPL LICENSE.  THE OFFER OF LIABILITY IS NON TRANSFERABLE AND CAN NOT BE REDEEMED AT YOUR LOCAL COMMISIONERS OFFICE UNLESS YOU HAVE A HAND WRITTEN NOTE BY YOUR PARENTS AND A WAIVER OF CONSENSUAL SEX FROM THE LOCAL MAGISTRATES OFFICE.  WE GUARANTEE NO ANIMAL CRACKERS WERE HURT DURING THE CREATION OF THIS UBER SILLY AND LONG CAPITAL LETTER AND LEGALLY BINDING AND NON-DESCRIPTIVE YET GENERALLY VAGUE ENOUGH STATEMENT TO KEEP IT LEGALLY BINDING.

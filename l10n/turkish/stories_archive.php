@@ -1,0 +1,26 @@
+<?php
+/*********************************************
+  CPG Dragonfly™ CMS
+  ********************************************
+  Copyright © 2004-2006 by CPG-Nuke Dev Team
+  http://dragonflycms.org
+
+  Dragonfly is released under the terms and conditions
+  of the GNU GPL version 2 or any later version
+
+  $Source: /cvs/l10n/turkish/stories_archive.php,v $
+  $Revision: 9.4 $
+  $Author: nanocaiordo $
+  $Date: 2006/02/12 14:46:18 $
+Encoding test: n-array summation ∑ latin ae w/ acute ǽ
+*******************************************************/
+if (!defined('CPG_NUKE')) { exit; }
+define('_PRINTER','Yazdırılabilir Sayfa');
+define('_FRIEND','Bu Haberi Arkadaşına Gönder');
+define('_USCORE','Puan');
+define('_SELECTMONTH2VIEW','Lütfen görüntülemek istediğiniz ayı seçin:');
+define('_SHOWALLSTORIES','TÜM Haberleri Göster');
+define('_STORIESARCHIVE','Haber Arşivi');
+define('_ACTIONS','Hareketler');
+define('_ARCHIVESINDEX','Haber Arşivi İndeksi');
+define('_ALLSTORIESARCH','Tüm Haberler');

@@ -1,0 +1,222 @@
+<?php
+/*********************************************
+  CPG Dragonfly™ CMS
+  ********************************************
+  Copyright © 2004-2006 by CPG-Nuke Dev Team
+  http://dragonflycms.org
+
+  Dragonfly is released under the terms and conditions
+  of the GNU GPL version 2 or any later version
+
+  $Source: /cvs/l10n/danish/web_links.php,v $
+  $Revision: 9.7 $
+  $Author: nanocaiordo $
+  $Date: 2006/02/26 21:39:51 $
+Encoding test: n-array summation ∑ latin ae w/ acute ǽ
+*******************************************************/
+if (!defined('CPG_NUKE')) { exit; }
+global $sitename, $anonwaitdays, $outsidewaitdays;
+define('_YOURNAME','Dit navn');
+define('_CATEGORIES','Kategorier');
+define('_LVOTES','stemmer');
+define('_TOTALVOTES','Antal stemmer:');
+define('_LINKTITLE','Titel på link');
+define('_THEREARE','Der er');
+define('_NOMATCHES','Søgningen gave ingen resultater');
+define('_SCOMMENTS','Kommentarer');
+define('_ADDLINK','Tilføj Link');
+define('_POPULAR','Populære');
+define('_TOPRATED','Bedste');
+define('_RANDOM','Prøv lykken');
+define('_LINKSMAIN','Oversigt over links');
+define('_LINKCOMMENTS','Link kommentarer');
+define('_ADDITIONALDET','Detaljer');
+define('_EDITORREVIEW','Anmeldelse');
+define('_REPORTBROKEN','Raporter fejl i link');
+define('_LINKSMAINCAT','Links hovedkategorier');
+define('_AND','og');
+define('_INDB','i vores database');
+define('_ADDALINK','Tilføj Link');
+define('_INSTRUCTIONS','Vejledning');
+define('_SUBMITONCE','Tilføj venligst kun hvert link én gang.');
+define('_POSTPENDING','Alle links bliver gennemlæst før de kommer online.');
+define('_USERANDIP','Brugernavn og IP bliver logget, så lad venligst være med at misbruge systemet.');
+define('_PAGETITLE','Navn');
+define('_PAGEURL','Adresse (URL)');
+define('_YOUREMAIL','Din e-mail adresse');
+define('_LDESCRIPTION','Beskrivelse: (maks 255 tegn)');
+define('_ADDURL','Send');
+define('_LINKSNOTUSER1','Du er ikke oprettet som bruger eller også er du ikke logget ind.');
+define('_LINKSNOTUSER2','Hvis du var oprettet som bruger kunne du oprette links og downloads her på websitet.');
+define('_LINKSNOTUSER3','At blive oprettet som bruger er hurtigt og nemt.');
+define('_LINKSNOTUSER4','Hvorfor kræver vi registrering for at opnå adgang til dele af vores site?');
+define('_LINKSNOTUSER5','Fordi vi så kan tilbyde dig det bedst mulige kvalitetsindhold,');
+define('_LINKSNOTUSER6','alt indhold bliver individuelt gennemgået og godkendt af vores team.');
+define('_LINKSNOTUSER7','Vi ønsker udelukkende at kunne tilbyde dig kvalitetsindhold.');
+define('_LINKSNOTUSER8','<a href="'.getlink("Your_Account").'">Opret dig som bruger</a>');
+define('_LINKALREADYEXT','Beklager! Denne URL befinder sig allerede i databasen!');
+define('_LINKNOTITLE','Beklager! Fejl! Du skal angive en titel til URL\'en!');
+define('_LINKNOURL','Beklager! Fejl! Du skal skrive en URL-adresse til dit link!');
+define('_LINKNODESC','Beklager! Fejl! Du skal angive en beskrivelse af URL\'en!');
+define('_LINKRECEIVED','Tak! Dit link-forslag er modtaget');
+define('_EMAILWHENADD','Tak! Du vil modtage en e-mail når linket er godkendt af webmaster.');
+define('_CHECKFORIT','Du skrev ikke en e-mail-adresse. Vi vil alligevel gennemse dit forslag snarest.');
+define('_NEWLINKS','Nye links');
+define('_TOTALNEWLINKS','Antal nye links');
+define('_LASTWEEK','Sidste uge');
+define('_LAST30DAYS','Sidste 30 dage');
+define('_1WEEK','1 uge');
+define('_2WEEKS','2 uger');
+define('_30DAYS','30 dage');
+define('_TOTALFORLAST','Samlet antal nye links over de sidste');
+define('_ADDEDON','Oprettet');
+define('_RATING','Link bedømmelse');
+define('_RATESITE','Vurder denne ressource');
+define('_DETAILS','Detaljer');
+define('_BESTRATED','Top-bedømte links');
+define('_OF','af');
+define('_TRATEDLINKS','antal Vurderet links');
+define('_TVOTESREQ','stemmer er påkrævet som minimum');
+define('_SHOWTOP','Vis toppen');
+define('_MOSTPOPULAR','Mest populære - Top');
+define('_OFALL','af alle');
+define('_SORTLINKSBY','Sortér links efter');
+define('_SITESSORTED','Websites sorteret efter');
+define('_POPULARITY','Popularitet');
+define('_SELECTPAGE','Vælg side');
+define('_MAIN','Hovedkategori');
+define('_NEWTODAY','Nye i dag');
+define('_NEWLAST3DAYS','Nye de sidste tre dage');
+define('_NEWTHISWEEK','Nye denne uge');
+define('_CATNEWTODAY','Nye links i denne kategori oprettet i dag');
+define('_CATLAST3DAYS','Nye links i denne kategori oprettet indenfor de sidste tre dage');
+define('_CATTHISWEEK','Nye links i denne kategori oprettet indenfor den sidste uge');
+define('_POPULARITY1','Popularitet (Færrest til flest hits)');
+define('_POPULARITY2','Popularitet (Flest til færrest hits)');
+define('_TITLEAZ','Titel (A til Å)');
+define('_TITLEZA','Titel (Å til A)');
+define('_DATE1','Dato (Gamle links først)');
+define('_DATE2','Dato (Nye links først)');
+define('_RATING1','Vurderinger (Laveste vurdering til højeste vurdering)');
+define('_RATING2','Vurderinger (Højeste vurdering til laveste vurdering)');
+define('_SEARCHRESULTS4','Søgeresultater for');
+define('_USUBCATEGORIES','Underkategorier');
+define('_LINKS','Links');
+define('_TRY2SEARCH','Prøv at søge');
+define('_INOTHERSENGINES','i andre søgemaskiner');
+define('_EDITORIAL','Redaktionel leder');
+define('_LINKPROFILE','Linkprofil');
+define('_EDITORIALBY','Anmeldelse af');
+define('_NOEDITORIAL','Ingen anmeldelse er tilgængeligt for dette website.');
+define('_VISITTHISSITE','Besøg denne hjemmeside');
+define('_RATETHISSITE','Vurder denne ressource');
+define('_ISTHISYOURSITE','Er dette dit website?');
+define('_ALLOWTORATE','Tillad andre at vurdere den fra dit website!');
+define('_LINKRATINGDET','Link bedømmelsesdetaljer');
+define('_OVERALLRATING','Samlet vurdering');
+define('_TOTALOF','Antal af');
+define('_USER','Bruger');
+define('_USERAVGRATING','Brugernes gennemsnitlige vurdering');
+define('_NUMRATINGS','# af vurderinger');
+define('_EDITTHISLINK','Rediger dette link');
+define('_REGISTEREDUSERS','Registrerede brugere');
+define('_NUMBEROFRATINGS','Antal vurderinger');
+define('_NOREGUSERSVOTES','Ingen Registrerede brugerstemmer');
+define('_BREAKDOWNBYVAL','Nedbryd vurderinger efter værdi');
+define('_LTOTALVOTES','Antal stemmer');
+define('_LINKRATING','Links Vurdering');
+define('_HIGHRATING','Høje Vurderinger');
+define('_LOWRATING','Lave Vurderinger');
+define('_NUMOFCOMMENTS','Antal kommentarer');
+define('_WEIGHNOTE','* Note: Vi vægter registrerede mod uregistrerede brugeres vurderinger.');
+define('_NOUNREGUSERSVOTES','Ingen uregistrerede brugerstemmer.');
+define('_WEIGHOUTNOTE','Note: Vi vægter registrerede mod udefrakommende stemme vurderinger');
+define('_NOOUTSIDEVOTES','Ingen udefrakommende stemmer');
+define('_OUTSIDEVOTERS','Udefrakommende stemmer');
+define('_UNREGISTEREDUSERS','Uregistrerede brugere');
+define('_PROMOTEYOURSITE','Reklamer for dit website');
+define('_PROMOTE01','Måske vil du være interesseret i muligheden for at \'Vurdere et Website\' på din eget site. Vi har flere muligheder til rådighed. De tillader, at du kan placere et billede (eller en ratingform) på dit website for at forøge antallet af stemmer som dit website modtager. Vælg mellem de forskellige muligheder nedenfor:');
+define('_TEXTLINK','Tekstlink');
+define('_PROMOTE02','en mulighed er at linke via et simpelt tekstlink:');
+define('_HTMLCODE1','HTML-koden du skal bruger er som følger:');
+define('_THENUMBER','Nummeret');
+define('_IDREFER','i HTML-kilden refererer til dit sites ID-nummer i '.$sitename.'-databasen. Vær sikker på, at nummeret er tilstede.');
+define('_BUTTONLINK','Knaplink');
+define('_PROMOTE03','Hvis du er på udkig efter noget mere end bare et simpelt tekstlink, kan du bruge et lille knaplink:');
+define('_RATEIT',' Vurdere dette site!');
+define('_HTMLCODE2','Kildekoden for ovenstående knap er:');
+define('_REMOTEFORM','Udefrakommende vurderings form');
+define('_PROMOTE04','Vi tillader ikke snyd og vi holder øje med forsøg herpå. Hvis vi opdager snyd vil linket blive slettet fra databasen. Med det i baghovedet så ser den nuværende den eksterne vurderings form ud således:');
+define('_VOTE4THISSITE','Vurder denne ressource');
+define('_LINKVOTE','Stem!');
+define('_HTMLCODE3','Hvis du bruger denne vurderings form kan dine brugere stemme på dit website i vores database direkte fra dit eget site. vurderingen vil blive gemt i vores database. Ovenstående form er deaktiveret, men den nedenstående kildekode virker hvis du laver kopier og sæt ind i din side. Husk, at tallet 14 angiver dit sites nummer i vores database. Kontroller, at det passer!');
+define('_PROMOTE05','Held og lykke med dine vurderinger!');
+define('_THANKSBROKEN','Tak for din hjælp!');
+define('_THANKSFORINFO','Tak for oplysningerne.');
+define('_LOOKTOREQUEST','Vi vil snarest gennemse din forslag.');
+define('_ONLYREGUSERSMODIFY','Kun oprettede brugere kan foreslå ændringer til downloads. Vær venlig at logge ind eller bliv oprettet som bruger.<a href="'.getlink("Your_Account").'">Log ind eller bliv bruger</a>.');
+define('_REQUESTLINKMOD','Forslag om ændring af link');
+define('_LINKID','Link ID');
+define('_SENDREQUEST','Send anmodning');
+define('_THANKSTOTAKETIME','Tak fordi du tog dig tid til at vurdere et site her hos');
+define('_LETSDECIDE','Tilbagemeldinger fra brugere som dig selv, er med til at hjælpe andre besøgende med at vælge hvilke links, de skal klikke på.');
+define('_RETURNTO','Tilbage til');
+define('_RATENOTE1','Stem ikke på det samme mere end en gang.');
+define('_RATENOTE2','Skalaen er 1 til 10, hvor 1 er det laveste og 10 det højeste.');
+define('_RATENOTE3','Vær så objektiv som muligt i din stemmeafgivelse, hvis alle modtager 1 eller 10, kan vurderingerne ikke bruges til noget.');
+define('_RATENOTE4','Du kan se en liste med de <a href="'.getlink("&amp;l_op=TopRated").'">bedste vurderede links</a>.');
+define('_RATENOTE5','Stem ikke på din egen side eller på et konkurrerende site.');
+define('_YOUAREREGGED','Du er oprettet som bruger og er logget ind.');
+define('_FEELFREE2ADD','Skriv en kommentar om denne side hvis du har lyst.');
+define('_YOUARENOTREGGED','Du er ikke oprettet som bruger eller også er du ikke logget ind.');
+define('_IFYOUWEREREG','Hvis du var oprettet som bruger kunne du komme med kommentarer på dette website.');
+define('_MODIFY','Ændring');
+define('_COMPLETEVOTE1','Tak for din stemme!');
+define('_COMPLETEVOTE2','Du har allerede stemt på denne download indenfor '.$anonwaitdays.' dage');
+define('_COMPLETEVOTE3','Stem kun en gang på en download.<br>Alle stemmer gemmes og gennemses.');
+define('_COMPLETEVOTE4','Du kan ikke stemme på et download du selv er kommet med.<br>Alle stemmer gemmes og gennemses.');
+define('_COMPLETEVOTE5','Der er ingen stemme valgt - der bliver derfor ikke afgivet nogen stemme');
+define('_COMPLETEVOTE6','Det er kun muligt at stemme en gang pr. IP adresse hver '.$outsidewaitdays.' dag(e).');
+
+/**************************
+  ADMNINISTRATION SECTION
+**************************/
+define('_ADDMAINCATEGORY','Tilføj en hovedkategori');
+define('_ADDSUBCATEGORY','Tilføj en under-kategori');
+define('_WEBLINKSADMIN','Web Links Administration');
+define('_EZTRANSFERLINKS','Overføre alle links fra kategori');
+define('_CLEANLINKSDB','Slet linksstemmer');
+define('_EZTRANSFER','Overføre');
+define('_BROKENLINKSREP','Anmeld ødelagte links');
+define('_LINKMODREQUEST','Forslag om ændringer af links');
+define('_ADDNEWLINK','Opret nyt link');
+define('_MODLINK','Ændre et link');
+define('_LINKSINDB','Links i databasen');
+define('_LINKSWAITINGVAL','Links der venter på godkendelse');
+define('_ERRORURLEXIST','FEJL: Denne internetadresse findes allerede i databasen!');
+define('_ERRORNOTITLE','FEJL: Du skal indtaste en TITEL til din internetadresse!');
+define('_ERRORNOURL','FEJL: Du skal indtaste internetadressen!');
+define('_ERRORNODESCRIPTION','FEJL: Du skal indtaste en BESKRIVELSE til din internetadresse!');
+define('_NEWLINKADDED','Nyt link oprettet i databasen');
+define('_YOURLINKAT','Dit link til');
+define('_LINKVALIDATION','Godkendelse af link');
+define('_CHECKALLLINKS','Kontroller alle links');
+//define('_VALIDATELINKS','Validate Links');
+//define('_FAILED','Failed!');
+//define('_BEPATIENT','(please be patient)');
+//define('_VALIDATINGCAT','Validating Category (and all subcategories)');
+//define('_VALIDATINGSUBCAT','Validating Sub-Category');
+define("_ADDEDITORIAL","Tilføj Leder");
+define("_EDITORIALTITLE","Ledende Artikel;");
+define("_EDITORIALTEXT","Ledende Tekst;");
+define("_DATEWRITTEN","Skrevet Den");
+define("_NOREPORTEDBROKEN","Ingen reporterede ødelagte links.");
+define("_USERREPBROKEN","Bruger reporterede ødelagte Links");
+define("_IGNOREINFO","Ignorere (Slet alle <b><i>anmodninger</i></b> for given link)");
+define("_DELETEINFO","Slet (Sletter <b><i>ødelagt link</i></b> og <b><i>anmodninger</i></b> for given link)");
+define("_LINK","Link");
+define("_LINKOWNER","Link Ejer");
+define("_USERMODREQUEST","Bruger Link ændring ønsker");
+define("_ORIGINAL","original");
+define("_PROPOSED","Foreslået");
+define("_NOMODREQUESTS","Der er ingen ændringsønsker lige nu");

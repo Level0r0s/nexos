@@ -1,0 +1,41 @@
+<!-- IF S_CALL == 'browse' -->
+<div style="width:500px"><h2>Core</h2>
+	<!-- BEGIN config -->
+	<span class="title">{config.S_FILE}</span>
+	<form method="post" action="{S_ACTION}" style="float:right; display:inline">
+		<input type="hidden" name="tpl" value="delete" />
+		<input type="submit" name="{config.S_FILE}" value="_(DELETE)" />
+	</form>
+	<form method="post" action="{S_ACTION}" style="float:right; display:inline">
+		<input type="hidden" name="tpl" value="show" />
+		<input type="submit" name="{config.S_FILE}" value="_(SHOW)" />
+	</form>
+	<hr style="clear:both" />
+	<!-- END config -->
+</div>
+
+<div style="width:500px"><h2>Themes</h2>
+	<!-- BEGIN themes -->
+	<span class="title">{themes.S_FILE}</span>
+	<form method="post" action="{S_ACTION}" style="float:right; display:inline">
+		<input type="hidden" name="tpl" value="delete" />
+		<input type="submit" name="{themes.S_FILE}" value="_(DELETE)" />
+	</form>
+	<hr style="clear:both" />
+	<!-- END themes -->
+</div>
+
+<div style="width:500px"><h2>Modules</h2>
+	<!-- BEGIN modules -->
+	<span class="title">{modules.S_FILE}</span>
+	<form method="post" action="{S_ACTION}" style="float:right; display:inline">
+		<input type="hidden" name="tpl" value="delete" />
+		<input type="submit" name="{modules.S_FILE}" value="_(DELETE)" />
+	</form>
+	<hr style="clear:both" />
+	<!-- END modules -->
+</div>
+
+<!-- ELSEIF S_CALL == 'show' -->
+<div>{S_FILE_CONTENT}</div>
+<!-- ENDIF -->

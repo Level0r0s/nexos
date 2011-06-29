@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>GameServers Version 2.0.2 for Dragonfly 9.0</title>
+<style>
+body {
+background: #222288 url(images/background.jpg);
+font-family: Verdana,Helvetica,Arial,sans-serif;
+font-size: 12px;
+color: #000000;
+font-weight: normal;
+margin: 40px;
+scrollbar-base-color: #222288;
+scrollbar-arrow-color: #8790ff;
+}
+th {
+background-color: #222288;
+font-family: Verdana,Helvetica,Arial,sans-serif;
+font-size: 12px;
+color: #8790CC;
+font-weight: bold;
+}
+td {
+background-color: #222288;
+font-family: Verdana,Helvetica,Arial,sans-serif;
+font-size: 12px;
+color: #8790ff;
+font-weight: normal;
+}
+hr {
+color: #8790ff;
+height: 1px;
+width: 50%;
+}
+hr.2 {
+color: #8790ff;
+height: 1px;
+width: 25%;
+}
+a:active, a:link, a:visited {
+font-family: Verdana,Helvetica,Arial,sans-serif;
+color: #FFFFFF;
+font-weight: normal;
+text-decoration: underline;
+}
+a:hover {
+font-family: Verdana,Helvetica,Arial,sans-serif;
+color: #336600;
+font-weight: normal;
+text-decoration: underline;
+}
+</style>
+</head>
+<body bgcolor="#222288" text="#DDDD44" link="#DDDD44" alink="#DDDD44" vlink="#DDDD44">
+<img src="images/header.gif"><br>
+&nbsp;[&nbsp;<a href=games.htm>Supported Games</a>&nbsp;|&nbsp<a href=readme.htm>Read Me</a>&nbsp;]&nbsp;
+<br>
+<br>
+Welcome to Dragonfly GameServers 2.0.2!<br><br>
+
+In order to install Dragonfly GameServers all you have to do is upload the files in their corresponding folders to your webserver.<br>
+Then go to your module control panel, in there you will automatically see a selection for GameServers.<br>
+Click on "INSTALL" and the module will be installed and ready to go.  That's it!<br>
+In the event that the installer does not work properly for you please contact a member of our porting team through our site.<br>
+We've also provided you with the SQL table file just in case. <a href="NEW_INSTALL.SQL">SQL File</a><br><br>
+
+Currently this is the first version of the Dragonfly GameServers module.<br>
+If you are an old phpnuke user and want to upgrade your module along with Dragonfly it is not possible at this time.<br>
+Simply install the GameServer module and input your data again.<br>
+You'll find the new tablesort option is much more friendly to make quick changes to your displayed index.<br>
+
+<br>
+Remote Installation: (Advanced)<br>
+<hr noshade align="left">
+<ol>
+<li>Follow the Standard Installation steps</li>
+<li>copy (not move) the modules/GameServers/gameq folder to your remote query server with UDP access</li>
+<li>edit remote.php on the remote query server and remove lines 8 and 25 and modify the security code on line 10</li>
+<li>login to admin on your main site and click gameservers then configuration
+	<ol type="a">
+	<li>enable gameq remote</li>
+	<li>enter the full path to your remote query server (ex: http://www.domain.com/gameq)</li>
+	<li>enter the query code you entered into remote.php</li>
+	</ol>
+</li>
+</ol>
+<br>
+Single Server Block Setup:<br>
+<hr noshade align="left" class="2">
+Open blocks/block-GameServers-SS.php<br>
+on line 9, set $blockserverID to an active servers id#<br>
+upload & activate in nuke admin<br>
+<br>
+to use additional blocks just copy block-GameServers-SS.php to a new file<br>
+you can call it block-GameServers-SS2.php or whatever else as long as you edit line 3 to match the filename exactly<br>
+<br>
+<br>
+Core Upgrades (gameq):<br>
+<hr noshade align="left" class="2">
+This modules uses a modified version of gameq<br>
+at its core. upgrading gameq may cause this module not to function<br>
+properly but upgrading the core is easy just upload gameq to<br>
+/modules/GameServers/gameq<br>
+that's it!<br>
+<br>
+<br>

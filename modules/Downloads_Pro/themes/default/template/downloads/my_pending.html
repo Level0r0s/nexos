@@ -1,0 +1,23 @@
+<div class="table1">
+{DL_MENU}<br /><hr /><br />
+
+<!-- IF DL_NO_ITEMS -->
+<div style="background-color: #FFEEEE; color: #660000; padding: 3px;">{DL_NO_ITEMS}</div><br />
+<!-- ELSE -->
+<table class="forumline" cellspacing="1" width="100%">
+  <tr>
+	<th align="left" colspan="2">&nbsp;Pending Downloads&nbsp;</th>
+	<th width="150">&nbsp;Submitted&nbsp;</th>
+  </tr>
+<!-- BEGIN dl_item -->
+  <tr>
+	<td class="row1" colspan="2">&nbsp;<a class="forumlink" href="{dl_item.U_EDIT}">{dl_item.TITLE}</a><br />
+	&nbsp;<strong>{L_CATEGORY}:</strong> {dl_item.CATEGORY}</td>
+	<td align="center" class="row1">{dl_item.DATE}</td>
+  </tr>
+<!-- END dl_item -->
+</table>
+<!-- IF DL_PAGINATION --><br />Page: {DL_PAGINATION}<!-- ENDIF -->
+<!-- ENDIF -->
+
+</div>

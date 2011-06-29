@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema version="1.0" name="dragonfly">
+
+	<table name="poll_check">
+		<col name="user_id" type="INT" notnull="true" default="0"/>
+		<col name="ip" type="VARBINARY" length="17"/>
+		<col name="time" type="VARCHAR" length="14" notnull="true" default=""/>
+		<col name="poll_id" type="INT" notnull="true" default="0"/>
+	</table>
+
+	<table name="poll_data">
+		<col name="poll_id" type="INT" notnull="true" default="0"/>
+		<col name="option_text" type="VARCHAR" length="50" notnull="true" default=""/>
+		<col name="option_count" type="INT" notnull="true" default="0"/>
+		<col name="vote_id" type="INT" notnull="true" default="0"/>
+	</table>
+
+	<table name="poll_desc">
+		<col name="poll_id" type="SERIAL" notnull="true"/>
+		<col name="poll_title" type="VARCHAR" length="100" notnull="true" default=""/>
+		<col name="time_stamp" type="INT" notnull="true" default="0"/>
+		<col name="voters" type="INT" notnull="true" default="0"/>
+		<col name="planguage" type="VARCHAR" length="30" notnull="true" default=""/>
+		<col name="artid" type="INT" notnull="true" default="0"/>
+		<col name="comments" type="TINYINT" notnull="true" default="0"/>
+		<col name="anonymous" type="TINYINT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="poll_id"/>
+		</key>
+	</table>
+
+	<table name="pollcomments">
+		<col name="tid" type="SERIAL" notnull="true"/>
+		<col name="pid" type="INT" notnull="true" default="0"/>
+		<col name="poll_id" type="INT" notnull="true" default="0"/>
+		<col name="date" type="INT" notnull="true" default="0"/>
+		<col name="name" type="VARCHAR" length="60" notnull="true" default=""/>
+		<col name="email" type="VARCHAR" length="60" default=""/>
+		<col name="url" type="VARCHAR" length="60" default=""/>
+		<col name="host_name" type="VARCHAR" length="60" default=""/>
+		<col name="subject" type="VARCHAR" length="60" notnull="true" default=""/>
+		<col name="comment" type="TEXT" notnull="true"/>
+		<col name="score" type="TINYINT" notnull="true" default="0"/>
+		<col name="reason" type="TINYINT" notnull="true" default="0"/>
+		<key name="PRIMARY" type="PRIMARY">
+			<col name="tid"/>
+		</key>
+		<key name="pid">
+			<col name="pid"/>
+		</key>
+		<key name="poll_id">
+			<col name="poll_id"/>
+		</key>
+	</table>
+
+</schema>

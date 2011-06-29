@@ -1,0 +1,103 @@
+<!-- BEGIN bottomblock -->
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellspacing="0" cellpadding="1">
+    <tr>
+     <td style="background:#000000;">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+        <td>
+		 <table width="100%" border="0" cellspacing="1" cellpadding="0">
+          <tr>
+           <td class="row1">
+		    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr> 
+              <td class="block-title">
+  				<img alt="{S_TOGGLE}" title="{S_TOGGLE}" id="pic{bottomblock.S_BID}" src="{bottomblock.S_IMAGE}.gif" onclick="blockswitch('{bottomblock.S_BID}');" style="cursor:pointer; float:right;" />
+                {bottomblock.S_TITLE}
+  			  </td>
+  			 </tr>
+  			 <tr>
+			  <td>
+               <table width="100%" border="0" cellspacing="1" cellpadding="0" id="pe{bottomblock.S_BID}" {bottomblock.S_VISIBLE}>
+                <tr>
+				 <td class="blockcontent">
+ 			      {bottomblock.S_CONTENT}
+				 </td>
+				</tr>
+               </table>
+              </td>
+             </tr>
+            </table>
+		   </td>
+          </tr>
+         </table>
+		</td>
+       </tr>
+      </table>
+	 </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<br />
+<!-- END bottomblock -->
+<!-- IF S_RIGHTBLOCKS -->
+</td><td style="text-align:left;" class="mainside" id="pe601" {B_R_VISIBLE}>
+  <!-- BEGIN rightblock -->  
+<table width="180" border="0" cellspacing="0" cellpadding="4">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellspacing="0" cellpadding="1">
+    <tr>
+     <td>
+	  <table width="100%" border="0" cellspacing="0" cellpadding="1">
+       <tr>
+        <td>
+		 <table width="100%" border="0" cellspacing="1" cellpadding="0">
+          <tr>
+           <td class="row1" style="height:27px;">
+		    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+             <tr>
+              <td class="block-title">
+               <img alt="{S_TOGGLE}" title="{S_TOGGLE}" id="pic{rightblock.S_BID}" src="{rightblock.S_IMAGE}.gif" onclick="blockswitch('{rightblock.S_BID}');" style="cursor:pointer; float:right;" />
+               {rightblock.S_TITLE}
+              </td>
+             </tr>
+            </table>
+		</td>
+       </tr>
+       <tr>
+        <td class="blockcontent">
+         <table id="pe{rightblock.S_BID}" {rightblock.S_VISIBLE} width="100%" border="0" cellspacing="0" cellpadding="4">
+          <tr>
+           <td>{rightblock.S_CONTENT}</td>
+          </tr>
+         </table>
+        </td>
+       </tr>
+      </table>
+	 </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+</td>
+</tr>
+</table>
+  <!-- END rightblock -->
+<!-- ENDIF -->
+</td></tr></table>
+<br /><div style="text-align:center; background:#000000;">{S_FOOTER}</div>
+<!-- PLEASE DO NOT TOUCH THE NEXT LINE(s).
+YOU CAN ONLY ADD TO IT IF YOU MODIFY THIS THEME :) -->
+<div class="small" style="text-align:center; background:#000000;">
+.: Based on fiblack3d by <span onmousedown="alert('Daz\'s website: forumimages.com offline\r\n Images (c) Darren Burnhill')" style="color:#FF9900;" title="http://www.forumimages.com/">Daz</span>  :: ported to DragonflyCMS by <a title="http://dragonflycms.org/" href="http://dragonflycms.org/">Akamu / Phoenix</a> :.</div>
+</td></tr></table>
+<div style="text-align:left;">
+<!-- IF S_DEBUG_SQL -->{S_DEBUG_SQL}<br /><!-- ENDIF -->
+<!-- IF S_DEBUG_PHP -->{S_DEBUG_PHP}<!-- ENDIF --></div>
+</body></html>

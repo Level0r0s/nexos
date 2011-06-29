@@ -1,0 +1,8 @@
+/**
+* Downloads Pro: Designed exclusively for Dragonfly CMS
+* Copyright (c) 2005 - 2006 by Trevor Eckart and DJMaze, dragonflycms.org
+* Please see the included LICENSE.txt for the terms and conditions that govern your use of this module
+* $Id: info.txt,v 1.3 2006/01/08 14:45:23 trevor Exp $
+*/
+
+CHMOD this directory to 755 (777 if 755 fails) to permit file and screenshot uploads

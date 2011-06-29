@@ -1,0 +1,21 @@
+MA CVS Setup
+
+Advice.
+
+It's best to keep the same directory structure as your CVS Root.
+For example dragonfly uses /cvs: :pserver:anonymous@cpgnuke.com:/cvs
+So on our website it is http://dragonflycms.org/cvs/
+
+If you use a different path like :pserver:anonymous@domain.com:/mycvs
+Then you should use http://domain.com/mycvs/
+
+Step 1.
+
+modify config.php and .htaccess to your server setup.
+
+Step 2.
+
+upload all content to a subdirectory of your Dragonfly install.
+example:
+/index.php = Dragonfly
+/cvs/* = this content

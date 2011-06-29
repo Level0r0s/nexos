@@ -1,0 +1,103 @@
+/**
+* Downloads Pro: Designed exclusively for Dragonfly CMS
+* Copyright (c) 2005 - 2006 by Trevor Eckart and DJMaze, dragonflycms.org
+* Please see the included LICENSE.txt for the terms and conditions that govern your use of this module
+* $Id: LICENSE.txt,v 1.3 2006/01/04 22:03:43 trevor Exp $
+*/
+
+LICENSE
+CPG Dev. Team (known further as CPG) grants you a non-exclusive license to use this
+Downloads Pro Module (known further as Module) on CPG Dragonfly CMS (known further as CMS)
+installations subject to the provisions in all sections of this Agreement.
+
+TERM
+This Module is offered as freeware, but a shareware license is available for a nominal fee.
+The shareware license features technical support and service. In the event of a
+freeware license without changing to a shareware license, the Module will
+remain completely functional but will be unsupported in any other way than through
+Bulletin Boards or the Bug Report system on http://dragonflycms.org.
+
+SCOPE OF GRANT
+You may:
+
+    * customize the Module's design and operation to suit the internal needs
+      of your web site except to the extent not permitted in this Agreement
+    * produce and distribute modification instructions, Skin packs, or Language
+      packs. The modifications instructions you personally create are not
+      owned by CPG.
+
+You may not:
+
+    * permit other individuals to use the Module except under the terms
+      listed above
+    * create derivative works based on the Module for distribution or usage
+      outside your web site
+    * use the Module in such a way as to condone or encourage terrorism,
+      promote or provide pirated software, or any other form of illegal or
+      damaging activity
+    * modify and/or remove any copyright notices or labels on the Module on
+      each page (unless the shareware license is purchased) and in the header
+      of each script source file
+    * remove all links to the "credits" page of the CMS which outputs the
+	  Module copyright notices (unless the shareware license is purchased)
+    * distribute the Module without written permission from CPG
+    * distribute individual copies of files, libraries, or other programming
+      material in the Module package
+    * distribute or modify proprietary graphics packaged with the Module for
+      use in Software applications other than CPG Dragonfly or web sites
+      without written permission from CPG
+    * create applications which interface with the Module
+    * promote and/or sell commercial/shareware products through the Module
+      (unless the shareware license is purchased)
+
+
+DISCLAIMER OF WARRANTY
+The Module is provided on an "AS IS" basis, without warranty of any kind,
+including without limitation the warranties of merchantability, fitness for a
+particular purpose, and non-infringement. The entire risk as to the quality and
+performance of the Module is borne by you. Should the Module prove
+defective, you and not CPG assume the entire cost of any service and repair.
+In addition, the security mechanisms implemented by CPG Software have inherent
+limitations, and you must determine that the Software sufficiently meets your
+requirements. This disclaimer of warranty constitutes an essential part of the
+Agreement.
+
+TITLE
+Title, ownership rights, and intellectual property rights in the Module shall
+remain with CPG. The Module is protected by copyright laws and treaties.
+Title and related rights in the content generated through the Module is the
+property of the applicable content owner and may be protected by applicable law.
+This License gives CPG no rights to such content.
+
+TERMINATION
+This Agreement will terminate automatically upon failure to comply with the
+limitations described herein or on written notice from an authorized
+representative of CPG. On termination, you must destroy all copies of the
+Module within 48 hours. Termination of the license due to noncompliance will
+not result in any refunds of license fees.
+
+MISCELLANEOUS
+CPG reserves the right to change the terms of this Agreement at any time.
+Changes to the Agreement will be announced via email using the CPG email
+notification list. Failure to receive notification of a change does not make
+those changes invalid. A current copy of this Agreement will be available on
+the CPG Dragonfly web site.
+
+Skin packs and Language packs are defined as the group of code, text, and
+graphics that are exported from the Module using the provided functions of the
+Module Administration Control Panel.
+
+Technical support will not be provided for third-party modifications to the
+Module including modifications to code, Skin packs, and Language packs to any
+freeware holder. If the Module is modified using a third-party modification
+instruction or otherwise, technical support may be refused to any freeware
+holder.
+
+PROPRIETARY LABELS
+Authorization to remove or modify output of copyright notices is granted through
+the shareware license. For a nominal fee, this license authorizes you to remove the
+output of copyright notices: it does NOT give you authorization to remove any
+copyright notices in the program source files or any other rights.
+
+SHAREWARE LICENSE
+More information about the shareware license can be found at http://dragonflycms.org/Wiki/id=95.html

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" 
+          "http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd" >
+<html dir="{S_TEXTDIR}" xml:lang="{S_LANGCODE}">
+<head>
+{S_HEADER_TAGS}
+<link rel="stylesheet" type="text/css" href="{THEME_PATH}/style/style.css" />
+<!-- IF S_MAIN_MENU or S_ADMIN_CSSMENU -->
+<link rel="stylesheet" type="text/css" href="{THEME_PATH}/style/cpgmm.css" />
+<!-- ENDIF -->
+{CSS_IE}
+</head>
+<body>
+<!-- IF S_ADMIN_CSSMENU -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="pagetitle_left"></td><td class="pagetitle">
+	<div id="menu">{S_MAIN_MENU}</div>
+</td><td class="pagetitle_right"></td></tr></table>
+<!-- ELSEIF S_ADMIN_MENU -->
+	<div id="adminmenu"></div>
+	<script type="text/javascript">/*<![CDATA[*/
+	{S_ADMIN_MENU}
+	cmDraw ('adminmenu', adminMenu, 'hbr', cmThemeOffice, 'ThemeOffice');
+	/*]]>*/</script>
+<!-- ELSE -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+ <tr>
+  <td class="bg-01" align="left"></td>
+  <td class="bg-02" align="center"></td>
+  <td class="bg-03" align="right"></td>
+ </tr>
+ <tr>
+  <td class="bg-04" align="left"></td>
+  <td class="bg-05">
+   <!-- IF PUBLIC_HEADER -->
+   <div style="text-align:center;">{S_BANNER}</div>
+   <table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+	 <td class="header-left"></td>
+	 <td class="header-center" valign="bottom">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+	   <tr>
+        <td align="center" style="width:100%;" colspan="3"><div style="text-align:center;"><a href="{U_MAININDEX}"><img src="{THEME_PATH}/images/logo.png" alt="{S_SITENAME}" /></a></div></td>
+       </tr>
+       <tr>
+        <td align="left" valign="bottom" style="width:20%; height:15px;" class="mainmenu">{G_LEFTIMAGE}
+          <!-- IF S_IS_USER -->Welcome <a href="{U_MY_ACCOUNT}" class="mainmenu">{S_USERNAME}</a>
+		  <!-- ELSE --><a href="{U_LOGIN}" class="mainmenu">Login</a> or <a href="{U_MY_ACCOUNT}" class="mainmenu">{S_MY_ACCOUNT}</a>
+          <!-- ENDIF -->
+		 </td>
+         <!-- IF S_MAIN_MENU -->
+         <td align="center" style="width:60%; height:18px;">
+	      <div id="menu">{S_MAIN_MENU}</div>
+         </td>
+         <!-- ELSE -->
+         <td align="center" valign="bottom" style="width:50%; height:18px;" class="mainmenu">
+<a class="mainmenu" href="{U_MAININDEX}">{S_HOME}</a>
+         <!-- IF S_DOWNLOADS -->
+:: <a class="mainmenu" href="{U_DOWNLOADS}">{S_DOWNLOADS}</a>
+         <!-- ENDIF -->
+:: <a class="mainmenu" href="{U_FORUMS}">{S_FORUMS}</a> 
+:: <a class="mainmenu" href="{U_MY_ACCOUNT}">{S_MY_ACCOUNT}</a>
+         </td>
+         <!-- ENDIF -->
+         <td class="mainmenu" style="width:20%; height:18px;" align="right" valign="bottom">
+          {G_RIGHTIMAGE}{S_DATE}&nbsp;
+         </td>
+        </tr>
+       </table>
+	  </td>
+	 <td class="header-right"></td>
+    </tr>
+   </table>
+   <!-- ENDIF -->
+  <!-- ENDIF -->
+<table class="maintable">
+ <tr>
+  <!-- IF S_LEFTBLOCKS -->
+  <td class="mainside" id="pe600" {B_L_VISIBLE}>
+   <!-- BEGIN leftblock -->
+   <div class="blockhead">
+   <a title="{S_TOGGLE}" id="pic{leftblock.S_BID}" onclick="blockslide('{leftblock.S_BID}');" class="blockswitch">{leftblock.S_TITLE}</a>
+   </div>
+   <div class="blockcontent" id="pe{leftblock.S_BID}" {leftblock.S_VISIBLE}>
+    <div class="blockcontent1">{leftblock.S_CONTENT}</div>
+   </div>
+   <div class="blockfoot">
+   </div>
+   <!-- END leftblock -->
+  </td>
+  <!-- ENDIF -->
+  <td class="main">
+  <!-- IF PAGE_TITLE -->
+<table align="center" cellspacing="0" cellpadding="0" width="100%" style="height:30px;"><tr>
+<td class="pagetitle_left"></td><td class="pagetitle" valign="middle">{PAGE_TITLE}</td><td class="pagetitle_right"></td></tr></table>
+<!-- ENDIF -->
+<!-- IF IMPORTANT_MESSAGE -->
+<div style="text-align:center;"><span style="font-size:12px; color:#FF0000;">{IMPORTANT_MESSAGE}</span></div><br />
+<!-- ENDIF -->
+<!-- BEGIN messageblock -->
+<div class="table1">
+  <div class="option" style="text-align:center;">{messageblock.S_TITLE}</div><br />
+  <div class="content" >{messageblock.S_CONTENT}</div><br /><div style="text-align:center;">
+  <!-- IF S_CAN_ADMIN -->
+  [ {messageblock.S_OUTPUT} - {messageblock.S_REMAIN} - <a href="{messageblock.U_EDITMSG}">{messageblock.S_EDIT}</a> ]
+  <!-- ELSE -->
+  {messageblock.S_DATE}
+  <!-- ENDIF -->
+  </div>
+</div><br/>
+<!-- END messageblock -->
+<!-- BEGIN centerblock -->
+<div class="table1">
+	<div style="text-align:center;" id="pic{centerblock.S_BID}" onclick="blockslide('{centerblock.S_BID}');">
+		<b>{centerblock.S_TITLE}</b>
+	</div>
+	<div class="option" id="pe{centerblock.S_BID}" {centerblock.S_VISIBLE}>
+		{centerblock.S_CONTENT}
+	</div>
+</div><br />
+<!-- END centerblock -->

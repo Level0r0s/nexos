@@ -1,0 +1,196 @@
+<table class="forumline" width="100%" cellspacing="1" cellpadding="3" border="0" style="margin:auto;">
+
+  <tr>
+    <td class="catleft" width="40%" height="28" align="center"><b><span class="gen">_(AVATAR)</span></b></td>
+    <td class="catright" width="60%" align="center"><b><span class="gen">{ABOUT_USER}</span></b></td>
+  </tr>
+
+  <tr>
+    <td class="row1" height="6" valign="top" align="center">{AVATAR}</td>
+    <td class="row1" rowspan="3" valign="top">
+      <table width="100%" border="0" cellspacing="1" cellpadding="3">
+        <tr>
+          <td valign="middle" align="right" width="33%"><span class="gen">_(JOINED):</span></td>
+          <td width="100%"><b><span class="gen">{JOINED_DATE}</span></b></td>
+        </tr>
+        <tr>
+          <td valign="middle" align="right" width="33%"><span class="gen">_(RANK):</span></td>
+          <td><b><span class="gen">{USER_RANK}</span></b></td>
+        </tr>
+        <tr>
+          <td valign="middle" align="right" width="33%"><span class="gen">_(LOCATION):</span></td>
+          <td><b><span class="gen">{USER_LOCATION}</span></b></td>
+        </tr>
+        <tr>
+          <td valign="middle" align="right" width="33%"><span class="gen">_(WEBSITE):</span></td>
+          <td><b><span class="gen">{USER_WEBSITE}</span></b></td>
+        </tr>
+        <tr>
+          <td valign="middle" align="right" width="33%"><span class="gen">_(MA_OCCUPATION):</span></td>
+          <td><b><span class="gen">{USER_OCCUPATION}</span></b></td>
+        </tr>
+        <tr>
+          <td valign="top" align="right" width="33%"><span class="gen">_(INTERESTS):</span></td>
+          <td><b><span class="gen">{USER_INTERESTS}</span></b></td>
+        </tr>
+
+        <!-- BEGIN custom_field -->
+        <tr>
+          <td valign="top" align="right" width="33%"><span class="gen">{custom_field.NAME}:</span></td>
+          <td><b><span class="gen">{custom_field.VALUE}</span></b></td>
+        </tr>
+        <!-- END custom_field -->
+
+        <!-- IF USER_SIGNATURE -->
+        <tr>
+          <td valign="top" align="right" style="white-space:nowrap;"><span class="gen">_(SIGNATURE):</span></td>
+          <td class="row1"><div class="gen">{USER_SIGNATURE}</div></td>
+        </tr>
+        <!-- ENDIF -->
+
+        <!-- IF USER_EXTRA_INFO -->
+        <tr>
+          <td valign="top" align="right" style="white-space:nowrap;"><span class="gen">_(MA_EXTRAINFO):</span></td>
+          <td class="row1"><div class="gen">{USER_EXTRA_INFO}</div></td>
+        </tr>
+        <!-- ENDIF -->
+
+        <!-- IF BLOG_URL -->
+        <tr>
+          <td colspan="2" align="center"><b><span class="gen"><a href="{BLOG_URL}">_(READMYJOURNAL)</a></span></b></td>
+        </tr>
+        <!-- ENDIF -->
+
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="catleft" align="center" height="28"><b><span class="gen">_(CONTACTINFO)</span></b></td>
+  </tr>
+  <tr>
+    <td class="row1" valign="top">
+      <table width="100%" border="0" cellspacing="1" cellpadding="3">
+
+        <!-- IF EMAIL_ADDRESS -->
+        <tr>
+          <td valign="middle" align="right" style="white-space:nowrap;"><span class="gen">_(EMAILADDRESS):</span></td>
+          <td class="row1" valign="middle" width="100%"><span class="gen"><a href="{EMAIL_ADDRESS}"><img src="{IMG_PATH}/icon_email.gif" alt="" /></a></span></td>
+        </tr>
+        <!-- ENDIF -->
+
+        <!-- IF U_PM -->
+        <tr>
+          <td valign="middle" style="white-space:nowrap;" align="right"><span class="gen">_(PM):</span></td>
+          <td class="row1" valign="middle" width="100%"><span class="gen"><a href="{U_PM}"><img src="{IMG_PATH}/icon_pm.gif" alt="" /></a></span></td>
+        </tr>
+        <!-- ENDIF -->
+
+        <!-- IF USER_MSNM -->
+        <tr>
+          <td valign="middle" style="white-space:nowrap;" align="right"><span class="gen">_(MA_MSNM):</span></td>
+          <td class="row1" valign="middle" width="100%">
+          <span class="gen"><a href="http://members.msn.com/{USER_MSNM}" target="_blank" title="{USER_MSNM}"><img src="{IMG_PATH}/icon_msnm.gif" border="0" alt="{USER_MSNM}" /></a></span></td>
+        </tr>
+        <!-- ENDIF -->
+        <!-- IF USER_YIM -->
+        <tr>
+          <td valign="middle" style="white-space:nowrap;" align="right"><span class="gen">_(MA_YIM):</span></td>
+          <td class="row1" valign="middle" width="100%">
+          <span class="gen"><a href="http://edit.yahoo.com/config/send_webmesg?.target={USER_YIM}&amp;.src=pg"><img src="{IMG_PATH}/icon_yim.gif" alt="" /></a></span></td>
+        </tr>
+        <!-- ENDIF -->
+        <!-- IF USER_AIM -->
+        <tr>
+          <td valign="middle" style="white-space:nowrap;" align="right"><span class="gen">_(MA_AIM):</span></td>
+          <td class="row1" valign="middle" width="100%">
+          <span class="gen"><a href="aim:goim?screenname={USER_AIM}&amp;message=Hey+are+you+there?"><img src="{IMG_PATH}/icon_aim.gif" alt="" /></a></span></td>
+        </tr>
+        <!-- ENDIF -->
+        <!-- IF USER_ICQ -->
+        <tr>
+          <td valign="middle" style="white-space:nowrap;" align="right"><span class="gen">_(MA_ICQ):</span></td>
+          <td class="row1" valign="middle" width="100%">
+          <span class="gen"><a href="http://wwp.icq.com/scripts/search.dll?to={USER_ICQ}"><img src="{IMG_PATH}/icon_icq_add.gif" alt="" /></a></span></td>
+        </tr>
+        <!-- ENDIF -->
+        <!-- IF USER_SKYPE -->
+        <tr>
+          <td valign="middle" style="white-space:nowrap;" align="right"><span class="gen">Skype:</span></td>
+          <td class="row1" valign="middle" width="100%">
+          <span class="gen"><a href="callto://{USER_SKYPE}"><img src="{IMG_PATH}/icon_skype.gif" alt="" /></a></span></td>
+        </tr>
+        <!-- ENDIF -->
+        <!-- IF USER_GALLERY -->
+        <tr>
+            <td valign="middle" style="white-space:nowrap;" align="right"><span class="gen">_(coppermineLANG):</span></td>
+            <td class="row1" valign="middle" width="100%">
+            <span class="gen"><a href="{USER_GALLERY}"><img src="{IMG_PATH}/icon_gallery.gif" alt="" /></a></span>
+            </td>
+        </tr>
+        <!-- ENDIF -->
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+
+
+<!-- IF OWN_OR_CAN_ADMIN -->
+<div class="table1">
+  <div style="text-align:center;" class="content">
+
+    <!-- IF SUBSCRIBED -->
+    <a href="U_(&amp;edit=prefs)"><b>_(SUBSCRIBED)</b></a><br />
+    <!-- ELSE -->
+    <a href="U_(&amp;edit=prefs)"><b>_(NOTSUBSCRIBED)</b></a><br />
+    <!-- ENDIF -->
+
+    <!-- IF CAN_ADMIN_MEMBERS -->
+    <br />
+    [ <a href="{U_EDIT_USER}">_(EDITUSER)</a> | <a href="{U_SUSPEND_USER}">_(SUSPENDUSER)</a> ]<br />
+    <!-- ENDIF -->
+
+  </div>
+</div>
+<!-- ENDIF -->
+
+<!-- IF HEADLINES_ALLOWED -->
+<br />
+<div class="table1">
+<div style="text-align:center;">
+  <b>_(MA_MYHEADLINES)</b><br /><br />
+  _(SELECTASITE)<br /><br />
+  <form action="{URL_URI}" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+    <input type="hidden" name="url" value="0" />
+    <select name="hid">
+      <option value="0">_(SELECTASITE2)</option>
+      <!-- BEGIN feed_option -->
+      <option value="{feed_option.VALUE}"{feed_option.SELECTED}>{feed_option.NAME}</option>
+      <!-- END feed_option -->
+    </select>
+
+    <input type="submit" value="_(GO)" /></form>_(ORTYPEURL)<br /><br />
+    <form action="{URL_URI}" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+    <input type="hidden" name="hid" value="0" />
+    <input type="text" name="url" size="40" maxlength="200" value="http://" />&nbsp;&nbsp;<input type="submit" value="_(GO)" />
+  </form>
+</div>
+<br />
+</div>
+
+<!-- IF SHOW_RSS -->
+<!-- IF RSS_CONTENT -->
+  <div style="text-align:center;">
+  <div class="table1">
+    <b>_(HEADLINESFROM) <a href="http://{RSS_URL}" target="new">{RSS_TITLE}</a></b><br /><br />
+    <div style="text-align:left">{RSS_CONTENT}</div>
+  </div>
+  </div><br />
+<!-- ELSE -->
+  <div style="text-align:center">_(RSSPROBLEM)</div>
+<!-- ENDIF -->
+<!-- ENDIF -->
+
+<!-- ENDIF -->

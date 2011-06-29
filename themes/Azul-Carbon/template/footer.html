@@ -1,0 +1,46 @@
+<!-- BEGIN bottomblock -->
+<div class="table1">
+  <div style="text-align:center;" id="pic{bottomblock.S_BID}" onclick="blockslide('{bottomblock.S_BID}');">
+    <b>{bottomblock.S_TITLE}</b>
+  </div>
+  <div class="option" id="pe{bottomblock.S_BID}" {bottomblock.S_VISIBLE}>
+    {bottomblock.S_CONTENT}
+  </div>
+</div><br />
+<!-- END bottomblock -->
+<!-- IF S_RIGHTBLOCKS -->
+</td><td class="mainside" id="pe601" {B_R_VISIBLE}>
+<!-- BEGIN rightblock -->
+<div class="blockhead">
+<a title="{L_TOGGLE}" id="pic{rightblock.S_BID}" onclick="blockslide('{rightblock.S_BID}');" class="blockswitch">
+{rightblock.S_TITLE}
+</a>
+  </div>
+  <div class="blockcontent" id="pe{rightblock.S_BID}" {rightblock.S_VISIBLE}>
+    <div style="text-align:center;">
+    	<div class="blockcontent1">
+      		{rightblock.S_CONTENT}
+      	</div>
+  	</div>
+  </div>
+<div class="blockfoot"></div>
+<!-- END rightblock -->
+<!-- ENDIF -->
+</td></tr></table>
+<br /><div style="text-align:center;">
+{S_FOOTER}
+{S_AZUL}
+</div>
+</td>
+<td class="bg-06" align="right"></td>
+</tr>
+<tr>
+<td class="bg-07" align="left"></td>
+<td class="bg-08"></td>
+<td class="bg-09" align="right"></td>
+</tr>
+</table>
+
+<!-- IF S_DEBUG_SQL --><div class="table1">{S_DEBUG_SQL}</div><!-- ENDIF -->
+<!-- IF S_DEBUG_PHP --><div class="table1">{S_DEBUG_PHP}</div><!-- ENDIF -->
+</body></html>

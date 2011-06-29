@@ -1,0 +1,222 @@
+<?php
+/*********************************************
+  CPG Dragonfly™ CMS
+  ********************************************
+  Copyright © 2004-2006 by CPG-Nuke Dev Team
+  http://dragonflycms.org
+
+  Dragonfly is released under the terms and conditions
+  of the GNU GPL version 2 or any later version
+
+  $Source: /cvs/l10n/finnish/web_links.php,v $
+  $Revision: 9.5 $
+  $Author: nanocaiordo $
+  $Date: 2006/02/26 21:39:53 $
+Encoding test: n-array summation ∑ latin ae w/ acute ǽ
+*******************************************************/
+if (!defined('CPG_NUKE')) { exit; }
+global $sitename, $anonwaitdays, $outsidewaitdays;
+define('_YOURNAME','Nimesi');
+define('_CATEGORIES','Aihepiirit');
+define('_LVOTES','ääntä');
+define('_TOTALVOTES','Ääniä :');
+define('_LINKTITLE','Linkin otsikko');
+define('_THEREARE','Tietokannassa on');
+define('_NOMATCHES','Tietoja antamillasi hakuehdoilla ei löytynyt');
+define('_SCOMMENTS','Kommentit');
+define('_ADDLINK','Lisää linkki');
+define('_POPULAR','Suosittu');
+define('_TOPRATED','Huippuluokiteltu');
+define('_RANDOM','Satunnainen');
+define('_LINKSMAIN','Etusivu');
+define('_LINKCOMMENTS','Linkkien kommentit');
+define('_ADDITIONALDET','Lisätiedot');
+define('_EDITORREVIEW','Toimittajan valinnat');
+define('_REPORTBROKEN','Ilmoita toimimattomasta linkistä');
+define('_LINKSMAINCAT','Kategoriat');
+define('_AND','ja');
+define('_INDB','kannassamme');
+define('_ADDALINK','Lisää linkki');
+define('_INSTRUCTIONS','Ohjeet');
+define('_SUBMITONCE','Lisää linkkisi vain kerran.');
+define('_POSTPENDING','Linkkisi lisätään vasta hyväksymisen jälkeen');
+define('_USERANDIP','Käyttäjätunnus ja IP talletetaan, joten ethän käytä järjestelmää väärin.');
+define('_PAGETITLE','Sivun otsikko');
+define('_PAGEURL','Sivun URL');
+define('_YOUREMAIL','Sähköpostisi');
+define('_LDESCRIPTION','Kuvaus: (255 merkkiä max)');
+define('_ADDURL','Lisää');
+define('_LINKSNOTUSER1','Et ole rekisteröity käyttäjä tai et ole kirjautunut sisään.');
+define('_LINKSNOTUSER2','Jos olisit rekisteröity käyttäjä, voisit lisätä linkkejä tälle sivulle.');
+define('_LINKSNOTUSER3','Rekisteröityminen on helppoa ja vaivatonta.');
+define('_LINKSNOTUSER4','Miksi vaadimme rekisteröitymistä pääsemiseksi käsiksi tiettyihin ominaisuuksiin?');
+define('_LINKSNOTUSER5','Jotta voisimme tarjota sinulle vain korkeimman laatuisen sisällön,');
+define('_LINKSNOTUSER6','jokainen kohta tarkastetaan ja hyväksytään ylläpidossa.');
+define('_LINKSNOTUSER7','Toivomme voivamme tarjota sinulle vain arvokasta tietoa.');
+define('_LINKSNOTUSER8','<a href="'.getlink("Your_Account").'">Rekisteröidy</a>');
+define('_LINKALREADYEXT','VIRHE: Tämä osoite on jo kannassa!');
+define('_LINKNOTITLE','VIRHE: Sinun täytyy kirjoittaa OTSIKKO osoitteellesi!');
+define('_LINKNOURL','VIRHE: Sinun täytyy kirjoittaa URL osoitteellesi!');
+define('_LINKNODESC','VIRHE: Sinun täytyy kirjoittaa KUVAUS osoitteellesi!');
+define('_LINKRECEIVED','Vastaanotimme linkkiehdotuksesi. Kiitos!');
+define('_EMAILWHENADD','Saat sähköpostin, kun se on hyväksytty.');
+define('_CHECKFORIT','Et kirjoittanut sähköpostiosoitettasi. Tarkistamme kuitenkin linkkisi pian.');
+define('_NEWLINKS','Uudet linkit');
+define('_TOTALNEWLINKS','Kaikki uudet linkit');
+define('_LASTWEEK','viime viikolta');
+define('_LAST30DAYS','viimeisiltä 30 päivältä');
+define('_1WEEK','1 viikon ajalta');
+define('_2WEEKS','2 viikon ajalta');
+define('_30DAYS','30 päivän ajalta');
+define('_TOTALFORLAST','Kaikki uudet linkit viimeisiltä');
+define('_ADDEDON','lisätty');
+define('_RATING','Sija');
+define('_RATESITE','Arvostele tätä sivua');
+define('_DETAILS','Yksityiskohdat');
+define('_BESTRATED','Parhaiten arvostellut linkit - Top');
+define('_OF','of');
+define('_TRATEDLINKS','kaikki arvostellut linkit');
+define('_TVOTESREQ','äänten määrän minimi');
+define('_SHOWTOP','Näytä Top');
+define('_MOSTPOPULAR','Suosituimmat - Top');
+define('_OFALL','kaikista');
+define('_SORTLINKSBY','Lajittele');
+define('_SITESSORTED','Tällä hetkellä lajiteltu');
+define('_POPULARITY','Suosio');
+define('_SELECTPAGE','Valitse sivu');
+define('_MAIN','Etusivu');
+define('_NEWTODAY','Uusia tänään');
+define('_NEWLAST3DAYS','Uudet viimeisten 3 päivän ajalta');
+define('_NEWTHISWEEK','Uudet tältä viikolta');
+define('_CATNEWTODAY','Uudet tänään lisätyt linkit tässä kategoriassa');
+define('_CATLAST3DAYS','Uudet viimeisten 3 päivän aikana lisätyt linkit tässä kategoriassa');
+define('_CATTHISWEEK','Uudet tämän viikon aikana lisätyt linkit tässä kategoriassa');
+define('_POPULARITY1','Suosio (Vähiten suosituista eniten suosittuihin)');
+define('_POPULARITY2','Suosio (Vähiten suosituista eniten suosittuihin)');
+define('_TITLEAZ','Otsikko (A - Z)');
+define('_TITLEZA','Otsikko (Z - A)');
+define('_DATE1','Päiväys (Vanhat ensin)');
+define('_DATE2','Päiväys (Uudet ensin)');
+define('_RATING1','Tila (Viimeisestä ensimmäiseen)');
+define('_RATING2','Tila (Ensimmäisestä viimeiseen)');
+define('_SEARCHRESULTS4','Hakutulokset');
+define('_USUBCATEGORIES','Alakategoriat');
+define('_LINKS','Linkit');
+define('_TRY2SEARCH','Yritä etsiä');
+define('_INOTHERSENGINES','muilla hakukoneilla');
+define('_EDITORIAL','Kommentti');
+define('_LINKPROFILE','Linkin profiili');
+define('_EDITORIALBY','Kommentoinut:');
+define('_NOEDITORIAL','Tälle sivulle ei tällä hetkellä ole kommenttia.');
+define('_VISITTHISSITE','Käy tällä sivulla');
+define('_RATETHISSITE','Arvostele tätä lähdettä');
+define('_ISTHISYOURSITE','Onko tämä lähteesi?');
+define('_ALLOWTORATE','Anna muiden käyttäjien arvostella sitä omalta sivultasi!');
+define('_LINKRATINGDET','Linkin sijan tiedot');
+define('_OVERALLRATING','Yleisarvostelu');
+define('_TOTALOF','Yhteensä');
+define('_USER','Käyttäjä');
+define('_USERAVGRATING','Käyttäjän keskimääräinen sija');
+define('_NUMRATINGS','Äänien määrä');
+define('_EDITTHISLINK','Muokkaa tätä linkkiä');
+define('_REGISTEREDUSERS','Rekisteröityneet käyttäjät');
+define('_NUMBEROFRATINGS','Äänien määrä');
+define('_NOREGUSERSVOTES','Ei rekisteröityneiden käyttäjien ääniä');
+define('_BREAKDOWNBYVAL','Sijoituksien erittely arvostelun mukaan');
+define('_LTOTALVOTES','yhteensä ääniä');
+define('_LINKRATING','Linkkien sijoitukset');
+define('_HIGHRATING','Korkea sija');
+define('_LOWRATING','Huono sija');
+define('_NUMOFCOMMENTS','Kommenttien määrä');
+define('_WEIGHNOTE','* Huom: Tämä lähde punnitsee rekisteröityjen vs. rekisteröitymättömien käyttäjien arvostelut');
+define('_NOUNREGUSERSVOTES','Ei rekisteröitymättömien käyttäjien ääniä');
+define('_WEIGHOUTNOTE','* Huom.: Tämä lähde punnitsee rekisteröityjen vs. rekisteröitymättömien äänestäjien arvostelut');
+define('_NOOUTSIDEVOTES','Ei ulkopuolisten ääniä');
+define('_OUTSIDEVOTERS','Ulkopuoliset äänestäjät');
+define('_UNREGISTEREDUSERS','Rekisteröitymättömät käyttäjät');
+define('_PROMOTEYOURSITE','Mainosta sivuasi');
+define('_PROMOTE01','Voit ehkä olla kiinnostunut etäisistä \'Arvostele sivua\' vaihtoehdoistamme. Ne antavat sinulle mahdollisuuden laittaa kuvan (tai jopa arvostelun) sivullesi kasvattamaan lähteesi äänien määrää. Valitse yhdestä alla listatuista vaihtosehdoista:');
+define('_TEXTLINK','Tekstilinkki');
+define('_PROMOTE02','Yksi tapa linkittää arvostelukaavakkeeseen on yksinkertainen tekstilinkki:');
+define('_HTMLCODE1','HTML-koodi, jota sinun tulisi tässä tapauksessa käyttää, on seuraava:');
+define('_THENUMBER','Määrä');
+define('_IDREFER','HTML-lähdekoodissa viitataan sivusi tunnusnumeroon '.$sitename.'-tietokannassa. Varmista että tämä numero on mainittu.');
+define('_BUTTONLINK','Nappilinkki');
+define('_PROMOTE03','Jos etsit jotain muuta kuin tekstilinkkiä, saatat haluta käyttää pientä nappilinkkiä:');
+define('_RATEIT','Arvostele tätä sivua!');
+define('_HTMLCODE2','Lähdekoodi edellä mainitulle napille on:');
+define('_REMOTEFORM','Etähallittu arvostelulomake');
+define('_PROMOTE04','Jos huijaat tässä, poistamme linkkisi. Tältä näyttää nykyinen etähallittu arvostelulomake.');
+define('_VOTE4THISSITE','Äänestä tätä sivua!');
+define('_LINKVOTE','Äänestä!');
+define('_HTMLCODE3','Käyttäen tätä lomaketta käyttäjät voivat arvostella sivuasi suoraan sivultasi ja arvostelu talletetaan tänne. Ylläoleva lomake ei toimi, mutta seuraava lähdekoodi toimii jos yksinkertaisesti leikkaat ja liimaat sen nettisivuusi. Lähdekoodi näkyy alla:');
+define('_PROMOTE05','Kiitos! ja onnea arvosteluillesi!');
+define('_THANKSBROKEN','Kiitos että autoit pitämään yllä tämän luettelon kokonaisuutta.');
+define('_THANKSFORINFO','Kiitos tiedoista.');
+define('_LOOKTOREQUEST','Tarkistamme toiveesi pian.');
+define('_ONLYREGUSERSMODIFY','Vain rekisteröityneet käyttäjät voivat muokata. Ole hyvä ja <a href="'.getlink("Your_Account").'">rekisteröidy tai kirjaudu</a>.');
+define('_REQUESTLINKMOD','Esitä muutos linkkeihin');
+define('_LINKID','Linkin tunnus');
+define('_SENDREQUEST','Lähetä ehdotus');
+define('_THANKSTOTAKETIME','Kiitos ajan käytöstäsi sivun arvosteluun täällä');
+define('_LETSDECIDE','Käyttäjien, kuten sinun, mielipiteet auttavat muita vierailijoita paremmin päättämään mistä linkistä painaa.');
+define('_RETURNTO','Palaa');
+define('_RATENOTE1','Älä äänestä samaa lähdettä enempää kuin kerran.');
+define('_RATENOTE2','Asteikko on 1 - 10, jossa 1 on huono ja 10 erinomainen.');
+define('_RATENOTE3','Ole puolueeton äänestyksessäsi, jos kaikki saavat 1 tai 10, arvosteluista ei ole paljonkaan hyötyä.');
+define('_RATENOTE4','Voit katsoa listaa <a href="links.php?op=TopRated">Parhaan arvosanan saaneista lähteistä</a>.');
+define('_RATENOTE5','Älä äänestä oman tai kilpailijasi lähteestä.');
+define('_YOUAREREGGED','Olet rekisteröity käyttäjä ja olet kirjautunut sisään.');
+define('_FEELFREE2ADD','Laita vapaasti kommentti tälle sivulle.');
+define('_YOUARENOTREGGED','Et ole rekisteröity käyttäjä tai et ole kirjautunut sisään.');
+define('_IFYOUWEREREG','Jos olisit rekisteröitynyt, voisit kommetoida tätä sivua.');
+define('_MODIFY','Muokkaa');
+define('_COMPLETEVOTE1','Äänestyksesi on hyväksytty.');
+define('_COMPLETEVOTE2','Sinä olet jo äänestänyt tätä '.$anonwaitdays.' päivä(ä) sitten.');
+define('_COMPLETEVOTE3','Äänestä vain kerran.<br>Kaikki äänestykset on valvottuja.');
+define('_COMPLETEVOTE4','Et voi äänestää linkkiä jonka sinä olet lisännyt.<br>Kaikki äänestykset on valvottuja...');
+define('_COMPLETEVOTE5','Ei arvostelua valittuna - äänestys ei mahdollista');
+define('_COMPLETEVOTE6','Only one vote per IP address allowed every '.$outsidewaitdays.' day(s).');
+
+/**************************
+  ADMNINISTRATION SECTION
+**************************/
+define('_ADDMAINCATEGORY','Lisää pääkategoria');
+define('_ADDSUBCATEGORY','Lisää alakategoria');
+define('_WEBLINKSADMIN','Internet linkkien ylläpito');
+define('_EZTRANSFERLINKS','Siirrä kaikki linkit kategoriaan');
+define('_CLEANLINKSDB','Tyhjennä linkkien äänestys');
+define('_EZTRANSFER','Siirrä');
+define('_BROKENLINKSREP','Virheelliset linkit');
+define('_LINKMODREQUEST','Linkin muokkausta pyydetään');
+define('_ADDNEWLINK','Lisää uusi linkki');
+define('_MODLINK','Muokkaa linkkiä');
+define('_LINKSINDB','Linkkiä tietokannassa');
+define('_LINKSWAITINGVAL','Linkkiä odottaa hyväksyntää');
+define('_ERRORURLEXIST','VIRHE: Tämä osoite on jo tietokannassa!');
+define('_ERRORNOTITLE','VIRHE: Anna otsikko linkkillesi!');
+define('_ERRORNOURL','VIRHE: Et antanut linkin osoitetta!');
+define('_ERRORNODESCRIPTION','VIRHE: Et antanut linkin kuvausta!');
+define('_NEWLINKADDED','Uusi linkki lisätty tietokantaan');
+define('_YOURLINKAT','Linkkisi');
+define('_LINKVALIDATION','Linkkin hyväksyntä');
+define('_CHECKALLLINKS','Tarkista KAIKKI linkit');
+//define('_VALIDATELINKS','Validate Links');
+//define('_FAILED','Failed!');
+//define('_BEPATIENT','(please be patient)');
+//define('_VALIDATINGCAT','Validating Category (and all subcategories)');
+//define('_VALIDATINGSUBCAT','Validating Sub-Category');
+define("_ADDEDITORIAL","Lisää toimituksen kommentti");
+define("_EDITORIALTITLE","Toimituksen kommentin otsikko");
+define("_EDITORIALTEXT","Toimituksen kommentin teksti");
+define("_DATEWRITTEN","Lisäyspäivä");
+define("_NOREPORTEDBROKEN","Ei virheellisiä linkkejä.");
+define("_USERREPBROKEN","Käyttäjän raportoimat virheelliset linkit");
+define("_IGNOREINFO","Älä hyväksy (Poista kaikki <b><i>hyväksymistä</i></b> odottavat linkit)");
+define("_DELETEINFO","Poista (Poista <b><i>virheelliset linkit</i></b> ja <b><i>hyväksymistä</i></b> odottavat linkit)");
+define("_LINK","Linkki");
+define("_LINKOWNER","Linkin lisääjä");
+define("_USERMODREQUEST","Käyttäjän linkin muokkaus pyyntö");
+define("_ORIGINAL","Alkuperäinen");
+define("_PROPOSED","Haluttu muutos");
+define("_NOMODREQUESTS","Ei ole muokkaus pyyntöjä juuri nyt");
