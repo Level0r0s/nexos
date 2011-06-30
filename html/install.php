@@ -9,17 +9,13 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/install.php,v $
-  $Revision: 10.5 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 10:04:31 $
+  $Revision: 10.2 $
+  $Author: djmaze $
+  $Date: 2010/11/07 14:51:26 $
 **********************************************/
 error_reporting(E_ALL);
 define('INSTALL', 1);
-require('index.php');
-
-define('SKIP_GZIP', 1);
-define('SKIP_BUFFERING', 1);
-require(BASEDIR. 'includes/cmsinit.inc');
+require('includes/cmsinit.inc');
 require_once(CORE_PATH.'cpg_page.php');
 
 $go = 0;

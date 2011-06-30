@@ -7,13 +7,13 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/filter.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:11:10 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:15 $
 **********************************************/
 
 # http://www.php.net/manual/en/filter.filters.validate.php
-abstract class Filter
+abstract class FILTER
 {
 
 	/*

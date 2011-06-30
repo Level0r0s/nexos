@@ -13,9 +13,9 @@
   **************************************************************************
   Last modification notes:
   $Source: /cvs/html/includes/coppermine/functions.inc,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 11:21:38 $
+  $Revision: 10.1 $
+  $Author: djmaze $
+  $Date: 2010/11/07 14:50:34 $
 ****************************************************************************/
 global $THEME_DIR, $template, $block_name, $template_cpg_die, $template_msg_box;
 
@@ -374,7 +374,7 @@ function get_pic_data($meta, $album, &$count, &$album_name, $limit1 = -1, $limit
 	$sort_order = isset($sort_array[$sort_code]) ? $sort_array[$sort_code] : $sort_array[$CONFIG['default_sort_order']];
 	$cat = (isset($_GET['cat']) && is_numeric($_GET['cat']))  ?  $_GET['cat']  :  0;
   $limit = ($limit1 >= 0) ? 'LIMIT '. intval($limit1) : '';
-  $limit .= (($limit1 >= 0) && ($limit2 > 0)) ? ' OFFSET '. intval($limit2) : '';
+  $limit .= (($limit1 >= 0) && ($limit2 > 0)) ? ','. intval($limit2) : '';
   /*$limit1 = intval($limit1);
 	$limit2 = intval($limit2);
 	$limit = ($limit1 >= 0) ? ' LIMIT ' . $limit1 : '';

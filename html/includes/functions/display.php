@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/functions/display.php,v $
-  $Revision: 9.71 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/18 08:18:57 $
+  $Revision: 9.68 $
+  $Author: phoenix $
+  $Date: 2010/11/08 00:32:13 $
 **********************************************/
 
 function get_theme() {
@@ -21,48 +21,52 @@ function get_theme() {
 }
 
 function adminblock($bid, $title, &$data) {
-	if (!is_admin()) return false;
-	$waitlist = $content = $imgcontent = '';
-	if (empty($data)) $data = '';
-	global $prefix, $db, $MAIN_CFG, $waitlist;
-	if ($MAIN_CFG['global']['admingraphic'] & 1) {
-		global $CLASS;
-		require_once(CORE_PATH.'classes/cpg_adminmenu.php');
-		$imgcontent = $CLASS['adminmenu']->display('all', 'blockgfx').'<hr />';
-	}
-	$data = $imgcontent.$data.'<hr />';
-	$imgcontent = '';
-	if (!Cache::array_load('waitlist')) {
-		if ($waitdir = dir(BASEDIR. 'admin/wait')) {
-			while($waitfile = $waitdir->read()) {
-				if (preg_match('/^wait_(.*?)\.php$/', $waitfile, $match)) {
-					$waitlist[$match[1]] = "admin/wait/$waitfile";
+	if (is_admin()) {
+		$waitlist = $content = $imgcontent = '';
+		if (empty($data)) $data = '';
+		global $prefix, $db, $MAIN_CFG, $waitlist;
+		if (!defined('ADMIN_PAGES') && $MAIN_CFG['global']['admingraphic'] & 1) {
+			global $CLASS;
+			require_once(CORE_PATH.'classes/cpg_adminmenu.php');
+			$imgcontent = $CLASS['adminmenu']->display('all', 'blockgfx').'<hr />';
+		}
+		if (!empty($data)) $data = $imgcontent.$data.'<hr />';
+		$imgcontent = '';
+		// $title = _WAITINGCONT;
+		// Contributed by sengsara
+		if (!Cache::array_load('waitlist')) {
+			if ($waitdir = dir('admin/wait')) {
+				while($waitfile = $waitdir->read()) {
+					if (preg_match('/^wait_(.*?)\.php$/', $waitfile, $match)) {
+						$waitlist[$match[1]] = "admin/wait/$waitfile";
+					}
+				}
+				$waitdir->close();
+			}
+			// Dragonfly system
+			$waitdir = dir('modules');
+			while($module = $waitdir->read()) {
+				if (!is_active($module)) continue;
+				if (false === strpos($module, '.') && $module != 'CVS' && file_exists("modules/$module/admin/adwait.inc")) {
+					$waitlist[$module] = "modules/$module/admin/adwait.inc";
 				}
 			}
 			$waitdir->close();
+			Cache::array_save('waitlist');
 		}
-		// Dragonfly system
-		$waitdir = dir(BASEDIR. 'modules');
-		while($module = $waitdir->read()) {
-			if (0 === strpos($module, '.') || $module == 'CVS' || !is_active($module)) continue;
-			if (file_exists("modules/$module/admin/adwait.inc")) {
-				$waitlist[$module] = "modules/$module/admin/adwait.inc";
-			}
-		}
-		$waitdir->close();
 		ksort($waitlist);
-		Cache::array_save('waitlist');
+		foreach($waitlist as $module => $file) {
+			require($file);
+		}
+		$block = array(
+			'bid' => $bid,
+			'view' => 2,
+			'title' => $title,
+			'content' => $data.$content
+		);
+		return $block;
 	}
-	foreach($waitlist as $module => $file) {
-		if (can_admin($module)) require($file);
-	}
-	$block = array(
-		'bid' => $bid,
-		'view' => 2,
-		'title' => $title,
-		'content' => $data.$content
-	);
-	return $block;
+	return false;
 }
 function title($text) {
 	# obsolete
@@ -170,12 +174,13 @@ function generate_secimg($chars=6) {
 	$id = mt_rand(0, 1000000);
 	$time = explode(' ', microtime());
 	$CPG_SESS['gfx'][$id] = substr(dechex($time[0]*3581692740), 0, $chars);
-	return '<img class="captcha" src="'.URL::load('captcha&amp;id='.$id).'" alt="'._SECURITYCODE.'" title="'._SECURITYCODE.'" />
+	return '<img src="'.URL::index("gfx&amp;id=$id").'" alt="'._SECURITYCODE.'" title="'._SECURITYCODE.'" />
 	<input type="hidden" name="gfxid" value="'.$id.'" />';
 }
 function validate_secimg($chars=6) {
+	global $CPG_SESS;
 	if (!isset($_POST['gfx_check']) || !isset($_POST['gfxid'])) { return false; }
-	$code = $_SESSION['CPG_SESS']['gfx'][$_POST['gfxid']];
+	$code = $CPG_SESS['gfx'][$_POST['gfxid']];
 	return (strlen($code) == $chars && $code == $_POST['gfx_check']);
 }
 function group_selectbox($fieldname, $current=0, $mvanon=false, $all=true) {

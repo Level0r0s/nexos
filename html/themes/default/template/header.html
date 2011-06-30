@@ -5,11 +5,14 @@
 <base href="{BASEHREF}" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>{S_SITENAME}<!-- IF B_PAGETITLE --> {S_DELIM} {S_PAGETITLE}<!-- ENDIF --></title>
-{CSS_DATA}
-{JS_DATA}
-{RSS_DATA}
 {S_HEADER_TAGS}
 <link rel="shortcut icon" href="{BASEHREF}favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{THEME_PATH}/style/style.css" />
+<script type="text/javascript" src="includes/javascript/blockscript.js"></script>
+<!-- IF S_MAIN_MENU or S_ADMIN_CSSMENU -->
+<link rel="stylesheet" type="text/css" href="{THEME_PATH}/style/cpgmm.css" />
+<!-- ENDIF -->
+{CSS_IE}
 <!-- IF B_NEWSRSS -->
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss/news2.php" />
 <!-- ENDIF -->

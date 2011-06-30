@@ -9,9 +9,9 @@
 	of the GNU GPL version 2 or any later version
 
 	$Source: /cvs/html/includes/poodle/poodle.php,v $
-	$Revision: 10.5 $
-	$Author: nanocaiordo $
-	$Date: 2011/04/09 13:43:00 $
+	$Revision: 10.3 $
+	$Author: djmaze $
+	$Date: 2010/11/12 17:35:37 $
 **********************************************/
 
 if (!is_float($_SERVER['REQUEST_TIME'])) { $_SERVER['REQUEST_TIME'] = microtime(true); }
@@ -153,7 +153,7 @@ abstract class Poodle
 	public static function shorten_file_path($file)
 	{
 		static $paths;
-		if (!$paths) { $paths = array_merge(array(BASEDIR, Poodle::$DIR_BASE), explode(PATH_SEPARATOR, preg_replace('#\.+'.PATH_SEPARATOR.'#', '', get_include_path()))); }
+		if (!$paths) { $paths = array_merge(array(Poodle::$DIR_BASE), explode(PATH_SEPARATOR, preg_replace('#\.+'.PATH_SEPARATOR.'#', '', get_include_path()))); }
 		return str_replace($paths, '', $file);
 //		if (!$paths) { $paths = '#^('.str_replace(PATH_SEPARATOR,'|',get_include_path()).')#'; }
 //		if (!$paths) { $paths = '#^('.implode('|',array_merge(array(Poodle::$DIR_BASE), explode(PATH_SEPARATOR, preg_replace('#\.+'.PATH_SEPARATOR.'#', '', get_include_path())))).')#'; }

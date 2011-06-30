@@ -164,14 +164,10 @@
 		<col name="mid" type="INT" notnull="true" default="0"/>
 		<col name="side" type="CHAR" length="1" notnull="true" default="l"/>
 		<col name="weight" type="SMALLINT" notnull="true" default="1"/>
-		<col name="page" type="INT" notnull="true" default="0"/>
 		<key name="bid" type="UNIQUE">
 			<col name="bid"/>
 			<col name="mid"/>
 			<col name="weight"/>
-		</key>
-		<key name="page">
-			<col name="page"/>
 		</key>
 	</table>
 

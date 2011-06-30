@@ -12,7 +12,7 @@
    the Free Software Foundation; either version 2 of the License, or		  
    (at your option) any later version.										   
   **************************************************************************  
-  $Header: /cvs/html/modules/coppermine/displayimage.php,v 9.24 2011/04/17 06:44:50 nanocaiordo Exp $			
+  $Header: /cvs/html/modules/coppermine/displayimage.php,v 9.23 2010/11/12 04:29:58 phoenix Exp $			
 ****************************************************************************/
 if (!defined('CPG_NUKE')) { exit; }
 
@@ -392,8 +392,8 @@ function html_comments($pid)
 			'{MSG_BODY_RAW}' => $row['msg_body'],
 			'{OK}' => OK,
 			'{SMILIES}' => $smilies,
-			'{HDR_IP}' => Net::decode_ip($row['msg_hdr_ip']),
-			'{RAW_IP}' => Net::decode_ip($row['msg_raw_ip']),
+			'{HDR_IP}' => NET::decode_ip($row['msg_hdr_ip']),
+			'{RAW_IP}' => NET::decode_ip($row['msg_raw_ip']),
 			'{ACTION}' => 'action="'.URL::index('&amp;file=db_input').'" enctype="multipart/form-data" accept-charset="utf-8"',
 			'{ADDFAVLINK}' => URL::index("&amp;file=addfav&amp;pid=$pid"), 
 			'{ADDFAVTEXT}' => $info,

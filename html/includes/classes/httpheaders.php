@@ -1,16 +1,16 @@
 <?php
 /*********************************************
-  Copyright (c) 2011 by DragonflyCMS
+  Dragonfly CMS, Copyright (c) 2004 by CPGNuke Dev Team
   http://dragonflycms.org
   Released under GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/httpheaders.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/03/30 10:33:33 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:15 $
 **********************************************/
 //namespace core;
-abstract class HttpHeaders
+abstract class HttpHeaders extends HttpUtils
 {
 
 
@@ -27,11 +27,11 @@ abstract class HttpHeaders
 	public static function add($h)
 	{
 		//if ( 'cli' === PHP::$run_as ) return;
-		if ( ctype_digit($h) ) { $h = (int) $h; }
-		if ( is_int($h) && isset(HttpUtils::$statusCodes[$h]) ) {
-			if ( 200 > $h && 1.1 > HttpUtils::$protocolVersion ) { return; }
+		if ( ctype_digit($h) ) { (int) $h; }
+		if ( is_int($h) && isset(parent::$statusCodes[$h]) ) {
+			if ( 200 > $h && 1.1 > parent::$protocolVersion ) { return; }
 			if ( 300 <= $h && 600 >= $h && !self::$exit ) { self::$exit = true; }
-			self::$to_send[] = $_SERVER['SERVER_PROTOCOL']. ' '. $h. ' '. HttpUtils::$statusCodes[$h];
+			self::$to_send[] = $_SERVER['SERVER_PROTOCOL']. ' '. $h. ' '. parent::$statusCodes[$h];
 		} else {
 			self::$to_send[] = $h; }
 	}
@@ -61,8 +61,8 @@ abstract class HttpHeaders
 
 	public static function contentType($var)
 	{
-		if ( isset(HttpUtils::$contentType[$var]) ) {
-			self::add(HttpUtils::$contentType[$var]);
+		if ( isset(parent::$contentType[$var]) ) {
+			self::add(parent::$contentType[$var]);
 		}
 	}
 

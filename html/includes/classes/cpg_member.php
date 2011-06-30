@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/cpg_member.php,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/18 11:21:27 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:15 $
 **********************************************/
 
 class cpg_member
@@ -37,7 +37,7 @@ class cpg_member
 		# MySQL has an SQL99 ISO incompatibility because it rtrim()s
 		# one specific binary data char (\x00 or \x20 version depended)
 		# Due to that we must pad our string with another character.
-		$visitor_ip = $db->binary_safe(Net::get_ip());
+		$visitor_ip = $db->binary_safe(NET::get_ip());
 		# Load Member cookie
 		$m_cookie   = isset($_COOKIE[$cookiename]) ? $_COOKIE[$cookiename] : false;
 		# Member Logout
@@ -106,7 +106,6 @@ class cpg_member
 	# or 'protected' so that a subclass can still use it
 	private function loginmember($visitor_ip)
 	{
-		if (empty($_POST['ulogin'])) URL::redirect(URL::index('Your_Account&error=2'), true);
 		global $db, $prefix, $user_prefix, $sec_code, $CPG_SESS;
 		$username = Fix_Quotes($_POST['ulogin']);
 		$result = $db->sql_query('SELECT user_id, username, user_password, user_level, theme FROM '.$user_prefix."_users WHERE username='$username' AND user_id>1");

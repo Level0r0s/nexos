@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/functions/inet.php,v $
-  $Revision: 1.8 $
+  $Revision: 1.7 $
   $Author: nanocaiordo $
-  $Date: 2011/04/17 06:35:38 $
+  $Date: 2010/07/07 13:14:12 $
 **********************************************/
 
 /*
@@ -29,14 +29,14 @@ function inet_pton($ip)
 		$ip2 = hexdec(substr($match[1],2));
 		$ip3 = hexdec(substr($match[2],0,2));
 		$ip4 = hexdec(substr($match[2],2));
-		$ip = pack('N',Net::ip2long("$ip1.$ip2.$ip3.$ip4"));
+		$ip = pack('N',NET::ip2long("$ip1.$ip2.$ip3.$ip4"));
 	}
 	else if (strpos($ip, '.') !== FALSE) {
 		# check for a hybrid IPv4-compatible address
 		$pos = strrpos($ip, ':');
 		if ($pos !== FALSE) { $ip = substr($ip, $pos+1); }
 		# finally make the binary code
-		$ip = pack('N',Net::ip2long($ip));
+		$ip = pack('N',NET::ip2long($ip));
 	}
 	# ipv6
 	else if (strpos($ip, ':') !== FALSE) {

@@ -1,7 +1,7 @@
 var groupstree = new TableTree();
 groupstree.min_id = 4;
 groupstree.onAdd = function(tr,id) {
-	/** hidden cell */
+	/* hidden cell */
 	var td = document.createElement('td');
 		var i = document.createElement('input');
 			i.name='type['+id+'][]';
@@ -10,7 +10,7 @@ groupstree.onAdd = function(tr,id) {
 			i.checked='checked';
 		td.appendChild(i);
 	tr.appendChild(td);
-	/** closed cell */
+	/* closed cell */
 	td = document.createElement('td');
 		i = document.createElement('input');
 			i.name='type['+id+'][]';
@@ -20,11 +20,11 @@ groupstree.onAdd = function(tr,id) {
 		td.appendChild(i);
 	tr.appendChild(td);
 	this.addDeleteCell(tr);
-	/** description cell */
+	/* description cell */
 	td = document.createElement('td');
 		i = document.createElement('textarea');
 			i.name='desc['+id+']';
 			i.className='groupsdescription';
 		td.appendChild(i);
 	tr.appendChild(td);
-};
+}

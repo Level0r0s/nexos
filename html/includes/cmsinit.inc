@@ -9,21 +9,27 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/cmsinit.inc,v $
-  $Revision: 10.8 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/19 06:29:53 $
+  $Revision: 10.4 $
+  $Author: djmaze $
+  $Date: 2010/11/11 23:49:06 $
 **********************************************/
 # Disable DOS Attacks and any other strange behavior
-if (!defined('CPG_NUKE')) { exit; }
-//if (((empty($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] == '-') && !defined('XMLFEED')) || defined('CORE_PATH')) { exit; }
+if (((empty($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] == '-') && !defined('XMLFEED')) || defined('CORE_PATH')) { exit; }
 
-if (!defined('SKIP_GZIP')) define('SKIP_GZIP', 0);
-if (!defined('SKIP_BUFFERING')) define('SKIP_BUFFERING', 0);
-if (!defined('STOP_AT')) define('STOP_AT', 0);
+#
+# Create constants
+#
 
+define('START_TIME', microtime(true));
+define('CPG_NUKE', '10.0.8');
+define('GZIPSUPPORT', extension_loaded('zlib'));
+define('WINDOWS', (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN'));
+$phpver = explode('.', phpversion());
+define('PHPVERS', intval($phpver[0].$phpver[1]));
 if (PHPVERS < 52) { exit('You need atleast PHP 5.2 for this release. http://dragonflycms.org/News/article/sid=254.html'); }
 # Are we allowed to modify php.ini on the fly ?
-define('CAN_MOD_INI', PHP::$can_set);
+define('CAN_MOD_INI', false === stripos(ini_get('disable_functions'), 'ini_set'));
+define('MAGICQUOTES', (PHPVERS < 60 ? get_magic_quotes_gpc()||ini_get('magic_quotes_sybase') : false));
 # http://bugs.php.net/bug.php?id=31849
 if (WINDOWS || !function_exists('posix_getpwuid')) {
 	define('_DRAGONLY_OWNER', 'N/A');
@@ -36,15 +42,87 @@ if (WINDOWS || !function_exists('posix_getpwuid')) {
 	define('_PROCESS_OWNER', $processUser['name']);
 }
 
-//header('Content-Type: text/html;charset=utf-8');
-//header('Content-language: '._LANGCODE);
+# Store the path of our (shared) core files
+$root_path = dirname(__FILE__);
+if (WINDOWS) { $root_path = str_replace('\\', '/', $root_path); }
+define('CORE_PATH', ((strlen($root_path) > 2) ? $root_path : './includes').'/');
+if (!defined('BASEDIR')) { define('BASEDIR', dirname(CORE_PATH).'/'); }
 
-define('GZIP_ACTIVE', (ini_get('zlib.output_compression') && ob_start()) || !SKIP_GZIP && GZIP_OUT && ob_start('ob_gzhandler'));
+unset($root_path, $phpver);
 
-# we will always try to buffer the output
-# note: defining SKIP_BUFFERING within your application will also turn on implicit flushings
-#       ONLY if no output bufferings are active, eg: ini_set(zlib.output_compression, 0) fails
-ob_implicit_flush(SKIP_BUFFERING && !GZIP_ACTIVE);
+# IE8 google.com/search?q=X-Content-Type-Options
+header('X-Content-Type-Options: nosniff');
+
+#
+# Set UTF-8 encoding
+#
+if (function_exists('mb_language')) { mb_language('uni'); }
+if (function_exists('mb_internal_encoding')) { mb_internal_encoding('UTF-8'); }
+//mb_regex_encoding('UTF-8');
+
+#
+# Change behaviour for specific PHP versions
+#
+date_default_timezone_set('UTC');
+
+#
+# Set default settings
+#
+
+header('X-Powered-By: Dragonfly CMS using PHP engine');
+
+# http://bugs.php.net/bug.php?id=15693
+if ($_SERVER['REQUEST_METHOD'] == 'HEAD') { exit; }
+
+if (PHPVERS < 53) {
+	# Disable magic_quotes
+	set_magic_quotes_runtime(0);
+}
+if (PHPVERS < 60) {
+	if (CAN_MOD_INI) { ini_set('magic_quotes_sybase', 0); }
+}
+umask(0);
+
+if (CAN_MOD_INI) {
+	ini_set('magic_quotes_runtime', 0);
+	ini_set('zlib.output_compression', 0);
+}
+
+# Compress output if server/php config allows
+if (ini_get('output_buffering')) {
+	ob_end_clean();
+	header('Content-Encoding: ');
+}
+if (!defined('INSTALL')) {
+	if (GZIPSUPPORT && !ini_get('zlib.output_compression') && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && false !== stripos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
+		ob_start('ob_gzhandler');
+	} else {
+		# Some stupid firewalls don't send the HTTP_ACCEPT_ENCODING
+		# So we still compress in memory for fast page generations
+		# But it will take longer for the visitor to see the page.
+		ob_start();
+		ob_implicit_flush(0);
+	}
+}
+
+#
+# Check input variables
+#
+
+# Destroy GET/POST/Cookie variables from the global scope since IIS can't
+# turn off register_globals as Apache can thru .ht*
+if (intval(ini_get('register_globals')) != 0) {
+	foreach ($_REQUEST AS $key => $val) { if (isset($$key)) unset($$key); }
+}
+if (is_array($_POST)) { array_walk($_POST, 'Prepare_INPUT'); }
+if (is_array($_GET)) { array_walk($_GET, 'Prepare_INPUT'); }
+
+if (!file_exists(CORE_PATH.'config.php')) {
+	if (!defined('INSTALL')) { cpg_error('You must install Dragonfly first before you can use it'); }
+} else {
+	require_once(CORE_PATH.'classes/cpg_debugger.php'); # we define our own error handler
+	require_once(CORE_PATH.'config.php');
+}
 
 //require_once(CORE_PATH.'db/db.php');
 require_once(CORE_PATH.'poodle/poodle.php');
@@ -64,6 +142,18 @@ if (!defined('INSTALL')) {
 
 require_once(CORE_PATH.'classes/cpg_cache.php');
 require_once(CORE_PATH.'functions/linking.php');
+
+# very basic __autoload
+function DragonflyCMS__autoload($class_name) {
+	if (!preg_match('#^[a-z0-9\-_]+$#i', $class_name)) { return; }
+	$class_name = strtolower($class_name);
+	if (is_file(CORE_PATH."classes/{$class_name}.php")) {
+		require_once(CORE_PATH."classes/{$class_name}.php");
+	} else {
+		cpg_error("The class $class_name could not be found");
+	}
+}
+spl_autoload_register('DragonflyCMS__autoload');
 
 if (defined('INSTALL')) return;
 
@@ -104,9 +194,8 @@ if (!Cache::array_load('MAIN_CFG')) {
 if (version_compare($MAIN_CFG['global']['Version_Num'], CPG_NUKE, '<')) {
 	cpg_error('<strong>We are currently upgrading our website.<br />Please be patient; we should be back shortly.</strong>', 'Maintenance');
 }
-
-$cpgdebugger->error_level = (int)$MAIN_CFG['debug']['error_level'];
-$cpgdebugger->log_level   = (int)$MAIN_CFG['debug']['log_level'];
+$cpgdebugger->error_level = $MAIN_CFG['debug']['error_level'];
+$cpgdebugger->log_level = 0; /* $cpgdebugger->log_level = $MAIN_CFG['debug']['log_level']; */
 if (CAN_MOD_INI) ini_set('sendmail_from', $MAIN_CFG['global']['adminmail']);
 if (CPG_DEBUG) { trigger_error('sendmail_from: '.ini_get('sendmail_from'),E_USER_NOTICE); }
 if (preg_match('#^(localhost|127.0.0.1|192.168|10.|172.(1[6-9]|2[0-9]|3[0-1]).)#', $_SERVER['HTTP_HOST'])) $MAIN_CFG['cookie']['domain'] = NULL;
@@ -115,6 +204,7 @@ else if ($MAIN_CFG['cookie']['server']) {
 }
 $MAIN_CFG['global']['nukeurl'] = 'http://'.$MAIN_CFG['server']['domain'].substr($MAIN_CFG['server']['path'], 0, -1);
 $MAIN_CFG['server']['domain'] = preg_replace('#[a-z]+://#i', '', $MAIN_CFG['server']['domain']);
+
 if (!extension_loaded('gd')) { $MAIN_CFG['global']['sec_code'] = 0; }
 if ($MAIN_CFG['global']['admingraphic'] < 1) $MAIN_CFG['global']['admingraphic'] = 3;
 if (empty($MAIN_CFG['cookie']['member'])) $MAIN_CFG['cookie']['member'] = 'member';
@@ -158,10 +248,10 @@ $SESS = new cpg_session();
 /******************************************************************************
   Are we requesting the security code ?
 *******************************************************************************/
-//if (isset($_GET['name']) && ($_GET['name'] == 'gfx' || (isset($_GET['op']) && $_GET['name'] == 'Your_Account' && $_GET['op'] == 'gfx'))) {
-//	require(BASEDIR.'includes/gfxchk.php');
-//}
-if (STOP_AT) return;
+if (isset($_GET['name']) && ($_GET['name'] == 'gfx' || (isset($_GET['op']) && $_GET['name'] == 'Your_Account' && $_GET['op'] == 'gfx'))) {
+	require(BASEDIR.'includes/gfxchk.php');
+}
+
 /******************************************************************************
   Include language to detect languages from browser setting and user preferences
   Join our language initiative (NLI) http://dragonflycms.org
@@ -218,6 +308,16 @@ $SESS->init_info();
 require_once(CORE_PATH.'classes/blocks.php');
 require_once(CORE_PATH.'classes/menu.php');
 
+//header('Content-Type: text/html;charset=utf-8');
+//header('Content-language: '._LANGCODE);
+# standard privacy header change to yours
+header('P3P: CP="'.$MAIN_CFG['header']['P3P'].'"');
+//header("P3P: CP=\"ALL DSP COR NID CURa OUR STP PUR\"");
+# Notify server time
+header('Date: '.date('D, d M Y H:i:s', time()).' GMT');
+header('Last-Modified: '.date('D, d M Y H:i:s', time()).' GMT');
+header('Expires: 0');
+//header('Expires: '.date('D, d M Y H:i:s \G\M\T', time() + 10800));
 define('USERS', 'YToxOntzOjQ6Im51a2UiO3M6MzMwOiIkY29wcGVybWluZT0nVGhpcyB3ZWJzaXRlIGVuZ2luZSBDb3B5cmlnaHQgJmNvcHk7IDIwMDMgLSAnLmRhdGUoJ1knKS4nIGJ5IENQRy1OdWtlIERldiBUZWFtPGJyIC8+RnJlZSBTb2Z0d2FyZSByZWxlYXNlZCB1bmRlciB0aGUgPGEgaHJlZj0iaHR0cDovL2RyYW'
 .'dvbmZseWNtcy5vcmcvR05VR1BMLmh0bWwiIHRhcmdldD0iX2JsYW5rIj5HTlUgR1BMPC9hPjsgZWl0aGVyIHZlcnNpb24gMiBvZiB0aGUgTGljZW5zZSwgb3IgKGF0IHlvdXIgb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi4gTm8gd2FycmFudHkgaXMgZ2l2ZW4gb3IgaW1wbGllZC4nO3JldHVybiAkY29wcGVybWluZTsiO30=', true);
 
@@ -406,10 +506,73 @@ function is_active($module) {
 }
 
 function blocks_list($module=null) {
-	$backtrace = debug_backtrace();
-	trigger_error("DEPRECATED call to blocks_list() by {$backtrace[0]['file']} on line {$backtrace[0]['line']}.", E_USER_WARNING);
-	global $Blocks;
-	return $Blocks->list_all($module);
+	global $prefix, $db, $blocks_list;
+	static $blocks_save;
+	if (is_array($blocks_save)) {
+		if ($module) return $blocks_save[$module];
+		else return $blocks_save;
+	}
+	if (!Cache::array_load('blocks_list')) {
+		// we want to get even NULL values in case of modules with no blocks
+
+		$blocks_list = array();
+		$blocks_list['Admin']['mid'] = -1;
+		$blocks_list['Admin']['title'] = _ADMINISTRATION;
+		$blocks_list['Admin']['blocks'] = 1;
+		$module[-1] = 'Admin';
+
+		$result = $db->sql_uquery('SELECT mid, title, blocks FROM '.$prefix.'_modules');
+		while ($row = $db->sql_fetchrow($result, SQL_ASSOC)) {
+			$title = defined('_'.$row['title'].'LANG') ? '_'.$row['title'].'LANG' : (defined('_'.strtoupper($row['title'])) ? '_'.strtoupper($row['title']) : $row['title']);
+			$blocks_list[$row['title']]['mid'] = (int)$row['mid'];
+			$blocks_list[$row['title']]['title'] = $title;
+			$blocks_list[$row['title']]['blocks'] = (int)$row['blocks'];
+			$module[$row['mid']] = $row['title'];
+		}
+		$db->sql_freeresult($result);
+		$result = $db->sql_query('SELECT bid, mid, side FROM '.$prefix.'_blocks_custom ORDER BY mid, weight');
+		while ($row = $db->sql_fetchrow($result, SQL_ASSOC)) {
+			if (!isset($module[$row['mid']])) {
+				$db->sql_query('DELETE FROM '.$prefix."_blocks_custom WHERE bid='$row[bid]' AND mid='$row[mid]'");
+				continue;
+			}
+			$blocks_list[$module[$row['mid']]][$row['bid']] = ($row['mid'] == -1) ? 'l' : $row['side'];
+		}
+		ksort($blocks_list);
+		$db->sql_freeresult($result);
+		Cache::array_save('blocks_list');
+	}
+	$blocks_save = $blocks_list;
+	if (is_array($blocks_save)) return $blocks_save;
+	return;
+}
+
+# Strip slashes from GET/POST/Cookie variables because we add them back later
+function Prepare_INPUT(&$value, $key, $set=true) {
+	if (is_array($value)) { array_walk($value, 'Prepare_INPUT', false); }
+	else {
+		// php[0] <= 5
+		if (MAGICQUOTES) { $value = stripslashes($value); }
+/*
+ http://php.net/manual/en/regexp.reference.php#regexp.reference.internal-options
+ Since PHP 4.4.0 and 5.1.0, three additional escape sequences to match generic character types are available
+ when UTF-8 mode is selected.
+ \p{xx} a character with the {Space separator} property, same as \P{^xx}
+ \P{xx} a character without the xx property
+ \X an extended Unicode sequence
+ preg_replace('#\p{Zs}#u', ' ', $value);
+*/
+		# replace NO-BREAK and other types of utf8 spacings
+		$value = preg_replace(array(
+			// UTF8                         UNICODE
+			'#[\xC2][\xA0]#',            // 00A0
+			'#[\xE2][\x80][\x80-\x8D]#', // 2000-200D
+			'#[\xE2][\x80][\xAF]#',      // 202F
+			'#[\xE2][\x81][\x9F]#',      // 205F
+			'#[\xE3][\x80][\x80]#'       // 3000
+		), ' ', $value);
+	}
+	if ($set) $_REQUEST[$key] =& $value;
 }
 
 function strip_javascript($text, $events=true) {
@@ -502,13 +665,13 @@ function formatDateTime($time, $format) {
 function ip2long32($ip, $unsigned=false) {
 	$backtrace = debug_backtrace();
 	trigger_error("DEPRECATED call to ip2long32() by {$backtrace[0]['file']} on line {$backtrace[0]['line']}.", E_USER_WARNING);
-	return Net::ip2long($ip);
+	return NET::ip2long($ip);
 }
 
 function decode_ip($ip) {
 	$backtrace = debug_backtrace();
 	trigger_error("DEPRECATED call to ip2long32() by {$backtrace[0]['file']} on line {$backtrace[0]['line']}.", E_USER_WARNING);
-	return Net::decode_ip($ip);
+	return NET::decode_ip($ip);
 }
 
 # Caching
@@ -576,8 +739,9 @@ function cpg_error($message, $title='ERROR', $redirect=false) {
 		$title = $LNG['_SECURITY_STATUS'][$title];
 	}
 	if (is_object($cpgtpl)) {
-		global $pagetitle, $showblocks, $home, $modheader, $mainindex, $CPG_SESS;
-		$home = $showblocks = Blocks::$showblocks = 0;
+		global $pagetitle, $showblocks, $home, $modheader, $mainindex, $CPG_SESS, $Blocks;
+		if (is_object($Blocks)) $Blocks->showblocks = 0;
+		$home = $showblocks = 0;
 		$pagetitle = $title;
 		$modheader .= '<meta name="robots" content="noindex,follow" />
 		<meta name="robots" content="noarchive" />';

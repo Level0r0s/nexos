@@ -9,11 +9,13 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/cpg_debugger.php,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/19 06:31:56 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:15 $
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
+if (!defined('E_STRICT')) { define('E_STRICT', 2048); }
+if (!defined('E_RECOVERABLE_ERROR')) { define('E_RECOVERABLE_ERROR', 4096); }
 if (!defined('E_DEPRECATED')) { define('E_DEPRECATED', 8192); }
 if (!defined('E_USER_DEPRECATED')) { define('E_USER_DEPRECATED', 16384); }
 
@@ -53,9 +55,13 @@ class Debug {
 
 	function __construct($log = 'debug.log') {
 		if ($this->active) return;
-		$this->logfile = BASEDIR. $log; /* $this->logfile = PHP::$error_log; */
+		$this->logfile = $log; /* $this->logfile = PHP::$error_log; */
 		$this->report = false;
 		$this->old_handler = set_error_handler(array(&$this, 'handler'));
+		if (CAN_MOD_INI) {
+			$this->old_display_level = ini_set('display_errors', 1);
+			$this->old_error_logging = ini_set('log_errors', 0);
+		}
 		$this->error_level = E_ALL | E_STRICT;
 		$this->log_level = E_ALL | E_STRICT;
 		$this->active = true;
@@ -82,9 +88,9 @@ class Debug {
 			$filename = $db->file;
 			$linenum = $db->line;
 		}
-		$errmsg = str_replace(BASEDIR, '', $errmsg);
+		$errmsg = str_replace(BASEDIR, '', str_replace('\\', '/', $errmsg));
 		if ($errno === E_USER_ERROR) {
-			if ('HEAD' === $_SERVER['REQUEST_METHOD']) { exit; } // HttpHeaders::flush(500);
+			if ('HEAD' === $_SERVER['REQUEST_METHOD']) { exit; }
 			if (is_admin()) {
 				cpg_error($this->errortype[$errno]." $filename line $linenum: ".$errmsg);
 			} else {
@@ -96,10 +102,10 @@ class Debug {
 			$this->report[$filename][] = $this->errortype[$errno]." line $linenum: ".$errmsg;
 		}
 
-		// set of errors for which a trace will be saved to file
+		// set of errors for which a trace will be saved to buffer
 		if ($errno & $this->log_level) {
 			$err = $this->errortype[$errno]." $filename line $linenum: $errmsg\n";
-			error_log($err, 0, $this->logfile);
+			error_log($err, 3, $this->logfile);
 		}
 	}
 

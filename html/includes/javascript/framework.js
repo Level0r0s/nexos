@@ -1,26 +1,26 @@
 /**
 * MOO CMS
 * Copyright (c) 2005 by CPG-Nuke Dev Team, moocms.com
-* $Id: framework.js,v 1.10 2011/04/03 04:49:04 nanocaiordo Exp $
+* $Id: framework.js,v 1.7 2010/04/18 15:23:35 djmaze Exp $
 */
 
-/** xbrowser find event */
+/* xbrowser find event */
 function getEvent(e) {
 	console.warn("getEvent(e) deprecated");
 	return e||window.event;
 }
-/** xbrowser find event fired element */
+/* xbrowser find event fired element */
 function getEventNode(e)
 {
 	if (!e)  { e = window.event; }
-	if (e.nodeType && (e.nodeType == 1 || e.nodeType == 9)) { return e; } /** NODE_ELEMENT or NODE_DOCUMENT */
+	if (e.nodeType && (e.nodeType == 1 || e.nodeType == 9)) return e; // NODE_ELEMENT or NODE_DOCUMENT
 	var o = (e.currentTarget ? e.currentTarget : e.srcElement);
 	//if (o.nodeType == 3) { o = (o.parentNode ? o.parentNode : o); } // Safari
 	// must be a NODE_ELEMENT or NODE_DOCUMENT
 	while (o && !(o.nodeType == 1 || o.nodeType == 9)) { o = o.parentNode; }
 	return o;
 }
-/** xbrowser add event listener */
+/* xbrowser add event listener */
 function addEvent(obj, type, fn) {
 	console.warn("addEvent(obj, type, fn) deprecated, use obj.bind(type, fn)");
 	obj.bind(type, fn);
@@ -31,7 +31,7 @@ function removeEvent(obj, type, fn)
 	obj.unbind(type, fn);
 }
 
-/** find input element by name */
+/* find input element by name */
 function getElementByName(o,name,tag)
 {
 	console.warn("getElementByName(o,name,tag) deprecated, use form.getFieldByName(name,tag)");
@@ -45,7 +45,7 @@ function getElementLeft(o)
 }
 function getElementTop(o, stopat)
 {
-	console.warn("getElementTop(o) deprecated, use o.getBoundingPageY()");
+	console.warn("getElementLeft(o) deprecated, use o.getBoundingPageX()");
 	return o.getBoundingPageY();
 }
 function getPrevNode(o, same) { return same ? o.getPrevByNodeName(o.nodeName) : o.prev(); }
@@ -72,7 +72,7 @@ function mousePos(e){
 	};
 }
 
-/** CMS stuff */
+/* CMS stuff */
 
 function show_tab(o)
 {
@@ -102,7 +102,7 @@ function switch_title(obj)
 function expand(sender, o)
 {
 	o = $(o);
-	if (!o) { return; }
+	if (!o) return;
 	if (o.style.visibility == 'collapse' || o.style.display == 'none') {
 		if (o.style.visibility == 'collapse') { o.style.visibility = 'visible'; }
 		else { o.style.display = ''; }
@@ -144,4 +144,4 @@ var msgBox = {
 		} catch (e) {}
 		if (!msgBox.box.hasChildNodes()) { msgBox.box.style.display = 'none'; }
 	}
-};
+}

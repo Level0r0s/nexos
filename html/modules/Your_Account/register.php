@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/modules/Your_Account/register.php,v $
-  $Revision: 9.39 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/18 05:51:01 $
+  $Revision: 9.37 $
+  $Author: djmaze $
+  $Date: 2010/10/03 20:22:31 $
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
 $pagetitle = _Your_AccountLANG;
@@ -26,7 +26,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 'XMLHttpRequest' === $_SERVER['H
 		header($_SERVER['SERVER_PROTOCOL'].' 412 Precondition Failed');
 	} else {
 		try {
-			validate_username($_POST['validate_username']);
+			validate_username($_POST['validate_nickname']);
 		} catch (Exception $e) {
 			header($_SERVER['SERVER_PROTOCOL'].' 409 Conflict');
 			echo $e->getMessage();
@@ -143,7 +143,7 @@ function register_form()
 } // end register form
 
 function register_check() {
-	global $db, $user_cfg, $MAIN_CFG;
+	global $db, $user_cfg, $sec_code, $MAIN_CFG;
 	$username = Fix_Quotes($_POST['username'],1);
 	$email = strtolower(Fix_Quotes($_POST['email'],1));
 	$password = Fix_Quotes($_POST['password'],1);
@@ -171,7 +171,7 @@ function register_check() {
 	  <tr><td><b>'._USERNAME.':</b></td><td>'.$username.'</td></tr>
 	  <tr><td><b>'._EMAILADDRESS.':</b></td><td>'.$email.'</td></tr>
 	  <tr><td><b>'._PASSWORD.':</b></td><td><i>'._MA_HIDDEN.'</i></td></tr>'.$content;
-	if ($MAIN_CFG['debug']['sec_code'] & 4) {
+	if ($sec_code & 4) {
 		echo '<tr>
 	<td class="row1"><span class="gen">'._SECURITYCODE.':</span></td>
 	<td class="row2">'.generate_secimg().'</td></tr>
@@ -196,10 +196,10 @@ function register_check() {
 }
 
 function welcome_pm() {
-	global $db, $MAIN_CFG, $prefix, $userinfo, $user_prefix;
+	global $db, $MAIN_CFG, $prefix, $sitename, $userinfo, $user_prefix;
 	$privmsgs_to_userid = $db->sql_nextid('user_id');
 	$welcome_msg = Fix_Quotes(encode_bbcode($MAIN_CFG['member']['welcomepm_msg']));
-	$welcome = Fix_Quotes(_WELCOMETO.' '.$MAIN_CFG['global']['sitename'].'!');
+	$welcome = Fix_Quotes(_WELCOMETO.' '.$sitename.'!');
 	$sql = "INSERT INTO ".$prefix."_bbprivmsgs (privmsgs_type, privmsgs_subject, privmsgs_from_userid, privmsgs_to_userid, privmsgs_date, privmsgs_ip, privmsgs_enable_html, privmsgs_enable_bbcode, privmsgs_enable_smilies, privmsgs_attach_sig) VALUES (1, '$welcome', 2, '$privmsgs_to_userid', ".time().", ".$userinfo['user_ip'].", 0, 1, 1, 0)";
 	if (!$db->sql_query($sql)) {
 		cpg_error('Could not insert private message sent info.');
@@ -213,8 +213,8 @@ function welcome_pm() {
 }
 
 function register_finish() {
-	global $db, $user_cfg, $user_prefix, $CPG_SESS, $userinfo, $MAIN_CFG;
-	if ($MAIN_CFG['debug']['sec_code'] & 4) {
+	global $db, $user_cfg, $user_prefix, $sitename, $sec_code, $CPG_SESS, $userinfo, $MAIN_CFG;
+	if ($sec_code & 4) {
 		if (!validate_secimg()) { cpg_error(_SECCODEINCOR); }
 	}
 
@@ -242,16 +242,16 @@ function register_finish() {
 	$uid = $db->sql_nextid('user_id');
 	$finishlink = URL::index("&file=register&activate=$uid&check_num=$check_num", true, true);
 
-	$message = _WELCOMETO." {$MAIN_CFG['global']['sitename']}!\n\n"._YOUUSEDEMAIL." ($user_email) ";
+	$message = _WELCOMETO." $sitename!\n\n"._YOUUSEDEMAIL." ($user_email) ";
 	if ($fields['coppa']) {
 //		$message = $lang['COPPA'];
 //		$email_template = 'coppa_welcome_inactive';
-		$message .= _TOAPPLY." {$MAIN_CFG['global']['sitename']}.\n\n"._WAITAPPROVAL."\n\n"._FOLLOWINGMEM."\n"._USERNAME.": $username$password";
+		$message .= _TOAPPLY." $sitename.\n\n"._WAITAPPROVAL."\n\n"._FOLLOWINGMEM."\n"._USERNAME.": $username$password";
 		$subject = _APPLICATIONSUB;
 		OpenTable();
-		echo "<center><b>"._ACCOUNTRESERVED."</b><br /><br />"._YOUAREPENDING."<br /><br />"._THANKSAPPL." {$MAIN_CFG['global']['sitename']}!</center>";
+		echo "<center><b>"._ACCOUNTRESERVED."</b><br /><br />"._YOUAREPENDING."<br /><br />"._THANKSAPPL." $sitename!</center>";
 	} else if (!$user_cfg['requireadmin']) {
-		$message .= _TOREGISTER." {$MAIN_CFG['global']['sitename']}.\n\n";
+		$message .= _TOREGISTER." $sitename.\n\n";
 		OpenTable();
 		echo "<center><b>"._ACCOUNTCREATED."</b><br /><br />"._YOUAREREGISTERED."<br /><br />";
 		if ($user_cfg['useactivate']) {
@@ -262,22 +262,22 @@ function register_finish() {
 			echo _FINISHUSERCONF2.'<a href="'.URL::index().'">'._FINISHUSERCONF3.'</a>.';
 			$subject = _REGISTRATIONSUB;
 		}
-		echo '<br /><br />'._THANKSUSER." {$MAIN_CFG['global']['sitename']}!</center>";
+		echo '<br /><br />'._THANKSUSER." $sitename!</center>";
 		$message .= _FOLLOWINGMEM."\n"._USERNAME.": $username$password";
 	} else {
-		$message .= _TOAPPLY." {$MAIN_CFG['global']['sitename']}.\n\n"._WAITAPPROVAL."\n\n"._FOLLOWINGMEM."\n"._USERNAME.": $username$password";
+		$message .= _TOAPPLY." $sitename.\n\n"._WAITAPPROVAL."\n\n"._FOLLOWINGMEM."\n"._USERNAME.": $username$password";
 		$subject = _APPLICATIONSUB;
 		OpenTable();
-		echo '<center><b>'._ACCOUNTRESERVED.'</b><br /><br />'._YOUAREPENDING.'<br /><br />'._THANKSAPPL." {$MAIN_CFG['global']['sitename']}!</center>";
+		echo '<center><b>'._ACCOUNTRESERVED.'</b><br /><br />'._YOUAREPENDING.'<br /><br />'._THANKSAPPL." $sitename!</center>";
 	}
 	$from = 'noreply@'.str_replace('www.', '', $MAIN_CFG['server']['domain']);
 	if (!send_mail($mailer_message,$message,0,$subject,$user_email,$username,$from)) {
 		echo 'Member mail: '.$mailer_message;
 	}
 	if ($user_cfg['sendaddmail']) {
-		if ($user_cfg['requireadmin']) { $subject = "{$MAIN_CFG['global']['sitename']} - "._MEMAPL; }
-		else { $subject = "{$MAIN_CFG['global']['sitename']} - "._MEMADD; }
-		$message = "$username has been added to {$MAIN_CFG['global']['sitename']}.\n\nUser IP: ".decode_ip($userinfo['user_ip'])."\n--------------------------------------------------------\nDo not reply to this message!!";
+		if ($user_cfg['requireadmin']) { $subject = "$sitename - "._MEMAPL; }
+		else { $subject = "$sitename - "._MEMADD; }
+		$message = "$username has been added to $sitename.\n\nUser IP: ".decode_ip($userinfo['user_ip'])."\n--------------------------------------------------------\nDo not reply to this message!!";
 		if(!send_mail($mailer_message,$message,0,$subject)) {
 			echo "Admin mail: ".$mailer_message;
 		}

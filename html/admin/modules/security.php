@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/admin/modules/security.php,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:41:54 $
+  $Revision: 10.1 $
+  $Author: djmaze $
+  $Date: 2010/11/07 16:22:00 $
 **********************************************/
 /*
 	Future dev notes regarding IPv6
@@ -122,11 +122,11 @@ if (isset($_GET['bots'])) {
 			$ip = $ip2 = false;
 			foreach($_POST['ban_ipv4_s'] as $i => $ipv4s) {
 				# y.y.y.y/cidr?
-				if ($ip = Net::ipv4_cidr($_POST['ban_ipv4_s'])) {
+				if ($ip = NET::ipv4_cidr($_POST['ban_ipv4_s'])) {
 					switch ($ip) {
 						case is_array($ip):
-							$network = Net::network($ip['ipv4'], $ip['cidr']);
-							$broadcast = Net::broadcast($network, $ip['cidr']);
+							$network = NET::network($ip['ipv4'], $ip['cidr']);
+							$broadcast = NET::broadcast($network, $ip['cidr']);
 							$ip = inet_pton($network);
 							$ip2 = inet_pton($broadcast);
 						break;
@@ -135,13 +135,13 @@ if (isset($_GET['bots'])) {
 						default: break;
 					}
 				}
-				else if (!Filter::ipv4($ipv4s, true)) {
+				else if (!FILTER::ipv4($ipv4s, true)) {
 					cpg_error(sprintf(_ERROR_BAD_FORMAT, 'IPv4 start'));
 				}
 				else {
 					$ip = inet_pton($ipv4s);
 					if (!empty($_POST['ban_ipv4_e'][$i])) {
-						if (!Filter::ipv4($_POST['ban_ipv4_e'][$i])) {
+						if (!FILTER::ipv4($_POST['ban_ipv4_e'][$i])) {
 							cpg_error(sprintf(_ERROR_BAD_FORMAT, 'IPv4 end'));
 						}
 						$ip2 = inet_pton($_POST['ban_ipv4_e'][$i]);
@@ -327,9 +327,9 @@ else if (isset($_GET['ips'])) {
 			foreach (($_POST['mark']) as $ip) {
 				$ban_ipv4_s = $ban_ipv4_e = '';
 				if (preg_match('#^([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})( - )?([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})?$#',$ip, $match)) {
-					$ban_ipv4_s = Net::ip2long($match[1]);
+					$ban_ipv4_s = NET::ip2long($match[1]);
 					if (!empty($match[2])) {
-						$ban_ipv4_e = 'AND ban_ipv4_e=\''.Net::ip2long($match[3]).'\'';
+						$ban_ipv4_e = 'AND ban_ipv4_e=\''.NET::ip2long($match[3]).'\'';
 					}
 					if (!empty($ban_ipv4_s)) $db->sql_query('DELETE FROM '.$prefix."_security WHERE ban_ipv4_s='$ban_ipv4_s' $ban_ipv4_e AND ban_type='0'");
 				}
@@ -340,11 +340,11 @@ else if (isset($_GET['ips'])) {
 		$ip = $ip2 = false;
 		if (!empty($_POST['ban_ipv4_s'])) {
 			# y.y.y.y/cidr?
-			if ($ip = Net::ipv4_cidr($_POST['ban_ipv4_s'])) {
+			if ($ip = NET::ipv4_cidr($_POST['ban_ipv4_s'])) {
 				switch ($ip) {
 					case is_array($ip):
-						$network = Net::network($ip['ipv4'], $ip['cidr']);
-						$broadcast = Net::broadcast($network, $ip['cidr']);
+						$network = NET::network($ip['ipv4'], $ip['cidr']);
+						$broadcast = NET::broadcast($network, $ip['cidr']);
 						$ip = inet_pton($network);
 						$ip2 = inet_pton($broadcast);
 					break;
@@ -353,12 +353,12 @@ else if (isset($_GET['ips'])) {
 					default: break;
 				}
 			}
-			else if (!Filter::ipv4($_POST['ban_ipv4_s'], true)) {
+			else if (!FILTER::ipv4($_POST['ban_ipv4_s'], true)) {
 				cpg_error(sprintf(_ERROR_BAD_FORMAT, 'IP'));
 			} else {
 				$ip = inet_pton($_POST['ban_ipv4_s']);
 				if (!empty($_POST['ban_ipv4_e'])) {
-					if (!Filter::ipv4($_POST['ban_ipv4_e'], true)) {
+					if (!FILTER::ipv4($_POST['ban_ipv4_e'], true)) {
 						cpg_error(sprintf(_ERROR_BAD_FORMAT, 'second ip'));
 					}
 					$ip2 = inet_pton($_POST['ban_ipv4_e']);
@@ -479,11 +479,11 @@ else if (isset($_GET['shields'])) {
 			$ip = $ip2 = false;
 			if (!empty($_POST['ban_ipv4_s'])) {
 				# y.y.y.y/cidr?
-				if ($ip = Net::ipv4_cidr($_POST['ban_ipv4_s'])) {
+				if ($ip = NET::ipv4_cidr($_POST['ban_ipv4_s'])) {
 					switch ($ip) {
 						case is_array($ip):
-							$network = Net::network($ip['ipv4'], $ip['cidr']);
-							$broadcast = Net::broadcast($network, $ip['cidr']);
+							$network = NET::network($ip['ipv4'], $ip['cidr']);
+							$broadcast = NET::broadcast($network, $ip['cidr']);
 							$ip = inet_pton($network);
 							$ip2 = inet_pton($broadcast);
 						break;
@@ -492,12 +492,12 @@ else if (isset($_GET['shields'])) {
 						default: break;
 					}
 				}
-				else if (!Filter::ipv4($_POST['ban_ipv4_s'], true)) {
+				else if (!FILTER::ipv4($_POST['ban_ipv4_s'], true)) {
 					cpg_error(sprintf(_ERROR_BAD_FORMAT, 'IPv4 start'));
 				} else {
 					$ip = inet_pton($_POST['ban_ipv4_s']);
 					if (!empty($_POST['ban_ipv4_e'])) {
-						if (!Filter::ipv4($_POST['ban_ipv4_e'], true)) {
+						if (!FILTER::ipv4($_POST['ban_ipv4_e'], true)) {
 							cpg_error(sprintf(_ERROR_BAD_FORMAT, 'IPv4 end'));
 						}
 						$ip2 = inet_pton($_POST['ban_ipv4_e']);

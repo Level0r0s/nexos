@@ -1,21 +1,21 @@
 <?php
 /*********************************************
-  Copyright (c) 2011 by DragonflyCMS
+  Dragonfly CMS, Copyright (c) 2004 by CPGNuke Dev Team
   http://dragonflycms.org
   Released under GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/httputils.php,v $
-  $Revision: 10.3 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 15:25:30 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:15 $
 **********************************************/
 //namespace core;
 abstract class HttpUtils
 {
 
-	protected static $protocolVersion;
-	protected static $requestMethod;
-	protected static $requestUri;
+	static protected $protocolVersion;
+	static protected $requestMethod;
+	static protected $requestUri;
 
 /**
  * @access private received headers received by the client
@@ -51,32 +51,23 @@ abstract class HttpUtils
  *
  */
 	public static $contentType = array(
-		'ecma' => 'Content-Type: application/ecmascript',
-		'js'   => 'Content-Type: application/javascript',
-		'gzip' => 'Content-Type: application/x-gzip',
-		'jpeg' => 'Content-Type: image/jpeg',
-		'png'  => 'Content-Type: image/png',
-		//'tiff' => 'Content-Type: image/tiff',
 		'css'  => 'Content-Type: text/css',
-		'html' => 'Content-Type: text/html',
 		'text' => 'Content-Type: text/plain',
-		'delimtext' => 'Content-Type: text/x-delimtext',
+		'html' => 'Content-Type: text/html',
+		'js'   => 'Content-Type: application/javascript',
+		'ecma' => 'Content-Type: application/ecmascript',
 	);
 
-/**
- * @access public constructor set internal pointer to protocol version
- * @return void
- */
 	public static function init()
 	{
 		if ( empty($_SERVER['SERVER_PROTOCOL']) ) $_SERVER['SERVER_PROTOCOL'] = 'HTTP/1.1';
 		self::$protocolVersion = floatval( substr($_SERVER['SERVER_PROTOCOL'], -3, strlen($_SERVER['SERVER_PROTOCOL'])) );
 	}
 
-	final public static function setCookie() {}
+	final public function setCookie() {}
 
 /**
- * @access public get, retrive all or specified headers only from the client
+ * @access public get retrive all or specified headers from the client
  * @return null on failure, mixed otherwise
  * @var $h a null value will return the entire array, a string will instead return the array's value for the specified key (the string)
  */
@@ -90,7 +81,7 @@ abstract class HttpUtils
 			}
 		}
 		if ( is_null($h) ) { return self::$requestHeaders; }
-		if ( is_string($h) && isset(self::$requestHeaders[$h]) ) { return self::$requestHeaders[$h]; }
+		if ( isset(self::$requestHeaders[$h]) ) { return self::$requestHeaders[$h]; }
 	}
 
 /**
@@ -123,11 +114,10 @@ abstract class HttpUtils
  * including the cache- related header fields (particularly ETag) of one of the entities that matched.
  * For all other request methods, the server MUST respond with a status of 412 (Precondition Failed).
  */
-	final public static function entityCache($ETag, $time)
+	final public function entityCache($ETag, $time)
 	{
-		if ('GET' !== $_SERVER['REQUEST_METHOD'] && 'HEAD' !== $_SERVER['REQUEST_METHOD']) return 412;
 		$ETag = "\"{$ETag}\"";
-		header('ETag: '. $ETag);
+		HttpHeaders::add('ETag: '. $ETag);
 		if ( !empty($_SERVER['HTTP_IF_NONE_MATCH']) ) {
 			if ( false !== strpos($_SERVER['HTTP_IF_NONE_MATCH'], $ETag)) {
 				return 304;
@@ -141,13 +131,14 @@ abstract class HttpUtils
 			return 412;
 		}
 		$time = (int)$time;
-		header('Last-Modified: '.gmdate('D, d M Y H:i:s \G\M\T', $time)); # DATE_RFC1123
+		HttpHeaders::add('Last-Modified: '.gmdate('D, d M Y H:i:s \G\M\T', $time)); # DATE_RFC1123
 		if ( !empty($_SERVER['HTTP_IF_MODIFIED_SINCE']) && $time <= strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) ) {
 			return 304;
 		}
 		if ( !empty($_SERVER['HTTP_IF_UNMODIFIED_SINCE']) && $time > strtotime($_SERVER['HTTP_IF_UNMODIFIED_SINCE']) ) {
 			return 412;
 		}
+		HttpHeaders::flush();
 	}
 
 }

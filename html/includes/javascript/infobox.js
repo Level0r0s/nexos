@@ -3,11 +3,11 @@
 // You can copy/modify and distribute this code under the conditions
 // of the GNU GENERAL PUBLIC LICENSE Version 2.
 //
-var IWIDTH=250;  /** Tip box width */
-var ie5;         /** Are we using Internet Explorer Version 5 and up? */
-var kon;         /** Are we using KDE Konqueror? */
-var x,y,winW,winH;  /** Current help position and main window size */
-var idiv=null;   /** Pointer to infodiv container */
+var IWIDTH=250  // Tip box width
+var ie5         // Are we using Internet Explorer Version 5 and up?
+var kon         // Are we using KDE Konqueror?
+var x,y,winW,winH  // Current help position and main window size
+var idiv=null   // Pointer to infodiv container
 
 function rebrowse(){window.location.reload();}
 
@@ -23,7 +23,7 @@ function infoinit(){
 }
 
 function untip(){
-	if(idiv) { idiv.visibility='hidden'; }
+	if(idiv) idiv.visibility='hidden';
 	idiv=null;
 	return false;
 }
@@ -34,14 +34,14 @@ function maketip(name,title,text){
 }
 
 function tip(name){
-	if(idiv) { untip(); }
+	if(idiv) untip();
 	idiv=(document.all&&document.all[name]&&document.all[name].style)?document.all[name].style:document[name]?document[name]:(document.getElementById(name)?document.getElementById(name).style:0);
 	if(idiv){
 		winW=(window.innerWidth)? window.innerWidth+window.pageXOffset-20:document.body.offsetWidth-24;
 		winH=(window.innerHeight)?window.innerHeight+window.pageYOffset  :document.body.offsetHeight;
-		if(x<=0||y<=0){ /** konqueror can't get mouse position */
+		if(x<=0||y<=0){ // konqueror can't get mouse position
 			x=(winW-IWIDTH)/2+(window.pageXOffset?window.pageXOffset:0);
-			y=(winH-50)/2+(window.pageYOffset?window.pageYOffset:0); /** middle of window */
+			y=(winH-50)/2+(window.pageYOffset?window.pageYOffset:0); // middle of window
 		}
 		showtip();
 	}
@@ -64,7 +64,7 @@ function mousemove(e){
 		x+=document.documentElement.scrollLeft;
 		y+=document.documentElement.scrollTop;
 	}
-	if (idiv) { showtip(); }
+	if (idiv) showtip();
 }
 
 // Initialize after loading the page

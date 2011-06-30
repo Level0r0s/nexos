@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/template_enc.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/03/18 11:49:45 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:16 $
 **********************************************/
 /*
   Nathan Codding - Original version design and implementation
@@ -41,7 +41,7 @@ class tpl_encode
 		// Remove any "loose" php ... we want to give admins the ability
 		// to switch on/off PHP for a given template. Allowing unchecked
 		// php is a no-no. There is a potential issue here in that non-php
-		// content may be removed ... however designers should use entities
+		// content may be removed ... however designers should use entities 
 		// if they wish to display < and >
 		$match_php_tags = array('#\<\?php .*?\?\>#is', '#\<\script language="php"\>.*?\<\/script\>#is', '#\<\?.*?\?\>#s', '#\<%.*?%\>#s');
 		$code = preg_replace($match_php_tags, '', $code);
@@ -64,21 +64,21 @@ class tpl_encode
 		if ($text_blocks[count($text_blocks)-1] == '') {
 			unset($text_blocks[count($text_blocks)-1]);
 		}
-		for($i = 0, $c = count($text_blocks); $i < $c; ++$i) {
+		for($i = 0; $i < count($text_blocks); $i++) {
 			self::compile_var_tags($text_blocks[$i]);
 		}
 
 		$compile_blocks = array();
 		$block_else_level = array();
 		$this->block_names = array();
-		for ($i = 0, $c = count($text_blocks); $i < $c; ++$i)
+		for ($curr_tb = 0; $curr_tb < count($text_blocks); $curr_tb++)
 		{
-			if (isset($blocks[1][$i]))
-			switch ($blocks[1][$i])
+			if (isset($blocks[1][$curr_tb]))
+			switch ($blocks[1][$curr_tb])
 			{
 				case 'BEGIN':
 					$block_else_level[] = false;
-					$compile_blocks[] = '<?php ' . self::compile_tag_block($blocks[2][$i]) . ' ?>';
+					$compile_blocks[] = '<?php ' . self::compile_tag_block($blocks[2][$curr_tb]) . ' ?>';
 					break;
 
 				case 'BEGINELSE':
@@ -92,7 +92,7 @@ class tpl_encode
 					break;
 
 				case 'IF':
-					$compile_blocks[] = '<?php ' . self::compile_tag_if($blocks[2][$i], false) . ' ?>';
+					$compile_blocks[] = '<?php ' . self::compile_tag_if($blocks[2][$curr_tb], false) . ' ?>';
 					break;
 
 				case 'ELSE':
@@ -100,7 +100,7 @@ class tpl_encode
 					break;
 
 				case 'ELSEIF':
-					$compile_blocks[] = '<?php ' . self::compile_tag_if($blocks[2][$i], true) . ' ?>';
+					$compile_blocks[] = '<?php ' . self::compile_tag_if($blocks[2][$curr_tb], true) . ' ?>';
 					break;
 
 				case 'ENDIF':
@@ -108,11 +108,11 @@ class tpl_encode
 					break;
 
 				case 'DEFINE':
-					$compile_blocks[] = '<?php ' . self::compile_tag_define($blocks[2][$i], true) . ' ?>';
+					$compile_blocks[] = '<?php ' . self::compile_tag_define($blocks[2][$curr_tb], true) . ' ?>';
 					break;
 
 				case 'UNDEFINE':
-					$compile_blocks[] = '<?php ' . self::compile_tag_define($blocks[2][$i], false) . ' ?>';
+					$compile_blocks[] = '<?php ' . self::compile_tag_define($blocks[2][$curr_tb], false) . ' ?>';
 					break;
 
 				case 'INCLUDE':
@@ -130,14 +130,14 @@ class tpl_encode
 					break;
 
 				default:
-					self::compile_var_tags($blocks[0][$i]);
-					$trim_check = trim($blocks[0][$i]);
-					$compile_blocks[] = (!$no_echo) ? ((!empty($trim_check)) ? $blocks[0][$i] : '') : ((!empty($trim_check)) ? $blocks[0][$i] : '');
+					self::compile_var_tags($blocks[0][$curr_tb]);
+					$trim_check = trim($blocks[0][$curr_tb]);
+					$compile_blocks[] = (!$no_echo) ? ((!empty($trim_check)) ? $blocks[0][$curr_tb] : '') : ((!empty($trim_check)) ? $blocks[0][$curr_tb] : '');
 					break;
 			}
 		}
 		$template_php = '';
-		for ($i = 0, $c = count($text_blocks); $i < $c; ++$i) {
+		for ($i = 0; $i < count($text_blocks); $i++) {
 			$trim_check_text = trim($text_blocks[$i]);
 			$trim_check_block = isset($compile_blocks[$i]) ? trim($compile_blocks[$i]) : '';
 			$template_php .= (!$no_echo) ? ((!empty($trim_check_text)) ? $text_blocks[$i] : '') . ((!empty($compile_blocks[$i])) ? $compile_blocks[$i] : '') : ((!empty($trim_check_text)) ? $text_blocks[$i] : '') . ((!empty($compile_blocks[$i])) ? $compile_blocks[$i] : '');
@@ -155,11 +155,11 @@ class tpl_encode
 		$varrefs = array();
 		// This one will handle varrefs WITH namespaces
 		preg_match_all('#\{(([a-z0-9\-_\[\]\'\"]+?\.)+?)(\$)?([A-Z0-9\-_]+?)\}#', $text_blocks, $varrefs);
-		for ($i=0, $c=count($varrefs[1]); $i<$c; ++$i) {
-			$namespace = $varrefs[1][$i];
-			$varname = $varrefs[4][$i];
-			$new = self::generate_block_varref($namespace, $varname, true, $varrefs[3][$i]);
-			$text_blocks = str_replace($varrefs[0][$i], $new, $text_blocks);
+		for ($j = 0; $j < count($varrefs[1]); $j++) {
+			$namespace = $varrefs[1][$j];
+			$varname = $varrefs[4][$j];
+			$new = self::generate_block_varref($namespace, $varname, true, $varrefs[3][$j]);
+			$text_blocks = str_replace($varrefs[0][$j], $new, $text_blocks);
 		}
 		# This will handle URL::index()
 		$text_blocks = preg_replace('#U_\(([a-z0-9\-_&;=]*?)(\,[0-1]{1}(\,[0-1]{1})?)?\)#is', '<?php echo URL::index(\'\\1\'\\2); ?>', $text_blocks);
@@ -220,7 +220,7 @@ class tpl_encode
 						 [^\s(),]+)/x', $tag_args, $match);
 		$tokens = $match[0];
 		$is_arg_stack = array();
-		for ($i = 0, $c = count($tokens); $i < $c; ++$i) {
+		for ($i = 0; $i < count($tokens); $i++) {
 			$token = &$tokens[$i];
 			switch ($token)
 			{
@@ -250,7 +250,7 @@ class tpl_encode
 				case '*':
 				case '/':
 				case '@':
-					break;
+					break;	
 
 				case 'eq':
 					$token = '==';
@@ -433,7 +433,7 @@ class tpl_encode
 		$blockcount = count($blocks) - 1;
 		$varref = '$this->_tpldata' . (($defop) ? '[\'DEFINE\']' : '');
 		# Build up the string with everything but the last child.
-		for ($i = 0; $i < $blockcount; ++$i) {
+		for ($i = 0; $i < $blockcount; $i++) {
 			$varref .= "['" . $blocks[$i] . "'][\$this->_" . $blocks[$i] . '_i]';
 		}
 		# Add the block reference for the last child.

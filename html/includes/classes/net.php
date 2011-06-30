@@ -7,9 +7,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/net.php,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:07:09 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:15 $
 **********************************************/
 
 /*
@@ -39,8 +39,8 @@ abstract class NET
 			$ips[] = $_SERVER['HTTP_CLIENT_IP'];
 		}
 		for ($i = 0; $i < count($ips); $i++) {
-			if ($tmp = Filter::ipv4($ips[$i])) { $ip = $tmp; break; }
-			else if ($tmp = Filter::ipv6($ips[$i])) { $ip = $tmp; break; }
+			if ($tmp = FILTER::ipv4($ips[$i])) { $ip = $tmp; break; }
+			else if ($tmp = FILTER::ipv6($ips[$i])) { $ip = $tmp; break; }
 		}
 		$ip = inet_pton($ip);
 		return $ip;
@@ -51,7 +51,7 @@ abstract class NET
 	*/
 	public static function is_lan($ip)
 	{
-		return ('localhost' === $ip || (Filter::ipv4($ip, true) && preg_match('#^(10|127.0.0|172.(1[6-9]|2\d|3[0-1])|192\.168)\.#', $ip)));
+		return ('localhost' === $ip || (FILTER::ipv4($ip, true) && preg_match('#^(10|127.0.0|172.(1[6-9]|2\d|3[0-1])|192\.168)\.#', $ip)));
 	}
 
 	/*
@@ -62,8 +62,8 @@ abstract class NET
 	public static function network($ip, $cidr)
 	{
 		if (32 < $cidr) { return false; }
-		if ($ip = Filter::ipv4($ip, true)) {
-			return long2ip(Net::ip2long($ip, true) & Net::ip2long(Net::mask($cidr, true)));
+		if ($ip = FILTER::ipv4($ip, true)) {
+			return long2ip(NET::ip2long($ip, true) & NET::ip2long(NET::mask($cidr, true)));
 		}
 	}
 
@@ -75,8 +75,8 @@ abstract class NET
 	public static function broadcast($ip, $cidr)
 	{
 		if ($cidr > 32) { return false; }
-		if ($ip = Filter::ipv4($ip, true)) {
-			return long2ip(Net::ip2long($ip, true) - (0xffffffff << (32 - $cidr)) - 1);
+		if ($ip = FILTER::ipv4($ip, true)) {
+			return long2ip(NET::ip2long($ip, true) - (0xffffffff << (32 - $cidr)) - 1);
 		}
 		return false;
 	}
@@ -96,7 +96,7 @@ abstract class NET
 	*/
 	public static function ip2long($ip, $unsigned=false) {
 		$ip = ip2long($ip);
-		if ($ip > 2147483647) { $ip -= 4294967296; }
+		if ($ip > 2147483647) { $ip -= 4294967296; } // pow(2,32)
 		if ($unsigned && $ip < 0) { $ip += 4294967296; }
 		return $ip;
 	}
@@ -104,7 +104,7 @@ abstract class NET
 	public static function ipv4_cidr($str, $private=false)
 	{
 		if (preg_match('#^([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/([0-9]{1,2})$#', $_POST['ban_ipv4_s'], $match)) {
-			if (!Filter::ipv4($match[1], true)) { return -1; }
+			if (!FILTER::ipv4($match[1], true)) { return -1; }
 			$match[2] = intval($match[2]);
 			if ($match[2] > 32) { return -2; }
 			return array('ipv4' => $match[1], 'cidr' => $match[2]);
@@ -128,7 +128,7 @@ abstract class NET
 		} else if ($l == 8) {
 			$ip = explode('.', chunk_split($ip, 2, '.'));
 			return hexdec($ip[0]).'.'.hexdec($ip[1]).'.'.hexdec($ip[2]).'.'.hexdec($ip[3]);
-		} else if ($tmp = Filter::ipv4($ip, true)) {
+		} else if ($tmp = FILTER::ipv4($ip, true)) {
 			return $tmp;
 		}
 		return long2ip($ip);

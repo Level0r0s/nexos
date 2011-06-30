@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/gfxchk.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/18 05:26:20 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:13 $
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
 
@@ -23,20 +23,21 @@ if ($MAIN_CFG['sec_code']['font']) {
 	$ttf = (function_exists('imagettftext') && file_exists($font));
 	$ttfsize = $MAIN_CFG['sec_code']['font_size'];
 }
-//get_theme();
+
+get_theme();
 if (isset($_GET['test'])) {
 	$code = '123test';
 	include_once('themes/default/theme.php');
 } else {
 	$gfxid = isset($_GET['id']) ? $_GET['id'] : 0;
-	if (isset($_SESSION['CPG_SESS']['gfx'][$gfxid])) {
-		$code = $_SESSION['CPG_SESS']['gfx'][$gfxid];
+	if (isset($CPG_SESS['gfx'][$gfxid])) {
+		$code = $CPG_SESS['gfx'][$gfxid];
 	} else {
 		$fontsize = 3;
 		$useimage = $ttf = false;
 		$code = 'Please accept cookies';
 	}
-	include_once("themes/{$_SESSION['CPG_SESS']['theme']}/theme.php");
+	include_once("themes/$CPG_SESS[theme]/theme.php");
 }
 if ($ttf) {
 	$fontsize = $ttfsize;
@@ -46,10 +47,10 @@ if ($ttf) {
 	$width = strlen($code)*(4+$fontsize);
 }
 if ($useimage) {
-	if (file_exists("themes/{$_SESSION['CPG_SESS']['theme']}/images/code_bg.jpg")) {
-		$image = ImageCreateFromJPEG("themes/{$_SESSION['CPG_SESS']['theme']}/images/code_bg.jpg");
-	} else if (file_exists("themes/{$_SESSION['CPG_SESS']['theme']}/images/code_bg.png")) {
-		$image = ImageCreateFromPNG("themes/{$_SESSION['CPG_SESS']['theme']}/images/code_bg.png");
+	if (file_exists("themes/$CPG_SESS[theme]/images/code_bg.jpg")) {
+		$image = ImageCreateFromJPEG("themes/$CPG_SESS[theme]/images/code_bg.jpg");
+	} else if (file_exists("themes/$CPG_SESS[theme]/images/code_bg.png")) {
+		$image = ImageCreateFromPNG("themes/$CPG_SESS[theme]/images/code_bg.png");
 	} else {
 		$image = ImageCreateFromJPEG('images/code_bg.jpg');
 	}
@@ -89,7 +90,7 @@ if ($ttf) {
 } else {
 	ImageString($image, $fontsize, $left, 2, $code, ImageColorAllocate($image, $tred, $tgreen, $tblue));
 }
-header('Content-type: image/png');
+Header('Content-type: image/png');
 //Header('Content-type: image/jpeg');
 ImagePNG($image);
 //ImageJPEG($image, '', 75);

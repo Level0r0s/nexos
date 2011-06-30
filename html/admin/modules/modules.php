@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/admin/modules/modules.php,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:52:55 $
+  $Revision: 10.1 $
+  $Author: phoenix $
+  $Date: 2010/11/12 09:38:20 $
 **********************************************/
 if (!defined('ADMIN_PAGES')) { exit; }
 if (!can_admin('modules')) { die('Access Denied'); }
@@ -67,7 +67,6 @@ else if (isset($_GET['home'])) {
 else if (isset($_GET['edit'])) {
 	$mid = intval($_GET['edit']);
 	list($title, $custom_title, $view, $inmenu, $blocks, $version) = $db->sql_ufetchrow("SELECT title, custom_title, view, inmenu, blocks, version FROM ".$prefix."_modules WHERE mid=$mid",SQL_NUM);
-	$blocks = intval($blocks);
 	$pagetitle .= ' '._BC_DELIM.' '._MODULEEDIT;
 	$inst_file = (is_file('modules/'.$title.'/sql/cpg_inst.php') ? 'modules/'.$title.'/sql/cpg_inst.php' : (is_file('modules/'.$title.'/cpg_inst.php') ? 'modules/'.$title.'/cpg_inst.php' : false));
 	if ($inst_file) {
@@ -89,12 +88,8 @@ else if (isset($_GET['edit'])) {
 	} else {
 		echo '<label class="ulog" for="view">'._VIEWPRIV.'</label>'.group_selectbox('view', $view).'<br />';
 	}
-	echo '<label class="ulog" for="inmenu">'._SHOWINMENU.'</label>'.yesno_option('inmenu', $inmenu).'<br /><br />
-	<span class=""><strong>Sides</strong></span><br />
-	<label class="ulog" for="left">'._LEFT.'</label>'.select_box('left', $blocks & $Blocks::LEFT , array('0'=>_NONE, '1'=>_YES)).'<br />
-	<label class="ulog" for="right">'._RIGHT.'</label>'.select_box('right', $blocks & $Blocks::RIGHT, array('0'=>_NONE, '2'=>_YES)).'<br />
-	<label class="ulog" for="center">'._CENTERUP.'</label>'.select_box('center', $blocks & $Blocks::CENTER, array('0'=>_NONE, '4'=>_YES)).'<br />
-	<label class="ulog" for="down">'._CENTERDOWN.'</label>'.select_box('down', $blocks & $Blocks::DOWN, array('0'=>_NONE, '8'=>_YES)).'<br />
+	echo '<label class="ulog" for="inmenu">'._SHOWINMENU.'</label>'.yesno_option('inmenu', $inmenu).'<br />
+	<label class="ulog" for="blocks">'._BLOCKS.'</label>'.select_box('blocks', $blocks, array('0'=>_NONE, '1'=>_LEFT, '2'=>_RIGHT, '3'=>_BOTH)).'<br /><br />
 	<input type="hidden" name="save" value="'.$mid.'" />
 	<input type="submit" value="'._SAVECHANGES.'" />'.close_form();
 	if (isset($editmodule)) {
@@ -151,7 +146,7 @@ else if (isset($_GET['upgrade'])) {
 		cpg_error(_UPGRADEFAILED.': couldn\'t load installer');
 	}
 	require(CORE_PATH.'classes/installer.php');
-	$installer = new cpg_installer(true, true);
+	$installer =& new cpg_installer(true, true);
 	$module = new $class;
 	if ($module->upgrade($version)) {
 		if (!$installer->install()) {
@@ -243,7 +238,7 @@ else if (isset($_POST['save'])) {
 	$custom_title = Fix_Quotes($_POST['custom_title'], true);
 	$view = intval($_POST['view']);
 	$inmenu = intval($_POST['inmenu']);
-	$blocks = intval($_POST['left']) | intval($_POST['right']) | intval($_POST['center']) | intval($_POST['down']);
+	$blocks = intval($_POST['blocks']);
 	$result = $db->sql_query('SELECT title FROM '.$prefix."_modules WHERE mid=$mid");
 	if ($db->sql_numrows($result) > 0) {
 		list($title) = $db->sql_fetchrow($result);
@@ -268,7 +263,7 @@ else {
 		}
 		if (class_exists($class)) {
 			require(CORE_PATH.'classes/installer.php');
-			$installer = new cpg_installer(true, true);
+			$installer =& new cpg_installer(true, true);
 			$module = new $class;
 			$addmod = $module->install();
 			if (!$addmod) { cpg_error($module->description, 'Install Error'); }
@@ -308,7 +303,7 @@ else {
 				$CPG_SESS['admin']['uninstall'] = '';
 				unset($CPG_SESS['admin']['uninstall']);
 				require(CORE_PATH.'classes/installer.php');
-				$installer = new cpg_installer(true, true);
+				$installer =& new cpg_installer(true, true);
 				$module = new $class;
 				$module->uninstall();
 				if (!$installer->install()) {
@@ -388,12 +383,12 @@ else {
 	<a href="'.URL::admin('&amp;a=all').'">'._ACTIVATE.' '._ALL.'</a> | <a href="'.URL::admin('&amp;a=none').'">'._DEACTIVATE.' '._ALL.'</a><br /><br />
 	<form action="'.URL::admin().'" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 	<table border="0" cellspacing="0" width="100%"><tr bgcolor="'.$bgcolor2.'">
-	<td align="left"><strong>'._ACTIVE.'</strong></td>
-	<td align="left"><strong>'._TITLE.'</strong></td>
-	<td align="left"><strong>'._CUSTOMTITLE.'</strong></td>
-	<td align="left"><strong>'._VIEW.'</strong></td>
-	<td align="left"><strong>'._BLOCKS.'</strong></td>
-	<td align="left"><strong>'._FUNCTIONS.'</strong></td></tr>';
+	<td align="center"><strong>'._ACTIVE.'</strong></td>
+	<td align="center"><strong>'._TITLE.'</strong></td>
+	<td align="center"><strong>'._CUSTOMTITLE.'</strong></td>
+	<td align="center"><strong>'._VIEW.'</strong></td>
+	<td align="center"><strong>'._BLOCKS.'</strong></td>
+	<td align="center"><strong>'._FUNCTIONS.'</strong></td></tr>';
 	foreach ($mods AS $title => $row) {
 		$title = (defined('_'.$row['title'].'LANG'))? (constant('_'.$row['title'].'LANG')) : str_replace('_', ' ', $row['title']);
 		$allmods[$title] = $row;
@@ -445,21 +440,20 @@ else {
 			if ($row['uninstall'] == 1) {
 				$change_status .= ' <strong>::</strong> <a href="'.URL::admin('&amp;uninstall='.$moduledir).'">Uninstall</a>';
 			}
-			$sides = array();
 			if (isset($row['blocks'])) {
-				$row['blocks'] = intval($row['blocks']);
-				if ($row['blocks'] == 0) $sides[] = _NONE;
-				if ($row['blocks'] & Blocks::LEFT) $sides[] = _LEFT;
-				if ($row['blocks'] & Blocks::RIGHT) $sides[] = _RIGHT;
-				if ($row['blocks'] & Blocks::CENTER) $sides[] = _CENTERUP;
-				if ($row['blocks'] & Blocks::DOWN) $sides[] = _CENTERDOWN;
+				if ($row['blocks'] == 0) $row['blocks'] = _NONE;
+				else if ($row['blocks'] == 1) $row['blocks'] = _LEFT;
+				else if ($row['blocks'] == 2) $row['blocks'] = _RIGHT;
+				else if ($row['blocks'] == 3) $row['blocks'] = _BOTH;
+			} else {
+				$row['blocks'] = '';
 			}
 		echo '<tr'.$bgcolor.'>
 		<td align="center">'.$active.'</td>
 		<td><a href="'.URL::index($row['title']).'" title="'._SHOW.'">'.$title.'</a></td>
 		<td>'.$row['custom_title'].'</td>
 		<td>'.$who_view.'</td>
-		<td>'.implode(', ', $sides).'</td>
+		<td>'.$row['blocks'].'</td>
 		<td><a href="'.URL::admin('&amp;edit='.$mid).'">'._EDIT.'</a>'.$change_status.'</td></tr>';
 		}
 	}

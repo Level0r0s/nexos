@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/admin/modules/settings.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 10:05:54 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 00:56:55 $
 **********************************************/
 if (!defined('ADMIN_PAGES')) { exit; }
 if (!can_admin('settings')) { die('Access Denied'); }
@@ -121,12 +121,15 @@ if (isset($_POST['save'])) {
 	}
 
 	Cache::array_delete('MAIN_CFG');
+	//echo '<pre>';
+	//print_r($_POST);
+	//echo '</pre>';
+	//exit;
 	URL::redirect(URL::admin('&s='.$section));
 }
 else {
 	$pagetitle .= ' '._BC_DELIM.' '._SITECONFIG.' '._BC_DELIM.' '.$section_t[$section];
-	CSS::add('includes/css/tabs.css');
-//	$modheader .= '<link rel="stylesheet" type="text/css" href="includes/css/tabs.css" />'."\n";
+	$modheader .= '<link rel="stylesheet" type="text/css" href="includes/css/tabs.css" />'."\n";
 	require('header.php');
 	GraphicAdmin('_AMENU0');
 	$cpgtpl->assign_vars(array(

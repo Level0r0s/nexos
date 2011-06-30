@@ -8,9 +8,9 @@
 	(at your option) any later version.
 
   $Source: /cvs/html/includes/classes/security.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:05:46 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:16 $
 **********************************************/
 /*
 ban_type: 0 = just ban a ip
@@ -36,7 +36,7 @@ class Security
 		if (!empty($_SESSION['SECURITY']['banned'])) { cpg_error('', $_SESSION['SECURITY']['banned']); }
 		global $MAIN_CFG, $SESS, $db, $prefix;
 		# get the visitor IP
-		$ip = Net::get_ip();
+		$ip = NET::get_ip();
 		# If not a member check for bot or ban
 		if ($SESS->new) {
 			$_SESSION['SECURITY']['banned'] = false;
@@ -128,7 +128,7 @@ class Security
 		return (preg_match('#('.str_replace('.', '\.', substr($domains,1).')#i'), $domain) < 1);
 	}
 
-	public static function check_email(&$email)
+	function check_email(&$email)
 	{
 		static $domains;
 		if (strlen($email) < 6) return 0;
@@ -157,13 +157,13 @@ class Security
 	{
 		$backtrace = debug_backtrace();
 		trigger_error("DEPRECATED call to Security::get_ip() by {$backtrace[0]['file']} on line {$backtrace[0]['line']}.", E_USER_WARNING);
-		return Net::get_ip();
+		return NET::get_ip();
 	}
 
 	private static function flood()
 	{
 		global $db, $prefix, $MAIN_CFG;
-		$ip = Net::get_ip();
+		$ip = NET::get_ip();
 		$ipn = $db->binary_safe($ip);
 		$delay = $MAIN_CFG['_security']['delay'];
 		$flood_time = $flood_count = 0;

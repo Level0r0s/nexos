@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/blocks/block-Preview_theme.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/18 07:43:44 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 00:57:01 $
 Encoding test: n-array summation ∑ latin ae w/ acute ǽ
 ********************************************************/
 if (!defined('CPG_NUKE')) { exit; }
@@ -47,9 +47,7 @@ for ($i=0; $i < sizeof($themelist); $i++) {
 		if (defined('ADMIN_PAGES')) {
 			$content .= '<option value="'.$qs.$themelist[$i].'"';
 		} elseif (!isset($_GET['name']) && !isset($_POST['name'])) {
-			$content .= '<option value="'.$mainindex."?name&amp;prevtheme=$themelist[$i]\"";
-		} elseif (isset($_GET['name']) && empty($_GET['name'])) {
-			$content .= '<option value="'.$mainindex."?name&amp;prevtheme=$themelist[$i]\"";
+			$content .= '<option value="'.$mainindex."?prevtheme=$themelist[$i]\"";
 		} else {
 			$content .= '<option value="'.URL::index($qs.$themelist[$i]).'"';
 		}

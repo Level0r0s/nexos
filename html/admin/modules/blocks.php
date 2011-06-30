@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/admin/modules/blocks.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:52:48 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 00:56:55 $
 **********************************************/
 if (!defined('ADMIN_PAGES')) { exit; }
 if (!can_admin('blocks')) { die('Access Denied'); }
@@ -50,6 +50,7 @@ if (isset($_GET['change'])) {
 		return;
 	}
 	if (Security::check_post()) {
+		$sides = array('l','c','r','d','n');
 		$count = count($_POST['id']);
 		$blocks = blocks_list();
 		$mid = intval($_POST['mid']);
@@ -61,7 +62,7 @@ if (isset($_GET['change'])) {
 				$pos=1;
 			} else {
 				$bid = intval($_POST['id'][$i]);
-				if ($side === 'n') {
+				if ($side == 'n') {
 					$db->query('DELETE FROM '.$prefix."_blocks_custom WHERE bid=$bid AND mid=$mid");
 				} else if (empty($blocks[$module][$bid])) {
 					$db->query('INSERT INTO '.$prefix."_blocks_custom (bid, mid, side, weight) VALUES ($bid, $mid, '$side', $pos)");
@@ -80,10 +81,10 @@ if (isset($_GET['change'])) {
 function BlocksAdmin()
 {
 	global $bgcolor2, $bgcolor3, $prefix, $db, $currentlang, $cpgtpl, $modheader, $MAIN_CFG;
-	CSS::add('themes/default/style/tabletree.css');
-	CSS::add('themes/default/style/adminblocks.css');
-	JS::add('themes/default/javascript/adminblocks.js');
-
+	$modheader .= '
+<script type="text/javascript" src="themes/default/javascript/adminblocks.js"></script>
+<link rel="stylesheet" href="themes/default/style/tabletree.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="themes/default/style/adminblocks.css" type="text/css" media="screen" />';
 	require('header.php');
 	GraphicAdmin('_AMENU1');
 
@@ -113,21 +114,12 @@ function BlocksAdmin()
 	$blocks_list = blocks_list();
 	foreach ($blocks_list as $title => $module) {
 		$sides = array('l'=> 0, 'c'=>0, 'd'=>0, 'r'=>0);
-
-		$side = array();
-		$module['blocks'] = intval($module['blocks']);
-		if ($module['blocks'] == 0) $side[] = _NONE;
-		if ($module['blocks'] & Blocks::LEFT) $side[] = _LEFT;
-		if ($module['blocks'] & Blocks::RIGHT) $side[] = _RIGHT;
-		if ($module['blocks'] & Blocks::CENTER) $side[] = _CENTERUP;
-		if ($module['blocks'] & Blocks::DOWN) $side[] = _CENTERDOWN;
-
 		$cpgtpl->assign_block_vars('modules', array(
 			'S_MODULE_TITLE' => defined($module['title']) ? constant($module['title']) : $title,
 			'S_MODULE_OTITLE' => $title,
 			'S_MODULE_ID' => $module['mid'],
 			'L_MODULE_ACTIVE' => (is_active($title) || $module['mid'] == -1) ? _YES : _NO,
-			'L_MODULE_SIDE' => 'Active block sides: '.implode(', ', $side)
+			'L_MODULE_SIDE' => _BLOCKS.': '.(($module['blocks']==0)?_NONE : (($module['blocks']==1)?_LEFT : (($module['blocks']==2)?_RIGHT : _BOTH)))
 		));
 		foreach ($module as $bid => $side) {
 		if (!intval($bid)) continue;

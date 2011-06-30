@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/footer.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:43:31 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 00:56:52 $
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
 
@@ -20,7 +20,7 @@ function footmsg() {
 	if ($foot1 != '') { $foot1 .= '<br />'."\n"; }
 	if ($foot2 != '') { $foot1 .= $foot2.'<br />'."\n"; }
 	if ($foot3 != '') { $foot1 .= $foot3.'<br />'."\n"; }
-	if (CPG_DEBUG || is_admin()) {
+	if (is_admin()) {
 		$total_time = (microtime(true) - START_TIME - $db->time);
 		$foot1 .= sprintf(_PAGEFOOTER, round($total_time,4), $db->num_queries, round($db->time,4));
 		// only works if your PHP is compiled with the --enable-memory-limit configuration option

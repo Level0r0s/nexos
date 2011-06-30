@@ -15,9 +15,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/blocks/block-User_Info.php,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/18 05:32:04 $
+  $Revision: 10.1 $
+  $Author: phoenix $
+  $Date: 2010/11/12 00:36:30 $
 Encoding test: n-array summation ∑ latin ae w/ acute ǽ
 ********************************************************/
 if (!defined('CPG_NUKE')) { exit; }
@@ -86,7 +86,7 @@ if(is_user()) {
 	<span style="float:left; height:25px;">'._NICKNAME.'</span><span style="float:right; height:25px;"><input type="text" name="ulogin" size="10" maxlength="25" /></span><br />
 	<span style="float:left; height:25px;">'._PASSWORD.'</span><span style="float:right; height:25px;"><input type="password" name="user_password" size="10" maxlength="20" /></span><br />
 	';
-	if ($MAIN_CFG['global']['sec_code'] & 2) {
+	if ($MAIN_CFG['debug']['sec_code'] & 2) {
 		$content .= '<span style="float:left; height:25px;">'._SECURITYCODE.'</span><span style="float:right; height:25px;">'.generate_secimg().'</span><br style="clear:left;" />
 		<span style="float:left; height:25px;">'._TYPESECCODE.'</span><span style="float:right; height:25px;"><input type="text" name="gfx_check" size="8" maxlength="8" /></span><br />';
 	}

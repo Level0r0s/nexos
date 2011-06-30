@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/modules/Your_Account/index.php,v $
-  $Revision: 9.32 $
+  $Revision: 9.31 $
   $Author: nanocaiordo $
-  $Date: 2011/03/29 10:31:41 $
+  $Date: 2008/08/26 11:39:49 $
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
 $pagetitle .= _Your_AccountLANG;
@@ -64,13 +64,13 @@ function mail_password() {
 		$row = $db->sql_fetchrow($result);
 		$username = $row['username'];
 		if ($row['user_level'] > 0) {
-			global $MAIN_CFG;
+			global $sitename, $MAIN_CFG;
 			$code = $_POST['code'];
 			$areyou = substr($row['user_password'], 0, 10);
 			$from = 'noreply@'.str_replace('www.', '', $MAIN_CFG['server']['domain']);
 			if ($areyou == $code) {
 				$newpass = make_pass(8, 5);
-				$message = _USERACCOUNT." '$username' "._AT." {$MAIN_CFG['global']['sitename']} "._HASTHISEMAIL."  "._AWEBUSERFROM." ".decode_ip($userinfo["user_ip"])." "._HASREQUESTED."\n\n"._YOURNEWPASSWORD." $newpass\n\n "._YOUCANCHANGE." ".URL::index('Your_Account', true, true)."\n\n"._IFYOUDIDNOTASK;
+				$message = _USERACCOUNT." '$username' "._AT." $sitename "._HASTHISEMAIL."  "._AWEBUSERFROM." ".decode_ip($userinfo["user_ip"])." "._HASREQUESTED."\n\n"._YOURNEWPASSWORD." $newpass\n\n "._YOUCANCHANGE." ".URL::index('Your_Account', true, true)."\n\n"._IFYOUDIDNOTASK;
 				$subject = _USERPASSWORD4." $username";
 				if (!send_mail($mailer_message,$message,0,$subject,$row['user_email'],$username,$from)) {
 					cpg_error($mailer_message);
@@ -82,7 +82,7 @@ function mail_password() {
 				cpg_error(_PASSWORD4." $username "._MAILED, _TB_INFO, URL::index());
 				// If no code, send it
 			} else {
-				$message = _USERACCOUNT." '$username' "._AT." {$MAIN_CFG['global']['sitename']} "._HASTHISEMAIL." "._AWEBUSERFROM." ".decode_ip($userinfo["user_ip"])." "._CODEREQUESTED."\n\n"._YOURCODEIS." $areyou \n\n"._WITHTHISCODE." ".URL::index('&op=pass_lost', true, true)."\n"._IFYOUDIDNOTASK2;
+				$message = _USERACCOUNT." '$username' "._AT." $sitename "._HASTHISEMAIL." "._AWEBUSERFROM." ".decode_ip($userinfo["user_ip"])." "._CODEREQUESTED."\n\n"._YOURCODEIS." $areyou \n\n"._WITHTHISCODE." ".URL::index('&op=pass_lost', true, true)."\n"._IFYOUDIDNOTASK2;
 				$subject = _CODEFOR." $username";
 				if (!send_mail($mailer_message,$message,0,$subject,$row['user_email'],$username,$from)) {
 					cpg_error($mailer_message);

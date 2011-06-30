@@ -1,13 +1,14 @@
 <?php
-/**********************************************************************
-  Dragonfly CMS, Copyright (c) 2004 by CPGNuke Dev Team
+/*********************************************
+  CPG Dragonfly™ CMS
+  ********************************************
+  Copyright © 2004 - 2007 by CPG-Nuke Dev Team
   http://dragonflycms.org
-  Released under GNU GPL version 2 or any later version
 
   $Source: /cvs/html/index.php,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 10:04:45 $
+  $Revision: 10.1 $
+  $Author: djmaze $
+  $Date: 2010/11/07 16:52:24 $
 
   A free program released under the terms and conditions
   of the GNU GPL version 2 or any later version
@@ -36,167 +37,103 @@
   http://gnu.org/licenses/gpl-faq.html#LinkingOverControlledInterface
 
 ***********************************************************************/
-error_reporting(E_ALL | E_STRICT);
-
 $start_mem = function_exists('memory_get_usage') ? memory_get_usage() : 0;
-date_default_timezone_set('UTC');
-if (function_exists('mb_language')) { mb_language('uni'); }
-if (function_exists('mb_internal_encoding')) { mb_internal_encoding('UTF-8'); }
-//mb_regex_encoding('UTF-8');
+$_SERVER['REQUEST_TIME'] = microtime(true);
+require_once('includes/cmsinit.inc');
 
-define('START_TIME', microtime(true));
-define('DEVELOPER_MODE', false);
+$file = isset($_POST['file']) ? $_POST['file'] : (isset($_GET['file']) ? $_GET['file'] : 'index');
+if (!preg_match('#^([a-zA-Z0-9_\-]+)$#', $file)) { cpg_error(sprintf(_ERROR_BAD_CHAR, strtolower(_BLOCKFILE2)), _SEC_ERROR); }
 
-# Core properties
-$tmp = dirname(__FILE__);
-define('CPG_NUKE', '10.0.9');
-define('BASEDIR', (strlen($tmp) > 2 ? $tmp : '.'). DIRECTORY_SEPARATOR);
-define('CORE_PATH', BASEDIR. 'includes/');
-define('CLASS_PATH', CORE_PATH. 'classes/');
-define('CACHE_PATH', BASEDIR. 'cache/');
-define('DF_EOL', "\r\n");
-
-umask(0);
-require_once(CORE_PATH.'classes/filter.php');
-# Register shutdown function
-//require_once(CORE_PATH.'classes/shutdown.php');
-//$Shutdown->register(array($Shutdown, 'client'));
-
-# Define our error handled asap to also catch early errors
-require_once(CORE_PATH.'classes/cpg_debugger.php');
-//$cpgdebugger->log_level = DEVELOPER_MODE ? (E_ALL | E_STRICT) : 0;
-//$cpgdebugger->error_level = DEVELOPER_MODE ? (E_ALL | E_STRICT) : 0;
-$cpgdebugger->log_level = E_ALL | E_STRICT;
-$cpgdebugger->error_level = E_ALL | E_STRICT;
-
-# Try to setup PHP with our favorite settings
-require_once(CORE_PATH.'classes/php.php');
-
-# Continue creating constants
-define('GZIPSUPPORT', extension_loaded('zlib'));
-define('GZIP_OUT', GZIPSUPPORT && !ini_get('zlib.output_compression') && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && false !== strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'));
-define('MAGICQUOTES', (PHP::$version < 60 ? get_magic_quotes_gpc()||ini_get('magic_quotes_sybase') : false));
-define('WINDOWS', (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN'));
-define('PHPVERS', PHP::$version);
-
-# clear any previous buffering
-for ($i=0, $c=ob_get_level(); $i<$c; ++$i) { ob_end_clean(); }
-
-# Destroy GET/POST/Cookie variables from the global scope since IIS can't
-# turn off register_globals as Apache can thru .ht*
-if (intval(ini_get('register_globals')) != 0) {
-	foreach ($_REQUEST AS $key => $val) { if (isset($$key)) unset($$key); }
-}
-$_REQUEST = null;
-
-# Strip slashes from GET/POST/Cookie variables because we add them back later
-if (is_array($_POST)) { array_walk($_POST, 'Prepare_INPUT'); }
-if (is_array($_GET)) { array_walk($_GET, 'Prepare_INPUT'); }
-//if (is_array($_COOKIE)) { array_walk($_COOKIE, 'Prepare_INPUT'); }
-function Prepare_INPUT(&$value, $key) {
-	if (is_array($value)) { array_walk($value, 'Prepare_INPUT', false); }
-	else {
-		if (MAGICQUOTES) { $value = stripslashes($value); }
-		$value = preg_replace('#\p{Zs}#u', ' ', $value);
+if (isset($_GET['name']) || isset($_POST['name'])) {
+	$module_name = strtolower(isset($_POST['name']) ? $_POST['name'] : $_GET['name']);
+	$home = 0;
+	if (!preg_match('#^([a-z0-9_\-]+)$#', $module_name)) {
+		cpg_error(sprintf(_ERROR_BAD_CHAR, strtolower(_MODULES)), _SEC_ERROR);
+	}
+	if ($SESS->new) update_referrer();
+	if ($module_name == 'credits' || $module_name == 'privacy_policy') {
+		require(CORE_PATH.'info.inc');
+	} else if ($module_name == 'smilies') {
+		require_once(CORE_PATH.'nbbcode.php');
+		echo smilies_table('window', $_GET['field'], $_GET['form']);
+		exit;
+	}
+	$module = $db->sql_ufetchrow('SELECT mid, title, custom_title, active, view, blocks, version FROM '.$prefix."_modules WHERE LOWER(title)='$module_name'", SQL_ASSOC);
+	$modpath = isset($module['title']) ? 'modules/'.$module['title'].'/'.$file.'.php' : 'modules/'.(isset($_POST['name']) ? $_POST['name'] : $_GET['name']).'/'.$file.'.php';
+	if (!file_exists($modpath)) {
+		cpg_error(sprintf(_MODULENOEXIST, (is_admin() ? $modpath : '')), 404);
+	}
+	$module_name = $module['title'];
+	require('includes/meta.php');
+	if ($module_name == 'Your_Account' || $module_name == $MAIN_CFG['global']['main_module']) {
+		$module['active'] = true;
+		$view = 0;
+	} else {
+		$view = $module['view'];
+	}
+	if ($module['active'] || !$CLASS['member']->demo && (can_admin() || can_admin($module_name))) {
+		get_lang($module_name, -1);
+		$showblocks = $module['blocks'];
+		if ($module['custom_title'] != '') {
+			$module_title = /*defined($module['custom_title']) ? constant($module['custom_title']) :*/ $module['custom_title'];
+		} else {
+			$module_title = defined('_'.$module_name.'LANG') ? constant('_'.$module_name.'LANG') : str_replace('_', ' ', $module_name);
+		}
+		$module_version = $module['version'];
+		$module_id = $module['mid'];
+		unset($module, $error);
+		if ($view > 0 && !is_admin()) {
+			if ($view == 1 && !is_user()) {
+				$error = _MODULEUSERS.($MAIN_CFG['member']['allowuserreg'] ? _MODULEUSERS2 : '' );
+			} elseif ($view == 2) {
+				$error = _MODULESADMINS;
+			} elseif ($view > 3 && !in_group($view-3)) {
+				list($groupName) = $db->sql_ufetchrow('SELECT group_name FROM '.$prefix.'_bbgroups WHERE group_id='.($view-3));
+				$error = '<i>'.$groupName.'</i> '._MODULESGROUPS;
+			}
+		}
+		if (isset($error)) {
+			cpg_error('<br /><br /><strong>'._RESTRICTEDAREA.'</strong><br /><br />'.$error, 401);
+		} else {
+			include($modpath);
+		}
+	} else {
+		cpg_error('<br /><br />'._MODULENOTACTIVE, 503);
+	}
+} else {
+	// index.php
+	if ($SESS->new) update_referrer();
+	$module_name = $MAIN_CFG['global']['main_module'];
+	$home = 1;
+	$module = $db->sql_ufetchrow('SELECT mid, blocks, version FROM '.$prefix.'_modules WHERE title=\''.$module_name.'\'', SQL_ASSOC);
+	$modpath = 'modules/'.$module_name.'/'.$file.'.php';
+	if (file_exists($modpath)) {
+		get_lang($module_name, -1);
+		$showblocks = $module['blocks'];
+		$module_title = '';
+		$module_version = $module['version'];
+		$module_id = $module['mid'];
+		unset($module, $error);
+		require('includes/meta.php');
+		require($modpath);
+	} else {
+		cpg_error((is_admin() ? '<strong>'._HOMEPROBLEM.'</strong><br /><br />[ <a href="'.URL::admin('modules').'">'._ADDAHOME.'</a> ]' : _HOMEPROBLEMUSER), '');
 	}
 }
-
-function DragonflyCMS__autoload($class_name) {
-	/*if (!preg_match('#^[a-z0-9\-_\\\]+$#i', $class_name)) { return; }*/
-	if (!preg_match('#^[a-z0-9_]+$#i', $class_name)) { return; }
-	$name = strtolower($class_name);
-	/*$class_name = str_replace('core\\', '', $name);*/
-	if (is_file(CORE_PATH."classes/{$name}.php")) {
-		require_once(CORE_PATH."classes/{$name}.php");
-		trigger_error('Autoloading class: '. $class_name, E_USER_NOTICE);
-	/*} else if (false !== strpos($name, '\\') && is_file(BASEDIR. str_replace('\\', '/', $name). '.php')) {
-		require_once(BASEDIR. str_replace('\\', '/', $name). '.php');
-		trigger_error('Autoloading namespaced class: '. $class_name, E_USER_NOTICE);*/
-	} else {
-		// Compatibility
-		/*switch ($name) {
-			case 'cpg_template' :
-				global $TPL;
-				if (is_object($TPL)) { $cpgtpl =& $TPL; }
-				else { require_once(CORE_PATH."classes/template.php"); $cpgtpl = new cpg_template(); }
-				depreciated_warning();
-			break;
-			default: cpg_error("The class $class_name could not be found");
-		}*/
-		if (!isset(Poodle::$DIR_BASE)) {
-			cpg_error("The class $class_name could not be found");
+function update_referrer() {
+	global $db, $prefix, $MAIN_CFG;
+	if ($MAIN_CFG['global']['httpref'] && isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
+		$referer = Fix_Quotes($_SERVER['HTTP_REFERER']);
+		$httprefmax = (int)$MAIN_CFG['global']['httprefmax'];
+		if (strpos($referer, '://') && !stripos($referer, $MAIN_CFG['server']['domain'])) {
+			if (!$db->sql_query('UPDATE '.$prefix.'_referer SET lasttime='.time().' WHERE url=\''.htmlprepare($referer).'\'', true) || !$db->sql_affectedrows()) {
+				$db->sql_query('INSERT INTO '.$prefix."_referer (url, lasttime) VALUES ('".htmlprepare($referer)."', ".time().")", true);
+			}
+			$numrows = $db->sql_count($prefix.'_referer');
+			if ($numrows >= $httprefmax) {
+				$db->sql_query('DELETE FROM '.$prefix.'_referer ORDER BY lasttime LIMIT '.($numrows-($httprefmax/2)));
+			}
 		}
 	}
 }
-spl_autoload_register('DragonflyCMS__autoload');
-
-#
-# HTTP stuff
-#
-if (!Filter::ipv4($_SERVER['SERVER_NAME'], true) && !Filter::ipv6($_SERVER['SERVER_NAME'], true)
- && !Filter::ipv4($_SERVER['HTTP_HOST']) && !Filter::ipv6($_SERVER['HTTP_HOST'], true)
- && !Filter::domain($_SERVER['SERVER_NAME']) && !Filter::domain($_SERVER['HTTP_HOST']))
- { HttpHeaders::flush(500); }
-
-define('START_REQUEST_TIME', $_SERVER['REQUEST_TIME']);
-define('DOMAIN_PROTOCOL', $_SERVER['SERVER_PORT'] != 443 ? 'http' : 'https');
-define('DOMAIN_NAME', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : str_replace('www.', '', $_SERVER['SERVER_NAME']));
-//define('DOMAIN_NAME', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $MAIN_CFG['server']['domain']);
-define('DOMAIN_PATH', dirname($_SERVER['SCRIPT_NAME']). '/');
-
-$tmp = file_exists(CORE_PATH. 'config_'. DOMAIN_NAME. '.php') ? CORE_PATH. 'config_'. DOMAIN_NAME. '.php' :
-			(file_exists(CORE_PATH. 'config.php') ? CORE_PATH. 'config.php' : false);
-if ($tmp) {
-	require_once($tmp);
-} else {
-	trigger_error('You must install Dragonfly first before you can use it', E_USER_ERROR);
-}
-define('DOMAIN_INDEX', $mainindex);
-define('DOMAIN_ADMIN', DOMAIN_INDEX. '?'. str_replace('.php', '', $adminindex));
-define('BASEHREF', DOMAIN_PROTOCOL. '://'. DOMAIN_NAME. DOMAIN_PATH);
-$adminindex = DOMAIN_ADMIN;
-if ('cli' === PHP::$run_as) {
-	//require(CORE_PATH. 'load/cli.php');
-	exit;
-}
-
-require_once(CORE_PATH. 'classes/httputils.php');
-require_once(CORE_PATH. 'classes/httpheaders.php');
-header('Date: '. date('D, d M Y H:i:s', time()). ' GMT');
-header('X-Powered-By: Dragonfly CMS using PHP engine');
-
-if (PHP::$version < 52) {
-	HttpHeaders::flush(500,'PHP 5.2 is required to run this release. http://dragonflycms.org/News/article/sid=254.html');
-}
-
-if (empty($_SERVER['REQUEST_METHOD']) || 0 === preg_match('#^(HEAD|GET|POST)$#', $_SERVER['REQUEST_METHOD']) ) {
-	HttpHeaders::add(405);
-	HttpHeaders::flush('Allow: HEAD, GET, POST');
-}
-//if ( $_SERVER['HTTP_USER_AGENT'] === '-' || (empty($_SERVER['HTTP_USER_AGENT']) && $key !== 'paypal') ) {
-//	HttpHeaders::add(403);
-//	trigger_error('Invalid user agent', E_USER_ERROR);
-//}
-
-
-
-
-//$tmp = !empty($_POST) ? (string) key($_POST) : ( !empty($_GET) ? (string) key($_GET) : 'name' );
-$tmp = !empty($_GET) ? (string) key($_GET) : 'name';
-$_SERVER['QUERY_STRING'] = urldecode($_SERVER['QUERY_STRING']);
-if (!preg_match('#^[a-z0-9_\-;]+$#', $tmp) ||
-   (!empty($_SERVER['QUERY_STRING']) && strpos($_SERVER['QUERY_STRING'], '://'))) {
-	HttpHeaders::flush(500, 'One or more characters included in the URL are not allowed.');
-}
-
-if (!defined('INSTALL')) {
-	if ( !is_file(CORE_PATH. 'load/'. $tmp. '.php') ) {
-		HttpHeaders::flush(404, "The loader '{$tmp}' could not be found.");
-	}
-	//define('ADMIN_PAGES', $tmp === 'admin');
-	if ($tmp === 'admin') define('ADMIN_PAGES', true);
-	# load core file
-	require_once(CORE_PATH. 'load/'. $tmp. '.php');
-	exit;
-}
-
+if (defined('HEADER_OPEN')) { require_once('footer.php'); }

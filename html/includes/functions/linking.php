@@ -9,15 +9,15 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/functions/linking.php,v $
-  $Revision: 9.37 $
-  $Author: nanocaiordo $
-  $Date: 2011/03/20 04:26:48 $
+  $Revision: 9.36 $
+  $Author: estlane $
+  $Date: 2009/10/06 20:28:07 $
 **********************************************/
 function depricated_warning() {
 	$backtrace = debug_backtrace();
 	$callee = $backtrace[1];
 	$function = $callee['function'];
-	trigger_error("DEPRECATED call to <a href=\"http://dragonflycms.org/$function\">$function</a>() by {$callee['file']} on line {$callee['line']}.", E_USER_DEPRECATED);
+	trigger_error("DEPRECATED call to <a href=\"http://dragonflycms.org/$function\">$function</a>() by {$callee['file']} on line {$callee['line']}.", E_USER_WARNING);
 }
 
 function getlink($url='', $UseLEO=true, $full=false)

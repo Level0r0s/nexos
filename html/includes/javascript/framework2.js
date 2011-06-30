@@ -1,5 +1,5 @@
-/**	MOO CMS, Copyright (c) since 2005 The MOO Dev. Group. All rights reserved.
-	$Revision: 1.3 $
+/*	MOO CMS, Copyright (c) since 2005 The MOO Dev. Group. All rights reserved.
+	$Revision: 1.2 $
 */
 if(window.console&&window.console.warn)window.console.warn("Please use the new poodle.js instead of framework2.js");
 
@@ -7,12 +7,12 @@ var swfobject = null, $ga_id = null;
 
 function $T(tagname, parentNode) { return (parentNode||document).getElementsByTagName(tagname); }
 
-/** xbrowser events.
+/* xbrowser events.
  * NOTE: IE html onclick="function(event, this)" and such you must forward "this" to this function!
  */
 var Events =
 {
-	/** xbrowser add event listener */
+	/* xbrowser add event listener */
 	add: function(obj, type, fn, o) { obj.bind(type, o?fn.bind(o):fn) },
 	remove: function(obj, type, fn) { obj.unbind(type, fn) },
 	simulate: function(obj,type,b,c){ obj.trigger(type, {}, b, c) },
@@ -87,7 +87,7 @@ var MOO =
 	TPL: null,
 	JS_PATH: null,
 	CSS_PATH: null,
-	version: "$Revision: 1.3 $".replace(/[^0-9\.]+([0-9\.]+).*/, "$1"),
+	version: "$Revision: 1.2 $".replace(/[^0-9\.]+([0-9\.]+).*/, "$1"),
 
 	base_uri:function() { return MOO.HOST+MOO.PATH; },
 
@@ -177,7 +177,7 @@ var MOO =
 	getElementsByClassName:function(cn,t,p){return (p||Poodle.$B().parentNode).getNodesByClassName(cn,t)},
 	getFormInputsByType:function(t,f){return f.getInputsByType(t)},
 	addNodeAfter:function(n,r){return n.after(r)},
-	/** find element by name */
+	/* find element by name */
 	getNodeByName:function(name,tag,o)
 	{
 		var i, n = $T(tag||"input", o);
@@ -261,7 +261,7 @@ MOO.rectangle = PoodleRect;
 
 MOO.Resizer = function(o, w, h, wo, ho)
 {
-	/** public */
+	/* public */
 	this.obj = o;
 	this.w_obj = wo;
 	this.h_obj = ho;
@@ -373,7 +373,7 @@ function addClassName(o,n) { console.warn("addClassName(o, name) deprecated, use
 function replaceClassName(o,f,t) { console.warn("replaceClassName(o, from, to) deprecated, use o.replaceClass(from, to)"); o.replaceClass(f,t); }
 function stripClassName(o,n) { console.warn("stripClassName(o, name) deprecated, use o.removeClass(name)"); o.removeClass(n); }
 
-/** CMS stuff */
+/* CMS stuff */
 
 function switch_display(o) { if (o = $(o)) { o.style.display = ("none" == o.style.display) ? "" : "none"; } }
 

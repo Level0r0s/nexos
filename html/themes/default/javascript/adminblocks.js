@@ -12,7 +12,7 @@ var Tack = {
 		return 0;
 	},
 	setCursor : function(o, v){
-		o.style.cursor = 'move'; /* Opera doesn't support url property for cursor */
+		o.style.cursor = 'move'; // Opera doesn't support url property for cursor
 		o.style.cursor = 'url(themes/default/images/cursors/'+v+'.cur), move';
 	},
 	start : function(e,o) {

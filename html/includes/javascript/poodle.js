@@ -1,11 +1,11 @@
-/**	Poodle WCMS, Copyright (c) since 2005 The Poodle Dev. Group. All rights reserved.
+/*	Poodle WCMS, Copyright (c) since 2005 The Poodle Dev. Group. All rights reserved.
 
 	This source file is free software; you can redistribute it and/or
 	modify it under the terms of the Poodle Public License as published
 	by the Poodle Development Group; either version 1.1 of the License, or
 	(at your option) any later version.
 
-	$Revision: 1.15 $
+	$Revision: 1.14 $
 
 	http://yura.thinkweb2.com/named-function-expressions/
 	http://peter.michaux.ca/articles/an-important-pair-of-parens
@@ -19,11 +19,11 @@ function _(txt) { return ($LNG[txt] ? $LNG[txt] : txt); }
  */
 
 function defined(v)    { var d; return d !== v; }
-function is_function(v){ return typeof v === "function" && (!Function.prototype.call || typeof v.call === "function"); } /** IE seems to think that some functions are objects rather than functions */
+function is_function(v){ return typeof v === "function" && (!Function.prototype.call || typeof v.call === "function"); } // IE seems to think that some functions are objects rather than functions
 function is_number(v)  { return typeof v === "number" && isFinite(v); }
 function is_object(v)  { return typeof v === "object"; }
 function is_string(v)  { return typeof v === "string"; }
-/**
+/*
 function is_bool(v)    { return typeof v === "boolean"; }
 function is_numeric(v) { return is_number(v) || (is_string(v) && '' !== v.trim() && !isNaN(v)); }
 function is_int(v)     { return is_number(v) && !(v % 1); }
@@ -70,12 +70,12 @@ function intval(v, d) { return Math.round(floatval(v, d)) }
 
 function lc(v){return v.toLowerCase()}
 
-var version = "$Revision: 1.15 $"
+var version = "$Revision: 1.14 $"
 	.replace(/[^0-9\.]+([0-9\.]+).*/, "$1")
 ,doc = document
 ,emptyTags = /^(area|base|br|col|hr|img|input|link|meta|param)$/i
-,fbug=["assert","debug","error","info","log","profile","profileEnd","warn" /** firebug/WebKit */
-      ,"count","dir","dirxml","group","groupEnd","time","timeEnd","trace"] /** firebug */
+,fbug=["assert","debug","error","info","log","profile","profileEnd","warn" // firebug/WebKit
+      ,"count","dir","dirxml","group","groupEnd","time","timeEnd","trace"] // firebug
 ,i
 ,nav = navigator
 ,ua  = {ie:0/*@cc_on +(document.documentMode||@_jscript_version*10-50)@*/}
@@ -115,7 +115,7 @@ var version = "$Revision: 1.15 $"
 	,dragover:   [1, 1]
 	,dragstart:  [1, 1]
 	,drop:       [1, 1]
-	,selectstart:[1, 1] /** IE, css -moz-user-select:none */
+	,selectstart:[1, 1] // IE, css -moz-user-select:none
 	// Keyboard
 	,keydown:   [1, 1]
 	,keypress:  [1, 1]
@@ -139,7 +139,7 @@ var version = "$Revision: 1.15 $"
 	,input:     [0, 0]
 	,invalid:   [0, 0]
 	// User interface
-	,DOMActivate: [1, 1] /** DOMActivate, IE's onactivate & Gecko oncommand are similar */
+	,DOMActivate: [1, 1] // DOMActivate, IE's onactivate & Gecko oncommand are similar
 	,focus:     [0, 0]
 	,focusin:   [1, 0]
 	,focusout:  [1, 0]
@@ -150,7 +150,7 @@ var version = "$Revision: 1.15 $"
 	,DOMNodeRemoved:              [1, 0]
 	,DOMNodeRemovedFromDocument:  [0, 0]
 	,DOMNodeInsertedIntoDocument: [0, 0]
-	,DOMAttrModified:             [1, 0] /** IE's onpropertychange is similar */
+	,DOMAttrModified:             [1, 0] // IE's onpropertychange is similar
 	,DOMCharacterDataModified:    [1, 0]
 	// Firefox, Opera 9+ & Safari 3.1+
 	,DOMContentLoaded:      [0, 0]
@@ -162,7 +162,7 @@ var version = "$Revision: 1.15 $"
 	,hashchange: [1, 1]
 	,message:    [0, 1]
 	/** IE's events */
-	,selectstart: [1, 1] /** css -moz-user-select:none */
+	,selectstart: [1, 1] // css -moz-user-select:none
 };
 
 /**
@@ -173,7 +173,7 @@ if (win.loadFirebugConsole) loadFirebugConsole();
 if (!win.console) win.console = {};
 function alertError(e){
 	var msg = (e.name?e.name+": ":"")+(e.message?e.message:e);
-	if (e.fileName||e.sourceURL) { msg += "\n\n@"+(e.fileName||e.sourceURL)+"#"+(e.lineNumber||e.line); } /** Gecko||WebKit */
+	if (e.fileName||e.sourceURL) { msg += "\n\n@"+(e.fileName||e.sourceURL)+"#"+(e.lineNumber||e.line); } // Gecko||WebKit
 	alert(msg);
 }
 for (i=0;i<fbug.length;++i) {
@@ -192,11 +192,11 @@ else if (ua.ie) { ua.trident3 = 8>ua.ie; if(8>doc.documentMode){alert("Please tu
 else {
 	var v = floatval((nav.userAgent.match(/(?:KHTML|WebKit|Gecko)\/([\d\.]+)/i)||[0,0])[1]);
 	if ("KDE" == nav.vendor) { ua.khtml = v||3; cssPrefix = "-khtml-"; }
-	else if (doc.childNodes && !doc.all && !nav.taintEnabled /**&& !accentColorName*/) { ua.webkit = v||1; cssPrefix = "-webkit-"; }
+	else if (doc.childNodes && !doc.all && !nav.taintEnabled /*&& !accentColorName*/) { ua.webkit = v||1; cssPrefix = "-webkit-"; }
 	else if (doc.getBoxObjectFor != null || v) { ua.gecko = intval(v); cssPrefix = "-moz-"; }
 }
 ua[lc((nav.platform.match(/Mac|Win|Linux|BSD|SunOS/i) || ["other"])[0])] = true;
-ua.dom = !!win.Element; /** Node not supported by IE8 */
+ua.dom = !!win.Element; // Node not supported by IE8
 ua.html5 = "onhashchange" in win && !ua.trident3;
 
 /**
@@ -355,7 +355,7 @@ function extendNode(target, obj)
 						} else {
 							target[k] = v;
 						}
-				} } catch (e) {} /** IE or read-only */
+				} } catch (e) {} // IE or read-only
 			}
 		}
 	}
@@ -373,7 +373,7 @@ function extendObj(target, obj, ignoreProto)
 			if (ignoreProto || v !== Object.prototype[k]) {
 				try {
 					target[k] = is_object(v) ? extendObj(target[k], v, ignoreProto) : v;
-				} catch (e) {} /** IE or read-only */
+				} catch (e) {} // IE or read-only
 			}
 		}
 	}
@@ -402,11 +402,11 @@ Object.defineProperty = function(o, p, d) {
 	if (hasOwnProp && is_object(d)) {
 		if (hasOwnProp.call(d, "value")) {
 			if (!(o.__lookupGetter__ && o.__lookupGetter__(p)) && !(o.__lookupSetter__ && o.__lookupSetter__(p)))
-				o[p] = d.value; /** data property defined and no pre-existing accessors */
-			if ((hasOwnProp.call(d, "get") || hasOwnProp.call(d, "set"))) /** descriptor has a value prop but accessor already exists */
-				throw new TypeError("Object doesn't support this action"); /** exactly what IE throws */
+				o[p] = d.value; // data property defined and no pre-existing accessors
+			if ((hasOwnProp.call(d, "get") || hasOwnProp.call(d, "set"))) // descriptor has a value prop but accessor already exists
+				throw new TypeError("Object doesn't support this action"); // exactly what IE throws
 		}
-/**
+/*
 		// can't implement these features, allow false but not true
 		if (!(hasOwnProp.call(d, "writable")? d.writable : 1)
 		 || !(hasOwnProp.call(d, "enumerable")? d.enumerable : 1)
@@ -530,7 +530,7 @@ if (!ua.dom)
  */
 function MSXML(ProgID)
 {
-	try { return new ActiveXObject("Msxml2."+ProgID+".6.0"); }catch(e){} /** Vista / Windows 7 */
+	try { return new ActiveXObject("Msxml2."+ProgID+".6.0"); }catch(e){} // Vista / Windows 7
 	try { return new ActiveXObject("Msxml2."+ProgID); }catch(e){console.error(e)}
 	return null;
 };
@@ -567,7 +567,7 @@ function gEBCN(cn)
 		var i = -1, result = [], s = this.$T("*",1), re = new RegExp("(?:^|\\s)(" + cn.join("|") + ")(?:\\s|$)"), m;
 		while (s[++i]) {
 			m = s[i].className.replace(/\s/g,"  ").match(re);
-			if (m && m.length >= cn.length) { result.push($IE7(s[i])); }
+			if (m && m.length >= cn.length) result.push($IE7(s[i]));
 		}
 		return result;
 	});
@@ -615,7 +615,7 @@ var DOM = {
 		 $:  function(id){return this.getElementById(id)}
 		,$D: function(){return this}
 		,$T: $T
-		,$W: function(){return this.defaultView||this.parentWindow} /** parentWindow is IE */
+		,$W: function(){return this.defaultView||this.parentWindow} // parentWindow is IE
 		,$X: $X
 	},
 
@@ -637,7 +637,7 @@ var DOM = {
 		{
 			var pv = this.getAttribute(k);
 			if (!defined(v)) { return pv; }
-			try{ null!==v ? this.setAttribute(k, v) : this.removeAttribute(k); }catch(e){/**no harm, probably k=type|name which fails in IE for "security reasons"*/}
+			try{ null!==v ? this.setAttribute(k, v) : this.removeAttribute(k); }catch(e){/*no harm, probably k=type|name which fails in IE for "security reasons"*/}
 //			if (!ua.ie) { this.trigger("propertychange", {attrName:k, newValue:v, prevValue:pv, propertyName:k}); }
 			return this;
 		}
@@ -662,7 +662,7 @@ var DOM = {
 		head:{get:function(){return this.$T("head")[0]}},
 		scripts:{get:function(){return this.$T("script")}},
 
-		 $B: function() { return $IE7(this.body||this.documentElement) } /** Quirks||Standard */
+		 $B: function() { return $IE7(this.body||this.documentElement) } // Quirks||Standard
 		,$C: function(tagname, a)
 		{
 			var ns = this.$B().namespaceURI, n=lc(tagname), o = ns ? this.createElementNS(ns, n) : this.createElement(n);
@@ -684,7 +684,7 @@ var DOM = {
 					};
 					doc.bind(DFCL, DOMReady);
 					o.onDOMReady = function(fn) { DOMLoaded ? fn() : DOMListeners.push(fn); };
-					try { o.bind("load", DOMReady); } catch(e){} /** Crash in IE8 on object */
+					try { o.bind("load", DOMReady); } catch(e){} // Crash in IE8 on object
 					if (ua.ie && "object" === n) {
 						doc.attachEvent("onload", DOMReady.bind(o));
 					}
@@ -958,7 +958,7 @@ var DOM = {
 		/** Event Handling */
 		,bind:   bindEvent
 		,unbind: unbindEvent
-		,trigger:(ua.khtml||ua.opera)?function(){}:simulateEvent /** Fails on Konqueror and Opera */
+		,trigger:(ua.khtml||ua.opera)?function(){}:simulateEvent // Fails on Konqueror and Opera
 	}
 };
 
@@ -991,7 +991,7 @@ DOM.Array = {
 		var i = 0, l = this.length >>> 0, thisp = arguments[1], res = [], v;
 		for (;i<l;++i) {
 			if (i in this) {
-				v = this[i]; /** in case fn mutates this */
+				v = this[i]; // in case fn mutates this
 				if (fn.call(thisp, v, i, this)) res.push(v);
 			}
 		}
@@ -1079,9 +1079,9 @@ DOM.Date = {
 		var d = new Date(this.getFullYear(),0,1),
 			wd = d.getISODay(),
 			w = Math.ceil((this.getDayOfYear()+wd) / 7);
-		/** ISO 8601 states that week 1 is the week with january 4th in it */
+		/* ISO 8601 states that week 1 is the week with january 4th in it */
 		if (4 < wd) { --w; }
-		return (1 > w ? (new Date(this.getFullYear()-1,11,31)).getWeek() /** previous year, last week */ : (52 < w && 4 > this.getISODay() ? 1 /** next year, first week */ : w) );
+		return (1 > w ? (new Date(this.getFullYear()-1,11,31)).getWeek() /* previous year, last week */ : (52 < w && 4 > this.getISODay() ? 1 /* next year, first week */ : w) );
 	}
 	,isDaylightSavingTime: function() {
 		return this.getTimezoneOffset() != Math.max(new Date(this.getFullYear(), 0, 1).getTimezoneOffset(), new Date(this.getFullYear(), 6, 1).getTimezoneOffset());
@@ -1268,17 +1268,17 @@ if (ua.ie) {
 		var HTMLTextInput = {
 			selectionStart:{
 				get:function(){
-					var r = document.selection.createRange().duplicate();
-					r.moveEnd('character', this.value.length);
-					if (r.text == '') return this.value.length;
-					return o.value.lastIndexOf(this.text);
+					var r = document.selection.createRange().duplicate()
+					r.moveEnd('character', this.value.length)
+					if (r.text == '') return this.value.length
+					return o.value.lastIndexOf(this.text)
 				}
 			},
 			selectionEnd:{
 				get:function(){
-					var r = document.selection.createRange().duplicate();
-					r.moveStart('character', -this.value.length);
-					return r.text.length;
+					var r = document.selection.createRange().duplicate()
+					r.moveStart('character', -this.value.length)
+					return r.text.length
 				}
 			}
 			,setSelectionRange:function(start, end){
@@ -1326,7 +1326,7 @@ if (ua.ie) {
 				},
 				removeProperty:      function(n){this[cssrule(n)]=''},
 				setProperty:         function(n,v){n==="opacity"?this.filter="alpha(opacity="+(100*v)+")":this[cssrule(n)]=v},
-				/** 9.0.7874>ua.ie */
+				/* 9.0.7874>ua.ie */
 				getPropertyCSSValue: function(n){return this.getPropertyValue(n)}
 			},
 
@@ -1339,7 +1339,7 @@ if (ua.ie) {
 				,timeStamp:0
 				,stopPropagation:function(){this.cancelBubble=true}
 				,preventDefault: function(){this.returnValue=false}
-				,preventCapture: function(){} /* No capture phase */
+				,preventCapture: function(){} // No capture phase
 				,initEvent: function(t,b,c){this.type=t;this.bubbles=!!b;this.cancelable=!!c}
 				,initMouseEvent: function(t,b,c,v,d,sX,sY,cX,cY,cK,aK,sK,mK,btn,rT){
 					with (this) {
@@ -1383,7 +1383,7 @@ if (ua.ie) {
 				importNode: function(node, recursive){
 					switch (node.nodeType)
 					{
-					case 1: /** ELEMENT_NODE */
+					case 1: // ELEMENT_NODE
 						var i, name, o=this.createElement(node.nodeName), l;
 						if (node.hasAttributes())
 							for (i=0,l=node.attributes.length; i<l; ++i) {
@@ -1394,9 +1394,9 @@ if (ua.ie) {
 							for (i=0,l=node.childNodes.length; i<l; ++i)
 								o.appendChild(this.importNode(node.childNodes[i], 1));
 						return o;
-					case 3: /** TEXT_NODE */
-					case 4: /** CDATA_SECTION_NODE */
-					case 8: /** COMMENT_NODE */
+					case 3: // TEXT_NODE
+					case 4: // CDATA_SECTION_NODE
+					case 8: // COMMENT_NODE
 						return this.createTextNode(node.nodeValue);
 					}
 				},
@@ -1548,12 +1548,12 @@ if (ua.ie) {
 					if (e.wheelDelta) { e.detail = -e.wheelDelta/40; }
 					// w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-MutationEvent
 					if (e.propertyName) {
-						e.attrName = e.propertyName.replace(/([^\.]+).*/, "$1"); /** propertychange vs DOMAttrModified */
+						e.attrName = e.propertyName.replace(/([^\.]+).*/, "$1"); // propertychange vs DOMAttrModified
 						e.newValue = e.target[e.attrName];
 		//				e.prevValue = null;
 					}
 					if (o && o.$D && null != e.clientX && o.$D()) {
-						/** might be 2px off */
+						// might be 2px off
 						var s = o.$D().getScrollPoint();
 						e.pageX = e.clientX + intval(o.$D().$B().clientLeft) + s.x;
 						e.pageY = e.clientY + intval(o.$D().$B().clientTop ) + s.y;
@@ -1634,7 +1634,7 @@ PoodleXHR = function()
 		if (this.xhr) with (this.xhr)
 		{
 			if (readyState && this.xhr.abort) {
-				onreadystatechange = function(){}; /** null makes IE crash */
+				onreadystatechange = function(){}; // null makes IE crash
 				abort();
 				decPXHR();
 			}
@@ -2205,7 +2205,7 @@ DOM.Window.JSON = new function(){
 	escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
 	gap,
 	indent,
-	meta = {    /** table of character substitutions */
+	meta = {    // table of character substitutions
 		'\b': '\\b',
 		'\t': '\\t',
 		'\n': '\\n',
@@ -2223,9 +2223,9 @@ DOM.Window.JSON = new function(){
 
 	function str(key, holder)
 	{
-		var i,          /** The loop counter. */
-			k,          /** The member key. */
-			v,          /** The member value. */
+		var i,          // The loop counter.
+			k,          // The member key.
+			v,          // The member value.
 			length,
 			mind = gap,
 			partial,

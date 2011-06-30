@@ -13,9 +13,6 @@ class Poodle_SQL_Exception extends Exception
 	{
 		parent::__construct($message, $code);
 		$this->query = $query;
-		$message = $message . '. Error code '.$code;
-		if (is_admin()) { $message = $message.'<br />'.$query; }
-		trigger_error($message, E_USER_ERROR);
 	}
 
 	final function getQuery() { return $this->query; }

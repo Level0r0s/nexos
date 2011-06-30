@@ -9,26 +9,27 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/modules/Your_Account/userinfo.php,v $
-  $Revision: 9.54 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 10:06:18 $
+  $Revision: 9.53 $
+  $Author: phoenix $
+  $Date: 2010/11/12 04:29:57 $
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
 
 function userinfo($username) {
-  global $db, $prefix, $user_prefix, $currentlang, $pagetitle, $MAIN_CFG, $CPG_SESS, $CLASS, $cpgtpl, $Module;
+  global $db, $prefix, $user_prefix, $currentlang, $pagetitle, $MAIN_CFG, $CPG_SESS, $CLASS, $cpgtpl;
 
   $owninfo = (is_user() && ($username == is_user() || strtolower($username) == strtolower($CLASS['member']->members[is_user()]['username'])));
   if ($owninfo) {
     $userinfo =& $CLASS['member']->members[is_user()];
+    global $Blocks;
     $block = array(
-			'bid' => 10000,
-			'view' => 1,
-			'side' => 'l',
-			'title' => _TB_BLOCK,
-			'content' => member_block()
+      'bid' => 10000,
+      'view' => 1,
+      'side' => 'l',
+      'title' => _TB_BLOCK,
+      'content' => member_block()
     );
-		Blocks::custom($block);
+    $Blocks->custom($block);
     $block = NULL;
   } else if (/*!SEARCHBOT &&*/ !is_user() && $username != 'Anonymous') {
     URL::redirect(URL::index('&amp;profile=Anonymous'));

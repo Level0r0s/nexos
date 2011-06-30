@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/session.php,v $
-  $Revision: 10.3 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/19 06:36:27 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:16 $
 **********************************************/
 
 class cpg_session {
@@ -67,9 +67,8 @@ class cpg_session {
 			}
 		}
 		$this->sess_id = session_id();
+		$CPG_SESS = (empty($_SESSION['CPG_SESS']) ? array() : $_SESSION['CPG_SESS']);
 		$this->new = empty($_SESSION);
-		$_SESSION['CPG_SESS'] = empty($_SESSION['CPG_SESS']) ? array() : $_SESSION['CPG_SESS'];
-		$CPG_SESS = $_SESSION['CPG_SESS'];
 		return $this->sess_id;
 	}
 
@@ -95,10 +94,7 @@ class cpg_session {
 		if (isset($CPG_SESS['user']['redirect']) && $CPG_SESS['user']['redirect'] != $CPG_SESS['user']['uri'] && $module_name != 'Your_Account') {
 			unset($CPG_SESS['user']['redirect']);
 		}
-		# copy $cpg_sess into $_session
-		# use $_session to retrive values or create new ones
-		# use $cpg_sess only when you want to overwrite existing data
-		$_SESSION['CPG_SESS'] = array_merge($_SESSION['CPG_SESS'], $CPG_SESS);
+		$_SESSION['CPG_SESS'] = $CPG_SESS;
 		session_write_close();
 		if (CAN_MOD_INI) ini_set('session.save_handler', $this->old_handler);
 		$this->started = false;

@@ -9,24 +9,17 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/url.php,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/18 05:24:38 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:16 $
 **********************************************/
 
 abstract class URL
 {
 
-	public static function load($url='', $full=false)
-	{
-		$url = DOMAIN_INDEX. "?".$url;
-		if ($full) $url = BASEHREF.$url;
-		return $url;
-	}
-
 	public static function index($url='', $UseLEO=true, $full=false)
 	{
-		global $module_name, $MAIN_CFG;
+		global $module_name, $mainindex, $MAIN_CFG, $BASEHREF;
 		if (empty($url) || $url[0] == '&') $url = $module_name.$url;
 		if ($MAIN_CFG['global']['GoogleTap'] && $UseLEO) {
 			$url = str_ireplace('&amp;', '/', $url);
@@ -39,19 +32,19 @@ abstract class URL
 				$url = str_replace('#', '.html#', $url);
 			} else $url .= '.html';
 		} else {
-			$url = DOMAIN_INDEX. "?name=".$url;
+			$url = "$mainindex?name=".$url;
 		}
-		if ($full) $url = BASEHREF.$url;
+		if ($full) $url = $BASEHREF.$url;
 		return $url;
 	}
 
 	public static function admin($url='', $full=false)
 	{
-		global $op, $module_name, $MAIN_CFG;
+		global $adminindex, $op, $module_name, $MAIN_CFG;
 		if (empty($op) && !empty($module_name)) $op = $module_name;
 		if (empty($url)) { $url = $op; }
-		if ($url[0] == '&') { $url = DOMAIN_ADMIN. "&amp;op=$op".$url; }
-		else { $url = DOMAIN_ADMIN. "&amp;op=".$url; }
+		if ($url[0] == '&') { $url = "$adminindex?op=$op".$url; }
+		else { $url = "$adminindex?op=".$url; }
 		if ($full) $url = 'http://'.$MAIN_CFG['server']['domain'].$MAIN_CFG['server']['path'].$url;
 		return $url;
 	}

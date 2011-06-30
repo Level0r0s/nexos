@@ -9,18 +9,12 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/header.php,v $
-  $Revision: 10.2 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 15:15:36 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 00:56:52 $
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
 define('HEADER_OPEN', true);
-
-// temporary patch
-if ('HEAD' === $_SERVER['REQUEST_METHOD']) {
-	HttpHeader::flush();
-	exit;
-}
 
 # 1-2 queries
 function online() {
@@ -55,7 +49,7 @@ function online() {
 	}
 }
 function head() {
-	global $BASEHREF, $METATAGS, $sitename, $userinfo,
+	global $BASEHREF, $METATAGS, $sitename, $userinfo, $Blocks,
 		$bgcolor1, $bgcolor2, $bgcolor3, $bgcolor4, $textcolor1, $textcolor2,
 		$pagetitle, $modheader, $MAIN_CFG, $CPG_SESS, $module_name, $CLASS;
 	include_once('themes/'.$CPG_SESS['theme'].'/theme.php');
@@ -74,9 +68,13 @@ function head() {
 	foreach ($METATAGS as $name => $content) {
 		$header .= '<meta name="'.$name.'" content="'.$content.'" />'."\n";
 	}
+	$header .= '<script type="text/javascript" src="includes/javascript/poodle.js"></script>'."\n";
 //	$header .= '<script type="text/javascript" src="includes/javascript/MM_funcs.js"></script>'."\n\n";
 	if ($MAIN_CFG['global']['block_frames']) {
 		$header .= '<script type="text/javascript">if (self != top) top.location.replace(self.location)</script>'."\n";
+	}
+	if ($MAIN_CFG['global']['admin_help']) {
+		$header .= '<script type="text/javascript" src="includes/javascript/infobox.js"></script>'."\n";
 	}
 	$header .= $modheader.'
 <link rel="copyright" href="'.URL::index('credits').'" title="Copyrights" />
@@ -121,8 +119,8 @@ function head() {
 		'S_TEXTDIR'	 => _TEXT_DIR,
 		'S_LANGCODE'	=> _BROWSER_LANGCODE,
 		'S_HEADER_TAGS' => $header,
-		'S_LEFTBLOCKS'  => (Blocks::$showblocks & 1),
-		'S_RIGHTBLOCKS' => (Blocks::$showblocks & 2),
+		'S_LEFTBLOCKS'  => ($Blocks->showblocks & 1),
+		'S_RIGHTBLOCKS' => ($Blocks->showblocks & 2),
 		'S_SITENAME' => $sitename,
 		'S_PAGETITLE' => !empty($pagetitle) ? strip_tags($pagetitle) : '',
 		'S_DELIM' => _BC_DELIM,
@@ -137,21 +135,15 @@ function head() {
 }
 
 if (empty($_SESSION['SECURITY']['banned'])) { online(); }
-global $home, $cpgtpl, $Blocks, $Module;
-if (!is_object($Blocks)) {
-//	if (is_object(${$Module->name}) && ${$Module->name} instanceof Module) {
-//		$Blocks = new Blocks(${$Module->mid});
-//	} else {
-		$Blocks = new Blocks($Module->mid);
-//	}
-}
+global $home, $cpgtpl, $Blocks;
+$Blocks->init();
 head();
 if (!defined('ADMIN_PAGES')) {
 	require_once('includes/counter.php');  # 2-3 queries
-	//if ($home) {
+	if ($home) {
 		require_once('includes/functions/messagebox.php');
 		message_box();
-	//}
+	}
 }
 $Blocks->display('c');
 $cpgtpl->set_filenames(array('cpgheader' => 'header.html'));

@@ -1,11 +1,11 @@
-/**	MOO CMS, Copyright (c) since 2005 The MOO Dev. Group. All rights reserved.
-	$Revision: 1.2 $
+/*	MOO CMS, Copyright (c) since 2005 The MOO Dev. Group. All rights reserved.
+	$Revision: 1.1 $
 */
 
 function Ajax()
 {
 
-	/** Private */
+	/* Private */
 
 	var cb = null;
 	function getTransport() {
@@ -15,7 +15,7 @@ function Ajax()
 		return false;
 	};
 
-	/** Privileged */
+	/* Privileged */
 
 	this.onStateChange = function() {
 		if (this.request.readyState == 4) {
@@ -44,7 +44,7 @@ function Ajax()
 		return true;
 	};
 
-	/** Public */
+	/* Public */
 
 	this.request = getTransport();
 	if (!this.request) { return; }

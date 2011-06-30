@@ -9,146 +9,85 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/blocks.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:54:30 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:14 $
 **********************************************/
 class Blocks
 {
 
-	/* settings */
-//	const ALL_MODULES; /* all modules otherwsie active only */
-//	const ALL_BLOCKS; /* all blocks otherwise active only */
-//	const PREVIEW;
-//	const HIDEALL;
+	public $preview = false;
+	public $showblocks = null;
+	public $l, $r, $c, $d;
 
-	public static $preview = false;
-	public static $showblocks = null;
-	/* end settings */
+	private $blocks = array();
+	private $custom = array();
+	private $start = false;
 
-	const LEFT   = 1;
-	const RIGHT  = 2;
-	const CENTER = 4;
-	const DOWN   = 8;
-
-	public $list = array();
-
-	private $data = array();
-	private static $custom = array();
-	private $active = false;
-
-	public function __construct($mid=0)
+	public function init()
 	{
-		if (isset($_GET['hideallblocks']) || self::$preview || self::$showblocks === 0 || $mid === 0) {
-			self::$showblocks  = 0;
+		if ($this->start) return;
+		$this->start = true;
+		global $module_name;
+		if (isset($_GET['hideallblocks']) || $this->preview || $this->showblocks === 0) {
+			$this->showblocks = $this->l = $this->r = $this->c = $this->d = 0;
+			$this->custom = array();
 			return;
 		}
-
-		$mid = intval($mid);
-		global $db, $prefix, $MAIN_CFG, $Module, $currentlang;
-		//$db->sql_query("DELETE FROM {$prefix}_blocks_custom WHERE mid NOT IN (SELECT mid FROM {$prefix}_modules) AND mid < 0");
-		$querylang = ($MAIN_CFG['global']['multilingual']) ? " AND (blanguage='$currentlang' OR blanguage='')" : '';
-		$result = $db->query("SELECT b.bid, b.bkey, b.title, b.content, b.url, b.blockfile, b.view, b.refresh, b.time, bc.mid, bc.side
-		FROM {$prefix}_blocks_custom as bc LEFT JOIN {$prefix}_blocks as b USING(bid) WHERE b.active=1 AND bc.mid={$mid}{$querylang}");
-		while($row = $result->fetch_assoc()) {
-			// temporary table data needs upgrade
-			if      ($row['side'] === 'l') $row['side'] = self::LEFT;
-			else if ($row['side'] === 'c') $row['side'] = self::CENTER;
-			else if ($row['side'] === 'r') $row['side'] = self::RIGHT;
-			else if ($row['side'] === 'd') $row['side'] = self::DOWN;
-			if (self::$showblocks & $row['side'] && self::allowed($row['view'])) {
-				$row['bid']     = intval($row['bid']);
-				$row['time']    = intval($row['time']);
-				$row['refresh'] = intval($row['refresh']);
-				$this->data[$row['side']][] = $row;
+		$module_block = defined('ADMIN_PAGES') ? 'Admin' : $module_name;
+		$this->blocks = blocks_list();
+		$this->blocks = isset($this->blocks[$module_block]) ? $this->blocks[$module_block] : array();
+		if (!empty($this->blocks)) {
+			$this->showblocks = intval($this->blocks['blocks']);
+			foreach($this->blocks as $key => $val) {
+				if (is_int($key) && $this->$val !== 0) {
+					if ($this->showblocks & 1 && $val === 'l' || $val === 'c') continue;
+					if ($this->showblocks & 2 && $val === 'r' || $val === 'd') continue;
+				}
+				unset($this->blocks[$key]);
 			}
 		}
-		$db->sql_freeresult($result);
+		if (!empty($this->blocks)) { $this->get_blocks();	}
+		$this->blocks = array_merge_recursive($this->custom, $this->blocks);
+		$this->custom = array();
+		$this->showblocks = 0;
+		if (isset($this->blocks['l'])) $this->showblocks |= 1;
+		if (isset($this->blocks['r'])) $this->showblocks |= 2;
 	}
 
-	public function list_all($module=null)
+	public function custom(&$data)
 	{
-		global $prefix, $db, $blocks_save;
-		static $blocks_save;
-		if (is_array($blocks_save)) {
-			if ($module && isset($blocks_save[$module])) return $blocks_save[$module];
-			else return $blocks_save;
-		}
-		// we want to get even NULL values in case of modules with no blocks
-		$blocks_list = array();
-		$blocks_list['Admin']['mid'] = -1;
-		$blocks_list['Admin']['title'] = _ADMINISTRATION;
-		$blocks_list['Admin']['blocks'] = 15;
-		$module[-1] = 'Admin';
-
-		$result = $db->sql_uquery('SELECT mid, title, blocks FROM '.$prefix.'_modules');
-		while ($row = $db->sql_fetchrow($result, SQL_ASSOC)) {
-			$title = defined('_'.$row['title'].'LANG') ? '_'.$row['title'].'LANG' : (defined('_'.strtoupper($row['title'])) ? '_'.strtoupper($row['title']) : $row['title']);
-			$blocks_list[$row['title']]['mid'] = (int)$row['mid'];
-			$blocks_list[$row['title']]['title'] = $title;
-			$blocks_list[$row['title']]['blocks'] = (int)$row['blocks'];
-			$module[$row['mid']] = $row['title'];
-		}
-		$db->sql_freeresult($result);
-		$result = $db->sql_query('SELECT bid, mid, side FROM '.$prefix.'_blocks_custom ORDER BY mid, weight');
-		while ($row = $db->sql_fetchrow($result, SQL_ASSOC)) {
-			if (!isset($module[$row['mid']])) {
-				$db->sql_query('DELETE FROM '.$prefix."_blocks_custom WHERE bid='$row[bid]' AND mid='$row[mid]'");
-				continue;
-			}
-			$blocks_list[$module[$row['mid']]][$row['bid']] = $row['side'];
-		}
-		ksort($blocks_list);
-		$db->sql_freeresult($result);
-		$blocks_save = $blocks_list;
-		if (is_array($blocks_save)) return $blocks_save;
-		return;
-	}
-
-	public static function custom(&$data)
-	{
-		if (is_array($data) && self::allowed($data['view'])) {
-			if      ('l' === $data['side']) $data['side'] = self::LEFT;
-			else if ('c' === $data['side']) $data['side'] = self::CENTER;
-			else if ('r' === $data['side']) $data['side'] = self::RIGHT;
-			else if ('d' === $data['side']) $data['side'] = self::DOWN;
+		if (is_array($data) && $this->allowed($data['view'])) {
+			++$this->$data['side'];
+			if ($data['side'] === 'l') $this->showblocks |= 1;
+			if ($data['side'] === 'r') $this->showblocks |= 2;
 			$data['bkey'] = 'custom';
-			self::$custom[$data['side']][] = $data;
+			$this->custom[$data['side']][$data['bid']] = $data;
 		}
 		$data = null;
 	}
 
 	public function preview(&$block)
 	{
-		if (!self::$preview) { return trigger_error('Use "Blocks::$preview=TRUE;" before including header.php', E_USER_WARNING); }
-		self::$showblocks = 0;
-		$this->data = array();
-		$this->data[self::CENTER][] = $block;
-		$this->display(self::CENTER);
+		if (!$this->preview) { return trigger_error('Use "$Blocks->preview=TRUE;" before including header.php', E_USER_NOTICE); }
+		++$this->c;
+		$this->blocks['c'][$block['bid']] = $block;
+		$this->display('c');
 	}
 
 	public function display($side)
 	{
-		if      ('l' === $side) $side = self::LEFT;
-		else if ('c' === $side) $side = self::CENTER;
-		else if ('r' === $side) $side = self::RIGHT;
-		else if ('d' === $side) $side = self::DOWN;
-
-		if (!empty(self::$custom[$side])) {
-			if (!isset($this->data[$side])) $this->data[$side] = array();
-			while ($c = array_pop(self::$custom[$side])) {
-				array_unshift($this->data[$side], $c);
-			}
-			self::$custom[$side] = null;
+		if (!$this->$side) return;
+		if ($this->start) {
+			$this->blocks = array_merge_recursive($this->custom, $this->blocks);
+			$this->custom = array();
 		}
-		if (!isset($this->data[$side])) return;
-
 		require_once(CORE_PATH.'nbbcode.php');
-		while ($block = array_shift($this->data[$side])) {
+		foreach ($this->blocks[$side] as $block) {
 			$block['title'] = (defined($block['title']) ? constant($block['title']) : $block['title']);
 			switch ($block['bkey']) {
 				case 'admin':
-					if (is_admin()) {
+					if (can_admin()) {
 						if ($content = adminblock($block['bid'], $block['title'], $block['content'])) {
 							$this->assign($side, $content);
 						}
@@ -171,11 +110,12 @@ class Blocks
 					break;
 				case 'file':
 					$this->blockfile($side, $block);
-				break;
+					break;
 				default:
 					trigger_error('Undefined bkey for '.$block['title'], E_USER_WARNING);
-			}
+				}
 		}
+		$this->blocks[$side] = array();
 	}
 
 	public function hideblock($id) {
@@ -184,18 +124,10 @@ class Blocks
 			$hiddenblocks = array();
 			if (isset($_COOKIE['hiddenblocks'])) {
 				$tmphidden = explode(':', $_COOKIE['hiddenblocks']);
-				for($i=0; $i<count($tmphidden); ++$i) {	$hiddenblocks[$tmphidden[$i]] = true;	}
+				for($i=0; $i<count($tmphidden); $i++) {	$hiddenblocks[$tmphidden[$i]] = true;	}
 			}
 		}
 		return (isset($hiddenblocks[$id]) ? true : false);
-	}
-	
-	# __get' slows down each call made to the class, performance wide? set property as public, strict coding? likes it this way
-	public function __get($p) 
-	{
-		switch ($p) {
-			case 'data': return $this->data;
-		}
 	}
 
 	private function blockfile($side, &$block)
@@ -228,11 +160,7 @@ class Blocks
 	private function assign($side, &$block)
 	{
 		global $cpgtpl, $CPG_SESS;
-		if      (self::LEFT   === $side) $side = 'l';
-		else if (self::CENTER === $side) $side = 'c';
-		else if (self::RIGHT  === $side) $side = 'r';
-		else if (self::DOWN   === $side) $side = 'd';
-		if (!self::$preview) {
+		if (!$this->preview) {
 			$sides = array('l' => 'left', 'c' => 'center', 'r' => 'right', 'd' => 'bottom');
 			$side = $sides[$side];
 		} else {
@@ -246,13 +174,44 @@ class Blocks
 			'S_HIDDEN'  => $this->hideblock($block['bid']) ? '' : 'style="display:none"',
 			'S_IMAGE'   => 'themes/'.$CPG_SESS['theme'].'/images/'.($this->hideblock($block['bid']) ? 'plus' : 'minus')
 		));
-		if (self::$preview) {
+		if ($this->preview) {
 			$cpgtpl->set_filenames(array('block' => 'block.html'));
 			$cpgtpl->display('block');
 		}
 	}
 
-	private static function allowed($view)
+	private function get_blocks()
+	{
+		global $db, $prefix, $MAIN_CFG, $currentlang;
+		$querylang = ($MAIN_CFG['global']['multilingual']) ? " AND (blanguage='$currentlang' OR blanguage='')" : '';
+		$result = $db->sql_query('SELECT bid, bkey, title, content, url, blockfile, view, refresh, time FROM '.$prefix."_blocks WHERE active='1'$querylang AND bid IN (".implode(', ',array_keys($this->blocks)).")");
+		$data = array();
+		while($row = $db->sql_fetchrow($result, SQL_ASSOC)) {
+			if (!empty($this->custom) && isset($this->custom[$this->blocks[$row['bid']]][$row['bid']])) {
+				trigger_error('Duplicate block id '.$row['bid'], E_USER_WARNING);
+				unset($this->custom[$this->blocks[$row['bid']]][$row['bid']]);
+			}
+			if ($this->allowed($row['view'])) {
+				$row['bid']     = intval($row['bid']);
+				$row['time']    = intval($row['time']);
+				$row['refresh'] = intval($row['refresh']);
+				$data[$row['bid']] = $row;
+			}
+		}
+		if (!empty($data)) {
+			foreach ($this->blocks as $bid => $side) {
+				unset($this->blocks[$bid]);
+				if (isset($data[$bid])) {
+					$this->blocks[$side][$bid] = $data[$bid];
+					++$this->$side;
+				}
+			}
+		}
+		$db->sql_freeresult($result);
+		$data = null;
+	}
+
+	private function allowed($view)
 	{
 		$view = intval($view);
 		if (is_admin() || ($view === 0)
@@ -265,3 +224,4 @@ class Blocks
 		return;
 	}
 }
+$Blocks = new Blocks();

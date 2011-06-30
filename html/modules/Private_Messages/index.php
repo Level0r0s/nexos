@@ -11,9 +11,9 @@
   Original copyright : (C) 2001 The phpBB Group
 
   $Source: /cvs/html/modules/Private_Messages/index.php,v $
-  $Revision: 9.34 $
+  $Revision: 9.33 $
   $Author: nanocaiordo $
-  $Date: 2011/03/29 10:37:09 $
+  $Date: 2010/07/08 10:44:52 $
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
 require_once('modules/'.$module_name.'/init.inc');
@@ -102,7 +102,7 @@ if ( $mode == 'newpm' ) {
 		}
 		if ( !empty($_POST['message']) ) {
 			if ( !$error ) {
-				$privmsg_message = message_prepare($_POST['message'], $html_on, $bbcode_on);
+				$privmsg_message = message_prepare(((isset($_POST['quick_quote']) && !empty($_POST['quick_quote'])) ? $_POST['quick_quote'] : '').$_POST['message'], $html_on, $bbcode_on);
 			}
 		} else {
 			$error = TRUE;
@@ -430,7 +430,7 @@ if ( $mode == 'newpm' ) {
 		'MESSAGE' => isset($privmsg_message) ? $privmsg_message : '',
 		'HTML_ON' => false /*$MAIN_CFG['private_messages']['allow_html']*/,
 		'BBCODE_ON' => $MAIN_CFG['private_messages']['allow_bbcode'] ? bbcode_table('message', 'post', 1) : '',
-		'SMILIES_ON' => $MAIN_CFG['private_messages']['allow_smilies'] ? smilies_table('onerow', 'message', 'post') : '',
+		'SMILIES_ON' => $MAIN_CFG['private_messages']['allow_smilies'] ? smilies_table('inline', 'message', 'post') : '',
 		'SIG_ON' => $MAIN_CFG['private_messages']['allow_sig'] && $user_sig != '', /* always false */
 		'BBCODE_STATUS' => sprintf($bbcode_status, '<a href="'.URL::index('Forums&amp;file=faq&amp;mode=bbcode').'" target="_phpbbcode">', '</a>'),
 

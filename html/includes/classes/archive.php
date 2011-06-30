@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/archive.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/03/30 10:25:54 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:14 $
 **********************************************/
 
 abstract class archive
@@ -68,7 +68,6 @@ abstract class archive
 				return new archive_zip($filename);
 
 			default:
-				trigger_error('File type not supported', E_USER_WARNING);
 				return false;
 
 		}

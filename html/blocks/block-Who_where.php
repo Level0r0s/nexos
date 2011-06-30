@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/blocks/block-Who_where.php,v $
-  $Revision: 10.1 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:54:05 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 00:57:02 $
 Encoding test: n-array summation ∑ latin ae w/ acute ǽ
 ********************************************************/
 if (!defined('CPG_NUKE')) { exit; }
@@ -72,7 +72,7 @@ if($online_num > 0) {
 		Brazil        https://registro.br/cgi-bin/nicbr/whois?qr=
 		Korea         http://whois.nida.or.kr/whois/webapisvc?VALUE=
 	*/
-	$content .= "$i: ".(is_admin() ? '<a href="http://ws.arin.net/cgi-bin/whois.pl?queryinput='.Net::decode_ip($session['host_addr']).'" target="_blank" title="Query ARIN Whois">'.(strlen(Net::decode_ip($session['host_addr'])) > 17 ? substr(Net::decode_ip($session['host_addr']),0,17).'...' : Net::decode_ip($session['host_addr'])).'</a> &gt;' : '')." <a href=\"$session[url]\"> $session[module]</a><br />\n";
+	$content .= "$i: ".(is_admin() ? '<a href="http://ws.arin.net/cgi-bin/whois.pl?queryinput='.NET::decode_ip($session['host_addr']).'" target="_blank" title="Query ARIN Whois">'.(strlen(NET::decode_ip($session['host_addr'])) > 17 ? substr(NET::decode_ip($session['host_addr']),0,17).'...' : NET::decode_ip($session['host_addr'])).'</a> &gt;' : '')." <a href=\"$session[url]\"> $session[module]</a><br />\n";
   }
   unset($online[1]);
 }

@@ -9,9 +9,9 @@
 	of the GNU GPL version 2 or any later version
 
 	$Source: /cvs/html/includes/poodle/sql/adapter/mysqli.php,v $
-	$Revision: 10.4 $
-	$Author: nanocaiordo $
-	$Date: 2011/04/17 15:22:51 $
+	$Revision: 10.2 $
+	$Author: djmaze $
+	$Date: 2010/11/11 22:21:45 $
 **********************************************/
 
 class Poodle_SQL_Adapter_MySQLi extends MySQLi implements Poodle_SQL_Interface_Adapter
@@ -121,9 +121,9 @@ class Poodle_SQL_Adapter_MySQLi extends MySQLi implements Poodle_SQL_Interface_A
 			if ($this->debug)
 			{
 				if ('S' === $query[0] && preg_match('#\s+LIMIT\s+(\d+)\s*,\s*(\d+)#i', $query))
-					trigger_error('MySQL LIMIT syntax not allowed, use ISO syntax "LIMIT x OFFSET y" in: '.$query, E_USER_WARNING);
+					throw new Poodle_SQL_Exception('MySQL LIMIT syntax not allowed, use ISO syntax "LIMIT x OFFSET y"');
 				if (preg_match('#`[a-z0-9_]+`#i', $query))
-					trigger_error('MySQL backtick syntax not allowed, use the ISO syntax in: '.$query, E_USER_WARNING);
+					throw new Poodle_SQL_Exception('MySQL backtick syntax not allowed, use the ISO syntax');
 				mysqli_report(preg_match('#\s+WHERE\s+#', $query) ? MYSQLI_REPORT_ALL : MYSQLI_REPORT_ERROR|MYSQLI_REPORT_STRICT);
 			}
 			if ('S' === $query[0]) {

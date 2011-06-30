@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/admin/modules/cpgmm.php,v $
-  $Revision: 10.3 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 10:05:54 $
+  $Revision: 10.2 $
+  $Author: phoenix $
+  $Date: 2010/11/12 04:29:54 $
 **********************************************/
 if (!defined('ADMIN_PAGES')) { exit; }
 if (!can_admin('cpgmm')) { die('Access Denied'); }
@@ -26,11 +26,13 @@ $mode = isset($_GET['mode']) ? $_GET['mode'] : '';
 function cpg_mm_admin_header($title, $content='') {
 	global $pagetitle, $cpgtpl, $modheader;
 	$pagetitle .= ' '._BC_DELIM.' '._CPG_MMADMIN;
-	CSS::add('themes/default/style/tabletree.css');
-	JS::add('includes/javascript/framework.js');
-	JS::add('includes/javascript/dragndrop.js');
-	JS::add('includes/javascript/tabletree.js');
-	JS::add('includes/javascript/tree.js');
+	$modheader .= '
+<link rel="stylesheet" href="themes/default/style/tabletree.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="includes/javascript/framework.js"></script>
+<script type="text/javascript" src="includes/javascript/dragndrop.js"></script>
+<script type="text/javascript" src="includes/javascript/tabletree.js"></script>
+<script type="text/javascript" src="includes/javascript/tree.js"></script>
+';
 	require('header.php');
 	GraphicAdmin('_AMENU1');
 	$cpgtpl->assign_vars(array(

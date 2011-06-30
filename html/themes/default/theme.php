@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/themes/default/theme.php,v $
-  $Revision: 1.21 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 10:06:50 $
+  $Revision: 1.20 $
+  $Author: djmaze $
+  $Date: 2009/02/18 19:31:56 $
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
 define('THEME_VERSION', '9.1.0.0');
@@ -39,65 +39,53 @@ function CloseTable2() {
 }
 
 function themeheader() {
-	global $mainindex, $adminindex, $cpgtpl, $CPG_SESS, $MAIN_CFG, $Blocks;
+	global $slogan, $sitename, $banners, $mainindex, $adminindex, $cpgtpl, $site_logo, $CPG_SESS, $MAIN_CFG, $Blocks;
+	if ($MAIN_CFG['global']['admingraphic'] & 4) {
+		include('includes/cssmainmenu.php');
+	}
 	$imgr = $imgl = '';
 	// left blocks ?
-	if (isset($Blocks->data[$Blocks::LEFT])) {
+	if ($Blocks->l && ($Blocks->showblocks & 1)) {
 		$img = $Blocks->hideblock('600') ? 'plus.gif' : 'minus.gif';
 		$imgl = '<img alt="'._TOGGLE.'" title="'._TOGGLE.'" id="pic600" src="themes/'.$CPG_SESS['theme'].'/images/'.$img.'" onclick="blockswitch(\'600\');" style="cursor:pointer; float:left; padding:2px 0 2px 0;" />';
 	}
 	// right blocks ?
-	if (isset($Blocks->data[$Blocks::RIGHT])) {
+	if ($Blocks->r && ($Blocks->showblocks & 2)) {
 		$img = $Blocks->hideblock('601') ? 'plus.gif' : 'minus.gif';
 		$imgr = '<img alt="'._TOGGLE.'" title="'._TOGGLE.'" id="pic601" src="themes/'.$CPG_SESS['theme'].'/images/'.$img.'" onclick="blockswitch(\'601\');" style="cursor:pointer; float:right; padding:2px 0 2px 0;" />';
 	}
-	CSS::add('themes/'.$CPG_SESS['theme'].'/style/style.css', 'screen', true);
-
-	if ($MAIN_CFG['global']['admingraphic'] & 4) {
-		CSS::add('themes/'.$CPG_SESS['theme'].'/style/cpgmm.css', 'screen', true);
-		include('includes/cssmainmenu.php');
-	}
-
-	if (CSS::add('themes/'. $CPG_SESS['theme']. '/style/'. Client::$name. Client::$version. '.css', 'screen', true)) {
-		CSS::add('themes/'. $CPG_SESS['theme']. '/style/'. Client::$name. Client::$version. '.custom.css');
-	}
-	elseif (CSS::add('themes/'. $CPG_SESS['theme']. '/style/'. Client::$name. '.css', 'screen', true)) {
-		CSS::add('themes/'. $CPG_SESS['theme']. '/style/'. Client::$name. '.custom.css');
-	}
-
-	JS::add('includes/javascript/blockscript.js');
-
+	$user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+	$css_ie = (false !== strpos($user_agent, 'MSIE 7.0')) ? 'ie7' : (preg_match('#MSIE ([0-6].[0-9]{1,2})#', $user_agent) ? 'ie6' : ((isset($_SESSION['SECURITY']['UA']) && $_SESSION['SECURITY']['UA'] == 'Safari') ? 'safari' : ((isset($_SESSION['SECURITY']['UA']) && $_SESSION['SECURITY']['UA'] == 'Opera') ? 'opera' : '')));
 	$cpgtpl->assign_vars(array(
-		'CSS_DATA'      => CSS::flushToTpl(),
-		'JS_DATA'       => JS::flushToTpl(),
+		'CSS_IE'		=> ($css_ie) ? '<link rel="stylesheet" type="text/css" href="themes/'.$CPG_SESS['theme'].'/style/'.$css_ie.'.css" />' : '',
 		'PUBLIC_HEADER' => !defined('ADMIN_PAGES'),
-		'B_L_VISIBLE'   => $Blocks->hideblock('600') ? 'style="display: none"' : '',
-		'G_LEFTIMAGE'   => $imgl,
-		'G_RIGHTIMAGE'  => $imgr,
-		'S_TOGGLE'      => _TOGGLE,
-		'S_IS_ADMIN'    => is_admin(),
-		'S_CAN_ADMIN'   => can_admin(),
-		'S_IS_USER'     => is_user(),
-		'S_LOGO'        => $MAIN_CFG['global']['site_logo'],
-		'S_SITENAME'    => $MAIN_CFG['global']['sitename'],
-		'S_HOME'        => _HOME,
-		'S_DOWNLOADS'   => is_active('Downloads') ? _DownloadsLANG : false,
-		'S_FORUMS'      => _ForumsLANG,
-		'S_MY_ACCOUNT'  => is_user() ? _Your_AccountLANG : _BREG,
-		'S_ADMIN'       => _ADMINISTRATION,
-		'S_BANNER'      => ($MAIN_CFG['global']['banners']) ? viewbanner() : '',
-		'U_MAININDEX'   => $mainindex,
-		'U_DOWNLOADS'   => URL::index('Downloads'),
-		'U_FORUMS'      => URL::index('Forums'),
-		'U_MY_ACCOUNT'  => URL::index(is_user() ? 'Your_Account' : 'Your_Account&amp;file=register'),
-		'U_ADMININDEX'  => $adminindex,
-		'S_MAIN_MENU'   => isset($mmcontent) ? $mmcontent : false
+		'B_L_VISIBLE'  => $Blocks->hideblock('600') ? 'style="display: none"' : '',
+		'G_LEFTIMAGE'  => $imgl,
+		'G_RIGHTIMAGE' => $imgr,
+		'S_TOGGLE'		=> _TOGGLE,
+		'S_IS_ADMIN'   => is_admin(),
+		'S_CAN_ADMIN'  => can_admin(),
+		'S_IS_USER'    => is_user(),
+		'S_LOGO'       => $site_logo,
+		'S_SITENAME'   => $sitename,
+		'S_HOME'       => _HOME,
+		'S_DOWNLOADS'  => is_active('Downloads') ? _DownloadsLANG : false,
+		'S_FORUMS'     => _ForumsLANG,
+		'S_MY_ACCOUNT' => is_user() ? _Your_AccountLANG : _BREG,
+		'S_ADMIN'      => _ADMINISTRATION,
+		'S_BANNER'     => ($banners) ? viewbanner() : '',
+		'U_MAININDEX'  => $mainindex,
+		'U_DOWNLOADS'  => URL::index('Downloads'),
+		'U_FORUMS'     => URL::index('Forums'),
+		'U_MY_ACCOUNT' => URL::index(is_user() ? 'Your_Account' : 'Your_Account&amp;file=register'),
+		'U_ADMININDEX' => $adminindex,
+		'S_MAIN_MENU'  => isset($mmcontent) ? $mmcontent : false
 	));
 	$Blocks->display('l');
 }
 
 function themefooter() {
-	global $cpgtpl, $db, $Blocks;
+	global $showblocks, $banners, $cpgtpl, $foot1, $foot2, $foot3, $copyright, $db, $Blocks;
 	$Blocks->display('r');
 	$cpgtpl->assign_vars(array(
 		'B_R_VISIBLE'   => $Blocks->hideblock('601') ? 'style="display: none"' : '',
@@ -113,12 +101,12 @@ function themefooter() {
  string theme_open_form
 
  Creates start tag for form
-	$link : link for action default blank
+	$get_link : link for action default blank
 	$form_name : useful for styling and nbbcode
 	$legend: optional string value is used in form lagend tag
 	$border: optional use 1 to not show border on fieldset from stylesheet
 ************************************************************************************/
-function theme_open_form($link, $form_name=false, $legend=false, $tborder=false) {
+function theme_open_form($link, $form_name=false, $legend=false,$tborder=false) {
 	$leg = $legend ? "<legend>$legend</legend>" : '';
 	$bord = $tborder ? $tborder : '';
 	$form_name	= $form_name ? ' id="'.$form_name.'"' :'';

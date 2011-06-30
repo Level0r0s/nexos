@@ -8,9 +8,9 @@
  *
   Last modification notes:
   $Source: /cvs/html/modules/Forums/viewforum.php,v $
-  $Revision: 9.25 $
+  $Revision: 9.24 $
   $Author: phoenix $
-  $Date: 2011/01/28 22:49:11 $
+  $Date: 2009/05/28 11:07:15 $
  *
  ***************************************************************************/
 /***************************************************************************
@@ -210,7 +210,7 @@ $sql = "SELECT t.*, u.username, u.user_id, u2.username as user2, u2.user_id as i
 			AND t.topic_type <> ".POST_ANNOUNCE."
 			$limit_topics_time
 		ORDER BY t.topic_type DESC, t.topic_last_post_id DESC
-		LIMIT ".$board_config['topics_per_page']." OFFSET $start";
+		LIMIT $start, ".$board_config['topics_per_page'];
 $result = $db->sql_query($sql);
 $total_topics = 0;
 while( $row = $db->sql_fetchrow($result) ) {

@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/template.php,v $
-  $Revision: 10.3 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 10:05:38 $
+  $Revision: 10.1 $
+  $Author: phoenix $
+  $Date: 2010/11/05 23:50:13 $
 **********************************************/
 /*
   Nathan Codding - Original version design and implementation
@@ -44,7 +44,6 @@ class cpg_template extends tpl_encode
 
 	// Root dir and hash of filenames for each template handle.
 	public $tpl = '';
-	public $theme = '';
 	private $root = '';
 	private $files = array();
 
@@ -56,11 +55,8 @@ class cpg_template extends tpl_encode
 		global $MAIN_CFG, $CPG_SESS;
 		if (!is_dir(BASEDIR.'themes/default/template')) { trigger_error('"default" theme does not exist', E_USER_ERROR); }
 		$this->get_theme();
-		//$this->theme = $this->tpl;
 		$this->_tpldata['.'][0]['REQUEST_URI'] = str_replace('&', '&amp;', substr(URL::uri(),strlen($MAIN_CFG['server']['path'])));
 		$this->root = 'themes/'.$this->tpl.'/template';
-		$this->rootCSS = 'theme/'.$this->tpl.'/style';
-		$this->rootJS = 'theme/'.$this->tpl.'/javascript';
 	}
 
 	// Destroy template data set
@@ -137,7 +133,7 @@ class cpg_template extends tpl_encode
 			$blocks = explode('.', $blockname);
 			$blockcount = count($blocks) - 1;
 			$str = &$this->_tpldata;
-			for ($i = 0; $i < $blockcount; ++$i)  {
+			for ($i = 0; $i < $blockcount; $i++)  {
 				$str = &$str[$blocks[$i]];
 				$str = &$str[count($str) - 1];
 			}
@@ -174,7 +170,7 @@ class cpg_template extends tpl_encode
 		$filename = $this->tpl_load($handle);
 		if ($include) {
 			if ($filename) {
-				include($filename);
+				include_once($filename);
 				return;
 			}
 			eval(' ?>' . $this->compiled_code[$handle] . '<?php ');

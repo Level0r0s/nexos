@@ -9,9 +9,9 @@
   of the GNU GPL version 2 or any later version
 
   $Source: /cvs/html/modules/coppermine/include/load.inc,v $
-  $Revision: 9.13 $
+  $Revision: 9.12 $
   $Author: nanocaiordo $
-  $Date: 2011/04/17 10:06:19 $
+  $Date: 2008/08/03 04:59:52 $
 
 ****************************************************************************/
 /*
@@ -86,14 +86,15 @@ if (!defined('INSTALL_PHP')) {
 	if (!defined('FIRST_USER_CAT')) die('FIRST_USER_CAT not defined');
 
 	if (!defined('NO_HEADER')) {
+		global $Blocks;
 		$block = array(
-			'bid' => 20000,
+			'bid' => 10000,
 			'view' => 1,
 			'side' => 'l',
 			'title' => _coppermineLANG.' '._TB_TASKS,
 			'content' => coppermine_block()
 		);
-		Blocks::custom($block);
+		$Blocks->custom($block);
 		$block = NULL;
 
 		// Set nice page title

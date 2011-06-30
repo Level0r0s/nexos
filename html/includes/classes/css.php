@@ -5,19 +5,19 @@
   Released under GNU GPL version 2 or any later version
 
   $Source: /cvs/html/includes/classes/css.php,v $
-  $Revision: 10.3 $
-  $Author: nanocaiordo $
-  $Date: 2011/04/17 06:02:52 $
+  $Revision: 10.0 $
+  $Author: djmaze $
+  $Date: 2010/11/05 01:03:15 $
 **********************************************/
 
 abstract class CSS
 {
 
-	protected static $toClientPattern = array('#^i_([a-z0-9]+)$#', '#^t_([a-z0-9]+)_([a-z0-9]+)$#i', '#^m_([a-z0-9]+)_([a-z0-9]+)$#i');
-	protected static $toClientReplace = array('includes/css/$1.css', 'themes/$1/style/$2.css', 'modules/$1/style/$2.css' );
+	protected static $toClientPattern = array('#^t_([a-z0-9]+)_([a-z0-9]+)$#i', '#^i_([a-z0-9]+)$#' );
+	protected static $toClientReplace = array('themes/$1/style/$2.css', 'includes/css/$1.css' );
 
-	protected static $toTplPattern = array('#^includes/css/([a-z0-9]+)\.css$#', '#^themes/([a-z0-9]+)/style/([a-z0-9]+)\.css$#i', '#^module/([a-z0-9]+)/style/([a-z0-9]+)\.css$#i');
-	protected static $toTplReplace = array('i_$1', 't_$1_$2', 'm_$1_$2');
+	protected static $toTplPattern = array('#^themes/([a-z0-9]+)/style/([a-z0-9]+)\.css$#i', '#^includes/css/([a-z0-9]+)\.css$#' );
+	protected static $toTplReplace = array('t_$1_$2', 'i_$1' );
 
 	private static $mediaTypes = array(
 		'all',          # Includes all media types listed below
@@ -25,7 +25,6 @@ abstract class CSS
 		'braille',      # Braille tactile feedback devices
 		'embossed',     # Paged braille printers
 		'handheld',     # Small or handheld devices
-		'inline',       // try this to fix the inline issue?
 		'print',        # Printing
 		'projection',   # Projected presentations, eg slides
 		'screen',       # Computer screens
@@ -34,18 +33,14 @@ abstract class CSS
 	);
 
 	private static $files = array();
-	private static $inline = array();
-	private static $path;
 	private static $mtime = 0;
 	private static $canAdd = true;
-	public static $theme;
+	private static $theme;
 
-	final public static function add($file, $media='screen', $inline=false)
+	final public static function add($str, $media='screen')
 	{
-		$inline = false; // $inline can easily results in broken css, disabled atm
-		if (self::$canAdd && in_array($media, self::$mediaTypes) && self::filter($file, 'toTpl') && is_file(BASEDIR. $file)) {
-			$file = preg_replace(self::$toTplPattern, self::$toTplReplace, $file);
-			$inline ? self::$inline[$media][] = $file : self::$files[$media][] = $file;
+		if ( self::$canAdd && in_array($media, self::$mediaTypes) && self::filter($str, 'toTpl') && is_file(BASEDIR. $str) ) {
+			self::$files[$media][] = preg_replace(self::$toTplPattern, self::$toTplReplace, $str);
 		} else {
 			return false;
 		}
@@ -57,30 +52,22 @@ abstract class CSS
 				$val = array_values(array_unique($val));
 		}
 		$return = '';
-		if (is_file('themes'. self::$theme. '/style/custom.css')) { self::$files['screen'][] = 'themes'. self::$theme. 'style/custom.css'; }
-		foreach (self::$files as $key => $val) {
-			$return .= '<link rel="stylesheet" type="text/css" media="'. $key. '" href="'.BASEHREF. DOMAIN_INDEX. '?css='. implode(';', $val). "\" />".DF_EOL;
-		}
-		foreach (self::$inline as $key => $val) {
-			$return .= '<style type="text/css" media="'. $key. '">';
-			// needs to pass the correct self::path[$i] for src|img rewrite
-			while ($file = array_shift($val)) {
-				$file = preg_replace(self::$toClientPattern, self::$toClientReplace, $file);
-				$return .= self::minify(file_get_contents(BASEDIR. $file)). DF_EOL;
-			}
-			$return .= '</style>'. DF_EOL;
+		if ( empty(self::$files) ) return $return;
+		if ( is_file('themes'. self::$theme. '/style/custom.css') ) { self::$files['screen'][] = 'themes'. self::$theme. 'style/custom.css'; }
+		foreach ( self::$files as $key => $val ) {
+			$return .= '<link rel="stylesheet" type="text/css" media="'. $key. '" href="'. BASEHREF. DOMAIN_INDEX. '?css='. implode(';', $val). "\" />\n";
 		}
 		self::$files = array();
 		return $return;
 	}
 
-	final public static function request()
+	final public static function request($str)
 	{
 		self::$canAdd = false;
-		if (!preg_match('#^[a-z0-9_\-;]+$#D', $_GET['css'])) return false;
+		if ( !preg_match('#^[a-z0-9_\-;]+$#D', $_GET['css']) ) { return false; }
 		$array = explode(';', $_GET['css']);
-		while ($str = array_shift($array)) {
-			if (self::filter($str, 'toClient')) {
+		while ( $str = array_shift($array) ) {
+			if ( self::filter($str, 'toClient') ) {
 				$file = BASEDIR. preg_replace(self::$toClientPattern, self::$toClientReplace, $str);
 				if (is_file($file)) {
 					self::$files[] = $file;
@@ -92,55 +79,47 @@ abstract class CSS
 		return !empty(self::$files);
 	}
 
-	final public static function minify($str)
-	{
-		$str = trim(preg_replace('#\s\s+#', ' ', $str));
-		$str = preg_replace('#/\*.*?\*/#s', '', $str);
-		$str = preg_replace('#\s*[^{}]+{\s*}\s*#', '', $str);
-		$str = preg_replace('#\s*([{},;:])\s*#', '$1', $str);
-		$str = str_replace(';}', '}', $str);
-		return $str;
-	}
-
 	final public static function flushToClient()
 	{
 		$ETag = md5(implode(';', self::$files));
 		$gzip = GZIP_OUT ? '.gz' : '';
 		$cachedFile = CACHE_PATH. 'css#'. $ETag;
-		header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + ( DEVELOPER_MODE ? 0 : 60*60*24*7 )));
+		header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + ( DEVELOPER_MODE ? 0 : 60*60*24 )));
 		header('Cache-Control: public');
 		header('Content-Type: text/css; charset: utf-8');
-		if (!DEVELOPER_MODE && is_file($cachedFile. $gzip) && filemtime($cachedFile. $gzip) > self::$mtime) {
-			if ($gzip) header('Content-Encoding: gzip');
+		if ( !DEVELOPER_MODE && is_file($cachedFile. $gzip) && filemtime($cachedFile. $gzip) > self::$mtime ) {
+			if ( $gzip ) { header('Content-Encoding: gzip'); }
 			header('Content-Length:'. filesize($cachedFile. $gzip));
-			if ($status = HttpUtils::entityCache($ETag, self::$mtime))
+			if ( $status = HttpUtils::entityCache($ETag, self::$mtime) ) {
 				HttpHeaders::flush($status);
-			else if ('GET' === $_SERVER['REQUEST_METHOD'])
+			} else {
 				readfile($cachedFile. $gzip);
+			}
 			exit;
 		}
 		$buffer = '';
-		foreach (self::$files as $i => $file ) {
-			if (self::$path[$i])
-				$buffer .= preg_replace('#((url\(|src=)["\']?)(../)?images/#', '$1'. BASEHREF. 'themes/'. self::$path[$i]. '/images/', file_get_contents($file));
-			else
-				$buffer .= preg_replace('#((url\(|src=)["\']?)(../)?images/#', '$1'. BASEHREF. 'images/', file_get_contents($file));
+		foreach ( self::$files as $file ) {
+			$buffer .= file_get_contents($file);
 		}
-		$buffer = self::minify($buffer);
-		if (GZIPSUPPORT && $gz = gzopen($cachedFile. '.gz','w9')) {
+		$buffer = preg_replace('#((url\(|src=)["\']?)(../)?images/#', '$1'. BASEHREF. 'themes/'. self::$theme. '/images/', $buffer);
+		$buffer = trim(preg_replace('#\s+#', ' ', $buffer));
+		$buffer = preg_replace('#/\*.*?\*/#s', '', $buffer);
+		$buffer = preg_replace('#\s*[^{}]+{\s*}\s*#', '', $buffer);
+		$buffer = preg_replace('#\s*([{},;:])\s*#', '$1', $buffer);
+		$buffer = str_replace(';}', '}', $buffer);
+		if ( GZIPSUPPORT && $gz = gzopen($cachedFile. '.gz','w9') ) {
 			gzwrite($gz, $buffer);
 			gzclose($gz);
 		}
 		file_put_contents($cachedFile, $buffer);
-		if (is_file($cachedFile. $gzip) || !$gzip) {
-			if ($gzip) header('Content-Encoding: gzip');
+		if ( is_file($cachedFile. $gzip) || !$gzip ) {
+			if ( $gzip ) { header('Content-Encoding: gzip'); }
 			header('Content-Length:'. filesize($cachedFile. $gzip));
-			if ('GET' === $_SERVER['REQUEST_METHOD']) exit(readfile($cachedFile. $gzip));
+			exit(readfile($cachedFile. $gzip));
 		} else {
 			ob_start('ob_gzhandler');
-			if ('GET' === $_SERVER['REQUEST_METHOD']) exit($buffer);
+			exit($buffer);
 		}
-		exit;
 	}
 
 	private static function filter($str, $mode)
@@ -154,9 +133,10 @@ abstract class CSS
 			break;
 			default: return;
 		}
-		for ($i=0, $c=count($pattern); $i<$c; ++$i) {
-			if (preg_match($pattern[$i], $str, $match)) {
-				self::$path[] = isset($match[2]) ? $match[1] : '';
+		$c = count($pattern);
+		for ($i = 0; $i < $c; ++$i) {
+			if ( 1 === preg_match($pattern[$i], $str, $match) ) {
+				if ( 0 === $i ) { self::$theme = $match[1]; }
 				return true;
 			}
 		}
