@@ -1,18 +1,35 @@
 <?php
-/*********************************************
-  CPG Dragonfly™ CMS
-  ********************************************
-  Copyright © 2004 - 2007 by CPG-Nuke Dev Team
-  http://dragonflycms.org
-
-  Dragonfly is released under the terms and conditions
-  of the GNU GPL version 2 or any later version
-
-  $Source: /cvs/html/includes/cmsinit.inc,v $
-  $Revision: 10.4 $
-  $Author: djmaze $
-  $Date: 2010/11/11 23:49:06 $
-**********************************************/
+/*
+  $Id$ 
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |
+  +-------------------------------------------------------------------+
+  | NexOS CMS PH2 Blueprint                                           |
+  | This is the default blueprint for a stock NexOS installation and  |
+  | the one that is used on the NexOS home website.                   |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |
+  +-------------------------------------------------------------------+
+  | CPG Dragonfly CMS                                                 |
+  | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
+  | http://www.dragonflycms.com                                       |
+  | Dragonfly is released under the terms and conditions of the GNU   |
+  | GPL version 2 or any later version                                |
+  +-------------------------------------------------------------------+
+   Last modification notes:
+    $Author$
+    $Date$
+    $Rev$
+*/
 # Disable DOS Attacks and any other strange behavior
 if (((empty($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] == '-') && !defined('XMLFEED')) || defined('CORE_PATH')) { exit; }
 
@@ -22,6 +39,8 @@ if (((empty($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] == '-') 
 
 define('START_TIME', microtime(true));
 define('CPG_NUKE', '10.0.8');
+define('IN_NEXOS', 1);
+define('NEXOS_VERSION', '0.0.0.1');
 define('GZIPSUPPORT', extension_loaded('zlib'));
 define('WINDOWS', (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN'));
 $phpver = explode('.', phpversion());

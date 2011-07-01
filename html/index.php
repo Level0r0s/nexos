@@ -1,42 +1,36 @@
 <?php
-/*********************************************
-  CPG Dragonfly™ CMS
-  ********************************************
-  Copyright © 2004 - 2007 by CPG-Nuke Dev Team
-  http://dragonflycms.org
+/*
+  $Id$ 
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |
+  +-------------------------------------------------------------------+
+  | NexOS CMS PH2 Blueprint                                           |
+  | This is the default blueprint for a stock NexOS installation and  |
+  | the one that is used on the NexOS home website.                   |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |
+  +-------------------------------------------------------------------+
+  | CPG Dragonfly CMS                                                 |
+  | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
+  | http://www.dragonflycms.com                                       |
+  | Dragonfly is released under the terms and conditions of the GNU   |
+  | GPL version 2 or any later version                                |
+  +-------------------------------------------------------------------+
+   Last modification notes:
+    $Author$
+    $Date$
+    $Rev$
+*/
 
-  $Source: /cvs/html/index.php,v $
-  $Revision: 10.1 $
-  $Author: djmaze $
-  $Date: 2010/11/07 16:52:24 $
-
-  A free program released under the terms and conditions
-  of the GNU GPL version 2 or any later version
-
-  Linking CPG Dragonfly™ CMS statically or dynamically with other modules is making a
-  combined work based on CPG Dragonfly CMS.  Thus, the terms and conditions of the GNU
-  General Public License cover the whole combination.
-
-  As a special exception, the copyright holders of CPG Dragonfly CMS give you
-  permission to link CPG Dragonfly CMS with independent modules that communicate with
-  CPG Dragonfly CMS solely through the CPG-Core interface, regardless of the license
-  terms of these independent modules, and to copy and distribute the
-  resulting combined work under terms of your choice, provided that
-  every copy of the combined work is accompanied by a complete copy of
-  the source code of CPG Dragonfly CMS (the version of CPG Dragonfly CMS used to produce the
-  combined work), being distributed under the terms of the GNU General
-  Public License plus this exception.  An independent module is a module
-  which is not derived from or based on CPG Dragonfly CMS.
-
-  Note that people who make modified versions of CPG Dragonfly CMS are not obligated
-  to grant this special exception for their modified versions; it is
-  their choice whether to do so.  The GNU General Public License gives
-  permission to release a modified version without this exception; this
-  exception also makes it possible to release a modified version which
-  carries forward this exception.
-  http://gnu.org/licenses/gpl-faq.html#LinkingOverControlledInterface
-
-***********************************************************************/
 $start_mem = function_exists('memory_get_usage') ? memory_get_usage() : 0;
 $_SERVER['REQUEST_TIME'] = microtime(true);
 require_once('includes/cmsinit.inc');
