@@ -15,9 +15,9 @@
 **********************************************/
 if (!defined('CPG_NUKE')) { exit; }
 
-define('SQL_ASSOC', 1<<0); // MYSQL_ASSOC, PGSQL_ASSOC
-define('SQL_NUM', 1<<1);   // MYSQL_NUM,   PGSQL_NUM
-define('SQL_BOTH', (SQL_ASSOC|SQL_NUM));  // MYSQL_BOTH,  PGSQL_BOTH
+if (!defined('SQL_ASSOC')) { define('SQL_ASSOC', 1<<0); }		// MYSQL_ASSOC, PGSQL_ASSOC
+if (!defined('SQL_ASSOC')) { define('SQL_NUM', 1<<1); }			// MYSQL_NUM,   PGSQL_NUM
+if (!defined('SQL_ASSOC')) { define('SQL_BOTH', (SQL_ASSOC|SQL_NUM)); }	// MYSQL_BOTH,  PGSQL_BOTH
 
 class sql_parent
 {
