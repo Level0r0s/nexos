@@ -143,27 +143,26 @@ if (!file_exists(CORE_PATH.'config.php')) {
 	require_once(CORE_PATH.'config.php');
 }
 
-//require_once(CORE_PATH.'db/db.php');
+require_once(CORE_PATH.'db/db.php');
 use Doctrine\Common\ClassLoader;
 require_once(CORE_PATH.'lib/Doctrine/Common/ClassLoader.php');
 $classLoader = new ClassLoader('Doctrine', CORE_PATH.'lib');
 $classLoader->register();
 
-require_once(CORE_PATH.'db/db.php');
-#require_once(CORE_PATH.'poodle/poodle.php');
-#Poodle::$DEBUG = Poodle::DBG_ALL;
-#define('SQL_ASSOC', Poodle_SQL::ASSOC);
-#define('SQL_NUM',   Poodle_SQL::NUM);
-#define('SQL_BOTH',  Poodle_SQL::BOTH);
-#if (!defined('INSTALL')) {
-#	try {
-#		$db = new Poodle_SQL_Dragonfly($dbhost, $dbuname, $dbpass, $dbname);
-#	} catch (Exception $e) {
-#		cpg_error('<b>'.NO_DB.', sorry for the inconvenience<br /><br />We should be back shortly</b>');
-#	}
-#//	$db->debug = Poodle::DBG_SQL | Poodle::DBG_SQL_QUERIES;
-#//	$db->debug = Poodle::$DEBUG & Poodle::DBG_SQL | Poodle::$DEBUG & Poodle::DBG_SQL_QUERIES;
-#}
+require_once(CORE_PATH.'poodle/poodle.php');
+Poodle::$DEBUG = Poodle::DBG_ALL;
+if (!defined('SQL_ASSOC')) { define('SQL_ASSOC', Poodle_SQL::ASSOC); }
+if (!defined('SQL_NUM')) { define('SQL_NUM',   Poodle_SQL::NUM); }
+if (!defined('SQL_BOTH')) { define('SQL_BOTH',  Poodle_SQL::BOTH); }
+if (!defined('INSTALL')) {
+	try {
+		$db2 = new Poodle_SQL_Dragonfly($dbhost, $dbuname, $dbpass, $dbname);
+	} catch (Exception $e) {
+		cpg_error('<b>'.NO_DB.', sorry for the inconvenience<br /><br />We should be back shortly</b>');
+	}
+//	$db->debug = Poodle::DBG_SQL | Poodle::DBG_SQL_QUERIES;
+//	$db->debug = Poodle::$DEBUG & Poodle::DBG_SQL | Poodle::$DEBUG & Poodle::DBG_SQL_QUERIES;
+}
 
 require_once(CORE_PATH.'classes/cpg_cache.php');
 require_once(CORE_PATH.'functions/linking.php');

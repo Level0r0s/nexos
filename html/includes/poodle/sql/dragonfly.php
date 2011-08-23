@@ -36,7 +36,7 @@ class Poodle_SQL_Dragonfly extends Poodle_SQL
 			),
 			$prefix.'_'
 		);
-		define('SQL_LAYER',strtolower($this->engine));
+		if (!defined('SQL_LAYER')) { define('SQL_LAYER',strtolower($this->engine)); }
 	}
 
 	/**
