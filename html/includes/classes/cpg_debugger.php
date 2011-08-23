@@ -122,7 +122,11 @@ class Debug {
 					$debug .= '<span class="genmed"><strong>SQL Queries:</strong></span><br /><br />';
 					foreach ($db->querylist as $file => $queries) {
 						$debug .= '<b>'.$file.'</b><ul>';
-						foreach ($queries as $q) { $debug .= "<li>line {$q['line']} (".round($q['time']*1000,1)." ms): {$q['query']}</li>"; }
+						foreach ($queries as $q) {
+							$debug .= '<li>';
+							if ($q['failed']) { $debug .= '<b>FAILED</b> '; }
+							$debug .= "line {$q['line']} (".round($q['time']*1000,2)." ms): {$q['query']}</li>";
+						}
 						$debug .= '</ul>';
 					}
 				}
