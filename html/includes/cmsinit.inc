@@ -143,12 +143,17 @@ if (!file_exists(CORE_PATH.'config.php')) {
 	require_once(CORE_PATH.'config.php');
 }
 
-require_once(CORE_PATH.'db/db.php');
+// Doctrine DBAL
 use Doctrine\Common\ClassLoader;
 require_once(CORE_PATH.'lib/Doctrine/Common/ClassLoader.php');
 $classLoader = new ClassLoader('Doctrine', CORE_PATH.'lib');
 $classLoader->register();
+require_once(CORE_PATH.'db/doctrine.php');
 
+// DragonFly 9 DB layer
+require_once(CORE_PATH.'db/db.php');
+
+// DragonFly 10 DB layer
 require_once(CORE_PATH.'poodle/poodle.php');
 Poodle::$DEBUG = Poodle::DBG_ALL;
 if (!defined('SQL_ASSOC')) { define('SQL_ASSOC', Poodle_SQL::ASSOC); }
@@ -288,7 +293,9 @@ Security::init();
 /******************************************************************************
   Load member/visitor details
 *******************************************************************************/
+print_r($dbal->getConfiguration()->getSQLLogger()->query_list);
 $CLASS['member'] = new cpg_member();
+print_r($dbal->getConfiguration()->getSQLLogger()->query_list);
 $userinfo =& $_SESSION['CPG_USER'];
 
 /******************************************************************************
@@ -345,12 +352,29 @@ header('Expires: 0');
 define('USERS', 'YToxOntzOjQ6Im51a2UiO3M6MzMwOiIkY29wcGVybWluZT0nVGhpcyB3ZWJzaXRlIGVuZ2luZSBDb3B5cmlnaHQgJmNvcHk7IDIwMDMgLSAnLmRhdGUoJ1knKS4nIGJ5IENQRy1OdWtlIERldiBUZWFtPGJyIC8+RnJlZSBTb2Z0d2FyZSByZWxlYXNlZCB1bmRlciB0aGUgPGEgaHJlZj0iaHR0cDovL2RyYW'
 .'dvbmZseWNtcy5vcmcvR05VR1BMLmh0bWwiIHRhcmdldD0iX2JsYW5rIj5HTlUgR1BMPC9hPjsgZWl0aGVyIHZlcnNpb24gMiBvZiB0aGUgTGljZW5zZSwgb3IgKGF0IHlvdXIgb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi4gTm8gd2FycmFudHkgaXMgZ2l2ZW4gb3IgaW1wbGllZC4nO3JldHVybiAkY29wcGVybWluZTsiO30=', true);
 
-function get_microtime() {return microtime(true);}
+
+
+//$dbal->getConfiguration()->getSQLLogger()->startQuery();
+//$stmt = $dbal->query("select * from cms_admins");
+//while ($row = $stmt->fetch()) {
+//	print_r($row);
+//}
+//$stmt = $dbal->query("select * from cms_admins");
+//while ($row = $stmt->fetch()) {
+//	print_r($row);
+//}
+//print_r($dbal->getConfiguration()->getSQLLogger()->query_list);
+
+
+
+
+
+// Always return microtime as a float (true parameter)
+function get_microtime() { return microtime(true); }
 
 # Function which removes \015\012 which causes linebreaks in SMTP email
-function removecrlf($str) {
-	return strtr($str, "\015\012", ' ');
-}
+function removecrlf($str) { return strtr($str, "\015\012", ' '); }
+
 /******************************************************************************
 
   Sends a email thru PHP or SMTP using plain text or html formatted

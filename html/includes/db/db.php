@@ -33,17 +33,15 @@ class sql_parent
 	var $file;
 	var $line;
 
-	function _log($query, $failed=false)
+	function _start_log($query, $failed=false)
 	{
-		global $MAIN_CFG;
-		if (CPG_DEBUG || (is_admin() && !empty($MAIN_CFG['debug']['database']))) {
-			$this->_backtrace();
-			$new_log['line'] = $this->line;
-			$new_log['time'] = (get_microtime() - $this->querytime);
-			$new_log['query'] = htmlprepare($query);
-			$new_log['failed'] = $failed;
-			$this->querylist[$this->file][] = $new_log;
-		}
+		global $dbal;
+		$dbal->getConfiguration()->getSQLLogger()->log($query);
+	}
+	function _log($failed=false)
+	{
+		global $dbal;
+		$dbal->getConfiguration()->getSQLLogger()->stopQuery($failed);
 	}
 	function _backtrace()
 	{
@@ -121,6 +119,7 @@ class sql_parent
 			$this->show_error($the_error, $bypass_error, 1);
 		}
 		$stime = get_microtime();
+//		$this->_start_log($query);
 		// Remove any pre-existing query
 		unset($this->query_result);
 		if (SQL_LAYER == 'mysql') {
@@ -142,8 +141,10 @@ class sql_parent
 			$unbufferd = (func_num_args() == 5) ? func_get_args(4) : false;
 		}
 		$this->query($query, $bypass_error, $unbufferd);
+echo "Query: {$this->num_queries}: $query<br/>";
 		$this->num_queries++;
 		$this->time += (get_microtime()-$stime);
+//		$this->_log();
 		return $this->query_result;
 	}
 

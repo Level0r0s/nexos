@@ -56,9 +56,10 @@ class sql_db extends sql_parent
 	function query($query, $bypass_error=FALSE, $unbufferd=false)
 	{
 		$this->querytime = get_microtime();
+		$this->_start_log($query);
 		$this->query_result = ($unbufferd) ? mysql_unbuffered_query($query, $this->connect_id) : mysql_query($query, $this->connect_id);
 		if ($this->query_result) {
-			$this->_log($query);
+			$this->_log();
 			return $this->query_result;
 		}
 		# try to fix table one time
@@ -68,7 +69,7 @@ class sql_db extends sql_parent
 		{
 			$this->query_result = ($unbufferd) ? mysql_unbuffered_query($query, $this->connect_id) : mysql_query($query, $this->connect_id);
 			if ($this->query_result) {
-				$this->_log($query);
+				$this->_log();
 				return $this->query_result;
 			}
 		}
@@ -86,7 +87,7 @@ class sql_db extends sql_parent
 			return true;
 		}
 		if ($bypass_error) {
-			$this->_log($query, true);
+			$this->_log(true);
 			return NULL;
 		} else {
 			$this->show_error("While executing query \"$query\"\n\nthe following error occured: " . mysql_error());

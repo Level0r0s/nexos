@@ -67,13 +67,14 @@ class sql_db extends sql_parent
 	function query($query, $bypass_error=FALSE, $unbufferd=false)
 	{
 		$this->querytime = get_microtime();
+		$this->_start_log($query);
 		$this->last_insert_table = false;
 		$type = strtoupper($query[0]);
 		if ($type == 'I') { $query = preg_replace('/^INSERT[\s]+IGNORE/i', 'INSERT', $query); }
 		else { $query = preg_replace("/LIMIT[\s]([0-9]+)[,\s]+([0-9]+)/i", "LIMIT \\2 OFFSET \\1", $query); }
 		$this->query_result = pg_query($this->connect_id, $query);
 		if ($this->query_result) {
-			$this->_log($query);
+			$this->_log();
 			if ($type == 'S') {
 				$this->rownum[$this->query_result] = 0;
 			} else if ($type == 'I') {
@@ -83,7 +84,7 @@ class sql_db extends sql_parent
 			}
 			return $this->query_result;
 		} else if ($bypass_error) {
-			$this->_log($query, true);
+			$this->_log(true);
 			return NULL;
 		} else {
 			$this->show_error("While executing query \"$query\"\n\nthe following error occured: ".pg_last_error($this->connect_id));

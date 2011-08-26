@@ -116,11 +116,13 @@ class Debug {
 		switch ($type) {
 
 			case 'sql':
-				global $db;
-				if (!is_object($db)) { break; }
-				if (!empty($db->querylist)) {
+				global $dbal;
+				if (!is_object($dbal)) { break; }
+				$db_log = $dbal->getConfiguration()->getSQLLogger();
+				if (!empty($db_log->query_list)) {
+print_r($db_log->query_list);
 					$debug .= '<span class="genmed"><strong>SQL Queries:</strong></span><br /><br />';
-					foreach ($db->querylist as $file => $queries) {
+					foreach ($db_log->query_list as $file => $queries) {
 						$debug .= '<b>'.$file.'</b><ul>';
 						foreach ($queries as $q) {
 							$debug .= '<li>';
