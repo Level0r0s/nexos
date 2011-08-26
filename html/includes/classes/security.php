@@ -43,7 +43,7 @@ class Security
 			# is it a bot or a ban?
 			if (strlen($ip) == 4) {
 				list(,$ip4) = unpack('N',$ip);
-				if ($result = $db->query('SELECT * FROM '.$prefix."_security WHERE ban_ipv4_s = $ip4 OR (ban_ipv4_s < $ip4 AND ban_ipv4_e >= $ip4) LIMIT 1", TRUE, TRUE)) {
+				if ($result = $db->sql_query('SELECT * FROM '.$prefix."_security WHERE ban_ipv4_s = $ip4 OR (ban_ipv4_s < $ip4 AND ban_ipv4_e >= $ip4) LIMIT 1", TRUE, TRUE)) {
 					$row = $db->fetch_array($result, SQL_ASSOC);
 					$db->free_result($result);
 				}
@@ -51,7 +51,7 @@ class Security
 			if (empty($row)) {
 				$mac = (strlen($ip) == 16) ? ' OR ban_ipn='.$db->binary_safe(substr($ip,-8)) : '';
 				$ipn = $db->binary_safe($ip);
-				if ($result = $db->query('SELECT * FROM '.$prefix."_security WHERE ban_ipn=$ipn$mac LIMIT 1", TRUE, TRUE)) {
+				if ($result = $db->sql_query('SELECT * FROM '.$prefix."_security WHERE ban_ipn=$ipn$mac LIMIT 1", TRUE, TRUE)) {
 					$row = $db->fetch_array($result, SQL_ASSOC);
 					$db->free_result($result);
 				}
@@ -121,7 +121,7 @@ class Security
 		if (!preg_match('#[^\./]+\.[\w]+($|/)#', $domain)) { return false; }
 		$domains = '';
 		global $db, $prefix;
-		if ($result = $db->query('SELECT ban_string FROM '.$prefix."_security WHERE ban_type IN (3,4)", TRUE, TRUE)) {
+		if ($result = $db->sql_query('SELECT ban_string FROM '.$prefix."_security WHERE ban_type IN (3,4)", TRUE, TRUE)) {
 			while ($e = $db->fetch_array($result, SQL_NUM)) { $domains .= "|$e[0]"; }
 		}
 		if (empty($domains)) { return true; }
@@ -141,7 +141,7 @@ class Security
 		if (empty($domains)) {
 			$domains = 'domain.tld';
 			global $db, $prefix;
-			if ($result = $db->query('SELECT ban_string FROM '.$prefix."_security WHERE ban_type IN (2,4)", TRUE, TRUE)) {
+			if ($result = $db->sql_query('SELECT ban_string FROM '.$prefix."_security WHERE ban_type IN (2,4)", TRUE, TRUE)) {
 				while ($e = $db->fetch_array($result, SQL_NUM)) { $domains .= "|$e[0]"; }
 			}
 			$domains = '#('.str_replace('.', '\.', $domains).')#i';
@@ -170,7 +170,7 @@ class Security
 		$log = array();
 		$time = time();
 		if (!isset($_SESSION['SECURITY']['flood_start'])) {
-			$db->query('DELETE FROM '.$prefix.'_security_flood WHERE flood_time <= '.$time);
+			$db->sql_query('DELETE FROM '.$prefix.'_security_flood WHERE flood_time <= '.$time);
 		} else {
 			$_SESSION['SECURITY']['flood_start'] = false;
 		}
@@ -226,7 +226,7 @@ class Security
 				} else {
 					$log = 'DEFAULT';
 				}
-				$db->query('INSERT INTO '.$prefix."_security (ban_ipn, ban_type, ban_time, ban_details, log) VALUES ($ipn, '7', '".($time+$MAIN_CFG['_security']['bantime'])."', 'Flooding detected by User-Agent:\n{$_SERVER['HTTP_USER_AGENT']}', $log)", TRUE, TRUE);
+				$db->sql_query('INSERT INTO '.$prefix."_security (ban_ipn, ban_type, ban_time, ban_details, log) VALUES ($ipn, '7', '".($time+$MAIN_CFG['_security']['bantime'])."', 'Flooding detected by User-Agent:\n{$_SERVER['HTTP_USER_AGENT']}', $log)", TRUE, TRUE);
 				global $SESS;
 				if (is_object($SESS)) $SESS->destroy();
 				cpg_error('', 803);
@@ -245,7 +245,7 @@ class Security
 		$bot = false;
 		# Identify bot by UA
 		$where = ($where ? " WHERE agent_name LIKE '$where%'" : '');
-		$result = $db->query('SELECT agent_name, agent_fullname, agent_ban FROM '.$prefix."_security_agents$where ORDER BY agent_name", TRUE, TRUE);
+		$result = $db->sql_query('SELECT agent_name, agent_fullname, agent_ban FROM '.$prefix."_security_agents$where ORDER BY agent_name", TRUE, TRUE);
 		while ($row = $db->fetch_array($result, SQL_NUM)) {
 			if (empty($row[1])) { continue; }
 			if ($bot && empty($where)) {
@@ -268,9 +268,9 @@ class Security
 			if ($MAIN_CFG['_security']['debug']) { $log = "'".Security::log_serializer(Security::data_log($times, $log))."'"; }
 			else { $log = 'DEFAULT'; }
 			if ($update) {
-				$db->query('UPDATE '.$prefix."_security_flood SET flood_time='$timeout', flood_count='$times', log=$log WHERE flood_ip=$ip");
+				$db->sql_query('UPDATE '.$prefix."_security_flood SET flood_time='$timeout', flood_count='$times', log=$log WHERE flood_ip=$ip");
 			} else {
-				$db->query('INSERT INTO '.$prefix."_security_flood (flood_ip,flood_time,flood_count,log) VALUES ($ip, '$timeout', '$times', $log)", true);
+				$db->sql_query('INSERT INTO '.$prefix."_security_flood (flood_ip,flood_time,flood_count,log) VALUES ($ip, '$timeout', '$times', $log)", true);
 			}
 			$_SESSION['SECURITY']['flood_start'] = true;
 		}

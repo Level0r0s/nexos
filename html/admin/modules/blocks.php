@@ -63,11 +63,11 @@ if (isset($_GET['change'])) {
 			} else {
 				$bid = intval($_POST['id'][$i]);
 				if ($side == 'n') {
-					$db->query('DELETE FROM '.$prefix."_blocks_custom WHERE bid=$bid AND mid=$mid");
+					$db->sql_query('DELETE FROM '.$prefix."_blocks_custom WHERE bid=$bid AND mid=$mid");
 				} else if (empty($blocks[$module][$bid])) {
-					$db->query('INSERT INTO '.$prefix."_blocks_custom (bid, mid, side, weight) VALUES ($bid, $mid, '$side', $pos)");
+					$db->sql_query('INSERT INTO '.$prefix."_blocks_custom (bid, mid, side, weight) VALUES ($bid, $mid, '$side', $pos)");
 				} else if ($_POST['weight'][$i] != $pos || $_POST['side'][$i] != $side && isset($blocks[$module][$bid])) {
-					$db->query('UPDATE '.$prefix."_blocks_custom SET weight=$pos, side='$side' WHERE bid=$bid AND mid=$mid");
+					$db->sql_query('UPDATE '.$prefix."_blocks_custom SET weight=$pos, side='$side' WHERE bid=$bid AND mid=$mid");
 				}
 				++$pos;
 			}

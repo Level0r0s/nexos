@@ -94,7 +94,7 @@ switch ($mode) {
 
 	case 'OptimizeDB':
 		if (DB_TYPE == 'postgresql') {
-			$db->query('VACUUM ANALYZE');
+			$db->sql_query('VACUUM ANALYZE');
 			$query = 'SELECT cl.relname as tablename, st.* FROM pg_class AS cl, pg_statistic AS st WHERE st.starelid=cl.relfilenode AND cl.relkind IN(\'r\') AND cl.relname NOT LIKE \'pg_%\' AND cl.relname NOT LIKE \'sql_%\' ORDER by cl.relname';
 		} else {
 			$query = "$type TABLE ".implode(", ", $tablelist);
@@ -117,7 +117,7 @@ switch ($mode) {
 			$showblocks = 0;
 			$MAIN_CFG['global']['admingraphic'] =~ 2;
 			if ($MAIN_CFG['global']['admingraphic'] == 0)  $MAIN_CFG['global']['admingraphic'] = 4;
-			$db->query = 'ANALYZE';
+			$db->sql_query = 'ANALYZE';
 			$query = 'SELECT tablename, attname, null_frac, avg_width, n_distinct, most_common_vals, most_common_freqs, correlation FROM pg_stats WHERE schemaname=\''.$schema.'\' ORDER BY tablename';
 			//$query = 'SELECT * FROM pg_statistic';
 		} else {

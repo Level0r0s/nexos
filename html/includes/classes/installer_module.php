@@ -37,7 +37,7 @@ abstract class INSTALLER_MODULE implements INSTALLER_MODULE_INTERFACE
 		global $tablelist, $tables, $indexes, $records, $table_ids;
 		if (!$this->pre_install()) { return false; }
 		foreach ($tables AS $table => $columns) {
-			if (isset($tablelist[$table])) { $db->query('DROP TABLE '.$tablelist[$table]); }
+			if (isset($tablelist[$table])) { $db->sql_query('DROP TABLE '.$tablelist[$table]); }
 			db_check::create_table($table, $columns, $indexes[$table]);
 		}
 		if (is_array($records) && !empty($records)) {

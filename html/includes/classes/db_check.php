@@ -169,7 +169,7 @@ abstract class db_check
 				if ($db->count($table) > 0) return;
 			} else {
 				echo "<br />\n$table content: ";
-				$result = $db->query("SELECT ".$content['query']." FROM $querytable", true);
+				$result = $db->sql_query("SELECT ".$content['query']." FROM $querytable", true);
 				# table exists now check each existing record
 				while ($row = $db->sql_fetchrow($result, SQL_NUM)) {
 					switch ($content['compare']) {
@@ -211,7 +211,7 @@ abstract class db_check
 	public static function iptobin($querytable, $table, $table_id, $field, $col, $type) {
 		global $db, $installer;
 		if ($table == 'session') {
-			$db->query('DELETE FROM '.$querytable);
+			$db->sql_query('DELETE FROM '.$querytable);
 		} else if ($table == 'bbprivmsgs') {
 			$installer->add_query('UPDATE', $table, "$field=''");
 		}
@@ -228,7 +228,7 @@ abstract class db_check
 	public static function dttotime($querytable, $table, $id, $field, $column)
 	{
 		global $db, $installer;
-		$result = $db->query("SELECT $id, UNIX_TIMESTAMP($field) FROM $querytable");
+		$result = $db->sql_query("SELECT $id, UNIX_TIMESTAMP($field) FROM $querytable");
 		$installer->add_query('DEL', $table, $field);
 		$installer->add_query('ADD', $table, $column);
 		while ($row = $db->fetch_array($result, SQL_NUM)) {
@@ -241,7 +241,7 @@ abstract class db_check
 	public static function rdtotime($querytable, $table, $id, $field)
 	{
 		global $db, $installer;
-		$result = $db->query("SELECT $field FROM $querytable GROUP BY $field ORDER BY $id");
+		$result = $db->sql_query("SELECT $field FROM $querytable GROUP BY $field ORDER BY $id");
 		while ($row = $db->fetch_array($result, SQL_NUM)) {
 			# strtotime on failure returns: php<5.1.0  -1, php>5.1.0 false
 			$time = strtotime($row[0]);
@@ -258,7 +258,7 @@ abstract class db_check
 	{
 		global $db, $installer;
 		$no = array();
-		$result = $db->query("SELECT $id FROM $querytable WHERE $field='NO'");
+		$result = $db->sql_query("SELECT $id FROM $querytable WHERE $field='NO'");
 		while ($tid = $db->fetch_array($result, SQL_NUM)) { $no[] = $tid[0]; }
 		$db->free_result($result);
 		if (count($no) > 0) {

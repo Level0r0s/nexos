@@ -176,7 +176,7 @@ if (isset($_GET['bots'])) {
 	GraphicAdmin('_AMENU0');
 	$count = $db->sql_count($prefix.'_security_agents');
 	pagination('&amp;bots&amp;page=', ceil($count/$per_page), 1, $page);
-	if ($result = $db->query('SELECT agent_name, agent_ban FROM '.$prefix."_security_agents ORDER BY agent_name $limit")) {
+	if ($result = $db->sql_query('SELECT agent_name, agent_ban FROM '.$prefix."_security_agents ORDER BY agent_name $limit")) {
 		while ($row = $db->fetch_array($result, SQL_ASSOC)) {
 			$cpgtpl->assign_block_vars('seclist', array(
 				'L_NAME' => $row['agent_name'],
@@ -199,10 +199,10 @@ else if (isset($_GET['bot'])) {
 	require('header.php');
 	GraphicAdmin('_AMENU0');
 	$bot = $db->sql_escape_string($_GET['bot']);
-	if ($result = $db->query('SELECT * FROM '.$prefix."_security_agents WHERE agent_name='$bot'")) {
+	if ($result = $db->sql_query('SELECT * FROM '.$prefix."_security_agents WHERE agent_name='$bot'")) {
 		$row = $db->fetch_array($result, SQL_ASSOC);
 		$db->sql_freeresult($result);
-		if ($result = $db->query('SELECT ban_ipv4_s, ban_ipv4_e FROM '.$prefix."_security WHERE ban_string='$bot'")) {
+		if ($result = $db->sql_query('SELECT ban_ipv4_s, ban_ipv4_e FROM '.$prefix."_security WHERE ban_string='$bot'")) {
 			while ($ips = $db->fetch_array($result, SQL_ASSOC)) {
 				$row['agent_hostname'] .= '<br />'.long2ip($ips['ban_ipv4_s']);
 				if (isset($ips['ban_ipv4_e'])) {
@@ -246,7 +246,7 @@ else if (isset($_GET['mails'])) {
 	GraphicAdmin('_AMENU0');
 	$count = $db->sql_count($prefix.'_security', 'ban_type=2');
 	pagination('&amp;mails&amp;page=', ceil($count/$per_page), 1, $page);
-	if ($result = $db->query('SELECT ban_string FROM '.$prefix."_security WHERE ban_type = 2 ORDER BY ban_string $limit")) {
+	if ($result = $db->sql_query('SELECT ban_string FROM '.$prefix."_security WHERE ban_type = 2 ORDER BY ban_string $limit")) {
 		while ($row = $db->fetch_array($result, SQL_ASSOC)) {
 			$cpgtpl->assign_block_vars('seclist', array(
 				'L_NAME' => $row['ban_string'],
@@ -298,7 +298,7 @@ else if (isset($_GET['floods'])) {
 	GraphicAdmin('_AMENU0');
 	$count = $db->sql_count($prefix.'_security', 'ban_type=7');
 	pagination('&amp;floods&amp;page=', ceil($count/$per_page), 1, $page);
-	if ($result = $db->query('SELECT ban_ipn, ban_time FROM '.$prefix."_security WHERE ban_type = 7 ORDER BY ban_string $limit")) {
+	if ($result = $db->sql_query('SELECT ban_ipn, ban_time FROM '.$prefix."_security WHERE ban_type = 7 ORDER BY ban_string $limit")) {
 		while ($row = $db->fetch_array($result, SQL_ASSOC)) {
 			++$counter;
 			$url = $ip = decode_ip($row['ban_ipn']);
@@ -392,7 +392,7 @@ else if (isset($_GET['ips'])) {
 	GraphicAdmin('_AMENU0');
 	$count = $db->sql_count($prefix.'_security', 'ban_type=0');
 	pagination('&amp;ips&amp;page=', ceil($count/$per_page), 1, $page);
-	if ($result = $db->query('SELECT ban_ipv4_s, ban_ipv4_e, ban_ipn, ban_time FROM '.$prefix."_security WHERE ban_type = 0 ORDER BY ban_string $limit")) {
+	if ($result = $db->sql_query('SELECT ban_ipv4_s, ban_ipv4_e, ban_ipn, ban_time FROM '.$prefix."_security WHERE ban_type = 0 ORDER BY ban_string $limit")) {
 		while ($row = $db->fetch_array($result, SQL_ASSOC)) {
 			if (!empty($row['ban_ipn'])) {
 				$url = $ip = inet_ntop($row['ban_ipn']);
@@ -424,9 +424,9 @@ else if (isset($_GET['ip'])) {
 	$ipn = $db->binary_safe($ip);
 	if (strlen($ip) == 4) {
 		list(,$ipv4) = unpack('N',$ip);
-		$result = $db->query('SELECT * FROM '.$prefix."_security WHERE ban_type IN(0,7) AND (ban_ipn=$ipn OR ban_ipv4_s='$ipv4')");
+		$result = $db->sql_query('SELECT * FROM '.$prefix."_security WHERE ban_type IN(0,7) AND (ban_ipn=$ipn OR ban_ipv4_s='$ipv4')");
 	} else if (strlen($ip) == 16) {
-		$result = $db->query('SELECT * FROM '.$prefix."_security WHERE ban_type IN(0,7) AND ban_ipn=$ipn");
+		$result = $db->sql_query('SELECT * FROM '.$prefix."_security WHERE ban_type IN(0,7) AND ban_ipn=$ipn");
 	}
 	if ($result) {
 		$row = $db->fetch_array($result, SQL_ASSOC);
@@ -533,7 +533,7 @@ else if (isset($_GET['shields'])) {
 	GraphicAdmin('_AMENU0');
 	$count = $db->sql_count($prefix.'_security', 'ban_type=8');
 	pagination('&amp;shields&amp;page=', ceil($count/$per_page), 1, $page);
-	if ($result = $db->query('SELECT ban_ipv4_s, ban_ipv4_e, ban_ipn, ban_time FROM '.$prefix."_security WHERE ban_type=8 $limit")) {
+	if ($result = $db->sql_query('SELECT ban_ipv4_s, ban_ipv4_e, ban_ipn, ban_time FROM '.$prefix."_security WHERE ban_type=8 $limit")) {
 		while ($row = $db->fetch_array($result, SQL_ASSOC)) {
 			if (!empty($row['ban_ipn'])) {
 				$url = $ip = inet_ntop($row['ban_ipn']);
@@ -565,9 +565,9 @@ else if (isset($_GET['shield'])) {
 	$ipn = $db->binary_safe($ip);
 	if (strlen($ip) == 4) {
 		list(,$ipv4) = unpack('N',$ip);
-		$result = $db->query('SELECT * FROM '.$prefix."_security WHERE ban_type=8 AND ban_ipv4_s='$ipv4'");
+		$result = $db->sql_query('SELECT * FROM '.$prefix."_security WHERE ban_type=8 AND ban_ipv4_s='$ipv4'");
 	} else if (strlen($ip) == 16) {
-		$result = $db->query('SELECT * FROM '.$prefix."_security WHERE ban_type=8 AND ban_ipn=$ipn");
+		$result = $db->sql_query('SELECT * FROM '.$prefix."_security WHERE ban_type=8 AND ban_ipn=$ipn");
 	}
 	if ($result) {
 		$row = $db->fetch_array($result, SQL_ASSOC);
@@ -624,7 +624,7 @@ else if (isset($_GET['referers'])) {
 	GraphicAdmin('_AMENU0');
 	$count = $db->sql_count($prefix.'_security', 'ban_type=3');
 	pagination('&amp;referers&amp;page=', ceil($count/$per_page), 1, $page);
-	if ($result = $db->query('SELECT ban_string FROM '.$prefix."_security WHERE ban_type=3 ORDER BY ban_string $limit")) {
+	if ($result = $db->sql_query('SELECT ban_string FROM '.$prefix."_security WHERE ban_type=3 ORDER BY ban_string $limit")) {
 		while ($row = $db->fetch_array($result, SQL_ASSOC)) {
 			$cpgtpl->assign_block_vars('seclist', array(
 				'L_NAME' => $row['ban_string'],
@@ -647,7 +647,7 @@ else if (isset($_GET['referer'])) {
 	require('header.php');
 	GraphicAdmin('_AMENU0');
 	$referer = $db->sql_escape_string($_GET['referer']);
-	if ($result = $db->query('SELECT ban_string, ban_details FROM '.$prefix."_security WHERE ban_type=3 AND ban_string='$referer'")) {
+	if ($result = $db->sql_query('SELECT ban_string, ban_details FROM '.$prefix."_security WHERE ban_type=3 AND ban_string='$referer'")) {
 		$row = $db->fetch_array($result, SQL_ASSOC);
 		$cpgtpl->assign_vars(array(
 			'S_BOT_NAME' => $row['ban_string'],
@@ -681,7 +681,7 @@ else if (isset($_GET['uas'])) {
 	GraphicAdmin('_AMENU0');
 	$count = $db->sql_count($prefix.'_security_agents', '');
 	pagination('&amp;uas&amp;page=', ceil($count/$per_page), 1, $page);
-	if ($result = $db->query('SELECT agent_name, agent_ban FROM '.$prefix."_security_agents ORDER BY agent_name $limit")) {
+	if ($result = $db->sql_query('SELECT agent_name, agent_ban FROM '.$prefix."_security_agents ORDER BY agent_name $limit")) {
 		while ($row = $db->fetch_array($result, SQL_ASSOC)) {
 			$cpgtpl->assign_block_vars('seclist', array(
 				'L_NAME' => $row['agent_name'],
@@ -704,7 +704,7 @@ else if (isset($_GET['ua'])) {
 	require('header.php');
 	GraphicAdmin('_AMENU0');
 	$agent = $db->sql_escape_string($_GET['ua']);
-	if ($result = $db->query('SELECT agent_fullname, agent_hostname, agent_url, agent_desc FROM '.$prefix."_security_agents WHERE agent_name='$agent'")) {
+	if ($result = $db->sql_query('SELECT agent_fullname, agent_hostname, agent_url, agent_desc FROM '.$prefix."_security_agents WHERE agent_name='$agent'")) {
 		$row = $db->fetch_array($result, SQL_ASSOC);
 		$cpgtpl->assign_vars(array(
 			'S_BOT_NAME' => $row['agent_name'],
