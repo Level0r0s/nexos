@@ -33,13 +33,16 @@
 if (!defined('CPG_NUKE')) { exit; }
 
 function footmsg() {
-	global $db, $foot1, $foot2, $foot3, $total_time, $start_mem;
+	global $db, $dbal, $foot1, $foot2, $foot3, $total_time, $start_mem;
 	if ($foot1 != '') { $foot1 .= '<br />'."\n"; }
 	if ($foot2 != '') { $foot1 .= $foot2.'<br />'."\n"; }
 	if ($foot3 != '') { $foot1 .= $foot3.'<br />'."\n"; }
 	if (is_admin()) {
-		$total_time = (microtime(true) - START_TIME - $db->time);
-		$foot1 .= sprintf(_PAGEFOOTER, round($total_time,4), $db->num_queries, round($db->time,4));
+		$db_log = $dbal->getConfiguration()->getSQLLogger();
+		$end_time = get_microtime();
+		$total_time = ($end_time - START_TIME - $db->time);
+		$new_total_time = ($end_time - START_TIME - $db_log->time);
+		$foot1 .= sprintf(_PAGEFOOTER, round($total_time,4).'|'.round($new_total_time,4), $db->num_queries.'|'.$db_log->num_queries, round($db->time,4).'|'.round($db_log->time,4));
 		// only works if your PHP is compiled with the --enable-memory-limit configuration option
 		if (function_exists('memory_get_usage') && $start_mem > 0) {
 			$total_mem = memory_get_usage()-$start_mem;
