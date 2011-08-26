@@ -47,8 +47,16 @@ for ($i=0; $i<6; ++$i) {
 
 if ($go < 4 && isset($_COOKIE['installtest'])) { setcookie('installtest','',-1); }
 
+// Doctrine DBAL
+use Doctrine\Common\ClassLoader;
+
 $config_file = CORE_PATH.'config.php';
 if (file_exists($config_file)) {
+	require_once(CORE_PATH.'lib/Doctrine/Common/ClassLoader.php');
+	$classLoader = new ClassLoader('Doctrine', CORE_PATH.'lib');
+	$classLoader->register();
+	require_once(CORE_PATH.'db/doctrine.php');
+
 	$db = new Poodle_SQL_Dragonfly($dbhost, $dbuname, $dbpass, $dbname);
 } else {
 	$adminindex = 'admin.php';

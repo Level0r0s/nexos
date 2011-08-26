@@ -21,6 +21,7 @@ if (!defined(\'CPG_NUKE\')) { exit; }
 define(\'DB_TYPE\', \''.$connect['layer'].'\');
 define(\'DB_CHARSET\', '.(isset($connect['charset']) ? "'{$connect['charset']}'" : 'NULL').'); // NULL (is default), latin1, utf8, etc.
 $dbhost = \''.$connect['host'].'\';
+$dbport = \''.$connect['port'].'\';
 $dbname = \''.$connect['database'].'\';
 $dbuname = \''.$connect['username'].'\';
 $dbpass = \''.$connect['password'].'\';
