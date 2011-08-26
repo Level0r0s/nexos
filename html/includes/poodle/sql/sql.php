@@ -59,6 +59,8 @@ class Poodle_SQL
 
 	public function query($query, $options=0)
 	{
+		global $dbal;
+		$dbal->getConfiguration()->getSQLLogger()->log($query);
 		$qtime = microtime(true);
 		$query = trim($query);
 		$query[0] = strtoupper($query[0]);
@@ -102,6 +104,8 @@ class Poodle_SQL
 
 	protected function log(&$query, $qtime)
 	{
+		global $dbal;
+		$dbal->getConfiguration()->getSQLLogger()->stopQuery();
 		++$this->total_queries;
 		$this->total_time += $qtime;
 		if ($this->DBM->debug || $qtime > 1)
