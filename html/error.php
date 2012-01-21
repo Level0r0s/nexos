@@ -34,7 +34,7 @@ $notify = 'webmaster@'.$server_name;
 $notifyfrom = 'noreply@'.$server_name;
 $returnsite = $_SERVER['HTTP_HOST'];
 $email = false;
-# to activate error logging, you must CHMOD cpg_error.log 600 (622 if 600 fails)
+# to activate error logging, you must CHMOD nexos_error.log 600 (622 if 600 fails)
 $error_log = false;
 $sitename = 'My Web Site';
 $returnLink = 'Please <a href="http://'.$returnsite.'">return to the homepage</a>';
