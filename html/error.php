@@ -7,9 +7,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | NexOS CMS PH2 Blueprint                                           |
-  | This is the default blueprint for a stock NexOS installation and  |
-  | the one that is used on the NexOS home website.                   |
+  | error.php - NexOS error handling file                             |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
@@ -118,7 +116,7 @@ div.return {
 
 print_page();
 if ($email) notify();
-if ($error_log) cpg_error_log();
+if ($error_log) nexos_error_log();
 
 function print_page()
 {
@@ -176,7 +174,7 @@ Referer:\t{$client['referer']}
 	mail($notify, "[ $sitename Error: 404 ]", $message, "From: $notifyfrom");
 }
 
-function cpg_error_log()
+function nexos_error_log()
 {
 	global $client, $notify, $sitename, $notifyfrom, $errorCode;
 	$date = date('D M j G:i:s T Y');
@@ -189,7 +187,7 @@ User Address:\t{$_SERVER['REMOTE_ADDR']}
 User Agent:\t{$client['agent']}
 Referer:\t{$client['referer']}
 ------------------------------------------------------------------------------";
-	if (!($fp = fopen("cpg_error.log", "a"))) exit;
+	if (!($fp = fopen("nexos_error.log", "a"))) exit;
 	flock( $fp, LOCK_EX ); // exclusive lock
 	// write to the file
 	fwrite( $fp, $message );

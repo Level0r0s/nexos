@@ -7,9 +7,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | NexOS CMS PH2 Blueprint                                           |
-  | This is the default blueprint for a stock NexOS installation and  |
-  | the one that is used on the NexOS home website.                   |
+  | Install.php - NexOS installation file                             |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
