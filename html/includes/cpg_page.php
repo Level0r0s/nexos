@@ -25,7 +25,7 @@ function cpg_header($cpginfo) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="robots" content="noindex" />
 <meta name="robots" content="noarchive" />
-<link rel="stylesheet" href="includes/css/cpg.css" type="text/css" />
+<link rel="stylesheet" href="includes/css/nexos.css" type="text/css" />
 </head>
 <body><center>
 <table class="table1"><tr><td>

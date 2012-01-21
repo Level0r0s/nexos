@@ -7,9 +7,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | NexOS CMS PH2 Blueprint                                           |
-  | This is the default blueprint for a stock NexOS installation and  |
-  | the one that is used on the NexOS home website.                   |
+  | index.php - NexOS main entrance file                              |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
@@ -19,7 +17,7 @@
   +-------------------------------------------------------------------+
   |Original Copyright below                                           |
   +-------------------------------------------------------------------+
-  | CPG Dragonfly™ CMS                                                 |
+  | CPG Dragonfly™ CMS                                                |
   | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
   | http://www.dragonflycms.com                                       |
   | Dragonfly is released under the terms and conditions of the GNU   |
