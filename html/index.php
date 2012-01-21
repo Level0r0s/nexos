@@ -17,7 +17,7 @@
   +-------------------------------------------------------------------+
   |Original Copyright below                                           |
   +-------------------------------------------------------------------+
-  | CPG Dragonfly™ CMS                                                 |
+  | CPG Dragonfly™ CMS                                                |
   | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
   | http://www.dragonflycms.com                                       |
   | Dragonfly is released under the terms and conditions of the GNU   |

@@ -1,18 +1,41 @@
-/**
-* CPG Dragonfly CMS
-* Copyright © 2004 - 2006 by CPG-Nuke Dev Team, dragonflycms.org
-* Released under the GNU GPL version 2 or any later version
-* $Id: INSTALL.txt,v 1.18 2008/01/01 02:07:47 nanocaiordo Exp $
+/*
+  $Id$ 
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |
+  +-------------------------------------------------------------------+
+  | index.php - NexOS main entrance file                              |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |
+  +-------------------------------------------------------------------+
+  | CPG Dragonfly™ CMS                                                 |
+  | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
+  | http://www.dragonflycms.com                                       |
+  | Dragonfly is released under the terms and conditions of the GNU   |
+  | GPL version 2 or any later version                                |
+  +-------------------------------------------------------------------+
+   Last modification notes:
+    $Author$
+    $Date$
+    $Rev$
 */
 
 In-depth installation instructions can be found on our website:
-http://dragonflycms.org/Wiki/id=47.html
+http://nexoscms.org/Wiki/id=47.html
 
 
 Base Requirements
 -----------------
 
-In order to setup CPG Dragonfly CMS, the following prerequisites are necessary:
+In order to setup NexOS CMS, the following prerequisites are necessary:
 
 - a web server (Apache prefered)
 - PHP 4.1 or higher (4.3.x prefered)
@@ -29,14 +52,14 @@ Installing the Package
 If you are going to upgrade your website start at step two...
 See http://dragonflycms.org/Wiki/id=40.html for info on starting a cvs site.
 
-1) Create a new database, for example, 'dragonfly': mysqladmin create dragonfly
+1) Create a new database, for example, 'nexos': mysqladmin create nexos
    OR add a database through your web control panel
    OR create a database in phpMyAdmin or MySQL-Front.
 
 2) Upload all content from the /html directory to your webspace.
 
 3) CHMOD the following file to 600 (622 if 600 fails):
-   - cpg_error.log
+   - nexos_error.log
 
 4) CHMOD the following directories to 755 (777 if 755 fails):
    - cache
@@ -46,14 +69,14 @@ See http://dragonflycms.org/Wiki/id=40.html for info on starting a cvs site.
    - uploads/avatars
    - uploads/forums
 
-5) In your web browser go to http://example.com/install.php
+5) In your web browser go to http://yourdomainname.com/install.php
    The setup will install/update your database.
 
    After the database is created you will be prompted to insert additional
    information and, if it's a new install, to create the super user account.
    Create your super user following the on-screen instructions.
 
-6) Login following the admin link (http://example.com/admin.php)
+6) Login following the admin link (http://yourdomainname.com/admin.php)
 
    Now click on "Main Settings" and change whatever you want to fit your site
    info. All the options you need to change are in the Settings menu.
@@ -66,24 +89,22 @@ Testing the Installation
 
 Go to your homepage, for example:
 
-    http://example.com/index.php
+    http://yourdomainname.com/index.php
     
 To login as administrator:
 
-    http://example.com/admin.php
+    http://yourdomainname.com/admin.php
     
     This will give you full administrator privileges to your installation of
-    CPG Dragonfly CMS.
+    NexOS CMS.
 
     Remember to logout from admin after you use it. From this area you can
     delete or add content on your site, so never leave your computer without
     logging out from the admin account.
 
-    We recommend the use of MySQL-Front or phpMyAdmin. Those are good
-    administration systems for MySQL databases.
-    dragonflycms.org/downloads/mysqlfront25.exe (free version)
-    www.mysqlfront.de (30 days free)
-    www.phpmyadmin.net/home_page
+    We recommend the use of phpMyAdmin. This is the best for administration of
+    MySQL databases.
+    http://www.phpmyadmin.net/home_page
 
     We also recommend setting a password for your MySQL access. This is
     important as some data in the database is not encrypted, so for
@@ -94,8 +115,8 @@ To login as administrator:
 Final Notes
 -----------    
 
-  That's it! You're done with CPG Dragonfly CMS. Just navigate around, play with it, 
-abuse it and if you like CPG Dragonfly CMS, use it. Spend some time getting used to the 
+  That's it! You're done with installing NexOS CMS. Just navigate around, play with it, 
+abuse it and if you like NexOS CMS, use it. Spend some time getting used to the 
 administration interface.
 
   To change your site's logo, go to the /themes directory and make a custom
@@ -104,7 +125,7 @@ the graphics you want.
 
 PS: When you e-mail us asking something, just remember that we receive A LOT
 of e-mails a day! We don't answer, but for sure we'll read it.
-Your best bet is to visit the forums at dragonflycms.org/Forums.html and post
+Your best bet is to visit the forums at nexoscms.org/Forums.html and post
 your questions there.
 
 ** A special thank you to all the people who have helped is in CREDITS.txt **
