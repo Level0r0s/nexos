@@ -5,7 +5,7 @@
 #  | NexOS CMS is released under the terms and conditions of the GNU   |
 #  | GPL V2 or higher.                                                 |
 #  +-------------------------------------------------------------------+
-#  | index.php - NexOS main entrance file                              |
+#  | .htaccess - Apache access control file                            |
 #  | Authors:                                                          |
 #  |  Steven Sheeley                                                   |
 #  |      and the Myndworx Asylum Dev Team                             |
