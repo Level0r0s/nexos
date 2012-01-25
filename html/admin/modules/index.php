@@ -42,7 +42,7 @@ if (isset($_POST['np_unlock']) && can_admin()) {
 OpenTable();
 echo '<div style="text-align:center;"><span class="genmed"><strong>'._WELCOMENEXOS.' '._VERSION.' '.NEXOS_VERSION.'</strong></span><br />';
 if (file_exists('includes/nexos_version')) {
-	$git_version = file_get_contents('includes/nexos_version');
+	$git_version = file_get_contents(CORE_PATH.'nexos_version');
 	echo 'Git '._VERSION.": $git_version";
 }
 echo '</div>';
