@@ -40,6 +40,7 @@ define('_POSTEDON','Posted on');
 define('_NICKNAME','Nickname');
 define('_PASSWORD','Password');
 define('_WELCOMETO','Welcome to');
+define('_WELCOMENEXOS','Welcome to NexOS CMS');
 define('_EDIT','Edit');
 define('_DELETE','Delete');
 define('_POSTEDBY','Posted by');

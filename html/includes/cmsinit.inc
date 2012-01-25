@@ -40,7 +40,7 @@ if (((empty($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] == '-') 
 define('START_TIME', microtime(true));
 define('CPG_NUKE', '10.0.8');
 define('IN_NEXOS', 1);
-define('NEXOS_VERSION', '0.0.0.1');
+define('NEXOS_VERSION', '0.0.0.2');
 define('GZIPSUPPORT', extension_loaded('zlib'));
 define('WINDOWS', (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN'));
 $phpver = explode('.', phpversion());

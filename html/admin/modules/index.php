@@ -39,6 +39,16 @@ if (isset($_POST['np_unlock']) && can_admin()) {
 	URL::redirect(URL::admin());
 }
 
+OpenTable();
+echo '<div style="text-align:center;"><span class="genmed"><strong>'._WELCOMENEXOS.' '._VERSION.' '.NEXOS_VERSION.'</strong></span><br />';
+if (file_exists('includes/nexos_version')) {
+	$git_version = file_get_contents('includes/nexos_version');
+	echo 'Git '._VERSION.": $git_version";
+}
+echo '</div>';
+CloseTable();
+echo '<br />';
+
 if (can_admin() && $MAIN_CFG['global']['update_monitor']) {
 	if (!isset($CPG_SESS['update_monitor'])) { $CPG_SESS['update_monitor'] = false; }
 	if ($CPG_SESS['update_monitor']) {
