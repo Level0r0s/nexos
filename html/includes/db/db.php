@@ -139,7 +139,7 @@ class sql_parent
 			$unbufferd = (func_num_args() == 5) ? func_get_args(4) : false;
 		}
 		$error = $this->query($query, $bypass_error, $unbufferd);
-echo "Query: {$this->num_queries}: $query<br/>";
+echo 'DF9 '.DB_TYPE." Query: {$this->num_queries}: $query<br/>";
 		$this->num_queries++;
 		$this->time += (get_microtime()-$stime);
 		$failed = false;

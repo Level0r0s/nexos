@@ -88,6 +88,7 @@ class Poodle_SQL
 */
 			}
 			$result = $this->DBM->query($query, $options & self::UNBUFFERED);
+echo "DF10 {$this->__get('engine')} Query: {$this->num_queries}: $query<br/>";
 		} catch (Poodle_SQL_Exception $e) {
 			$this->rollback();
 			throw $e;

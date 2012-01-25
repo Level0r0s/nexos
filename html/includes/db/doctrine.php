@@ -46,7 +46,7 @@ class NexOS_Doctrine implements \Doctrine\DBAL\Logging\SQLLogger {
 		$this->line = 0;
 		$tmp = debug_backtrace();
 		for ($i=0; $i<count($tmp); ++$i) {
-			if (!preg_match('#[\\\/]{1}includes[\\\/]{1}db[\\\/]{1}[a-z_]+.php$#', $tmp[$i]['file']) && !preg_match('#[\\\/]{1}Doctrine[\\\/]{1}DBAL[\\\/]{1}Connection.php$#', $tmp[$i]['file'])) {
+			if (!preg_match('#[\\\/]{1}includes[\\\/]{1}db[\\\/]{1}[a-z_]+.php$#', $tmp[$i]['file']) && !preg_match('#[\\\/]{1}includes[\\\/]{1}poodle[\\\/]{1}sql[\\\/]{1}[a-z_]+.php$#', $tmp[$i]['file']) && !preg_match('#[\\\/]{1}Doctrine[\\\/]{1}DBAL[\\\/]{1}Connection.php$#', $tmp[$i]['file'])) {
 				$this->file = $tmp[$i]['file'];
 				$this->line = $tmp[$i]['line'];
 				break;

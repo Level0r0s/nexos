@@ -164,7 +164,7 @@ class Poodle_SQL_Adapter_Doctrine implements Poodle_SQL_Interface_Adapter
 	}
 	public function real_query($query, $unbuffered=0)
 	{
-echo 'Query: ';
+echo 'Poodle Doctrine Adapter Query: ';
 print_r($query);
 echo '<br/>';
 		$this->query_results = $this->db->query($query);
