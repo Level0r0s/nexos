@@ -62,7 +62,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
   <language>'.$backend_language.'</language>
   <pubDate>'.$date.'</pubDate>
   <ttl>'.(60*24).'</ttl>
-  <generator>CPG-Nuke Dragonfly</generator>
+  <generator>NexOS RSS Feeder</generator>
   <copyright>'.htmlprepare($sitename).'</copyright>
   <category>News</category>
   <docs>http://cyber.law.harvard.edu/rss/rss.html</docs>

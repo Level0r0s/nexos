@@ -81,7 +81,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
   <language>'.$backend_language.'</language>
   <pubDate>'.$date.'</pubDate>
   <ttl>'.(60*24).'</ttl>
-  <generator>CPG-Nuke Dragonfly</generator>
+  <generator>NexOS RSS Generator</generator>
   <copyright>'.htmlprepare($sitename).'</copyright>
   <category>'.$category.'</category>
   <docs>http://backend.userland.com/rss</docs>
