@@ -7,7 +7,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | wait_banenrs.php - NexOS Administration Backend file              |
+  | wait_banners.php - NexOS Administration Backend file              |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
