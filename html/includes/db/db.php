@@ -87,7 +87,7 @@ class sql_parent
 			if (function_exists('cpg_error')) {
 				cpg_error($errorpage, 'Database Error');
 			} else {
-				require_once('includes/cpg_page.php');
+				require_once('includes/nexos_page.php');
 				$errorpage = cpg_header('Database Error').$errorpage.cpg_footer();
 				die($errorpage);
 			}

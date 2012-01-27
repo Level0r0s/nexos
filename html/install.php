@@ -31,7 +31,7 @@
 error_reporting(E_ALL);
 define('INSTALL', 1);
 require('includes/cmsinit.inc');
-require_once(CORE_PATH.'cpg_page.php');
+require_once(CORE_PATH.'nexos_page.php');
 
 $go = 0;
 if (isset($_POST['step'])) {

@@ -806,7 +806,7 @@ function cpg_error($message, $title='ERROR', $redirect=false) {
 		}
 		require_once(BASEDIR.'footer.php');
 	} else {
-		require_once(BASEDIR.'includes/cpg_page.php');
+		require_once(BASEDIR.'includes/nexos_page.php');
 		$errorpage = cpg_header($title);
 		$errorpage .= "<center>$message</center>";
 		if (is_admin() || (defined('CPG_DEBUG') && CPG_DEBUG)) {
