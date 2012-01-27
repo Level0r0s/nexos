@@ -1,17 +1,34 @@
 <?php
-/*********************************************
-	MOO CMS, Copyright (c) 2007 The MOO Dev. Group. All rights reserved.
+/*
+  $Id$ 
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |
+  +-------------------------------------------------------------------+
+  | ua.inc - NexOS User Agent file                                    |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |
+  +-------------------------------------------------------------------+
+  | CPG Dragonfly™ CMS                                                |
+  | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
+  | http://www.dragonflycms.com                                       |
+  | Dragonfly is released under the terms and conditions of the GNU   |
+  | GPL version 2 or any later version                                |
+  +-------------------------------------------------------------------+
+   Last modification notes:
+    $Author$
+    $Date$
+    $Rev$
+*/
 
-	This source file is free software; you can redistribute it and/or
-	modify it under the terms of the MOO Public License as published
-	by the MOO Development Group; either version 1 of the License, or
-	(at your option) any later version.
-
-  $Source: /cvs/html/includes/data/ua.inc,v $
-  $Revision: 1.18 $
-  $Author: nanocaiordo $
-  $Date: 2010/10/04 09:25:57 $
-**********************************************/
 if (!defined('CPG_NUKE')) exit();
 
 	/**
