@@ -20,6 +20,10 @@
   | CPG Dragonfly™ CMS                                                |
   | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
   | http://www.dragonflycms.com                                       |
+  | Based on "All Info Block" by Alex Hession                         |
+  | http://www.gtaunited.com                                          |
+  | Block heavily modified by DJMaze                                  |
+  | http://www.cpgnuke.com                                            |
   | Dragonfly is released under the terms and conditions of the GNU   |
   | GPL version 2 or any later version                                |
   +-------------------------------------------------------------------+
@@ -29,12 +33,6 @@
     $Rev$
 */
 
-  $Source: /cvs/html/blocks/block-User_Info.php,v $
-  $Revision: 10.1 $
-  $Author: phoenix $
-  $Date: 2010/11/12 00:36:30 $
-Encoding test: n-array summation ∑ latin ae w/ acute ǽ
-********************************************************/
 if (!defined('CPG_NUKE')) { exit; }
 
 global $prefix, $user_prefix, $db, $userinfo, $MAIN_CFG, $CPG_SESS;
