@@ -1,3 +1,33 @@
+/*
+  $Id$ 
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |
+  +-------------------------------------------------------------------+
+  | MM_funcs.js - NexOS Main Menu Functions js file                   |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |
+  +-------------------------------------------------------------------+
+  | CPG Dragonfly™ CMS                                                |
+  | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
+  | http://www.dragonflycms.com                                       |
+  | Dragonfly is released under the terms and conditions of the GNU   |
+  | GPL version 2 or any later version                                |
+  +-------------------------------------------------------------------+
+   Last modification notes:
+    $Author$
+    $Date$
+    $Rev$
+*/
+
 function MM_findObj(n, d) { //v4.01
   var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
     d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}

@@ -1,5 +1,28 @@
-/*	MOO CMS, Copyright (c) since 2005 The MOO Dev. Group. All rights reserved.
-	$Revision: 1.1 $
+/*
+  $Id$ 
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |
+  +-------------------------------------------------------------------+
+  | index.php - NexOS AJAX js file                                    |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |
+  +-------------------------------------------------------------------+
+  | MOO CMS, Copyright (c) since 2005 The MOO Dev. Group.             |
+  | All rights reserved.                                              |
+  +-------------------------------------------------------------------+
+   Last modification notes:
+    $Author$
+    $Date$
+    $Rev$
 */
 
 function Ajax()

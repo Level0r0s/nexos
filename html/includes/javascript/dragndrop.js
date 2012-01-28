@@ -1,7 +1,28 @@
-/**
-* MOO CMS
-* Copyright (c) 2005 by CPG-Nuke Dev Team, moocms.com
-* $Id: dragndrop.js,v 1.2 2010/04/17 13:12:36 djmaze Exp $
+/*
+  $Id$ 
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |
+  +-------------------------------------------------------------------+
+  | index.php - NexOS drag and drop js file                           |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |
+  +-------------------------------------------------------------------+
+  | MOO CMS                                                           |
+  | Copyright (c) 2005 by CPG-Nuke Dev Team, moocms.com               |
+  +-------------------------------------------------------------------+
+   Last modification notes:
+    $Author$
+    $Date$
+    $Rev$
 */
 
 var Drag = {

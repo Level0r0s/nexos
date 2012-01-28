@@ -1,8 +1,32 @@
-//
-// Bubblehelp infoboxes, (C) 2002 Klaus Knopper <infobox@knopper.net>
-// You can copy/modify and distribute this code under the conditions
-// of the GNU GENERAL PUBLIC LICENSE Version 2.
-//
+/*
+  $Id$ 
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |
+  +-------------------------------------------------------------------+
+  | index.php - NexOS framework js file                               |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |
+  +-------------------------------------------------------------------+
+  | Bubblehelp infoboxes                                              |  
+  | (C) 2002 Klaus Knopper <infobox@knopper.net>                      |
+  | You can copy/modify and distribute this code under the conditions |
+  | of the GNU GENERAL PUBLIC LICENSE Version 2.                      |
+  +-------------------------------------------------------------------+
+   Last modification notes:
+    $Author$
+    $Date$
+    $Rev$
+*/
+
 var IWIDTH=250  // Tip box width
 var ie5         // Are we using Internet Explorer Version 5 and up?
 var kon         // Are we using KDE Konqueror?
