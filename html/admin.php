@@ -1,11 +1,10 @@
 <?php
 /*
-  $Id$ 
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
   |      Copyright © 2009 by Myndworx Asylum                          |
   | NexOS CMS is released under the terms and conditions of the GNU   |
-  | GPL V2 or higher.                                                 |
+  | GPL V2 or higher.                                                 | 
   +-------------------------------------------------------------------+
   | admin.php - NexOS Administration backend file                     |
   | Authors:                                                          |
@@ -23,10 +22,6 @@
   | Dragonfly is released under the terms and conditions of the GNU   |
   | GPL version 2 or any later version                                |
   +-------------------------------------------------------------------+
-   Last modification notes:
-    $Author$
-    $Date$
-    $Rev$
 */
 define('ADMIN_PAGES', true);
 if (php_sapi_name() == 'cli' || empty($_SERVER['PHP_SELF'])) { die('This script cannot be accessed through the command line'); }

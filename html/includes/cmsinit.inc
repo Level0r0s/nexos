@@ -1,12 +1,11 @@
 <?php
 /*
-  $Id$ 
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
   |      Copyright © 2009 by Myndworx Asylum                          |
   | NexOS CMS is released under the terms and conditions of the GNU   |
-  | GPL V2 or higher.                                                 |
-  +-------------------------------------------------------------------+
+  | GPL V2 or higher.                                                 |  
+	+-------------------------------------------------------------------+
   | NexOS CMS PH2 Blueprint                                           |
   | This is the default blueprint for a stock NexOS installation and  |
   | the one that is used on the NexOS home website.                   |
@@ -15,20 +14,16 @@
   |  Richard R. Pufky                                                 |
   |      and the Myndworx Asylum Dev Team                             |
   | eMail: support at myndworx dot com                                |
-  | Website: http://www.nexoscms.org                                  |
+  | Website: http://www.nexoscms.org                                  |  
   +-------------------------------------------------------------------+
-  |Original Copyright below                                           |
+  |Original Copyright below                                           |  
   +-------------------------------------------------------------------+
   | CPG Dragonfly CMS                                                 |
   | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
   | http://www.dragonflycms.com                                       |
   | Dragonfly is released under the terms and conditions of the GNU   |
-  | GPL version 2 or any later version                                |
+  | GPL version 2 or any later version                                |  
   +-------------------------------------------------------------------+
-   Last modification notes:
-    $Author$
-    $Date$
-    $Rev$
 */
 # Disable DOS Attacks and any other strange behavior
 if (((empty($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] == '-') && !defined('XMLFEED')) || defined('CORE_PATH')) { exit; }
