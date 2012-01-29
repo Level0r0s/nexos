@@ -83,7 +83,7 @@ date_default_timezone_set('UTC');
 # Set default settings
 #
 
-header('X-Powered-By: Dragonfly CMS using PHP engine');
+header('X-Powered-By: The NexOS CMS website engine');
 
 # http://bugs.php.net/bug.php?id=15693
 if ($_SERVER['REQUEST_METHOD'] == 'HEAD') { exit; }
@@ -132,7 +132,7 @@ if (is_array($_POST)) { array_walk($_POST, 'Prepare_INPUT'); }
 if (is_array($_GET)) { array_walk($_GET, 'Prepare_INPUT'); }
 
 if (!file_exists(CORE_PATH.'config.php')) {
-	if (!defined('INSTALL')) { cpg_error('You must install Dragonfly first before you can use it'); }
+	if (!defined('INSTALL')) { cpg_error('You must install NexOS CMS first before you can use it'); }
 } else {
 	require_once(CORE_PATH.'classes/cpg_debugger.php'); # we define our own error handler
 	require_once(CORE_PATH.'config.php');
@@ -802,7 +802,7 @@ function cpg_error($message, $title='ERROR', $redirect=false) {
 		require_once(BASEDIR.'footer.php');
 	} else {
 		require_once(BASEDIR.'includes/nexos_page.php');
-		$errorpage = cpg_header($title);
+		$errorpage = nexos_header($title);
 		$errorpage .= "<center>$message</center>";
 		if (is_admin() || (defined('CPG_DEBUG') && CPG_DEBUG)) {
 			global $cpgdebugger, $CPG_SESS;

@@ -99,7 +99,7 @@ class sql_parent
 				cpg_error($errorpage, 'Database Error');
 			} else {
 				require_once('includes/nexos_page.php');
-				$errorpage = cpg_header('Database Error').$errorpage.cpg_footer();
+				$errorpage = nexos_header('Database Error').$errorpage.cpg_footer();
 				die($errorpage);
 			}
 		}

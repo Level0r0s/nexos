@@ -1,18 +1,28 @@
 <?php
-/*********************************************
-  CPG Dragonfly™ CMS
-  ********************************************
-  Copyright © 2004 - 2007 by CPG-Nuke Dev Team
-  http://dragonflycms.org
-
-  Dragonfly is released under the terms and conditions
-  of the GNU GPL version 2 or any later version
-
-  $Source: /cvs/html/install/step2.php,v $
-  $Revision: 10.3 $
-  $Author: phoenix $
-  $Date: 2010/11/13 07:16:30 $
-**********************************************/
+/*
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |  
+  +-------------------------------------------------------------------+
+  | step2.php - NexOS installation step 2 file                        |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |  
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |  
+  +-------------------------------------------------------------------+
+  | CPG Dragonfly™ CMS                                                |
+  | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
+  | http://www.dragonflycms.com                                       |
+  | Dragonfly is released under the terms and conditions of the GNU   |
+  | GPL version 2 or any later version                                |  
+  +-------------------------------------------------------------------+
+*/
 if (!defined('INSTALL')) { exit; }
 
 $connected = false;

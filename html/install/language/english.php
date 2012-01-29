@@ -1,21 +1,31 @@
 <?php
-/*********************************************
-  CPG Dragonfly™ CMS
-  ********************************************
-  Copyright © 2004 - 2005 by CPG-Nuke Dev Team
-  http://www.dragonflycms.com
-
-  Dragonfly is released under the terms and conditions
-  of the GNU GPL version 2 or any later version
-
-  $Source: /cvs/html/install/language/english.php,v $
-  $Revision: 10.1 $
-  $Author: djmaze $
-  $Date: 2010/11/11 17:31:44 $
-**********************************************/
+/*
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |
+  +-------------------------------------------------------------------+
+  | english.php - NexOS english language file                         |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |
+  +-------------------------------------------------------------------+
+  | CPG Dragonfly™ CMS                                                |
+  | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
+  | http://www.dragonflycms.com                                       |
+  | Dragonfly is released under the terms and conditions of the GNU   |
+  | GPL version 2 or any later version                                |
+  +-------------------------------------------------------------------+
+*/
 if (!defined('INSTALL')) { exit; }
 
-$instlang['installer'] = 'Installer';
+$instlang['installer'] = 'NexOS CMS Installer';
 $instlang['s_progress'] = 'Install Progress';
 $instlang['s_license'] = 'License';
 $instlang['s_server'] = 'Check server';
@@ -23,21 +33,20 @@ $instlang['s_setconfig'] = 'Set config.php';
 $instlang['s_builddb'] = 'Build database';
 $instlang['s_gather'] = 'Gather important info';
 $instlang['s_create'] = 'Create super admin account';
-$instlang['welcome'] = 'Welcome to Dragonfly!';
-$instlang['info'] = 'This installation will guide you to setup Dragonfly on your website within minutes.<br />The installer will build the necessary database and first user or will upgrade your already installed CPG or PHP-Nuke.';
+$instlang['welcome'] = 'Welcome to NexOS CMS!';
+$instlang['info'] = 'This installation will guide you to setup NexOS on your website within minutes.<br />The installer will build the necessary database and first user or will upgrade your already installed NexOS CMS.';
 $instlang['click'] = 'Click "I Agree" if you accept the following license:';
-//$instlang['license'] = 'The modifications and fixes made by the CPG-Nuke Dev Team may not be used in any Nuke version/plan or website that requires payment, registration or compensation for installation, support or download of GPL licensed software without compensation agreed to by the CPG-Nuke Dev Team who undertook this considerable, consequential, and distinguished rewriting.<br /><b>That means you can\'t sell our code as part of any commercial version.</b>';
-$instlang['license_edited'] = 'Your license has been edited. Please contact the Development Team at dragonflycms.com immediately. Thank You.';
-$instlang['no_zlib'] = 'Your server does not support Zlib Compression. Thus you cannot read our license from this page. Please consult GPL.txt found in your CPG-Nuke distribution and click "I Agree" below';
+$instlang['license_edited'] = 'Your license has been edited. Please contact the Development Team at http://www.nexoscms.org immediately. Thank You.';
+$instlang['no_zlib'] = 'Your server does not support Zlib Compression and you are unable read our license from this page. Please consult GPL.txt found in your NexOS distribution and click "I Agree" below';
 $instlang['agree'] = 'I Agree';
 $instlang['next'] = 'Next';
 
-$instlang['s1_good'] = 'We\'re glad you made the decision to use Dragonfly';
-$instlang['s1_already'] = 'You already have '.((CPG_NUKE < 9) ? 'CPG-Nuke' : 'Dragonfly').' <b>'.CPG_NUKE.'</b> installed.';
+$instlang['s1_good'] = 'We\'re glad you made the decision to use NexOS CMS';
+$instlang['s1_already'] = 'You already have '.((CPG_NUKE < 9) ? 'NexOS CMS' : 'NexOS CMS').' <b>'.NEXOS_VERSION.'</b> installed.';
 $instlang['s1_splatt'] = '<b>Warning</b> The old Splatt forum database will be deleted! If you still want to try to use it, then keep the tables.<br />Keep the Splatt Forums database? <select name="splatt" class="formfield"><option value="0">No</option><option value="1">Yes</option></select>';
 $instlang['s1_new'] = 'The installer couldn\'t find a previous version, so it will install a new version for you';
-$instlang['s1_upgrade'] = 'Your current version is <b>%s</b>, and it will be upgraded/converted to Dragonfly '.CPG_NUKE.'<br /><b>Be sure you have a backup of your database.</b>';
-$instlang['s1_unknown'] = 'The installer couldn\'t detect which version of CPG-Nuke/PHP-Nuke you are using.<br />You can\'t continue the installation.<br />Please contact the CPG Dev Team';
+$instlang['s1_upgrade'] = 'Your current version is <b>%s</b>, and it will be upgraded/converted to NexOS CMS  '.CPG_NUKE.'<br /><b>Be sure you have a backup of your database.</b>';
+$instlang['s1_unknown'] = 'The installer couldn\'t detect which version of NexOS CMS you are using.<br />You can\'t continue the installation.<br />Please contact the CPG Dev Team';
 $instlang['s1_database'] = 'This is a summary of what we setup in config.php for the database connection';
 
 $instlang['s1_dbconfig'] = 'Database Configuration';
@@ -86,7 +95,7 @@ $instlang['s1_config2'] = 'Stores core files needed to run the CMS';
 
 $instlang['s1_correct'] = 'If the above information is correct then let\'s start building the database';
 $instlang['s1_fixerrors'] = 'Please fix the errors mentioned above first';
-$instlang['s1_fatalerror'] = 'Please contact the CPG-Nuke Dev Team about the error<br />You cannot continue with the installation';
+$instlang['s1_fatalerror'] = 'Please contact the NexOS Dev Team about the error<br />You cannot continue with the installation';
 $instlang['s1_build_db'] = 'Let\'s build the database';
 $instlang['s1_necessary_info'] = 'Necessary Info';
 $instlang['s1_php'] = '<p style="color:#FF0000; font-style:bold">We can\'t guarantee that Dragonfly will run properly with your old PHP version<br />Ask your server administrator about upgrading to PHP 4.3.10 or 5.0.3 or higher</p>';
