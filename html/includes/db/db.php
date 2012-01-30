@@ -1,28 +1,23 @@
 <?php
 /*
-  $Id$ 
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
   |      Copyright © 2009 by Myndworx Asylum                          |
   | NexOS CMS is released under the terms and conditions of the GNU   |
-  | GPL V2 or higher.                                                 |
-  +-------------------------------------------------------------------+
+  | GPL V2 or higher.                                                 |  +-------------------------------------------------------------------+
   | db.php - NexOS main database layer                                |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
   |      and the Myndworx Asylum Dev Team                             |
   | eMail: support at myndworx dot com                                |
-  | Website: http://www.nexoscms.org                                  |
-  +-------------------------------------------------------------------+
-  |Original Copyright below                                           |
-  +-------------------------------------------------------------------+
+  | Website: http://www.nexoscms.org                                  |  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |  +-------------------------------------------------------------------+
   | CPG Dragonfly™ CMS                                                |
   | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
   | http://www.dragonflycms.com                                       |
   | Dragonfly is released under the terms and conditions of the GNU   |
-  | GPL version 2 or any later version                                |
-  +-------------------------------------------------------------------+
+  | GPL version 2 or any later version                                |  +-------------------------------------------------------------------+
    Last modification notes:
     $Author$
     $Date$
@@ -104,7 +99,7 @@ class sql_parent
 				cpg_error($errorpage, 'Database Error');
 			} else {
 				require_once('includes/nexos_page.php');
-				$errorpage = cpg_header('Database Error').$errorpage.cpg_footer();
+				$errorpage = nexos_header('Database Error').$errorpage.cpg_footer();
 				die($errorpage);
 			}
 		}

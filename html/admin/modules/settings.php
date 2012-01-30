@@ -1,11 +1,10 @@
 <?php
 /*
-  $Id$ 
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
   |      Copyright © 2009 by Myndworx Asylum                          |
   | NexOS CMS is released under the terms and conditions of the GNU   |
-  | GPL V2 or higher.                                                 |
+  | GPL V2 or higher.                                                 |  
   +-------------------------------------------------------------------+
   | settings.php - NexOS Administration Backend file                  |
   | Authors:                                                          |
@@ -13,20 +12,16 @@
   |  Richard R. Pufky                                                 |
   |      and the Myndworx Asylum Dev Team                             |
   | eMail: support at myndworx dot com                                |
-  | Website: http://www.nexoscms.org                                  |
+  | Website: http://www.nexoscms.org                                  |  
   +-------------------------------------------------------------------+
-  |Original Copyright below                                           |
+  |Original Copyright below                                           |  
   +-------------------------------------------------------------------+
   | CPG Dragonfly™ CMS                                                |
   | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
   | http://www.dragonflycms.com                                       |
   | Dragonfly is released under the terms and conditions of the GNU   |
-  | GPL version 2 or any later version                                |
+  | GPL version 2 or any later version                                |  
   +-------------------------------------------------------------------+
-   Last modification notes:
-    $Author$
-    $Date$
-    $Rev$
 */
 
 if (!defined('ADMIN_PAGES')) { exit; }

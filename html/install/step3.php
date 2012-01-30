@@ -1,18 +1,28 @@
 <?php
-/*********************************************
-  CPG Dragonfly™ CMS
-  ********************************************
-  Copyright © 2004 - 2007 by CPG-Nuke Dev Team
-  http://dragonflycms.org
-
-  Dragonfly is released under the terms and conditions
-  of the GNU GPL version 2 or any later version
-
-  $Source: /cvs/html/install/step3.php,v $
-  $Revision: 10.5 $
-  $Author: djmaze $
-  $Date: 2010/11/11 22:26:47 $
-**********************************************/
+/*
+  +-------------------------------------------------------------------+
+  | NexOS CMS by Myndworx Asylum Software                             |
+  |      Copyright © 2009 by Myndworx Asylum                          |
+  | NexOS CMS is released under the terms and conditions of the GNU   |
+  | GPL V2 or higher.                                                 |  
+  +-------------------------------------------------------------------+
+  | step3.php - NexOS installation step 3 file                        |
+  | Authors:                                                          |
+  |  Steven Sheeley                                                   |
+  |  Richard R. Pufky                                                 |
+  |      and the Myndworx Asylum Dev Team                             |
+  | eMail: support at myndworx dot com                                |
+  | Website: http://www.nexoscms.org                                  |  
+  +-------------------------------------------------------------------+
+  |Original Copyright below                                           |  
+  +-------------------------------------------------------------------+
+  | CPG Dragonfly™ CMS                                                |
+  | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
+  | http://www.dragonflycms.com                                       |
+  | Dragonfly is released under the terms and conditions of the GNU   |
+  | GPL version 2 or any later version                                |  
+  +-------------------------------------------------------------------+
+*/
 if (!defined('INSTALL')) { exit; }
 
 inst_header();

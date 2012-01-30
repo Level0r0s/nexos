@@ -55,7 +55,7 @@ class NexOS_Doctrine implements \Doctrine\DBAL\Logging\SQLLogger {
 	}
 }
 
-//if (!defined('INSTALL')) {
+if (!defined('INSTALL')) {
 	$conn_start_time = get_microtime();
 	$connectionParams = array(
 		'dbname' => $dbname,
@@ -71,4 +71,4 @@ class NexOS_Doctrine implements \Doctrine\DBAL\Logging\SQLLogger {
 	$config->setSQLLogger($sql_logger);
 	$dbal = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
 	$dbal->getConfiguration()->getSQLLogger()->time += get_microtime() - $conn_start_time;
-//}
+}
