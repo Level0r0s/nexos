@@ -1,27 +1,32 @@
 <?php
 /*
+  $Id$ 
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
-  |      Copyright © 2009 by Myndworx Asylum                          |
+  |      Copyright © 2009 - 20013 by Myndworx Asylum                  |
   | NexOS CMS is released under the terms and conditions of the GNU   |
-  | GPL V2 or higher.                                                 | 
+  | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | admin.php - NexOS Administration backend file                     |
+  | admin.php - NexOS adminnistrative backend file                    |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
   |      and the Myndworx Asylum Dev Team                             |
   | eMail: support at myndworx dot com                                |
-  | Website: http://www.nexoscms.org                                  |
+  | Website: http://www.nexoscms.org and http://www.myndworx.com      |
   +-------------------------------------------------------------------+
   |Original Copyright below                                           |
   +-------------------------------------------------------------------+
-  | CPG Dragonfly CMS                                                 |
+  | CPG Dragonfly™ CMS                                                |
   | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
   | http://www.dragonflycms.com                                       |
   | Dragonfly is released under the terms and conditions of the GNU   |
   | GPL version 2 or any later version                                |
   +-------------------------------------------------------------------+
+   Last modification notes:
+    $Author$
+    $Date$
+    $Rev$
 */
 define('ADMIN_PAGES', true);
 if (php_sapi_name() == 'cli' || empty($_SERVER['PHP_SELF'])) { die('This script cannot be accessed through the command line'); }
