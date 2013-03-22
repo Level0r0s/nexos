@@ -1,18 +1,17 @@
 /*
-  $Id$ 
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
-  |      Copyright © 2009 by Myndworx Asylum                          |
+  |      Copyright © 2009 - 20013 by Myndworx Asylum                  |
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | tree.js - NexOS tree view js file                                 |
+  | block-Sample.php - Example NexOS block file                       |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
   |      and the Myndworx Asylum Dev Team                             |
   | eMail: support at myndworx dot com                                |
-  | Website: http://www.nexoscms.org                                  |
+  | Website: http://www.nexoscms.org and http://www.myndworx.com      |
   +-------------------------------------------------------------------+
   |Original Copyright below                                           |
   +-------------------------------------------------------------------+
@@ -22,13 +21,7 @@
   | Dragonfly is released under the terms and conditions of the GNU   |
   | GPL version 2 or any later version                                |
   +-------------------------------------------------------------------+
-   Last modification notes:
-    $Author$
-    $Date$
-    $Rev$
 */
-
-
 var groupstree = new TableTree();
 groupstree.min_id = 4;
 groupstree.onAdd = function(tr,id) {

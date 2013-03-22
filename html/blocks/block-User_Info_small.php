@@ -12,7 +12,7 @@
   |  Richard R. Pufky                                                 |
   |      and the Myndworx Asylum Dev Team                             |
   | eMail: support at myndworx dot com                                |
-  | Website: http://www.nexoscms.org                                  |  
+  | Website: http://www.nexoscms.org and http://www.myndworx.com      |
   +-------------------------------------------------------------------+
   |Original Copyright below                                           |  
   +-------------------------------------------------------------------+

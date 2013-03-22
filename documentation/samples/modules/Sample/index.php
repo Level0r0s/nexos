@@ -1,6 +1,5 @@
 <?php
 /*
-  $Id$ 
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
   |      Copyright © 2009 - 20013 by Myndworx Asylum                  |
@@ -23,10 +22,6 @@
   | Dragonfly is released under the terms and conditions of the GNU   |
   | GPL version 2 or any later version                                |
   +-------------------------------------------------------------------+
-   Last modification notes:
-    $Author$
-    $Date$
-    $Rev$
 */
 
 // protect against direct access

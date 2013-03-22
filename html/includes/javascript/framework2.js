@@ -1,30 +1,27 @@
 /*
-  $Id$ 
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
-  |      Copyright © 2009 by Myndworx Asylum                          |
+  |      Copyright © 2009 - 20013 by Myndworx Asylum                  |
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | index.php - NexOS framework2 js file                              |
+  | block-Sample.php - Example NexOS block file                       |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
   |      and the Myndworx Asylum Dev Team                             |
   | eMail: support at myndworx dot com                                |
-  | Website: http://www.nexoscms.org                                  |
+  | Website: http://www.nexoscms.org and http://www.myndworx.com      |
   +-------------------------------------------------------------------+
   |Original Copyright below                                           |
   +-------------------------------------------------------------------+
-  | MOO CMS                                                           |
-  | Copyright (c) 2005 by CPG-Nuke Dev Team, moocms.com               |
+  | CPG Dragonfly™ CMS                                                |
+  | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
+  | http://www.dragonflycms.com                                       |
+  | Dragonfly is released under the terms and conditions of the GNU   |
+  | GPL version 2 or any later version                                |
   +-------------------------------------------------------------------+
-   Last modification notes:
-    $Author$
-    $Date$
-    $Rev$
 */
-
 if(window.console&&window.console.warn)window.console.warn("Please use the new poodle.js instead of framework2.js");
 
 var swfobject = null, $ga_id = null;
