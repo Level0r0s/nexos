@@ -6,7 +6,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | step1.php - NexOS installation step 1 file                        |
+  | step1.php - NexOS installation step 1 - 
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
@@ -65,9 +65,9 @@ $ini['ini_set'] = (false === stripos(ini_get('disable_functions'), 'ini_set'));
 $ini['LEO'] = (false !== stripos($_SERVER['SERVER_SOFTWARE'], 'Apache'));
 
 $checks = array(
-	'<img src="install/images/red.gif" alt="critical" title="critical" />',
-	'<img src="install/images/orange.gif" alt="failed" title="failed" />',
-	'<img src="install/images/green.gif" alt="ok" title="ok" />'
+	'<img src="images/red.gif" alt="critical" title="critical" />',
+	'<img src="images/orange.gif" alt="failed" title="failed" />',
+	'<img src="images/green.gif" alt="ok" title="ok" />'
 );
 
 inst_header();

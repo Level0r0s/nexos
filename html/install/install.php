@@ -6,7 +6,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | Install.php - NexOS installation file                             |
+  | Install.php - NexOS installation entry point and license display  |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
@@ -97,18 +97,18 @@ function get_db_vars($db) {
 function inst_header() {
 	global $images, $instlang, $go, $currentlang;
 	echo nexos_header($instlang['installer']).'
-    <script language="JavaScript" type="text/javascript" src="includes/javascript/infobox.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../includes/javascript/infobox.js"></script>
     <div id="infodiv" style="position:absolute; visibility:hidden; z-index:20; top:0px; left:0px;"></div><br />
     <form action="'.basename(__FILE__).'" method="post" accept-charset="utf-8">
     <table width="100%" height="350">
     <tr><td width="200" valign="top">
     <b>'.$instlang['s_progress'].'</b><br />
-    <img src="images/'.$images[0].'.gif" alt="" />'.$instlang['s_license'].'<br />
-    <img src="images/'.$images[1].'.gif" alt="" />'.$instlang['s_server'].'<br />
-    <img src="images/'.$images[2].'.gif" alt="" />'.$instlang['s_setconfig'].'<br />
-    <img src="images/'.$images[3].'.gif" alt="" />'.$instlang['s_builddb'].'<br />
-    <img src="images/'.$images[4].'.gif" alt="" />'.$instlang['s_gather'].'<br />
-    <img src="images/'.$images[5].'.gif" alt="" />'.$instlang['s_create'].'<br />';
+    <img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_license'].'<br />
+    <img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_server'].'<br />
+    <img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_setconfig'].'<br />
+    <img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_builddb'].'<br />
+    <img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_gather'].'<br />
+    <img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_create'].'<br />';
         if (!$go) {
             echo '<br />'._SELECTLANGUAGE.'<br />
     <select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
@@ -143,7 +143,7 @@ function footer() {
 }
 
 function inst_help($item) {
-	return '<img src="install/images/help.gif" alt="" onmouseover="tip(\''.$item.'\')" onmouseout="untip()" style="cursor: help;" />';
+	return '<img src="images/help.gif" alt="" onmouseover="tip(\''.$item.'\')" onmouseout="untip()" style="cursor: help;" />';
 }
 
 if (!$go) {
@@ -153,7 +153,7 @@ if (!$go) {
 	echo '<p>';
 	if (function_exists('readgzfile')) {
 		echo '<textarea name="textfield" rows="15" cols="80">';
-		readgzfile('install/GPL.gz');
+		readgzfile('GPL.gz');
 		echo '</textarea>';
 	} else {
 		echo '<h2 align="center">'.$instlang['no_zlib'].'</h2>';

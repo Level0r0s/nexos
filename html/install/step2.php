@@ -58,11 +58,11 @@ if (file_exists($config_file)) {
 		'charset' => NULL,
 		'host' => 'localhost',
 		'port' => null,
-		'database' => 'dragonfly',
+		'database' => 'nexos',
 		'username' => '',
 		'password' => '',
-		'prefix' => 'cms',
-		'user_prefix' => 'cms'
+		'prefix' => 'nxscms',
+		'user_prefix' => 'nxscms'
 	);
 }
 if ($go_connect) {
@@ -150,8 +150,7 @@ if ($connected) {
 		<input type="submit" name="download" value="Download config.php" class="formfield" />
 		<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
 	}
-}
-else {
+} else {
 	if (defined('NO_DB')) { echo '<h1>'.NO_DB.'</h1>'; }
 	echo '<script language="JavaScript" type="text/javascript">
 <!--'."
