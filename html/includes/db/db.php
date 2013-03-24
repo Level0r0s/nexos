@@ -76,7 +76,7 @@ class sql_parent
 		$the_error .= "\n\nIn: ".$this->file." on line: ".$this->line;
 
 		$the_error = 'On '.(function_exists('get_uri') ? get_uri() : $_SERVER['REQUEST_URI'])."\n".$the_error;
-		$show = ($no_connection || defined('INSTALL')) ? 1 : (is_admin() || CPG_DEBUG);
+		$show = ($no_connection || defined('INSTALL')) ? 1 : (is_admin() || NEXOS_DEBUG);
 		if ($show) {
 			if (!defined('INSTALL') && is_object($cpgdebugger)) {
 				trigger_error($the_error, E_USER_WARNING);
@@ -92,7 +92,7 @@ class sql_parent
 		}
 		if (!$bypass_error) {
 			$errorpage = '<b>A database error has occurred<br /><br />';
-			if (CPG_DEBUG) $errorpage .= "</b><textarea cols='60' rows='6'>$the_error</textarea>";
+			if (NEXOS_DEBUG) $errorpage .= "</b><textarea cols='60' rows='6'>$the_error</textarea>";
 			else $errorpage .= 'The webmaster has been notified of the error</b>';
 			//header("HTTP/1.0 500 Internal Server Error");
 			if (function_exists('cpg_error')) {
@@ -150,7 +150,7 @@ class sql_parent
 			$unbufferd = (func_num_args() == 5) ? func_get_args(4) : false;
 		}
 		$error = $this->query($query, $bypass_error, $unbufferd);
-echo 'DF9 '.DB_TYPE." Query: {$this->num_queries}: $query<br/>";
+		echo 'DF9 '.DB_TYPE." Query: {$this->num_queries}: $query<br/>";
 		$this->num_queries++;
 		$this->time += (get_microtime()-$stime);
 		$failed = false;

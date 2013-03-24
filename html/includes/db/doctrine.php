@@ -6,7 +6,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | block-Sample.php - Example NexOS block file                       |
+  | doctrine.php - NexOS database class                               |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
@@ -43,7 +43,7 @@ class NexOS_Doctrine implements \Doctrine\DBAL\Logging\SQLLogger {
 		global $MAIN_CFG;
 		$query_time = get_microtime() - $this->query_start_time;
 		$this->time += $query_time;
-		if (CPG_DEBUG || (is_admin() && !empty($MAIN_CFG['debug']['database']))) {
+		if (NEXOS_DEBUG || (is_admin() && !empty($MAIN_CFG['debug']['database']))) {
 			// Increment $this->num_queries after storing the execution time
 			$this->query_list[$this->file][$this->num_queries]['failed'] = $failed;
 			$this->query_list[$this->file][$this->num_queries++]['time'] = $query_time;
@@ -53,7 +53,7 @@ class NexOS_Doctrine implements \Doctrine\DBAL\Logging\SQLLogger {
 	public function log($sql, array $params = null, array $types = null) {
 		global $MAIN_CFG;
 		$this->query_start_time = get_microtime();
-		if (CPG_DEBUG || (is_admin() && !empty($MAIN_CFG['debug']['database']))) {
+		if (NEXOS_DEBUG || (is_admin() && !empty($MAIN_CFG['debug']['database']))) {
 			$failed = false;
 			$this->_backtrace();
 			$new_log['line'] = $this->line;

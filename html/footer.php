@@ -55,8 +55,8 @@ function footmsg() {
 	<a href="'.URL::index('credits').'">Code Credits</a>,
 	<a href="'.URL::index('privacy_policy').'">Privacy Policy</a></div>';
 
-	if (is_admin() || CPG_DEBUG) {
-		$GLOBALS['cpgtpl']->assign_var('S_DEBUG_SQL', (CPG_DEBUG || $GLOBALS['MAIN_CFG']['debug']['database'] ? $GLOBALS['cpgdebugger']->get_report('sql') : false));
+	if (is_admin() || NEXOS_DEBUG) {
+		$GLOBALS['cpgtpl']->assign_var('S_DEBUG_SQL', (NEXOS_DEBUG || $GLOBALS['MAIN_CFG']['debug']['database'] ? $GLOBALS['cpgdebugger']->get_report('sql') : false));
 		$GLOBALS['cpgtpl']->assign_var('S_DEBUG_PHP', $GLOBALS['cpgdebugger']->get_report('php'));
 	}
 	return $foot1;

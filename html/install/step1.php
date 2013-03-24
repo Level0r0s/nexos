@@ -6,7 +6,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | step1.php - NexOS installation step 1 - 
+  | step1.php - NexOS installation step 1 - Server check              |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |

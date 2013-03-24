@@ -6,7 +6,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 | 
   +-------------------------------------------------------------------+
-  | step2.php - NexOS installation step 2 file                        |
+  | step2.php - NexOS installation step 2 - Setup configuration file  |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
@@ -68,16 +68,23 @@ if (file_exists($config_file)) {
 if ($go_connect) {
 	if (!isset($_POST['download'])) { echo '<h2>'.$instlang['s1_trying_to_connect'].'</h2>'; }
 	$db = new Poodle_SQL_Dragonfly($connect['host'], $connect['username'], $connect['password'], $connect['database']);
-
+	echo "Database connection string created<br /><br />";
+	echo "Database host: ".$connect['host']."<br /><br />";
+	echo "Database username: ".$connect['username']."<br /><br />";
+	echo "Database password: ".$connect['password']."<br /><br />";
+	echo "Database name: ".$connect['database']."<br /><br />";
 	$connected = true;
+	echo "Database connection variable set<br /><br />";
 	if ('PostgreSQL' == $db->engine && $connect['database'] == 'public') {
 		inst_header();
 		echo '<br /><br />'.$instlang['s1_wrong_database_name'];
 		footer();
 		exit;
 	}
-
+	echo "Entering DB Connection test<br /><br />";
 	$server = get_db_vars($db);
+	echo "Database conenction test complete.<br /><br />";
+	echo "Database Variables:  ".$server."<br /><br />";
 	if ('MySQL' == $db->engine && $server['unicode'] && ($server['character_set_database'] != 'utf8' || $server['collation_database'] != 'utf8_general_ci')) {
 		$db->query("ALTER DATABASE {$connect['database']} DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci");
 	}
@@ -100,11 +107,7 @@ if ($go_connect) {
 if ($connected) {
 	$server = get_db_vars($db);
 	if ('MySQL' == $db->engine && $server['unicode']) {
-		if ($server['character_set_client'] != 'utf8' ||
-		    $server['character_set_connection'] != 'utf8' ||
-		    $server['character_set_results'] != 'utf8' ||
-		    $server['collation_connection'] != 'utf8_general_ci')
-		{
+		if ($server['character_set_client'] != 'utf8' || $server['character_set_connection'] != 'utf8' || $server['character_set_results'] != 'utf8' || $server['collation_connection'] != 'utf8_general_ci') {
 			$connect['charset'] = 'utf8';
 		}
 	}

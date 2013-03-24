@@ -44,7 +44,7 @@ if (isset($_POST['save'])) {
 		fclose($fp);
 		$config = preg_replace('#\$adminindex[\s]+=[\s]+\'.*?\'#s', '$adminindex = \''.$_POST['config_admin'].'\'', $config);
 		$config = preg_replace('#\$mainindex[\s]+=[\s]+\'.*?\'#s', '$mainindex = \''.(($_POST['config_index']=='[none]')?'':$_POST['config_index']).'\'', $config);
-		$config = preg_replace('#define\(\'CPG_DEBUG\', [a-z]+\)#s', 'define(\'CPG_DEBUG\', '.($_POST['config_debug'] ? 'true' : 'false').')', $config);
+		$config = preg_replace('#define\(\'NEXOS_DEBUG\', [a-z]+\)#s', 'define(\'NEXOS_DEBUG\', '.($_POST['config_debug'] ? 'true' : 'false').')', $config);
 		$config = preg_replace('#\$sitekey = \'.*?\';#s', '', $config);
 		$written = false;
 		if ($fp = fopen(CORE_PATH.'config.php', 'wb')) {
@@ -645,7 +645,7 @@ else {
 				'L_TITLE' => 'Full debugging',
 				'L_TOOLTIP' => '',
 				'B_INPUT' => false,
-				'S_TYPE' => yesno_option('config_debug', CPG_DEBUG)
+				'S_TYPE' => yesno_option('config_debug', NEXOS_DEBUG)
 			),
 			array(
 				'L_TITLE' => 'Index file</span><br /><i>If you change this into something else then index.php or [none]<br/>then you must modify LEO in .htaccess</i>',

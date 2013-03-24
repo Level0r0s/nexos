@@ -220,7 +220,7 @@ class cpg_template extends tpl_encode
 		$filename = $this->cachepath.$filename.'.inc';
 
 		// Don't recompile page if the original template is older then the compiled cache
-		if (!CPG_DEBUG && file_exists($filename) && filemtime($filename) > filemtime($this->files[$handle])) {
+		if (!NEXOS_DEBUG && file_exists($filename) && filemtime($filename) > filemtime($this->files[$handle])) {
 			return $filename;
 		}
 

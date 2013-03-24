@@ -88,7 +88,7 @@ define(\'CPGN_DEMO\', false);
 #
 # default: false
 # --------------------------------------------------------
-define(\'CPG_DEBUG\', false);
+define(\'NEXOS_DEBUG\', false);
 
 # --- WARNING --------------------------
 # Do not touch anything below this point

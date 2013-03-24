@@ -16,17 +16,17 @@
   +-------------------------------------------------------------------+
   |Original Copyright below                                           |
   +-------------------------------------------------------------------+
-  | CPG Dragonfly™ CMS                                                |
+  | CPG NexOS™ CMS                                                |
   | Copyright © 2004 - 2005 by CPG-Nuke Dev Team                      |
-  | http://www.dragonflycms.com                                       |
-  | Dragonfly is released under the terms and conditions of the GNU   |
+  | http://www.NexOScms.com                                       |
+  | NexOS is released under the terms and conditions of the GNU   |
   | GPL version 2 or any later version                                |
   +-------------------------------------------------------------------+
 */
 if (!defined('INSTALL')) { exit; }
 
 $instlang['installer'] = 'NexOS CMS Installer';
-$instlang['s_progress'] = 'Install Progress';
+$instlang['s_progress'] = 'Installation Progress';
 $instlang['s_license'] = 'License';
 $instlang['s_server'] = 'Check server';
 $instlang['s_setconfig'] = 'Set config.php';
@@ -98,11 +98,11 @@ $instlang['s1_fixerrors'] = 'Please fix the errors mentioned above first';
 $instlang['s1_fatalerror'] = 'Please contact the NexOS Dev Team about the error<br />You cannot continue with the installation';
 $instlang['s1_build_db'] = 'Let\'s build the database';
 $instlang['s1_necessary_info'] = 'Necessary Info';
-$instlang['s1_php'] = '<p style="color:#FF0000; font-style:bold">We can\'t guarantee that Dragonfly will run properly with your old PHP version<br />Ask your server administrator about upgrading to PHP 4.3.10 or 5.0.3 or higher</p>';
+$instlang['s1_php'] = '<p style="color:#FF0000; font-style:bold">We can\'t guarantee that NexOS will run properly with your old PHP version<br />Ask your server administrator about upgrading to PHP 4.3.10 or 5.0.3 or higher</p>';
 $instlang['s1_mysql'] = '<p style="color: #FF0000; font-style: bold;">We\'re sorry, but only MySQL 4 or higher is supported<br />Ask your server administrator about upgrading to MySQL 4 or higher</p>Your current version is: %s';
 $instlang['s1_donenew'] = 'The database has been properly installed, now let\'s setup some necessary information!';
 $instlang['s1_optimiz'] = 'Database optimization. The execution of this step might take a while for a big database.';
-$instlang['s1_doneup'] = 'The database has been properly updated, have fun with your incredible Dragonfly!<br /><h2>Remove install.php and the install directory right now!</h2>';
+$instlang['s1_doneup'] = 'The database has been properly updated, have fun with your incredible NexOS!<br /><h2>Remove install.php and the install directory right now!</h2>';
 $instlang['s1_trying_to_connect'] = 'Trying to connect to SQL server';
 $instlang['s1_wrong_database_name'] = 'You need to choose a different database name.<br />Sorry for the inconvenience but you cannot continue with the installation with "<b>public</b>" as database name.';
 $instlang['s1_fail_create_database'] = 'Failed to create the database %s';
@@ -116,12 +116,12 @@ $instlang['s2_account'] = 'The necessary info has been added. Let\'s setup your 
 $instlang['s2_create'] = 'Create Account';
 
 $instlang['s2_domain'] = 'Domain Name';
-$instlang['s2_domain2'] = 'The domain name where your Dragonfly powered website is hosted, for example <i>www.mysite.com</i>';
+$instlang['s2_domain2'] = 'The domain name where your NexOS powered website is hosted, for example <i>www.mysite.com</i>';
 $instlang['s2_path'] = 'Path';
-$instlang['s2_path2'] = 'The path where your Dragonfly powered website is hosted, for example <i>/html/</i>';
+$instlang['s2_path2'] = 'The path where your NexOS powered website is hosted, for example <i>/html/</i>';
 $instlang['s2_email2'] = 'The main email address where website information should be sent to';
 $instlang['s2_session_path'] = 'Session Save Path';
-$instlang['s2_session_path2'] = 'This is the path where data files are stored.<br />You must change this variable in order to use Dragonfly\\\'s session functions.<br />The path must be accessible by PHP like /home/myname/tmp/sessiondata and probably CHMOD 777.';
+$instlang['s2_session_path2'] = 'This is the path where data files are stored.<br />You must change this variable in order to use NexOS\\\'s session functions.<br />The path must be accessible by PHP like /home/myname/tmp/sessiondata and probably CHMOD 777.';
 $instlang['s2_cookie_domain'] = 'Cookie Domain';
 $instlang['s2_cookie_domain2'] = 'The full or top-level domain to store the cookies in, for example <i>mysite.com</i> or just leave empty';
 $instlang['s2_cookie_path'] = 'Cookie Path';
@@ -152,4 +152,4 @@ $instlang['s3_timezone'] = 'Timezone';
 $instlang['s3_timezone2'] = 'The timezone in which you want to see the time of posted messages';
 
 $instlang['s3_warning'] = 'Be sure that you use at least: 1 uppercase, 1 lowercase and 1 number in your password.';
-$instlang['s3_finnish'] = '<h2>Dragonfly '.CPG_NUKE.' has been installed successfully.<br />Remove install.php and the install directory right now!<br />Then have loads of fun!</h2><a href="'.$adminindex.'" style="font-size: 14px;">Enter my site to set everything up</a>';
+$instlang['s3_finnish'] = '<h2>NexOS '.NEXOS_VERSION.' has been installed successfully.<br />Remove install.php and the install directory right now!<br />Then have loads of fun!</h2><a href="'.$adminindex.'" style="font-size: 14px;">Enter my site to set everything up</a>';

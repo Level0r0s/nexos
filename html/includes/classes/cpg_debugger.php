@@ -25,7 +25,7 @@
   Dragonfly is released under the terms and conditions
   of the GNU GPL version 2 or any later version
 
-  $Source: /cvs/html/includes/classes/cpg_debugger.php,v $
+  $Source: /cvs/html/includes/classes/NEXOS_DEBUGger.php,v $
   $Revision: 10.0 $
   $Author: djmaze $
   $Date: 2010/11/05 01:03:15 $

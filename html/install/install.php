@@ -53,7 +53,7 @@ if (file_exists($config_file)) {
 } else {
 	$adminindex = 'admin.php';
 	$mainindex = 'index.php';
-	define('CPG_DEBUG', false);
+	define('NEXOS_DEBUG', false);
 }
 
 # Load the language
@@ -101,45 +101,56 @@ function inst_header() {
     <div id="infodiv" style="position:absolute; visibility:hidden; z-index:20; top:0px; left:0px;"></div><br />
     <form action="'.basename(__FILE__).'" method="post" accept-charset="utf-8">
     <table width="100%" height="350">
-    <tr><td width="200" valign="top">
-    <b>'.$instlang['s_progress'].'</b><br />
-    <img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_license'].'<br />
-    <img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_server'].'<br />
-    <img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_setconfig'].'<br />
-    <img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_builddb'].'<br />
-    <img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_gather'].'<br />
-    <img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom" />'.$instlang['s_create'].'<br />';
-        if (!$go) {
-            echo '<br />'._SELECTLANGUAGE.'<br />
-    <select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
-            $content = '';
-            $handle = opendir(BASEDIR.'install/language');
-            while ($file = readdir($handle)) {
-                if (preg_match('#(.*).php#', $file, $matches)) {
-                    $languageslist[] = $matches[1];
-                }
-            }
-            closedir($handle);
-            sort($languageslist);
-            for ($i=0; $i < sizeof($languageslist); $i++) {
-                if ($languageslist[$i]!='') {
-                    $content .= '<option value="'.$languageslist[$i].'"';
-                    if ($languageslist[$i]==$currentlang) $content .= ' selected="selected"';
-                    $content .= '>'.ucfirst($languageslist[$i])."</option>\n";
-                }
-            }
-            echo $content.'</select>';
-        }
-        echo '
-    </td><td valign="top" align="center">';
+		<tr>
+			<td width="200" valign="top">
+				<table>
+					<tr>
+						<td>
+							<b>'.$instlang['s_progress'].'</b><br /><br />
+							<img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_license'].'<br />
+							<img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_server'].'<br />
+							<img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_setconfig'].'<br />
+							<img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_builddb'].'<br />
+							<img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_gather'].'<br />
+							<img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_create'].'<br />';
+								if (!$go) {
+									echo '<br />'._SELECTLANGUAGE.'<br />
+									<select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
+									$content = '';
+									$handle = opendir(BASEDIR.'install/language');
+									while ($file = readdir($handle)) {
+										if (preg_match('#(.*).php#', $file, $matches)) {
+											$languageslist[] = $matches[1];
+										}
+									}
+									closedir($handle);
+									sort($languageslist);
+									for ($i=0; $i < sizeof($languageslist); $i++) {
+										if ($languageslist[$i]!='') {
+											$content .= '<option value="'.$languageslist[$i].'"';
+											if ($languageslist[$i]==$currentlang) $content .= ' selected="selected"';
+											$content .= '>'.ucfirst($languageslist[$i])."</option>\n";
+										}
+									}
+									echo $content.'</select>';
+								}
+								echo '
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td valign="top" align="center">';
         flush();
 }
 
 function footer() {
-	echo '</td></tr></table></form>
-            </td></tr></table>
-            </td></tr></table>
-            </center></body></html>';
+	echo '</td>
+		</tr>
+	</table>
+	</form>
+    </td></tr></table>
+    </td></tr></table>
+    </center></body></html>';
 }
 
 function inst_help($item) {

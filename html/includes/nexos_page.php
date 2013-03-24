@@ -25,33 +25,31 @@
 */
 
 
-function nexos_header($cpginfo) {
+function nexos_header($nexosinfo) {
 	global $BASEHREF;
-	return '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	return '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>'.
 (!defined('INSTALL') ? "\r\n<base href=\"$BASEHREF\"  />": '').'
-<title>'.$cpginfo.'</title>
+<title>'.$nexosinfo.'</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="robots" content="noindex" />
 <meta name="robots" content="noarchive" />
-<link rel="stylesheet" href="includes/css/nexos.css" type="text/css" />
-</head>
-<body><center>
+<link rel="stylesheet" href="../includes/css/nexos.css" type="text/css" />
+</head>'.
+(defined('INSTALL') ? "\r\n<body background=\"images\bg.jpg\"><center>": "\r\n<body><center>").'
 <table class="table1"><tr><td>
   <table class="head">
   <tr>
-<!--    <td width="212" align="left"><img src="images/logo.gif" border="0" alt="CPG-Nuke" title="CPG-Nuke" /></td> -->
-    <td align="center" class="header">'.$cpginfo.'</td>
-<!--    <td width="212" valign="bottom"><img align="right" height="22" width="202" src="images/shout.gif" alt="" title="" /></td> -->
+    <td width="212" align="left"><img src="images/logo.gif" border="0" alt="NexOS CMS" title="NexOS CMS" /></td>
+    <td align="center" class="header">'.$nexosinfo.'</td>
   </tr>
   </table>
   <table class="table1"><tr><td align="center">
 ';
 }
 
-function cpg_footer() {
+function nexos_footer() {
 	$goback = (isset($_SESSION['SECURITY']['flood_count']) && $_SESSION['SECURITY']['flood_count'] > 2) ? '' : (defined('_GOBACK') ? _GOBACK : '[ <a href="javascript:history.go(-1)"><strong>Go Back</strong></a> ]');
 	return '<br /><br />'.$goback.'
   </td></tr></table>

@@ -25,7 +25,7 @@
 */
 
 
-# Deprecated Functions only available thru CPG_DEBUG mode
+# Deprecated Functions only available thru NEXOS_DEBUG mode
 function themesidebox($title, $content, $bid=0) {
 	depricated_warning();
 	return false;

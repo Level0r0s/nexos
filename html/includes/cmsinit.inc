@@ -46,11 +46,11 @@ define('CAN_MOD_INI', false === stripos(ini_get('disable_functions'), 'ini_set')
 define('MAGICQUOTES', (PHPVERS < 60 ? get_magic_quotes_gpc()||ini_get('magic_quotes_sybase') : false));
 # http://bugs.php.net/bug.php?id=31849
 if (WINDOWS || !function_exists('posix_getpwuid')) {
-	define('_DRAGONLY_OWNER', 'N/A');
+	define('NEXOS_OWNER', 'N/A');
 	define('_PROCESS_UID', '0');
 	define('_PROCESS_OWNER', 'nobody');
 } else {
-	define('_DRAGONLY_OWNER',  get_current_user());
+	define('_NEXOS_OWNER',  get_current_user());
 	define('_PROCESS_UID', posix_geteuid());
 	$processUser = posix_getpwuid(_PROCESS_UID);
 	define('_PROCESS_OWNER', $processUser['name']);
@@ -85,6 +85,7 @@ date_default_timezone_set('UTC');
 
 header('X-Powered-By: The NexOS CMS website engine');
 
+# Is this still valid?  The bug appears to be open still but it's from 2002
 # http://bugs.php.net/bug.php?id=15693
 if ($_SERVER['REQUEST_METHOD'] == 'HEAD') { exit; }
 
@@ -134,7 +135,7 @@ if (is_array($_GET)) { array_walk($_GET, 'Prepare_INPUT'); }
 if (!file_exists(CORE_PATH.'config.php')) {
 	if (!defined('INSTALL')) { cpg_error('You must install NexOS CMS first before you can use it'); }
 } else {
-	require_once(CORE_PATH.'classes/cpg_debugger.php'); # we define our own error handler
+	require_once(CORE_PATH.'classes/NEXOS_DEBUGger.php'); # we define our own error handler
 	require_once(CORE_PATH.'config.php');
 }
 
@@ -221,7 +222,7 @@ if (version_compare($MAIN_CFG['global']['Version_Num'], CPG_NUKE, '<')) {
 $cpgdebugger->error_level = $MAIN_CFG['debug']['error_level'];
 $cpgdebugger->log_level = 0; /* $cpgdebugger->log_level = $MAIN_CFG['debug']['log_level']; */
 if (CAN_MOD_INI) ini_set('sendmail_from', $MAIN_CFG['global']['adminmail']);
-if (CPG_DEBUG) { trigger_error('sendmail_from: '.ini_get('sendmail_from'),E_USER_NOTICE); }
+if (NEXOS_DEBUG) { trigger_error('sendmail_from: '.ini_get('sendmail_from'),E_USER_NOTICE); }
 if (preg_match('#^(localhost|127.0.0.1|192.168|10.|172.(1[6-9]|2[0-9]|3[0-1]).)#', $_SERVER['HTTP_HOST'])) $MAIN_CFG['cookie']['domain'] = NULL;
 else if ($MAIN_CFG['cookie']['server']) {
 	$MAIN_CFG['cookie']['domain'] = $MAIN_CFG['server']['domain'] = str_replace('www.', '', $_SERVER['SERVER_NAME']);
@@ -686,7 +687,7 @@ function check_words(&$Message) {
 }
 
 # Deprecated Functions
-if (CPG_DEBUG) { include(CORE_PATH.'removed.php'); }
+if (NEXOS_DEBUG) { include(CORE_PATH.'removed.php'); }
 function gmtime() {
 	$backtrace = debug_backtrace();
 	trigger_error("DEPRECATED call to <a href=\"http://dragonflycms.org/gmtime\">gmtime</a>() by {$backtrace[0]['file']} on line {$backtrace[0]['line']}.", E_USER_WARNING);
@@ -804,7 +805,7 @@ function cpg_error($message, $title='ERROR', $redirect=false) {
 		require_once(BASEDIR.'includes/nexos_page.php');
 		$errorpage = nexos_header($title);
 		$errorpage .= "<center>$message</center>";
-		if (is_admin() || (defined('CPG_DEBUG') && CPG_DEBUG)) {
+		if (is_admin() || (defined('NEXOS_DEBUG') && NEXOS_DEBUG)) {
 			global $cpgdebugger, $CPG_SESS;
 			$errorpage .= '<div style="text-align:left"';
 			if (is_object($cpgdebugger)) {
