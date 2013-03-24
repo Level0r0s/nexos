@@ -26,7 +26,7 @@ $content = '<?php
   | GPL version 2 or any later version                                |  
   +-------------------------------------------------------------------+
 */
-if (!defined(\'CPG_NUKE\')) { exit; }
+if (!defined(\'IN_NEXOS\')) { exit; }
 
 define(\'DB_TYPE\', \''.$connect['layer'].'\');
 define(\'DB_CHARSET\', '.(isset($connect['charset']) ? "'{$connect['charset']}'" : 'NULL').'); // NULL (is default), latin1, utf8, etc.
