@@ -135,7 +135,7 @@ if (is_array($_GET)) { array_walk($_GET, 'Prepare_INPUT'); }
 if (!file_exists(CORE_PATH.'config.php')) {
 	if (!defined('INSTALL')) { cpg_error('You must install NexOS CMS first before you can use it'); }
 } else {
-	require_once(CORE_PATH.'classes/NEXOS_DEBUGger.php'); # we define our own error handler
+	require_once(CORE_PATH.'classes/nexos_debugger.php'); # we define our own error handler
 	require_once(CORE_PATH.'config.php');
 }
 

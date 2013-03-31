@@ -6,7 +6,8 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |  
   +-------------------------------------------------------------------+
-  | step5.php - NexOS installation step 5 file                        |
+  | step5.php - NexOS installation step 5 - Build super admin         |
+  |-----------------End Installation Routine--------------------------|
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |

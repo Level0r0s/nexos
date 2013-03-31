@@ -6,7 +6,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 | 
   +-------------------------------------------------------------------+
-  | step4.php - NexOS installation step 4 file                        |
+  | step4.php - NexOS installation step 4 - Gather Important info     |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |

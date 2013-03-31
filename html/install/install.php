@@ -33,6 +33,7 @@ if (isset($_POST['step'])) {
 	if (!preg_match('#^[0-9]$#', $_POST['step'])) exit;
 	$go = intval($_POST['step']);
 }
+
 $images = array();
 for ($i=0; $i<6; ++$i) {
 	$images[$i] = (($go == $i) ? 'box_current' : (($go > $i) ? 'checked' : 'unchecked'));
