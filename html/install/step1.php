@@ -71,12 +71,18 @@ $checks = array(
 );
 
 inst_header();
-echo '<script language="JavaScript" type="text/javascript">
+echo '
+<script>
+$( "#progressbar" ).progressbar({
+  value: 25
+});
+</script>
+<script language="JavaScript" type="text/javascript">
 <!--'."
 maketip('writeaccess','".$instlang['s1_directory_write']."','".$instlang['s1_directory_write2']."');
 $tips".'// -->
 </script>
-<table>
+<table width="100%">
 	<tr>
 	  <td colspan="5" nowrap="nowrap">
 		'.$checks[2].' '.$instlang['s1_dot_ok'].' |

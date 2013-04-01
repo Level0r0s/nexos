@@ -165,11 +165,11 @@ if (!defined('INSTALL')) {
 //	$db->debug = Poodle::$DEBUG & Poodle::DBG_SQL | Poodle::$DEBUG & Poodle::DBG_SQL_QUERIES;
 }
 
-require_once(CORE_PATH.'classes/cpg_cache.php');
+require_once(CORE_PATH.'classes/nxs_cache.php');
 require_once(CORE_PATH.'functions/linking.php');
 
-# very basic __autoload
-function DragonflyCMS__autoload($class_name) {
+//Very basic __autoload from Dragonfly
+function NexOSCMS__autoload($class_name) {
 	if (!preg_match('#^[a-z0-9\-_]+$#i', $class_name)) { return; }
 	$class_name = strtolower($class_name);
 	if (is_file(CORE_PATH."classes/{$class_name}.php")) {
@@ -178,8 +178,9 @@ function DragonflyCMS__autoload($class_name) {
 		cpg_error("The class $class_name could not be found");
 	}
 }
-spl_autoload_register('DragonflyCMS__autoload');
+spl_autoload_register('NexOSCMS__autoload');
 
+//If we are in the installation routine we exit and return
 if (defined('INSTALL')) return;
 
 require_once(CORE_PATH.'classes/time.php');

@@ -115,6 +115,9 @@ function inst_header() {
 			<![endif]-->
 		</head>
 		<body>
+			<script language="JavaScript" type="text/javascript" src="../includes/javascript/infobox.js"></script>
+			<div id="infodiv" style="position:absolute; visibility:hidden; z-index:20; top:0px; left:0px;"></div><br />
+			<form action="'.basename(__FILE__).'" method="post" accept-charset="utf-8">
 			<div class="page_margins">
 				<div id="border-top">
 					<div id="edge-tl"></div>
@@ -199,7 +202,6 @@ if (!$go) {
 		echo '<h2 align="center">'.$instlang['no_zlib'].'</h2>';
 	}
 	echo '<br clear="all" /><br />
-	<form><p>
 	<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
 	<input type="submit" value="'.$instlang['agree'].'" class="formfield" />
 	</form></p>';
