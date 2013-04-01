@@ -23,8 +23,11 @@
   | GPL version 2 or any later version                                |  
   +-------------------------------------------------------------------+
 */
+// Setup error reporting
 error_reporting(E_ALL);
+//Define installation variable
 define('INSTALL', 1);
+//Include base files
 require_once('../includes/cmsinit.inc');
 require_once(CORE_PATH.'nexos_page.php');
 
@@ -80,7 +83,7 @@ function check_inst($die=false) {
 	global $db, $prefix, $dbname, $instlang;
 	if (isset($db->TBL->config_custom) && $result = $db->query('SELECT cfg_value FROM '.$prefix.'_config_custom WHERE cfg_name=\'global\' AND cfg_field=\'Version_Num\'', true)) {
 		list($version) = $db->sql_fetchrow($result);
-		if ($die && $version == CPG_NUKE) {
+		if ($die && $version == NEXOS_VERSION) {
 			inst_header();
 			echo $instlang['s1_already'];
 			footer();

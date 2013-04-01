@@ -6,7 +6,7 @@
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | block-Sample.php - Example NexOS block file                       |
+  | nexos_debugger.php - NexOS Debugging routines                     |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
@@ -16,21 +16,22 @@
   +-------------------------------------------------------------------+
   |Original Copyright below                                           |
   +-------------------------------------------------------------------+
-/*********************************************
-  CPG Dragonfly™ CMS
-  ********************************************
-  Copyright © 2004 - 2007 by CPG-Nuke Dev Team
-  http://dragonflycms.org
-
-  Dragonfly is released under the terms and conditions
-  of the GNU GPL version 2 or any later version
-
-  $Source: /cvs/html/includes/classes/NEXOS_DEBUGger.php,v $
-  $Revision: 10.0 $
-  $Author: djmaze $
-  $Date: 2010/11/05 01:03:15 $
-**********************************************/
-if (!defined('CPG_NUKE')) { exit; }
+  |  CPG Dragonfly™ CMS                                               |
+  |  ********************************************                     |
+  |  Copyright © 2004 - 2007 by CPG-Nuke Dev Team                     |
+  |  http://dragonflycms.org                                          |
+  |                                                                   |
+  |  Dragonfly is released under the terms and conditions             |
+  |  of the GNU GPL version 2 or any later version                    |
+  |                                                                   |
+  |  $Source: /cvs/html/includes/classes/cpg_debugger.php,v $         |
+  |  $Revision: 10.0 $                                                |
+  |  $Author: djmaze $                                                |
+  |  $Date: 2010/11/05 01:03:15 $                                     |
+  +-------------------------------------------------------------------+
+*/
+	
+if (!defined('IN_NEXOS')) { exit; }
 if (!defined('E_STRICT')) { define('E_STRICT', 2048); }
 if (!defined('E_RECOVERABLE_ERROR')) { define('E_RECOVERABLE_ERROR', 4096); }
 if (!defined('E_DEPRECATED')) { define('E_DEPRECATED', 8192); }
@@ -52,22 +53,22 @@ class Debug {
 	// E_ERROR, E_PARSE, E_CORE_ERROR, E_CORE_WARNING, E_COMPILE_ERROR, E_COMPILE_WARNING and some E_STRICT
 	// error levels will be handled as per the error_reporting settings.
 	private $errortype = array (
-		//E_ERROR           => 'PHP Error',               #     1
-			E_WARNING         => 'PHP Warning',             #     2
-		//E_PARSE           => 'PHP Parse Error',         #     4
-			E_NOTICE          => 'PHP Notice',              #     8
-		//E_CORE_ERROR      => 'PHP Core Error',          #    16
-		//E_CORE_WARNING    => 'PHP Core Warning',        #    32
-		//E_COMPILE_ERROR   => 'PHP Compile Error',       #    64
-		//E_COMPILE_WARNING => 'PHP Compile Warning',     #   128
-			E_USER_ERROR      => 'CMS Error',               #   256
-			E_USER_WARNING    => 'CMS Warning',             #   512
-			E_USER_NOTICE     => 'CMS Notice',              #  1024
-			E_STRICT          => 'PHP Strict Notice',       #  2048 PHP 5
-			E_RECOVERABLE_ERROR => 'PHP Recoverable Error', #  4096 PHP 5.2
-			E_DEPRECATED      => 'PHP Deprecated',          #  8192 PHP 5.3
-			E_USER_DEPRECATED => 'CMS Deprecated',          # 16384 PHP 5.3
-		//E_ALL             => 'PHP Error'                # 30719 PHP 5.3, 6143 PHP 5.2, 2047 previously 
+			//E_ERROR           => 'PHP Error',               #     1
+			E_WARNING         	=> 'PHP Warning',             #     2
+			//E_PARSE           => 'PHP Parse Error',         #     4
+			E_NOTICE          	=> 'PHP Notice',              #     8
+			//E_CORE_ERROR      => 'PHP Core Error',          #    16
+			//E_CORE_WARNING    => 'PHP Core Warning',        #    32
+			//E_COMPILE_ERROR   => 'PHP Compile Error',       #    64
+			//E_COMPILE_WARNING => 'PHP Compile Warning',     #   128
+			E_USER_ERROR      	=> 'NexOS Error',             #   256
+			E_USER_WARNING    	=> 'NexOS Warning',           #   512
+			E_USER_NOTICE     	=> 'NexOS Notice',            #  1024
+			E_STRICT          	=> 'PHP Strict Notice',       #  2048 PHP 5
+			E_RECOVERABLE_ERROR => 'PHP Recoverable Error',   #  4096 PHP 5.2
+			E_DEPRECATED      	=> 'PHP Deprecated',          #  8192 PHP 5.3
+			E_USER_DEPRECATED 	=> 'NexOS Deprecated',        # 16384 PHP 5.3
+			//E_ALL             => 'PHP Error'                # 30719 PHP 5.3, 6143 PHP 5.2, 2047 previously 
 		);
 
 	function __construct($log = 'debug.log') {
@@ -91,7 +92,7 @@ class Debug {
 			if (CAN_MOD_INI) {
 				ini_set('display_errors', $this->old_display_level);
 				ini_set('log_errors', $this->old_error_logging);
-//				ini_set('error_log', $this->old_error_log);
+				//ini_set('error_log', $this->old_error_log);
 			}
 			$this->active = false;
 			return $this->report;
@@ -137,7 +138,7 @@ class Debug {
 				if (!is_object($dbal)) { break; }
 				$db_log = $dbal->getConfiguration()->getSQLLogger();
 				if (!empty($db_log->query_list)) {
-print_r($db_log->query_list);
+					print_r($db_log->query_list);
 					$debug .= '<span class="genmed"><strong>SQL Queries:</strong></span><br /><br />';
 					foreach ($db_log->query_list as $file => $queries) {
 						$debug .= '<b>'.$file.'</b><ul>';
@@ -167,7 +168,6 @@ print_r($db_log->query_list);
 		}
 		return $debug;
 	}
-
 }
 
-$cpgdebugger = new Debug;
+$nxsdebugger = new Debug;
