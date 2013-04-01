@@ -100,61 +100,86 @@ function get_db_vars($db) {
 
 function inst_header() {
 	global $images, $instlang, $go, $currentlang;
-	echo nexos_header($instlang['installer']).'
-    <script language="JavaScript" type="text/javascript" src="../includes/javascript/infobox.js"></script>
-    <div id="infodiv" style="position:absolute; visibility:hidden; z-index:20; top:0px; left:0px;"></div><br />
-    <form action="'.basename(__FILE__).'" method="post" accept-charset="utf-8">
-    <table width="100%" height="350">
-		<tr>
-			<td width="200" valign="top">
-				<table>
-					<tr>
-						<td>
-							<b>'.$instlang['s_progress'].'</b><br /><br />
-							<img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_license'].'<br />
-							<img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_server'].'<br />
-							<img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_setconfig'].'<br />
-							<img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_builddb'].'<br />
-							<img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_gather'].'<br />
-							<img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_create'].'<br />';
-								if (!$go) {
-									echo '<br />'._SELECTLANGUAGE.'<br />
-									<select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
-									$content = '';
-									$handle = opendir(BASEDIR.'install/language');
-									while ($file = readdir($handle)) {
-										if (preg_match('#(.*).php#', $file, $matches)) {
-											$languageslist[] = $matches[1];
-										}
+	echo '
+		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+		<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+		<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<title>NexOS Installation and Setup</title>
+			<link rel="stylesheet" href="css/redmond/jquery-ui.css">
+			<script src="js/jquery.js"></script>
+			<script src="js/jquery-ui.js"></script>
+			<link href="css/nexos.css" rel="stylesheet" type="text/css" />
+			<!--[if lte IE 7]>
+			<link href="css/patches/patch_nexos.css" rel="stylesheet" type="text/css" />
+			<![endif]-->
+		</head>
+		<body>
+			<div class="page_margins">
+				<div id="border-top">
+					<div id="edge-tl"></div>
+					<div id="edge-tr"></div>
+				</div>
+				<div class="page">
+					<div class="center" id="header"><img src="images/nxs_install_logo.jpg" width="768" height="90" /></div>
+					<div id="progressbar"></div>
+				<script>
+								$( "#progressbar" ).progressbar({ value: 0 });
+						</script>
+					<div id="main">
+						<div id="col1">
+							<div id="col1_content" class="clearfix">
+								<b>'.$instlang['s_progress'].'</b><br /><br />
+								<img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_license'].'<br />
+								<img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_server'].'<br />
+								<img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_setconfig'].'<br />
+								<img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_builddb'].'<br />
+								<img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_gather'].'<br />
+								<img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_create'].'<br />
+							</div>';
+							if (!$go) {
+								echo '<br />'._SELECTLANGUAGE.'<br />
+								<select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
+								$content = '';
+								$handle = opendir(BASEDIR.'install/language');
+								while ($file = readdir($handle)) {
+									if (preg_match('#(.*).php#', $file, $matches)) {
+										$languageslist[] = $matches[1];
 									}
-									closedir($handle);
-									sort($languageslist);
-									for ($i=0; $i < sizeof($languageslist); $i++) {
-										if ($languageslist[$i]!='') {
-											$content .= '<option value="'.$languageslist[$i].'"';
-											if ($languageslist[$i]==$currentlang) $content .= ' selected="selected"';
-											$content .= '>'.ucfirst($languageslist[$i])."</option>\n";
-										}
-									}
-									echo $content.'</select>';
 								}
-								echo '
-						</td>
-					</tr>
-				</table>
-			</td>
-			<td valign="top" align="center">';
+								closedir($handle);
+								sort($languageslist);
+								for ($i=0; $i < sizeof($languageslist); $i++) {
+									if ($languageslist[$i]!='') {
+										$content .= '<option value="'.$languageslist[$i].'"';
+										if ($languageslist[$i]==$currentlang) $content .= ' selected="selected"';
+										$content .= '>'.ucfirst($languageslist[$i])."</option>\n";
+									}
+								}
+								echo $content.'</select>';
+							}
+							echo '
+						</div>
+							<div id="col3">
+								<div id="col3_content" class="clearfix" align="center">';
         flush();
 }
 
 function footer() {
-	echo '</td>
-		</tr>
-	</table>
-	</form>
-    </td></tr></table>
-    </td></tr></table>
-    </center></body></html>';
+	echo '</div>
+			<!-- IE Column Clearing -->
+			<div id="ie_clearing"> &#160; </div>
+		</div>
+	</div>
+	<div id="footer" align="center">NexOS CMS is &copy; 2009 - 2013 by <a href="http://www.myndworx.com" target="_blank">Myndworx Asylum</a><br /> For help or questions, check the following links:<br /><a href="" target="_blank">NexOS Community</a> || <a href="" target="_blank">NexOS Wiki</a> || <a href="" target="_blank">NexOS Bug Tracking </a> || <a href="https://razor.nexoscms.gotdns.org/" target="_blank">NexOS Development Codebase </a></div>
+    </div>
+    <div id="border-bottom">
+      <div id="edge-bl"></div>
+      <div id="edge-br"></div>
+    </div>
+  </div>
+</body>
+</html>';
 }
 
 function inst_help($item) {
@@ -174,8 +199,10 @@ if (!$go) {
 		echo '<h2 align="center">'.$instlang['no_zlib'].'</h2>';
 	}
 	echo '<br clear="all" /><br />
-<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
-<input type="submit" value="'.$instlang['agree'].'" class="formfield" /></p>';
+	<form><p>
+	<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
+	<input type="submit" value="'.$instlang['agree'].'" class="formfield" />
+	</form></p>';
 }
 elseif (isset($_SERVER['HTTP_REFERER']) && strlen($_SERVER['HTTP_REFERER']) > 0 && !stripos($_SERVER['HTTP_REFERER'], '://'.$_SERVER['HTTP_HOST'])) {
 	echo 'Posting from another server is not allowed';
