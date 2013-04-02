@@ -105,7 +105,7 @@ function inst_header() {
 		<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<title>NexOS Installation and Setup</title>
-			<link rel="stylesheet" href="css/excite-bike/jquery-ui.css">
+			<link rel="stylesheet" href="css/jquery-ui.css">
 			<script type="text/javascript" src="js/jquery.js"></script>
 			<script type="text/javascript" src="js/jquery-ui.js"></script>
 			<link href="css/nexos.css" rel="stylesheet" type="text/css" />
