@@ -2,7 +2,7 @@
 /*
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
-  |      Copyright © 2009 - 2013 by Myndworx Asylum                  |
+  |      Copyright © 2009 - 2013 by Myndworx Asylum                   |
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 | 
   +-------------------------------------------------------------------+

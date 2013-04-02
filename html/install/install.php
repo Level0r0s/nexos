@@ -29,7 +29,6 @@ error_reporting(E_ALL);
 define('INSTALL', 1);
 //Include base files
 require_once('../includes/cmsinit.inc');
-require_once(CORE_PATH.'nexos_page.php');
 
 $go = 0;
 if (isset($_POST['step'])) {
@@ -107,16 +106,14 @@ function inst_header() {
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<title>NexOS Installation and Setup</title>
 			<link rel="stylesheet" href="css/redmond/jquery-ui.css">
-			<script src="js/jquery.js"></script>
-			<script src="js/jquery-ui.js"></script>
+			<script type="text/javascript" src="js/jquery.js"></script>
+			<script type="text/javascript" src="js/jquery-ui.js"></script>
 			<link href="css/nexos.css" rel="stylesheet" type="text/css" />
 			<!--[if lte IE 7]>
 			<link href="css/patches/patch_nexos.css" rel="stylesheet" type="text/css" />
 			<![endif]-->
 		</head>
 		<body>
-			<script language="JavaScript" type="text/javascript" src="../includes/javascript/infobox.js"></script>
-			<div id="infodiv" style="position:absolute; visibility:hidden; z-index:20; top:0px; left:0px;"></div><br />
 			<form action="'.basename(__FILE__).'" method="post" accept-charset="utf-8">
 			<div class="page_margins">
 				<div id="border-top">
@@ -168,7 +165,7 @@ function inst_header() {
         flush();
 }
 
-function footer() {
+function inst_footer() {
 	echo '</div>
 			<!-- IE Column Clearing -->
 			<div id="ie_clearing"> &#160; </div>
@@ -181,14 +178,67 @@ function footer() {
       <div id="edge-br"></div>
     </div>
   </div>
-</body>
+	</body>
 </html>';
 }
 
-function inst_help($item) {
-	return '<img src="images/help.gif" alt="" onmouseover="tip(\''.$item.'\')" onmouseout="untip()" style="cursor: help;" />';
-}
+function do_dump(&$var, $var_name = NULL, $indent = NULL, $reference = NULL){
+	$do_dump_indent = "<span style='color:#666666;'>|</span> &nbsp;&nbsp; ";
+	$reference = $reference.$var_name;
+	$keyvar = 'the_do_dump_recursion_protection_scheme'; $keyname = 'referenced_object_name';
+	
+	// So this is always visible and always left justified and readable
+	echo "<div style='text-align:left; background-color:white; font: 100% monospace; color:black;'>";
 
+	if (is_array($var) && isset($var[$keyvar]))
+	{
+			$real_var = &$var[$keyvar];
+			$real_name = &$var[$keyname];
+			$type = ucfirst(gettype($real_var));
+			echo "$indent$var_name <span style='color:#666666'>$type</span> = <span style='color:#e87800;'>&amp;$real_name</span><br>";
+	}
+	else
+	{
+			$var = array($keyvar => $var, $keyname => $reference);
+			$avar = &$var[$keyvar];
+
+			$type = ucfirst(gettype($avar));
+			if($type == "String") $type_color = "<span style='color:green'>";
+			elseif($type == "Integer") $type_color = "<span style='color:red'>";
+			elseif($type == "Double"){ $type_color = "<span style='color:#0099c5'>"; $type = "Float"; }
+			elseif($type == "Boolean") $type_color = "<span style='color:#92008d'>";
+			elseif($type == "NULL") $type_color = "<span style='color:black'>";
+
+			if(is_array($avar))
+			{
+					$count = count($avar);
+					echo "$indent" . ($var_name ? "$var_name => ":"") . "<span style='color:#666666'>$type ($count)</span><br>$indent(<br>";
+					$keys = array_keys($avar);
+					foreach($keys as $name)
+					{
+							$value = &$avar[$name];
+							do_dump($value, "['$name']", $indent.$do_dump_indent, $reference);
+					}
+					echo "$indent)<br>";
+			}
+			elseif(is_object($avar))
+			{
+					echo "$indent$var_name <span style='color:#666666'>$type</span><br>$indent(<br>";
+					foreach($avar as $name=>$value) do_dump($value, "$name", $indent.$do_dump_indent, $reference);
+					echo "$indent)<br>";
+			}
+			elseif(is_int($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> $type_color".htmlentities($avar)."</span><br>";
+			elseif(is_string($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> $type_color\"".htmlentities($avar)."\"</span><br>";
+			elseif(is_float($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> $type_color".htmlentities($avar)."</span><br>";
+			elseif(is_bool($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> $type_color".($avar == 1 ? "TRUE":"FALSE")."</span><br>";
+			elseif(is_null($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> {$type_color}NULL</span><br>";
+			else echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> ".htmlentities($avar)."<br>";
+
+			$var = $var[$keyvar];
+	}
+	
+	echo "</div>";
+}
 if (!$go) {
 	inst_header();
 	echo '<h2>'.$instlang['welcome'].'</h2>
@@ -215,4 +265,4 @@ elseif (file_exists(BASEDIR."install/step$go.php")) {
 else {
 	echo '<h1>'.sprintf(_ERROR_NO_EXIST, $go).'</h1>';
 }
-footer();
+inst_footer();
