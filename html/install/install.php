@@ -105,16 +105,17 @@ function inst_header() {
 		<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<title>NexOS Installation and Setup</title>
-			<link rel="stylesheet" href="css/jqui/jquery-ui.css">
-			<script type="text/javascript" src="js/jquery.js"></script>
-			<script type="text/javascript" src="js/jquery-ui.js"></script>
+			<link href="css/dot-luv/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+			<script src="js/jquery-1.9.1.js"></script>
+			<script src="js/jquery-ui-1.10.2.custom.js"></script>
 			<link href="css/nexos.css" rel="stylesheet" type="text/css" />
 			<!--[if lte IE 7]>
 			<link href="css/patches/patch_nexos.css" rel="stylesheet" type="text/css" />
 			<![endif]-->
 			<script>
 			$(function() {
-				$( "#progressbar" ).progressbar({ value: 0 });
+				$( "#progressbar" ).progressbar({ value: 5 });
+				$( "#button" ).button();
 			});
 			</script>
 			</head>
@@ -126,7 +127,7 @@ function inst_header() {
 					<div id="edge-tr"></div>
 				</div>
 				<div class="page">
-					<div class="center" id="header"><img src="images/nxs_install_logo.jpg" width="768" height="90" /></div>
+					<div class="center" id="header"><img src="images/logo.png" width="768" height="90" /></div>
 					<div id="progressbar"></div>
 					<div id="main">
 						<div id="col1">
@@ -184,63 +185,6 @@ function inst_footer() {
 </html>';
 }
 
-function do_dump(&$var, $var_name = NULL, $indent = NULL, $reference = NULL){
-	$do_dump_indent = "<span style='color:#666666;'>|</span> &nbsp;&nbsp; ";
-	$reference = $reference.$var_name;
-	$keyvar = 'the_do_dump_recursion_protection_scheme'; $keyname = 'referenced_object_name';
-	
-	// So this is always visible and always left justified and readable
-	echo "<div style='text-align:left; background-color:white; font: 100% monospace; color:black;'>";
-
-	if (is_array($var) && isset($var[$keyvar]))
-	{
-			$real_var = &$var[$keyvar];
-			$real_name = &$var[$keyname];
-			$type = ucfirst(gettype($real_var));
-			echo "$indent$var_name <span style='color:#666666'>$type</span> = <span style='color:#e87800;'>&amp;$real_name</span><br>";
-	}
-	else
-	{
-			$var = array($keyvar => $var, $keyname => $reference);
-			$avar = &$var[$keyvar];
-
-			$type = ucfirst(gettype($avar));
-			if($type == "String") $type_color = "<span style='color:green'>";
-			elseif($type == "Integer") $type_color = "<span style='color:red'>";
-			elseif($type == "Double"){ $type_color = "<span style='color:#0099c5'>"; $type = "Float"; }
-			elseif($type == "Boolean") $type_color = "<span style='color:#92008d'>";
-			elseif($type == "NULL") $type_color = "<span style='color:black'>";
-
-			if(is_array($avar))
-			{
-					$count = count($avar);
-					echo "$indent" . ($var_name ? "$var_name => ":"") . "<span style='color:#666666'>$type ($count)</span><br>$indent(<br>";
-					$keys = array_keys($avar);
-					foreach($keys as $name)
-					{
-							$value = &$avar[$name];
-							do_dump($value, "['$name']", $indent.$do_dump_indent, $reference);
-					}
-					echo "$indent)<br>";
-			}
-			elseif(is_object($avar))
-			{
-					echo "$indent$var_name <span style='color:#666666'>$type</span><br>$indent(<br>";
-					foreach($avar as $name=>$value) do_dump($value, "$name", $indent.$do_dump_indent, $reference);
-					echo "$indent)<br>";
-			}
-			elseif(is_int($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> $type_color".htmlentities($avar)."</span><br>";
-			elseif(is_string($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> $type_color\"".htmlentities($avar)."\"</span><br>";
-			elseif(is_float($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> $type_color".htmlentities($avar)."</span><br>";
-			elseif(is_bool($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> $type_color".($avar == 1 ? "TRUE":"FALSE")."</span><br>";
-			elseif(is_null($avar)) echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> {$type_color}NULL</span><br>";
-			else echo "$indent$var_name = <span style='color:#666666'>$type(".strlen($avar).")</span> ".htmlentities($avar)."<br>";
-
-			$var = $var[$keyvar];
-	}
-	
-	echo "</div>";
-}
 if (!$go) {
 	inst_header();
 	echo '<h2>'.$instlang['welcome'].'</h2>
@@ -255,7 +199,7 @@ if (!$go) {
 	}
 	echo '<br clear="all" /><br />
 	<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
-	<input type="submit" value="'.$instlang['agree'].'" class="formfield" />
+	<input id="button" type="submit" value="'.$instlang['agree'].'" />
 	</form></p>';
 }
 elseif (isset($_SERVER['HTTP_REFERER']) && strlen($_SERVER['HTTP_REFERER']) > 0 && !stripos($_SERVER['HTTP_REFERER'], '://'.$_SERVER['HTTP_HOST'])) {
