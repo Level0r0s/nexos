@@ -44,7 +44,6 @@ $user_prefix = \''.$connect['user_prefix'].'\';
 #
 # If you change this to something other than it\'s default
 # value, you must also rename the file called \'admin.php\'
-
 # to the new value you assigned to this variable
 #
 # default: admin.php
@@ -73,7 +72,7 @@ $mainindex = \'index.php\';
 #
 # default: false
 # --------------------------------------------------------
-define(\'CPGN_DEMO\', false);
+define(\'NXS_DEMO\', false);
 
 # -- debug mode ------------------------------------------
 # Alter the following value to activate debug mode, which

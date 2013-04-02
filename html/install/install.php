@@ -112,7 +112,12 @@ function inst_header() {
 			<!--[if lte IE 7]>
 			<link href="css/patches/patch_nexos.css" rel="stylesheet" type="text/css" />
 			<![endif]-->
-		</head>
+			<script>
+			$(function() {
+				$( "#progressbar" ).progressbar({ value: 0 });
+			});
+			</script>
+			</head>
 		<body>
 			<form action="'.basename(__FILE__).'" method="post" accept-charset="utf-8">
 			<div class="page_margins">
@@ -123,9 +128,6 @@ function inst_header() {
 				<div class="page">
 					<div class="center" id="header"><img src="images/nxs_install_logo.jpg" width="768" height="90" /></div>
 					<div id="progressbar"></div>
-				<script>
-								$( "#progressbar" ).progressbar({ value: 0 });
-						</script>
 					<div id="main">
 						<div id="col1">
 							<div id="col1_content" class="clearfix">
