@@ -114,7 +114,6 @@ function inst_header() {
 			<![endif]-->
 			<script>
 			$(function() {
-				$( "#progressbar" ).progressbar({ value: 5 });
 				$( "#button" ).button();
 			});
 			</script>
@@ -128,11 +127,17 @@ function inst_header() {
 				</div>
 				<div class="page">
 					<div class="center" id="header"><img src="images/logo.png" width="768" height="90" /></div>
+					<div>&nbsp;</div>
 					<div id="progressbar"></div>
+					<div>&nbsp;</div>
 					<div id="main">
 						<div id="col1">
 							<div id="col1_content" class="clearfix">
-								<b>'.$instlang['s_progress'].'</b><br /><br />
+								<b>'.$instlang['s_progress'].'</b>';
+								if ($go){
+									echo ': Step '.$go;
+								}
+								echo'<br /><br />
 								<img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_license'].'<br />
 								<img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_server'].'<br />
 								<img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_setconfig'].'<br />
@@ -197,18 +202,23 @@ if (!$go) {
 	} else {
 		echo '<h2 align="center">'.$instlang['no_zlib'].'</h2>';
 	}
-	echo '<br clear="all" /><br />
+	echo '
+  <script>
+		$(function() {
+			$( "#progressbar" ).progressbar({
+				value: 5
+			});
+		});
+  </script>
+	<br clear="all" /><br />
 	<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
 	<input id="button" type="submit" value="'.$instlang['agree'].'" />
 	</form></p>';
-}
-elseif (isset($_SERVER['HTTP_REFERER']) && strlen($_SERVER['HTTP_REFERER']) > 0 && !stripos($_SERVER['HTTP_REFERER'], '://'.$_SERVER['HTTP_HOST'])) {
+} elseif (isset($_SERVER['HTTP_REFERER']) && strlen($_SERVER['HTTP_REFERER']) > 0 && !stripos($_SERVER['HTTP_REFERER'], '://'.$_SERVER['HTTP_HOST'])) {
 	echo 'Posting from another server is not allowed';
-}
-elseif (file_exists(BASEDIR."install/step$go.php")) {
+} elseif (file_exists(BASEDIR."install/step$go.php")) {
 	include(BASEDIR."install/step$go.php");
-}
-else {
+} else {
 	echo '<h1>'.sprintf(_ERROR_NO_EXIST, $go).'</h1>';
 }
 inst_footer();

@@ -71,11 +71,13 @@ $checks = array(
 inst_header();
 echo '
 <script>
-$( "#progressbar" ).progressbar({
-  value: 16
-});
+	$(function() {
+		$( "#progressbar" ).progressbar({
+			value: 16
+		});
+	});
 </script>
-<table width="100%">
+<table width="100%" cellpadding="0" cellspacing="0">
 	<tr>
 	  <td colspan="5" nowrap="nowrap" align="center">
 		'.$checks[2].' '.$instlang['s1_dot_ok'].' |
@@ -131,8 +133,8 @@ foreach ($dirs as $key => $data) {
 	echo'</table>';
 
 if ($passed) {
-	echo $instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '2').'" />
-	<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
+	echo $instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '2').'" /><br />
+	<input id="button" type="submit" value="'.$instlang['next'].'" /></p>';
 } else {
 	echo '<p style="color:#FF0000; font-style:bold">'.$instlang['s1_fixerrors'].'</p>';
 }

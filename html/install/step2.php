@@ -24,7 +24,6 @@
   +-------------------------------------------------------------------+
 */
 if (!defined('INSTALL')) { exit; }
-
 $connected = false;
 $db_layers = array(
 	'mysql' => 'mysql_connect',
@@ -65,6 +64,7 @@ if (file_exists($config_file)) {
 		'user_prefix' => 'nxscms'
 	);
 }
+
 if ($go_connect) {
 	if (!isset($_POST['download'])) { echo '<h2>'.$instlang['s1_trying_to_connect'].'</h2>'; }
 	$db = new Poodle_SQL_Dragonfly($connect['host'], $connect['username'], $connect['password'], $connect['database']);
@@ -188,7 +188,6 @@ if ($connected) {
 	  <td colspan="3"><hr noshade="noshade" size="1" /></td>
 	</tr>
 </table>'
-	.$instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="2" />
-	<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>
-	</form>';
+	.$instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="2" /><br />
+	<input id="button" type="submit" value="'.$instlang['next'].'" /></p>';
 }
