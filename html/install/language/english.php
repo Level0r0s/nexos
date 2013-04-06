@@ -26,6 +26,7 @@
 if (!defined('INSTALL')) { exit; }
 
 $instlang['installer'] = 'NexOS CMS Installer';
+$instlang['langselect'] = 'Select language';
 $instlang['s_progress'] = 'Installation Progress';
 $instlang['s_license'] = 'Accept License';
 $instlang['s_server'] = 'Check server';
