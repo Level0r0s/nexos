@@ -24,6 +24,7 @@
   +-------------------------------------------------------------------+
 */
 if (!defined('INSTALL')) { exit; }
+krumo($_POST);
 $connected = false;
 $db_layers = array(
 	'mysql' => 'mysql_connect',
@@ -64,7 +65,6 @@ if (file_exists($config_file)) {
 		'user_prefix' => 'nxscms'
 	);
 }
-
 if ($go_connect) {
 	if (!isset($_POST['download'])) { echo '<h2>'.$instlang['s1_trying_to_connect'].'</h2>'; }
 	$db = new Poodle_SQL_Dragonfly($connect['host'], $connect['username'], $connect['password'], $connect['database']);

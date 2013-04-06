@@ -29,7 +29,8 @@ error_reporting(E_ALL);
 define('INSTALL', 1);
 //Include base files
 require_once('../includes/cmsinit.inc');
-
+//Enable Krumo
+require_once('../debug/class.krumo.php');
 $go = 0;
 if (isset($_POST['step'])) {
 	if (!preg_match('#^[0-9]$#', $_POST['step'])) exit;
