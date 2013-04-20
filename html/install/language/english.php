@@ -25,12 +25,14 @@
 */
 if (!defined('INSTALL')) { exit; }
 
+$instlang['back'] = 'Back';
 $instlang['installer'] = 'NexOS CMS Installer';
 $instlang['langselect'] = 'Select language';
 $instlang['s_progress'] = 'Installation Progress';
 $instlang['s_license'] = 'Accept License';
 $instlang['s_server'] = 'Check server';
-$instlang['s_setconfig'] = 'Set config.php';
+$instlang['s_vdb'] = 'Verify Database connection';
+$instlang['s_setconfig'] = 'Setup configuration file';
 $instlang['s_builddb'] = 'Build database';
 $instlang['s_gather'] = 'Gather important info';
 $instlang['s_create'] = 'Create super admin account';
@@ -44,7 +46,7 @@ $instlang['next'] = 'Next';
 
 $instlang['s1_good'] = 'We\'re glad you made the decision to use NexOS CMS';
 $instlang['s1_already'] = 'You already have '.((CPG_NUKE < 9) ? 'NexOS CMS' : 'NexOS CMS').' <b>'.NEXOS_VERSION.'</b> installed.';
-$instlang['s1_new'] = 'The installer couldn\'t find a previous version, so it will install a new version for you';
+$instlang['s1_new'] = 'The installer couldn\'t find a valid config file and is assuming that this is a new installation.';
 $instlang['s1_upgrade'] = 'Your current version is <b>%s</b>, and it will be upgraded/converted to NexOS CMS  '.CPG_NUKE.'<br /><b>Be sure you have a backup of your database.</b>';
 $instlang['s1_unknown'] = 'The installer couldn\'t detect which version of NexOS CMS you are using.<br />You can\'t continue the installation.<br />Please contact the CPG Dev Team';
 $instlang['s1_database'] = 'This is a summary of what we setup in config.php for the database connection';
@@ -86,14 +88,14 @@ $instlang['s1_magic_quotes_status'] = 'It is highly recommended that the ini set
 $instlang['s1_magic_quotes_sybase_status'] = 'It is highly recommended that the ini setting of magic_quote_sybase be turned off for correct operation of NexOS.';
 $instlang['s1_register_globals_status'] = 'It is highly recommended that the ini setting of register_globals be turned off for correct operation of NexOS.';
 $instlang['s1_ini_set_status'] = 'It is highly recommended that the ini setting of ini_set() be turned on for correct operation of NexOS.';
-$instlang['s1_leo_status'] = 'For proper Search Engine performance, it is highly recommened the LEO (Link Engine Optimization) be available. ';
+$instlang['s1_leo_status'] = 'For proper Search Engine performance, it is highly recommended the LEO (Link Engine Optimization) be available. ';
 $instlang['s1_writeaccess'] = 'This section indicates whether or not the required directories are writable by the server.  If not, you need to correct this before moving forward.';
 $instlang['s1_cache'] = 'Stores cached settings and template files for a faster page generation';
 $instlang['s1_avatars'] = 'When members are allowed to upload an avatar, this directory will contain their uploaded avatar';
 $instlang['s1_albums'] = 'Holds all images from the Photo Gallery which are uploaded via FTP or any other method';
 $instlang['s1_userpics'] = 'Keeps sub-folders of each member ID and stores the member uploaded images in there';
 $instlang['s1_config'] = 'Stores core files needed to run the CMS';
-$instlang['s1_correct'] = 'Once you have entered the necessary information, click next to start building the database';
+$instlang['s1_correct'] = 'Everything checks out good, click next to continue';
 $instlang['s1_fixerrors'] = 'Please fix the errors mentioned above first';
 $instlang['s1_fatalerror'] = 'Please contact the NexOS Dev Team about the error<br />You cannot continue with the installation';
 $instlang['s1_build_db'] = 'Let\'s build the database';
@@ -102,7 +104,7 @@ $instlang['s1_php'] = '<p style="color:#FF0000; font-style:bold">We can\'t guara
 $instlang['s1_mysql'] = '<p style="color: #FF0000; font-style: bold;">We\'re sorry, but only MySQL 4 or higher is supported<br />Ask your server administrator about upgrading to MySQL 4 or higher</p>Your current version is: %s';
 $instlang['s1_donenew'] = 'The database has been properly installed, now let\'s setup some necessary information!';
 $instlang['s1_optimiz'] = 'Database optimization. The execution of this step might take a while for a big database.';
-$instlang['s1_doneup'] = 'The database has been properly updated, have fun with your incredible NexOS!<br /><h2>Remove install.php and the install directory right now!</h2>';
+$instlang['s1_doneup'] = 'The database has been properly updated, have fun with your incredible NexOS website!<br /><h2>Remove install.php and the install directory right now!</h2>';
 $instlang['s1_trying_to_connect'] = 'Trying to connect to the SQL server';
 $instlang['s1_wrong_database_name'] = 'You need to choose a different database name.<br />Sorry for the inconvenience but you cannot continue with the installation with "<b>public</b>" as database name.';
 $instlang['s1_fail_create_database'] = 'Failed to create the database %s';
@@ -110,12 +112,14 @@ $instlang['s1_save_conf_succeed'] = 'Saving configuration succeeded';
 $instlang['s1_save_conf_failed'] = 'Saving configuration failed';
 $instlang['s1_db_connection_succeeded'] = 'Database connection succeeded';
 
+$instlang['s2_noconfig'] = 'The installer did not find a valid config file.  Please enter the specifics to connect to your database.';
+$instlang['s2_noconfig1'] = 'No valid configuration file found.';
 $instlang['s2_dbase'] = 'Database engine connection configuration.';
 $instlang['s2_layer'] = 'This is the database layer used to interact with the installed database engine on your server.';
 $instlang['s2_hostname'] = 'This is the hostname of the server where your database resides.  Normally this is left at localhost.';
 $instlang['s2_username'] = 'This is the username used to connect to your database server';
 $instlang['s2_password'] = 'This is the password associated with the username used to connect to your database server';
-$instlang['s2_dbname'] = 'This is the name of the database you have created, or weish to be created, for this instllation of NexOS.';
+$instlang['s2_dbname'] = 'This is the name of the database you have created, or wish to be created, for this installation of NexOS.';
 $instlang['s2_prefix'] = 'This is the database table prefix, used to allow multiple installations of NexOS to access the same database.';
 $instlang['s2_uprefix'] = 'This is the database user table prefix, used to allow multiple installations of NexOS to access the same database.';
 $instlang['s2_info'] = 'Lets setup the necessary info:';
@@ -141,6 +145,7 @@ $instlang['s2_cookie_nxs'] = 'Photo Gallery cookie name';
 $instlang['s2_cookie_nxs2'] = 'The name of the cookie to store photo gallery specific information of this website';
 $instlang['s2_error_email'] = 'Invalid email address';
 $instlang['s2_error_empty'] = 'Some fields were left empty';
+$instlang['s2_error_connection'] = 'Unable to connect to the database using your information.<br />Click on the back button and verify the settings.';
 $instlang['s2_error_cookiename'] = 'Invalid cookie name';
 $instlang['s2_error_cookiesettings'] = 'Invalid cookie settings';
 $instlang['s2_error_sessionsettings'] = 'Wrong session settings';

@@ -28,16 +28,15 @@ $content = '<?php
 */
 if (!defined(\'IN_NEXOS\')) { exit; }
 
-define(\'DB_TYPE\', \''.$connect['layer'].'\');
+define(\'DB_TYPE\', \''.$db_layers[$_POST['connect']['layer']].'\');
 define(\'DB_CHARSET\', '.(isset($connect['charset']) ? "'{$connect['charset']}'" : 'NULL').'); // NULL (is default), latin1, utf8, etc.
-$dbhost = \''.$connect['host'].'\';
+$dbhost = \''.$_POST['connect']['host'].'\';
 $dbport = \''.$connect['port'].'\';
-$dbname = \''.$connect['database'].'\';
-$dbuname = \''.$connect['username'].'\';
-$dbpass = \''.$connect['password'].'\';
-$prefix = \''.$connect['prefix'].'\';
-$user_prefix = \''.$connect['user_prefix'].'\';
-
+$dbname = \''.$_POST['connect']['database'].'\';
+$dbuname = \''.$_POST['connect']['username'].'\';
+$dbpass = \''.$_POST['connect']['password'].'\';
+$prefix = \''.$_POST['connect']['prefix'].'\';
+$user_prefix = \''.$_POST['connect']['user_prefix'].'\';
 # -- $adminindex -----------------------------------------
 # The filename of the admin index page I\'d like to use for
 # my site
