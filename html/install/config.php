@@ -95,5 +95,4 @@ define(\'NEXOS_DEBUG\', false);
 
 $CensorList = array(\'asshole\', \'assramer\', \'bitch\',\'basz\',\'cara de cu\', \'caralho\', \'clits\', \'c0ck\', \'Cock\', \'cona\',\'cum\', \'cunt\', \'dago\', \'daygo\', \'degok\', \'dildo\', \'faen\', \'fanculo\', \'feces\',\'fitte\', \'foda-se\',\'motherfuckers\', \'fuck\', \'hoer\',  \'hufter\', \'kike\',\'klootzak\', \'kloot\', \'kuk\', \'kut\', \'lesbo\', \'lul\', \'masturbate\', \'merda\',  \'nazis\', \'neuken\', \'nigger\', \'nutsack\', \'pakkis\', \'paneleiro\', \'penis\', \'phuck\', \'picha\', \'picsa\',  \'pijpen\', \'pisses\', \'piss\',  \'poop\', \'puta\', \'pussy\', \'segg\', \'scrotum\', \'shit\', \'slut\', \'titties\', \'titty\', \'twaty\',  \'whore\', \'wop\',  \'zak\');
 $DeniedUserNames = array(\'admin\', \'owner\', \'god\', \'root\', \'webmaster\', \'nobody\', \'anonymous\', \'ieatbabies\', \'operator\');
-//session_save_path(\'/home/SOMETHING/tmp\');
 ';

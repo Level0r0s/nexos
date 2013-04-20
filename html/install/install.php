@@ -512,60 +512,7 @@ switch ($go) {
 							$conn = DriverManager::getConnection($connectionParams, $config);
 							$conn->connect();
 							if ($conn->isConnected()) {
-								echo '
-								<script>
-									$( "#progressbar" ).progressbar({
-										value: 32
-									});
-								</script>';
-								$written = false;
-								if (!isset($CensorList)) {
-									include(BASEDIR.'install/config.php');
-									if (isset($_POST['download'])) {
-										header('Content-Type: text/x-delimtext; name="config.php"');
-										header('Content-disposition: attachment; filename=config.php');
-										echo $content;
-										exit;
-									}
-									$written = false;
-									if ($fp = fopen($config_file, 'wb')) {
-										$written = (fwrite($fp, $content) !== false);
-										fclose($fp);
-										chmod($config_file, 0644);
-									}
-									if ($written) {
-										echo '<h1>'.$instlang['s1_save_conf_succeed'].'</h1>';
-										disp_left_column();
-										disp_footer();
-									} else {
-										echo '<h1>'.$instlang['s1_save_conf_failed'].'</h1>';
-										disp_left_column();
-										disp_footer();
-										$arr = get_defined_vars();
-										krumo($arr);
-									}
-								} else {
-									echo '<h1>'.$instlang['s1_db_connection_succeeded'].'</h1>';
-									$written = true;
-								}
-								Cache::clear();
-								if ($written) {
-									echo '<p><input type="hidden" name="step" value="3" />
-									<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
-								} else {
-									echo 'Instead download the config.php file and upload it to the server into:<br/>
-									'.dirname($config_file).'/
-									<p><input type="hidden" name="step" value="2" />
-									<input type="hidden" name="connect[layer]" value="'.$connect['layer'].'" />
-									<input type="hidden" name="connect[host]" value="'.$connect['host'].'" />
-									<input type="hidden" name="connect[username]" value="'.$connect['username'].'" />
-									<input type="hidden" name="connect[password]" value="'.$connect['password'].'" />
-									<input type="hidden" name="connect[database]" value="'.$connect['database'].'" />
-									<input type="hidden" name="connect[prefix]" value="'.$connect['prefix'].'" />
-									<input type="hidden" name="connect[user_prefix]" value="'.$connect['user_prefix'].'" />
-									<input type="submit" name="download" value="Download config.php" class="formfield" />
-									<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
-								}
+								echo 'Connected';
 							}
 						}
 						catch(Exception $e) {
