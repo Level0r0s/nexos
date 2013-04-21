@@ -512,13 +512,53 @@ switch ($go) {
 							$conn = DriverManager::getConnection($connectionParams, $config);
 							$conn->connect();
 							if ($conn->isConnected()) {
-								echo 'Connected';
+								$written = false;
+								if (!isset($CensorList)) {
+									include(CONFIG_FILE);
+									if (isset($_POST['download'])) {
+										header('Content-Type: text/x-delimtext; name="config.php"');
+										header('Content-disposition: attachment; filename=config.php');
+										echo $content;
+										exit;
+									}
+									$written = false;
+									if ($fp = fopen(CONFIG_FILE, 'wb')) {
+										$written = (fwrite($fp, $content) !== false);
+										fclose($fp);
+										chmod(CONFIG_FILE, 0644);
+									}
+									if ($written) {
+										echo '<h1>'.$instlang['s1_save_conf_succeed'].'</h1>';
+									} else {
+										echo '<h1>'.$instlang['s1_save_conf_failed'].'</h1>';
+									}
+								} else {
+									echo '<h1>'.$instlang['s1_db_connection_succeeded'].'</h1>';
+									$written = true;
+								}
+								if ($written) {
+									echo '<p><input type="hidden" name="step" value="3" />
+									<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
+								} else {
+									echo 'Instead download the config.php file and upload it to the server into:<br/>
+									'.dirname(CONFIG_FILE).'/
+									<p><input type="hidden" name="step" value="2" />
+									<input type="hidden" name="connect[layer]" value="'.$connect['layer'].'" />
+									<input type="hidden" name="connect[host]" value="'.$connect['host'].'" />
+									<input type="hidden" name="connect[username]" value="'.$connect['username'].'" />
+									<input type="hidden" name="connect[password]" value="'.$connect['password'].'" />
+									<input type="hidden" name="connect[database]" value="'.$connect['database'].'" />
+									<input type="hidden" name="connect[prefix]" value="'.$connect['prefix'].'" />
+									<input type="hidden" name="connect[user_prefix]" value="'.$connect['user_prefix'].'" />
+									<input type="submit" name="download" value="Download config.php" class="formfield" />
+									<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
+								}
 							}
 						}
 						catch(Exception $e) {
 							//echo $e->getMessage();
 							echo $instlang['s2_error_connection'];
-							echo '<br /><input class="button" id="button" type=button value="'.$instlang['back'].'" onClick="history.go(-1)">';
+							echo '<br /><br /><input class="button" id="button" type=button value="'.$instlang['back'].'" onClick="history.go(-1)">';
 						}
 					}
 				} else {
