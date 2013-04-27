@@ -108,8 +108,8 @@ $instlang['s1_doneup'] = 'The database has been properly updated, have fun with 
 $instlang['s1_trying_to_connect'] = 'Trying to connect to the SQL server';
 $instlang['s1_wrong_database_name'] = 'You need to choose a different database name.<br />Sorry for the inconvenience but you cannot continue with the installation with "<b>public</b>" as database name.';
 $instlang['s1_fail_create_database'] = 'Failed to create the database %s';
-$instlang['s1_save_conf_succeed'] = 'Saving configuration succeeded';
-$instlang['s1_save_conf_failed'] = 'Saving configuration failed';
+$instlang['s1_save_conf_succeed'] = 'Saving configuration file succeeded.';
+$instlang['s1_save_conf_failed'] = 'Saving configuration file failed.';
 $instlang['s1_db_connection_succeeded'] = 'Database connection succeeded';
 
 $instlang['s2_noconfig'] = 'The installer did not find a valid config file.  Please enter the specifics to connect to your database.';

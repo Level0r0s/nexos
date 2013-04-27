@@ -39,9 +39,9 @@ $nxs_not_installed = 1;
 //Define file paths
 define('ROOTDIR', $_SERVER['DOCUMENT_ROOT']);
 define('BASEDIR', ROOTDIR."/");
-define('CORE_PATH', BASEDIR."/includes/");
-define('INSTALL_PATH', BASEDIR."/install/");
-define('DEBUG_PATH', BASEDIR."/debug/");
+define('CORE_PATH', BASEDIR."includes/");
+define('INSTALL_PATH', BASEDIR."install/");
+define('DEBUG_PATH', BASEDIR."debug/");
 define('CONFIG_FILE', CORE_PATH."config.php");
 
 // Are we allowed to modify php.ini on the fly ?
@@ -514,7 +514,7 @@ switch ($go) {
 							if ($conn->isConnected()) {
 								$written = false;
 								if (!isset($CensorList)) {
-									include(CONFIG_FILE);
+									include(INSTALL_PATH.'config.php');
 									if (isset($_POST['download'])) {
 										header('Content-Type: text/x-delimtext; name="config.php"');
 										header('Content-disposition: attachment; filename=config.php');
@@ -538,7 +538,7 @@ switch ($go) {
 								}
 								if ($written) {
 									echo '<p><input type="hidden" name="step" value="3" />
-									<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
+									<input class="button" id="button" type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
 								} else {
 									echo 'Instead download the config.php file and upload it to the server into:<br/>
 									'.dirname(CONFIG_FILE).'/
@@ -616,3 +616,4 @@ switch ($go) {
 
 $arr = get_defined_vars();
 krumo($arr);
+//krumo::defines();
