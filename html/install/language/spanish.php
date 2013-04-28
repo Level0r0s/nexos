@@ -34,6 +34,7 @@
 if (!defined('INSTALL')) { exit; }
 
 $instlang['installer'] = 'Instalador';
+$instlang['langselect'] = 'Seleccione el idioma';
 $instlang['s_progress'] = 'Progreso de la instalación';
 $instlang['s_license'] = 'Licencia';
 $instlang['s_builddb'] = 'Crear base de datos';

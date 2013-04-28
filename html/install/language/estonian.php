@@ -34,6 +34,7 @@
 if (!defined('INSTALL')) { exit; }
 
 $instlang['installer'] = 'Paigaldaja';
+$instlang['langselect'] = 'Select language';
 $instlang['s_progress'] = 'Paigaldamise edenemine';
 $instlang['s_license'] = 'Litsents';
 $instlang['s_server'] = 'Kontrolli serverit';

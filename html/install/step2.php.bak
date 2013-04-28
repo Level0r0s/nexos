@@ -2,7 +2,7 @@
 /*
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
-  |      Copyright © 2009 - 20013 by Myndworx Asylum                  |
+  |      Copyright © 2009 - 2013 by Myndworx Asylum                   |
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 | 
   +-------------------------------------------------------------------+
@@ -24,7 +24,7 @@
   +-------------------------------------------------------------------+
 */
 if (!defined('INSTALL')) { exit; }
-
+krumo($_POST);
 $connected = false;
 $db_layers = array(
 	'mysql' => 'mysql_connect',
@@ -94,7 +94,6 @@ if ($go_connect) {
 		$db->query("CREATE OR REPLACE FUNCTION concat(text, text, text, text) RETURNS text AS 'select $1 || $2 || $3 || $4' LANGUAGE sql IMMUTABLE STRICT");
 	}
 }
-
 if ($connected) {
 	$server = get_db_vars($db);
 	if ('MySQL' == $db->engine && $server['unicode']) {
@@ -146,22 +145,16 @@ if ($connected) {
 	}
 } else {
 	if (defined('NO_DB')) { echo '<h1>'.NO_DB.'</h1>'; }
-	echo '<script language="JavaScript" type="text/javascript">
-<!--'."
-maketip('dbase','".$instlang['s1_dbconfig']."','".$instlang['s1_database']."');
-maketip('layer','".$instlang['s1_layer']."','".$instlang['s1_layer2']."');
-maketip('hostname','".$instlang['s1_host']."','".$instlang['s1_host2']."');
-maketip('username','".$instlang['s1_username']."','".$instlang['s1_username2']."');
-maketip('password','".$instlang['s1_password']."','".$instlang['s1_password2']."');
-maketip('dbname','".$instlang['s1_dbname']."','".$instlang['s1_dbname2']."');
-maketip('prefix','".$instlang['s1_prefix']."','".$instlang['s1_prefix2']."');
-maketip('uprefix','".$instlang['s1_userprefix']."','".$instlang['s1_userprefix2']."');
-".'// -->
+	echo '
+<script>
+	$( "#progressbar" ).progressbar({
+		value: 32
+	});
 </script>
 <table>
 	<tr>
 	  <th colspan="2" nowrap="nowrap">'.$instlang['s1_dbconfig'].'</th>
-	  <td>'.inst_help('dbase').'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s2_dbase'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td colspan="3"><hr noshade="noshade" size="1" /></td>
 	</tr><tr>
@@ -172,29 +165,29 @@ maketip('uprefix','".$instlang['s1_userprefix']."','".$instlang['s1_userprefix2'
 		}
 	}
 	echo '</td>
-	  <td>'.inst_help('layer').'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s2_layer'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>'.$instlang['s1_host'].'</td><td><input type="text" name="connect[host]" value="'.$connect['host'].'"></td>
-	  <td>'.inst_help('hostname').'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s2_hostname'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>'.$instlang['s1_username'].'</td><td><input type="text" name="connect[username]" value="'.$connect['username'].'"></td>
-	  <td>'.inst_help('username').'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s2_username'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>'.$instlang['s1_password'].'</td><td><input type="password" name="connect[password]" value="'.$connect['password'].'"></td>
-	  <td>'.inst_help('password').'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s2_password'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>'.$instlang['s1_dbname'].'</td><td><input type="text" name="connect[database]" value="'.$connect['database'].'"></td>
-	  <td>'.inst_help('dbname').'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s2_dbname'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>'.$instlang['s1_prefix'].'</td><td><input type="text" name="connect[prefix]" value="'.$connect['prefix'].'"></td>
-	  <td>'.inst_help('prefix').'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s2_prefix'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>'.$instlang['s1_userprefix'].'</td><td><input type="text" name="connect[user_prefix]" value="'.$connect['user_prefix'].'"></td>
-	  <td>'.inst_help('uprefix').'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s2_uprefix'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td colspan="3"><hr noshade="noshade" size="1" /></td>
 	</tr>
 </table>'
-	.$instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="2" />
-	<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
+	.$instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="2" /><br />
+	<input id="button" type="submit" value="'.$instlang['next'].'" /></p>';
 }

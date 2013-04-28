@@ -2,11 +2,11 @@
 /*
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
-  |      Copyright © 2009 - 20013 by Myndworx Asylum                  |
+  |      Copyright © 2009 - 2013 by Myndworx Asylum                   |
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
-  | step3.php - NexOS installation step 3 file                        |
+  | step3.php - NexOS installation step 3 - Build database            |
   | Authors:                                                          |
   |  Steven Sheeley                                                   |
   |  Richard R. Pufky                                                 |
@@ -63,42 +63,28 @@ if ((!isset($current_version) || !$current_version) && !isset($_POST['version'])
 		echo $instlang['s1_new'];
 		$current_version = 0;
 	}
-	echo '<script language="JavaScript" type="text/javascript">
-<!--'."
-maketip('dbase','".$instlang['s1_dbconfig']."','".$instlang['s1_database']."');
-maketip('dbms','".$instlang['s1_server']."','".   sprintf($instlang['s1_server2'], $server['engine'])  ."');
-maketip('hostname','".$instlang['s1_host']."','".$instlang['s1_host2']."');
-maketip('dbname','".$instlang['s1_dbname']."','".$instlang['s1_dbname2']."');
-maketip('prefix','".$instlang['s1_prefix']."','".$instlang['s1_prefix2']."');
-maketip('uprefix','".$instlang['s1_userprefix']."','".$instlang['s1_userprefix2']."');
-maketip('writeaccess','".$instlang['s1_directory_write']."','".$instlang['s1_directory_write2']."');
-maketip('cache','".$instlang['s1_cache']."','".$instlang['s1_cache2']."');
-maketip('avatars','".$instlang['s1_avatars']."','".$instlang['s1_avatars2']."');
-maketip('albums','".$instlang['s1_albums']."','".$instlang['s1_albums2']."');
-maketip('userpics','".$instlang['s1_userpics']."','".$instlang['s1_userpics2']."');
-".'// -->
-</script>
+	echo '
 <table>
 	<tr>
 	  <th colspan="2" nowrap="nowrap">'.$instlang['s1_dbconfig'].'</th>
-	  <td>'.inst_help('dbase').'</td>
+	  <td>help</td>
 	</tr><tr>
 	  <td colspan="3"><hr noshade="noshade" size="1" /></td>
 	</tr><tr>
 	  <td>'.$instlang['s1_server'].'</td><td>'.$server['server'].'</td>
-	  <td>'.inst_help('dbms').'</td>
+	  <td>help</td>
 	</tr><tr>
 	  <td>'.$instlang['s1_host'].'</td><td>'.$dbhost.'</td>
-	  <td>'.inst_help('hostname').'</td>
+	  <td>help</td>
 	</tr><tr>
 	  <td>'.$instlang['s1_dbname'].'</td><td>'.$dbname.'</td>
-	  <td>'.inst_help('dbname').'</td>
+	  <td>help</td>
 	</tr><tr>
 	  <td>'.$instlang['s1_prefix'].'</td><td>'.$prefix.'</td>
-	  <td>'.inst_help('prefix').'</td>
+	  <td>help</td>
 	</tr><tr>
 	  <td>'.$instlang['s1_userprefix'].'</td><td>'.$user_prefix.'</td>
-	  <td>'.inst_help('uprefix').'</td>
+	  <td>help</td>
 	</tr><tr>
 	  <td colspan="3"><hr noshade="noshade" size="1" /></td>
 	</tr>

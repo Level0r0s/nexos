@@ -23,8 +23,7 @@
   | GPL version 2 or any later version                                |
   +-------------------------------------------------------------------+
 */
-
-if (!defined('CPG_NUKE')) { exit; }
+if (!defined('CPG_NUKE'))) { exit; }
 
 $browserlang = array(
 	'af' => 'afrikaans', // ISO-8859-1
@@ -49,7 +48,7 @@ $browserlang = array(
 	'hy' => 'armenian',
 	'ast' => 'asturian',
 	'eu' => 'basque',
-	'be' => 'belarusian',
+	'be' => 'belarusian', 
 	'bs' => 'bosanski',//bosnian -bosanski is nuke lang name
 	'bg' => 'bulgarian',
 	'ca' => 'catalan',
@@ -176,48 +175,15 @@ if ($MAIN_CFG['global']['multilingual']) {
 	}
 	setcookie('lang', $currentlang, time()+31536000, $MAIN_CFG['cookie']['path']);
 }
-/*
-else if () {
-	$lng = split('.', $_SERVER['SERVER_NAME']);
-	if (isset($browserlang[$lng[0]])) {
-		$currentlang = $language = $browserlang[$lng[0]];
-	}
-	unset($lng);
-}
-*/
-if (file_exists(BASEDIR."language/$currentlang/main.php")) {
-	require_once(BASEDIR."language/$currentlang/main.php");
+
+if (file_exists(BASEDIR."/language/$currentlang/main.php")) {
+	require_once(BASEDIR."/language/$currentlang/main.php");
 } else {
-	require_once(BASEDIR.'language/english/main.php');
+	require_once(BASEDIR.'/language/english/main.php');
 }
 setlocale(LC_TIME, 'en_US.UTF-8', 'en_US.UTF8', 'en_US', 'english', 'en', 'eng', 'ISO-8859-1');
 define('_LANGCODE', array_search($currentlang, $browserlang));
 unset($browserlang);
-
-/*
-$char_accept= 0;
-$accepted_charsets = explode(',', strtolower(getenv('HTTP_ACCEPT_CHARSET')));
-
-foreach ($accepted_charsets as $browser_charset) {
-	echo $browser_charset.'== '._CHARSET.' '."\t";
-	if (($browser_charset == _CHARSET)||($browser_charset == '*')){
-	$char_accept= true;
-	echo $browser_charset.'== '._CHARSET.' '."\t";
-	 }
-}
-if(!strstr($_SERVER["HTTP_USER_AGENT"],"MSIE")) {
-// IE doesn't send HTTP_ACCEPT_CHARSET
-	$char_accept = 0;
-	$accepted_charsets = explode(',', strtolower(getenv('HTTP_ACCEPT_CHARSET')));
-	foreach ($accepted_charsets as $browser_charset) {
-		if ((strtolower($browser_charset) == strtolower(_CHARSET))||($browser_charset == '*')){
-			$char_accept = 1;
-			break;
-		}
-	}
-
-} //end if not IE
-*/
 
 function get_langcode($thislang){
 	return _LANGCODE;

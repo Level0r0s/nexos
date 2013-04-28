@@ -34,6 +34,7 @@
 if (!defined('INSTALL')) { exit; }
 
 $instlang['installer'] = 'Instalator';
+$instlang['langselect'] = 'Wybierz język';
 $instlang['s_progress'] = 'Postęp w instalacji';
 $instlang['s_license'] = 'Licencja';
 $instlang['s_server'] = 'Check server';

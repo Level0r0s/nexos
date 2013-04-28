@@ -2,7 +2,7 @@
 /*
   +-------------------------------------------------------------------+
   | NexOS CMS by Myndworx Asylum Software                             |
-  |      Copyright © 2009 - 20013 by Myndworx Asylum                  |
+  |      Copyright © 2009 - 2013 by Myndworx Asylum                   |
   | NexOS CMS is released under the terms and conditions of the GNU   |
   | GPL V2 or higher.                                                 |
   +-------------------------------------------------------------------+
@@ -33,11 +33,9 @@ $dirs = array(
 	'albums' => array('modules/coppermine/albums', 0),
 	'userpics' => array('modules/coppermine/albums/userpics', 0),
 );
-$tips = '';
 foreach ($dirs as $key => $data) {
 	$dirs[$key][2] = is_writeable(BASEDIR.$data[0]);
 	if ($data[1] && !$dirs[$key][2]) { $passed = false; }
-	$tips .= "maketip('$key','".$instlang["s1_$key"]."','".$instlang['s1_'.$key.'2']."');\n";
 }
 
 $gd = false;
@@ -71,75 +69,72 @@ $checks = array(
 );
 
 inst_header();
-echo '<script language="JavaScript" type="text/javascript">
-<!--'."
-maketip('writeaccess','".$instlang['s1_directory_write']."','".$instlang['s1_directory_write2']."');
-$tips".'// -->
+echo '
+<script>
+	$(function() {
+		$( "#progressbar" ).progressbar({
+			value: 16
+		});
+	});
 </script>
-<table>
+<table width="100%" cellpadding="0" cellspacing="0">
 	<tr>
-	  <td colspan="5" nowrap="nowrap">
+	  <td colspan="5" nowrap="nowrap" align="center">
 		'.$checks[2].' '.$instlang['s1_dot_ok'].' |
 		'.$checks[1].' '.$instlang['s1_dot_failed'].' |
 		'.$checks[0].' '.$instlang['s1_dot_critical'].'</td>
 	</tr><tr>
-	  <td colspan="5"><hr noshade="noshade" size="1" /></td>
-	</tr><tr>
 	  <th colspan="4" nowrap="nowrap">'.$instlang['s1_server_settings'].'</th>
-	  <td></td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_setting'].'" style="cursor: help;" /></td>
 	</tr><tr>
-	  <td>'.$instlang['s1_setting'].'</td><td>'.$instlang['s1_preferred'].'</td><td>'.$instlang['s1_yours'].'</td>
+	  <td>'.$instlang['s1_setting'].'</td><td>'.$instlang['s1_preferred'].'</td><td>'.$instlang['s1_yours'].'</td><td>'.$instlang['s1_status'].'</td><td>&nbsp;</td>
 	</tr><tr>
 	  <td>PHP</td><td>5.2</td><td>'.phpversion().'</td>
 	  <td align="center">'.$checks[((PHPVERS < 52) ? 0 : 2)].'</td>
-	  <td>'/*.inst_help('php')*/.'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_phpver'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>GD</td><td>2.0</td><td>'.$gd.'</td>
 	  <td align="center">'.$checks[((strpos($gd, '2.') === false)? 1 : 2)].'</td>
-	  <td>'/*.inst_help('php')*/.'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_gdver'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>magic_quotes</td><td>'.$instlang['s1_off'].'</td><td>'.($ini['magic_quotes']?$instlang['s1_on']:$instlang['s1_off']).'</td>
 	  <td align="center">'.$checks[($ini['magic_quotes'] ? 1 : 2)].'</td>
-	  <td>'/*.inst_help('php')*/.'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_magic_quotes_status'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>magic_quotes_sybase</td><td>'.$instlang['s1_off'].'</td><td>'.($ini['magic_quotes_sybase']?$instlang['s1_on']:$instlang['s1_off']).'</td>
 	  <td align="center">'.$checks[($ini['magic_quotes_sybase'] ? 1 : 2)].'</td>
-	  <td>'/*.inst_help('php')*/.'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_magic_quotes_sybase_status'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>register_globals</td><td>'.$instlang['s1_off'].'</td><td>'.($ini['register_globals']?$instlang['s1_on']:$instlang['s1_off']).'</td>
 	  <td align="center">'.$checks[($ini['register_globals'] ? 1 : 2)].'</td>
-	  <td>'/*.inst_help('php')*/.'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_register_globals_status'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>ini_set()</td><td>'.$instlang['s1_on'].'</td><td>'.($ini['ini_set']?$instlang['s1_on']:$instlang['s1_off']).'</td>
 	  <td align="center">'.$checks[($ini['ini_set'] ? 2 : 1)].'</td>
-	  <td>'/*.inst_help('php')*/.'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_ini_set_status'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td>'.$instlang['s1_leo_available'].'</td><td>'.$instlang['s1_yes'].'</td><td>'.($ini['LEO']?$instlang['s1_yes']:$instlang['s1_no']).'</td>
 	  <td align="center">'.$checks[($ini['LEO'] ? 2 : 1)].'</td>
-	  <td>'/*.inst_help('php')*/.'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_leo_status'].'" style="cursor: help;" /></td>
 	</tr><tr>
 	  <td colspan="5"><hr noshade="noshade" size="1" /></td>
 	</tr><tr>
 	  <th colspan="4" nowrap="nowrap">'.$instlang['s1_directory_write'].'</th>
-	  <td>'.inst_help('writeaccess').'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_writeaccess'].'" style="cursor: help;" /></td>
 	</tr>';
 foreach ($dirs as $key => $data) {
 	$data[2] = ($data[2] ? 2 : ($data[1] ? 0 : 1));
 	echo '<tr>
 	  <td colspan="3">/'.$data[0].'/</td>
 	  <td align="center">'.$checks[$data[2]].'</td>
-	  <td>'.inst_help($key).'</td>
+	  <td><img src="images/help.gif" alt="" title="'.$instlang['s1_'.$key].'" style="cursor: help;" /></td>
 	</tr>';
 }
-?>
-	<tr>
-		<td colspan="5"><hr noshade="noshade" size="1" /></td>
-	</tr>
-</table>
-<?php
+	echo'</table>';
+
 if ($passed) {
-	echo $instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '2').'" />
-	<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
+	echo $instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '2').'" /><br />
+	<input id="button" type="submit" value="'.$instlang['next'].'" /></p>';
 } else {
 	echo '<p style="color:#FF0000; font-style:bold">'.$instlang['s1_fixerrors'].'</p>';
 }
