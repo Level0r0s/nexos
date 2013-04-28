@@ -1,18 +1,62 @@
-/**
- * "Yet Another Multicolumn Layout" - (X)HTML/CSS framework
- * (en) central stylesheet
- * (de) zentrales Stylesheet
- *
- * @creator       YAML Builder V1.2.1 (http://builder.yaml.de)
- * @file          my_layout.css
- * @-yaml-minver  3.3
- * 
- */
+/* CSS layout */
+body {
+	margin: 0;
+	padding: 0;
+}
 
-/* import core styles | Basis-Stylesheets einbinden */
-@import url(base.css);
+#masthead {
+	text-align: center;
+}
 
-/* import screen layout | Screen-Layout einbinden */
+#progressbar {
+	text-align: center;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: small;
+}
 
-@import url(screen/basemod.css);
-@import url(screen/content.css);
+#container {
+	min-width: 800px;
+}
+
+#left_col1 {
+	width: 300px;
+	float: left;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: small;
+}
+
+#right_col1 {
+	width: 300px;
+	float: right;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: small;
+}
+
+#left_col2 {
+	width: 300px;
+	float: left;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: small;
+}
+
+#right_col2 {
+	width: 300px;
+	float: right;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: small;
+}
+
+#page_content {
+	margin-left: 300px;
+	margin-right: 300px;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: small;
+	text-align: center;
+}
+
+#footer {
+	clear: both;
+	text-align: center;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: x-small;
+}

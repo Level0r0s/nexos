@@ -216,86 +216,82 @@ if ($go == 1){
 function disp_header() {
 	global $images, $instlang, $go, $currentlang;
 	echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<title>NexOS CMS Installer</title>
-<link href="css/nexos_install.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="css/dot-luv/jquery-ui.css">
-  <script src="js/jquery-1.9.1.js"></script>
-  <script src="js/jquery-ui.js"></script>
-	<!--[if lte IE 7]>
-	<link href="css/patches/patch_my_layout.css" rel="stylesheet" type="text/css" />
-	<![endif]-->
-  <script>
+	<title>NexOS CMS Installer/Updater</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link href="main.css" rel="stylesheet" type="text/css" />
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script>
 		$(function () {
 				$(".button").button();
 		});
-  </script>
-  </script>
-	</head>
+	</script>
+</head>
 <body>
-  <div class="page_margins">
-    <div class="page">
-      <div id="header" align="center"><a href="http://www.nexoscms.org" target="_blank"><img src="images/nexos_install_logo.png" width="768" height="90" alt="NexOS CMS" longdesc="NexOS CMS" /></a></div>
-      <br /><div id="progressbar" align="center"></div>
-      <div id="main">
-        <div id="col1">
-          <div id="col1_content" class="clearfix" align="center">
-					<form action="'.basename(__FILE__).'" method="post" accept-charset="utf-8">';
+	<!-- Main Logo -->
+	<div id="masthead"><a href="http://www.nexoscms.org"><img alt="" height="90" src="images/nexos_install_logo.png" width="768" /></a></div>
+	<!-- Progress Bar -->
+	<div>&nbsp;</div>
+	<div id="progressbar">Progress Bar</div>
+	<div>&nbsp;</div>
+	<!-- Start Main content area -->
+	<div id="container">
+		<!-- Top Left Column -->
+		<div id="left_col1">
+				<b>'.$instlang['s_progress'].'</b>';
+				if ($go){
+					echo ': Step '.$go;
+				}
+				echo'<br /><br />
+				<img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_license'].'<br />
+				<img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_server'].'<br />
+				<img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_vdb'].'<br />
+				<img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_setconfig'].'<br />
+				<img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_builddb'].'<br />
+				<img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_gather'].'<br />
+				<img src="../images/'.$images[6].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_create'].'<br />';
+			if (!$go) {
+				echo '<br />'.$instlang['langselect'].'<br />
+				<select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
+				$content = '';
+				$handle = opendir(INSTALL_PATH.'language');
+				while ($file = readdir($handle)) {
+					if (preg_match('#(.*).php#', $file, $matches)) {
+						$languageslist[] = $matches[1];
+					}
+				}
+				closedir($handle);
+				sort($languageslist);
+				for ($i=0; $i < sizeof($languageslist); $i++) {
+					if ($languageslist[$i]!='') {
+						$content .= '<option value="'.$languageslist[$i].'"';
+						if ($languageslist[$i]==$currentlang) $content .= ' selected="selected"';
+						$content .= '>'.ucfirst($languageslist[$i])."</option>\n";
+					}
+				}
+				echo $content.'</select>';
+			}
+		echo '</div>
+		<!-- Bottom Left Column -->
+		<div id="right_col1">Community Feed</div>
+		<!-- Main Content -->
+		<div id="page_content">Main Content
+';
 }
 
-function disp_left_column() {
-	global $images, $instlang, $go, $currentlang;
-	echo'          </div>
-        </div>
-        <div id="col3">';
-          echo'<div id="col3_content" class="clearfix">
-								<b>'.$instlang['s_progress'].'</b>';
-								if ($go){
-									echo ': Step '.$go;
-								}
-								echo'<br /><br />
-								<img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_license'].'<br />
-								<img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_server'].'<br />
-								<img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_vdb'].'<br />
-								<img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_setconfig'].'<br />
-								<img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_builddb'].'<br />
-								<img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_gather'].'<br />
-								<img src="../images/'.$images[6].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_create'].'<br />';
-							if (!$go) {
-								echo '<br />'.$instlang['langselect'].'<br />
-								<select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
-								$content = '';
-								$handle = opendir(INSTALL_PATH.'language');
-								while ($file = readdir($handle)) {
-									if (preg_match('#(.*).php#', $file, $matches)) {
-										$languageslist[] = $matches[1];
-									}
-								}
-								closedir($handle);
-								sort($languageslist);
-								for ($i=0; $i < sizeof($languageslist); $i++) {
-									if ($languageslist[$i]!='') {
-										$content .= '<option value="'.$languageslist[$i].'"';
-										if ($languageslist[$i]==$currentlang) $content .= ' selected="selected"';
-										$content .= '>'.ucfirst($languageslist[$i])."</option>\n";
-									}
-								}
-								echo $content.'</select>';
-							}
-}
+
 
 function disp_footer() {
-	echo '          </div>
-          <!-- IE Column Clearing -->
-          <div id="ie_clearing"> &#160; </div>
-        </div>
-      </div>
-      <!-- begin: #footer -->
-      <div id="footer" align="center">NexOS CMS is &copy; 2009 - 2013 by <a href="http://www.myndworx.com" target="_blank">Myndworx Asylum</a><br /> For help or questions, check the following links:<br /><a href="http://www.nexoscms.org" target="_blank">NexOS Community</a> || <a href="http://wiki.nexoscms.org" target="_blank">NexOS Wiki</a> || <a href="http://mantis.nexoscms.org" target="_blank">NexOS Bug Tracking </a> || <a href="https://razor.nexoscms.gotdns.org/" target="_blank">NexOS Development Codebase </a></div>
-    </div>
-  </div>
+	echo '</div>
+		<!-- Top Right Column -->
+		<div id="left_col2">Security Feed</div>
+		<!-- Bottom Right Column -->
+		<div id="right_col2">Community Map</div>
+	</div>
+	<!-- Footer -->
+	<div id="footer" class="footer">NexOS CMS is &copy; 2009 - 2013 by <a href="http://www.myndworx.com" target="_blank">Myndworx Asylum</a><br /> For help or questions, check the following links:<br /><a href="http://www.nexoscms.org" target="_blank">NexOS Community</a> || <a href="http://wiki.nexoscms.org" target="_blank">NexOS Wiki</a> || <a href="http://mantis.nexoscms.org" target="_blank">NexOS Bug Tracking </a> || <a href="https://razor.nexoscms.gotdns.org/" target="_blank">NexOS Development Codebase </a></div>
 </body>
 </html>';
 }
@@ -328,7 +324,6 @@ switch ($go) {
 				<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
 				<input class="button" id="button" type="submit" value="'.$instlang['agree'].'" />
 				</form></p>';
-				disp_left_column();
 				disp_footer();
         break;
     case 1:
@@ -416,7 +411,6 @@ switch ($go) {
 				} else {
 					echo '<p style="color:#FF0000; font-style:bold">'.$instlang['s1_fixerrors'].'</p>';
 				}
-				disp_left_column();
 				disp_footer();
         break;
     case 2:
@@ -565,7 +559,6 @@ switch ($go) {
 					//Valid config file found, testing DB connection with connection info from config file
 					require_once(CONFIG_FILE);
 				}
-				disp_left_column();
 				disp_footer();
         break;
     case 3:
@@ -575,19 +568,16 @@ switch ($go) {
 				} else {
 				//NexOS exists, let's check for the upgrade
 				}
-				disp_left_column();
 				disp_footer();
         break;
     case 4:
 				disp_header();
 				//Main content
-				disp_left_column();
 				disp_footer();
         break;
     case 5:
 				disp_header();
 				//Main content
-				disp_left_column();
 				disp_footer();
         break;
 		default:
@@ -614,7 +604,6 @@ switch ($go) {
 			<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
 			<input id="button" type="submit" value="'.$instlang['agree'].'" />
 			</form></p>';
-			disp_left_column();
 			disp_footer();
 }
 
