@@ -346,8 +346,8 @@ switch ($go) {
 					<tr>
 						<td colspan="5" nowrap="nowrap" align="center">
 						'.$checks[2].' '.$instlang['s1_dot_ok'].' |
-						'.$checks[1].' '.$instlang['s1_dot_failed'].' |
-						'.$checks[0].' '.$instlang['s1_dot_critical'].'</td>
+						'.$checks[1].' '.$instlang['s1_dot_critical'].' |
+						'.$checks[0].' '.$instlang['s1_dot_failed'].'</td>
 					</tr>
 					<tr>
 						<td>&nbsp;</td>
@@ -360,8 +360,8 @@ switch ($go) {
 						<td>'.$instlang['s1_setting'].'</td><td>'.$instlang['s1_preferred'].'</td><td>'.$instlang['s1_yours'].'</td><td>'.$instlang['s1_status'].'</td><td>&nbsp;</td>
 					</tr>
 					<tr>
-						<td>PHP</td><td>5.2</td><td>'.phpversion().'</td>
-						<td align="center">'.$checks[((PHPVERS < 52) ? 0 : 2)].'</td>
+						<td>PHP</td><td>5.3.x</td><td>'.phpversion().'</td>
+						<td align="center">'.$checks[((PHPVERS < 53) ? 0 : 2)].'</td>
 						<td><img src="images/help.png" alt="" title="'.$instlang['s1_phpver'].'" style="cursor: help;" /></td>
 					</tr>
 					<tr>
@@ -570,7 +570,11 @@ switch ($go) {
         break;
     case 3:
 				disp_header();
-				//Main content
+				if ($nxs_not_installed) {
+				//NexOS has not yet been installed, let's build the database
+				} else {
+				//NexOS exists, let's check for the upgrade
+				}
 				disp_left_column();
 				disp_footer();
         break;
