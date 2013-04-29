@@ -278,7 +278,8 @@ function disp_header() {
 			<div id="right_col_top"><b>'.$instlang['s_comfeed'].'</b><br /></div>
 			<div id="right_col_bottom"><b>'.$instlang['s_worldcomm'].'</b><br /></div>
 		</div>
-		<div id="page_content">Main Content Window';
+		<div id="page_content">
+			<form action="'.basename(__FILE__).'" method="post" accept-charset="utf-8">';
 }
 
 
@@ -395,7 +396,7 @@ switch ($go) {
 				foreach ($dirs as $key => $data) {
 					$data[2] = ($data[2] ? 2 : ($data[1] ? 0 : 1));
 					echo '<tr>
-						<td colspan="3">/'.$data[0].'/</td>
+						<td colspan="3" align="left">/'.$data[0].'/</td>
 						<td align="center">'.$checks[$data[2]].'</td>
 						<td><img src="images/help.png" alt="" title="'.$instlang['s1_'.$key].'" style="cursor: help;" /></td>
 					</tr>';
@@ -440,6 +441,7 @@ switch ($go) {
 							});
 						</script>
 						<h2>'.$instlang['s2_noconfig1'].'</h2>
+						<center>
 						<table>
 							<tr>
 								<th colspan="2" nowrap="nowrap">'.$instlang['s1_dbconfig'].'</th>
@@ -486,7 +488,8 @@ switch ($go) {
 							<tr>
 								<td colspan="3"><hr noshade="noshade" size="1" /></td>
 							</tr>
-						</table>'
+						</table>
+						</center>'
 							.$instlang['s2_noconfig'].'<p align="center"><input type="hidden" name="step" value="2" /><input type="hidden" name="action" value="testdb" /><br />
 							<input class="button" id="button" type="submit" value="'.$instlang['next'].'" /></p>';
 					} else {
