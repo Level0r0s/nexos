@@ -222,6 +222,7 @@ function disp_header() {
 	<title>NexOS CMS Installer/Updater</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<link href="css/nexos_install.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/dot-luv/jquery-ui.css" />
 	<script src="js/jquery-1.9.1.js"></script>
 	<script src="js/jquery-ui.js"></script>
 	<script>
@@ -230,64 +231,63 @@ function disp_header() {
 		});
 	</script>
 </head>
-
 <body>
-	<div id="main_container">
-		<div id="header"><img alt="" height="90" src="images/nexos_install_logo.png" width="768" /></div>
-		<div id=""sep">&nbsp;</div>
-		<div id="progressbar"></div>
-		<div id=""sep">&nbsp;</div>
-		<div id="container">
-			<div id="left_col_top">Steps</div>
-					<b>'.$instlang['s_progress'].'</b>';
-					if ($go){
-						echo ': Step '.$go;
-					}
-					echo'<br /><br />
-					<img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_license'].'<br />
-					<img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_server'].'<br />
-					<img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_vdb'].'<br />
-					<img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_setconfig'].'<br />
-					<img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_builddb'].'<br />
-					<img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_gather'].'<br />
-					<img src="../images/'.$images[6].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_create'].'<br />';
-				if (!$go) {
-					echo '<br />'.$instlang['langselect'].'<br />
-					<select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
-					$content = '';
-					$handle = opendir(INSTALL_PATH.'language');
-					while ($file = readdir($handle)) {
-						if (preg_match('#(.*).php#', $file, $matches)) {
-							$languageslist[] = $matches[1];
-						}
-					}
-					closedir($handle);
-					sort($languageslist);
-					for ($i=0; $i < sizeof($languageslist); $i++) {
-						if ($languageslist[$i]!='') {
-							$content .= '<option value="'.$languageslist[$i].'"';
-							if ($languageslist[$i]==$currentlang) $content .= ' selected="selected"';
-							$content .= '>'.ucfirst($languageslist[$i])."</option>\n";
-						}
-					}
-					echo $content.'</select>';
+<div id="wrapper">
+	<div id="header"><a href="http://www.nexoscms.org" target="_blank"><img alt="" height="90" border="0"src="images/nexos_install_logo.png" width="768" /></a></div>
+	<div id="progressbar"></div>
+	<div id="container">
+		<div id="left_col">
+			<div id="left_col_top">			
+			<b>'.$instlang['s_progress'].'</b>';
+			if ($go){
+				echo ': Step '.$go;
+			}
+			echo'<br /><br />
+			<img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_license'].'<br />
+			<img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_server'].'<br />
+			<img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_vdb'].'<br />
+			<img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_setconfig'].'<br />
+			<img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_builddb'].'<br />
+			<img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_gather'].'<br />
+			<img src="../images/'.$images[6].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_create'].'<br />';
+		if (!$go) {
+			echo '<br />'.$instlang['langselect'].'<br />
+			<select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
+			$content = '';
+			$handle = opendir(INSTALL_PATH.'language');
+			while ($file = readdir($handle)) {
+				if (preg_match('#(.*).php#', $file, $matches)) {
+					$languageslist[] = $matches[1];
 				}
-			echo '</div>
-			<div id="right_col_top">Security Feed</div>
-			<div id="page_content">';
+			}
+			closedir($handle);
+			sort($languageslist);
+			for ($i=0; $i < sizeof($languageslist); $i++) {
+				if ($languageslist[$i]!='') {
+					$content .= '<option value="'.$languageslist[$i].'"';
+					if ($languageslist[$i]==$currentlang) $content .= ' selected="selected"';
+					$content .= '>'.ucfirst($languageslist[$i])."</option>\n";
+				}
+			}
+			echo $content.'</select>';
+		}
+	echo'</div>
+			<div id="left_col_bottom"><b>'.$instlang['s_secfeed'].'</b><br /></div>
+		</div>
+		<div id="right_col">
+			<div id="right_col_top"><b>'.$instlang['s_comfeed'].'</b><br /></div>
+			<div id="right_col_bottom"><b>'.$instlang['s_worldcomm'].'</b><br /></div>
+		</div>
+		<div id="page_content">Main Content Window';
 }
 
 
 
 function disp_footer() {
 	echo '</div>
-			<div id="left_col_bottom">Community Feed</div>
-			<div id="right_col_bottom">Installation Locations</div>
-		</div>
-		<div id=""sep">&nbsp;</div>
-		<div id="footer">NexOS CMS is &copy; 2009 - 2013 by <a href="http://www.myndworx.com" target="_blank">Myndworx Asylum</a><br /> For help or questions, check the following links:<br /><a href="http://www.nexoscms.org" target="_blank">NexOS Community</a> || <a href="http://wiki.nexoscms.org" target="_blank">NexOS Wiki</a> || <a href="http://mantis.nexoscms.org" target="_blank">NexOS Bug Tracking </a> || <a href="https://razor.nexoscms.gotdns.org/" target="_blank">NexOS Development Codebase </a></div>
-		<div id=""sep">&nbsp;</div>
 	</div>
+	<div id="footer">NexOS CMS is &copy; 2009 - 2013 by <a href="http://www.myndworx.com" target="_blank">Myndworx Asylum</a><br /> For help or questions, check the following links:<br /><a href="http://www.nexoscms.org" target="_blank">NexOS Community</a> || <a href="http://wiki.nexoscms.org" target="_blank">NexOS Wiki</a> || <a href="http://mantis.nexoscms.org" target="_blank">NexOS Bug Tracking </a> || <a href="https://razor.nexoscms.gotdns.org/" target="_blank">NexOS Development Codebase </a></div>
+</div>
 </body>
 </html>';
 }
@@ -302,7 +302,7 @@ switch ($go) {
 				<p style="font-size:12px">'.$instlang['info'].'</p><p style="font-size:12px">'.$instlang['click'].'</p>';
 				echo '<p>';
 				if (function_exists('readgzfile')) {
-					echo '<textarea name="textfield" rows="15" cols="80">';
+					echo '<textarea name="textfield" rows="15" cols="70">';
 					readgzfile('GPL.gz');
 					echo '</textarea>';
 				} else {
