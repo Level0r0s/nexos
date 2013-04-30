@@ -564,6 +564,9 @@ switch ($go) {
 				disp_header();
 				if ($nxs_not_installed) {
 				//NexOS has not yet been installed, let's build the database
+				echo $instlang['s1_new'];
+				$current_version = 0;
+				
 				} else {
 				//NexOS exists, let's check for the upgrade
 				}

@@ -27,6 +27,7 @@ if (!defined('INSTALL')) { exit; }
 
 $instlang['back'] = 'Back';
 $instlang['installer'] = 'NexOS CMS Installer';
+$instlang['dfver'] = '9.3.4.x';
 $instlang['langselect'] = 'Select language';
 $instlang['s_progress'] = 'Installation Progress';
 $instlang['s_secfeed'] = 'NexOS Security Feed';
@@ -40,7 +41,7 @@ $instlang['s_builddb'] = 'Build database';
 $instlang['s_gather'] = 'Gather important info';
 $instlang['s_create'] = 'Create super admin account';
 $instlang['welcome'] = 'Welcome to NexOS CMS!';
-$instlang['info'] = 'Thank you for downloading the NexOS CMS.  After you accept the license below (Don\'t blame us, our lawyers made us do this) the system will check to see if this is an upgrade (You already have NexOS installed) or a new install.  Either way we will handle the steps needed to install this version of NexOS and get you on your way as fast as possible.  When complete, this script will delete itself and it\'s associated files so that it can not be run in the future.<br />Please note:  If you are attempting to convert an existing Dragonfly CMS system that contains the Splatt Forums, this system will not upgrade it.  Splatt Forums was last updated in 2002 and is no longer being developed.';
+$instlang['info'] = 'Thank you for downloading the NexOS CMS.  After you accept the license below (Don\'t blame us, our lawyers made us do this) the system will check to see if this is an upgrade (You already have NexOS installed) or a new install.  Either way we will handle the steps needed to install this version of NexOS and get you on your way as fast as possible.  When complete, this script will delete itself and it\'s associated files so that it can not be run in the future.<br />Please note:  If you are attempting to convert an existing Dragonfly CMS system that contains the Splatt Forums, this system will not upgrade it.  Splatt Forums was last updated in 2002 and is no longer being developed.<br /><b>Also note: If NexOS is being installed for the first time and you wish to convert an existing Dragonfly CMS system to NexOS, we can only convert your existing Dragonfly CMS site if your Dragonfly CMS version is 9.3.4.x and higher.</b>';
 $instlang['click'] = 'Click "I Agree" if you accept the following license:';
 $instlang['license_edited'] = 'Your license has been edited. Please contact the Development Team at http://www.nexoscms.org immediately. Thank You.';
 $instlang['no_zlib'] = 'Your server does not support Zlib Compression and you are unable read our license from this page. Please consult GPL.txt found in your NexOS distribution and click "I Agree" below';
