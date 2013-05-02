@@ -238,18 +238,13 @@ function disp_header() {
 	<div id="container">
 		<div id="left_col">
 			<div id="left_col_top">			
-			<b>'.$instlang['s_progress'].'</b>';
-			if ($go){
-				echo ': Step '.$go;
-			}
-			echo'<br /><br />
+			<b>'.$instlang['s_progress'].'</b><br /><br />
 			<img src="../images/'.$images[0].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_license'].'<br />
 			<img src="../images/'.$images[1].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_server'].'<br />
 			<img src="../images/'.$images[2].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_vdb'].'<br />
-			<img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_setconfig'].'<br />
-			<img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_builddb'].'<br />
-			<img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_gather'].'<br />
-			<img src="../images/'.$images[6].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_create'].'<br />';
+			<img src="../images/'.$images[3].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_builddb'].'<br />
+			<img src="../images/'.$images[4].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_gather'].'<br />
+			<img src="../images/'.$images[5].'.gif" alt="" style="vertical-align:bottom;" />'.$instlang['s_create'].'<br />';
 		if (!$go) {
 			echo '<br />'.$instlang['langselect'].'<br />
 			<select name="newlanguage" onchange="top.location.href=\''.basename(__FILE__).'?newlang=\'+this.options[this.selectedIndex].value" class="formfield">';
@@ -272,11 +267,11 @@ function disp_header() {
 			echo $content.'</select>';
 		}
 	echo'</div>
-			<div id="left_col_bottom"><b>'.$instlang['s_secfeed'].'</b><br /></div>
+			<div id="left_col_bottom"><b>'.$instlang['s_secfeed'].'</b><br />Include security feed from main NexOS website here</div>
 		</div>
 		<div id="right_col">
-			<div id="right_col_top"><b>'.$instlang['s_comfeed'].'</b><br /></div>
-			<div id="right_col_bottom"><b>'.$instlang['s_worldcomm'].'</b><br /></div>
+			<div id="right_col_top"><b>'.$instlang['s_comfeed'].'</b><br />Include community feed from main NexOS website here</div>
+			<div id="right_col_bottom"><b>'.$instlang['s_worldcomm'].'</b><br />Display world map with NexOS instalaltions pinned on it here</div>
 		</div>
 		<div id="page_content">
 			<form action="'.basename(__FILE__).'" method="post" accept-charset="utf-8">';
@@ -294,7 +289,7 @@ function disp_footer() {
 }
 
 //Case statement to handle the steps
-//Call disp_header followed by the content for the main content area then call disp_left_colum and fnially call disp_footer
+//Call disp_header followed by the content for the main content area then call disp_footer
 switch ($go) {
     case 0:
 				//Entry point, display welcome and license
@@ -494,7 +489,7 @@ switch ($go) {
 							<input class="button" id="button" type="submit" value="'.$instlang['next'].'" /></p>';
 					} else {
 						try {
-							echo '<h3>'.$instlang['s1_trying_to_connect'].'</h3>';
+							echo '<h3>'.$instlang['s1_trying_to_connect'].'......</h3>';
 							$connectionParams = array(
 								'dbname' => $_POST['connect']['database'],
 								'user' => $_POST['connect']['username'],
