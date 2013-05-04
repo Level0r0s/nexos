@@ -292,316 +292,359 @@ function disp_footer() {
 //Call disp_header followed by the content for the main content area then call disp_footer
 switch ($go) {
     case 0:
-				//Entry point, display welcome and license
-				disp_header();
-				echo '<h2>'.$instlang['welcome'].'</h2>
-				<p style="font-size:12px">'.$instlang['info'].'</p><p style="font-size:12px">'.$instlang['click'].'</p>';
-				echo '<p>';
-				if (function_exists('readgzfile')) {
-					echo '<textarea name="textfield" rows="15" cols="70">';
-					readgzfile('GPL.gz');
-					echo '</textarea>';
-				} else {
-					echo '<h2 align="center">'.$instlang['no_zlib'].'</h2>';
-				}
-				echo '
-				<script>
-					$(function() {
-						$( "#progressbar" ).progressbar({
-							value: 5
-						});
-					});
-				</script>
-				<br clear="all" /><br />
-				<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
-				<input class="button" id="button" type="submit" value="'.$instlang['agree'].'" />
-				</form></p>';
-				disp_footer();
+		//Entry point, display welcome and license
+		disp_header();
+		echo '<h2>'.$instlang['welcome'].'</h2>
+		<p style="font-size:12px">'.$instlang['info'].'</p><p style="font-size:12px">'.$instlang['click'].'</p>';
+		echo '<p>';
+		if (function_exists('readgzfile')) {
+			echo '<textarea name="textfield" rows="15" cols="70">';
+			readgzfile('GPL.gz');
+			echo '</textarea>';
+		} else {
+			echo '<h2 align="center">'.$instlang['no_zlib'].'</h2>';
+		}
+		echo '
+		<script>
+			$(function() {
+				$( "#progressbar" ).progressbar({
+					value: 5
+				});
+			});
+		</script>
+		<br clear="all" /><br />
+		<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
+		<input class="button" id="button" type="submit" value="'.$instlang['agree'].'" />
+		</form></p>';
+		disp_footer();
         break;
     case 1:
-				//Check directory read/write and server settings
-				disp_header();
-				echo '
-				<script>
-					$(function() {
-						$( "#progressbar" ).progressbar({
-							value: 16
-						});
-					});
-				</script>
-				<table width="100%" cellpadding="0" cellspacing="0">
-					<tr>
-						<td colspan="5" nowrap="nowrap" align="center">
-						'.$checks[2].' '.$instlang['s1_dot_ok'].' |
-						'.$checks[1].' '.$instlang['s1_dot_critical'].' |
-						'.$checks[0].' '.$instlang['s1_dot_failed'].'</td>
-					</tr>
-					<tr>
-						<td>&nbsp;</td>
-					</tr>					
-					<tr>
-						<th colspan="4" nowrap="nowrap">'.$instlang['s1_server_settings'].'</th>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_setting'].'" style="cursor: help;" /></td>
-					</tr>
-					<tr>
-						<td>'.$instlang['s1_setting'].'</td><td>'.$instlang['s1_preferred'].'</td><td>'.$instlang['s1_yours'].'</td><td>'.$instlang['s1_status'].'</td><td>&nbsp;</td>
-					</tr>
-					<tr>
-						<td>PHP</td><td>5.3.x</td><td>'.phpversion().'</td>
-						<td align="center">'.$checks[((PHPVERS < 53) ? 0 : 2)].'</td>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_phpver'].'" style="cursor: help;" /></td>
-					</tr>
-					<tr>
-						<td>GD</td><td>2.0</td><td>'.$gd.'</td>
-						<td align="center">'.$checks[((strpos($gd, '2.') === false)? 1 : 2)].'</td>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_gdver'].'" style="cursor: help;" /></td>
-					</tr>
-					<tr>
-						<td>magic_quotes</td><td>'.$instlang['s1_off'].'</td><td>'.($ini['magic_quotes']?$instlang['s1_on']:$instlang['s1_off']).'</td>
-						<td align="center">'.$checks[($ini['magic_quotes'] ? 1 : 2)].'</td>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_magic_quotes_status'].'" style="cursor: help;" /></td>
-					</tr>
-					<tr>
-						<td>magic_quotes_sybase</td><td>'.$instlang['s1_off'].'</td><td>'.($ini['magic_quotes_sybase']?$instlang['s1_on']:$instlang['s1_off']).'</td>
-						<td align="center">'.$checks[($ini['magic_quotes_sybase'] ? 1 : 2)].'</td>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_magic_quotes_sybase_status'].'" style="cursor: help;" /></td>
-					</tr>
-					<tr>
-						<td>register_globals</td><td>'.$instlang['s1_off'].'</td><td>'.($ini['register_globals']?$instlang['s1_on']:$instlang['s1_off']).'</td>
-						<td align="center">'.$checks[($ini['register_globals'] ? 1 : 2)].'</td>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_register_globals_status'].'" style="cursor: help;" /></td>
-					</tr>
-					<tr>
-						<td>ini_set()</td><td>'.$instlang['s1_on'].'</td><td>'.($ini['ini_set']?$instlang['s1_on']:$instlang['s1_off']).'</td>
-						<td align="center">'.$checks[($ini['ini_set'] ? 2 : 1)].'</td>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_ini_set_status'].'" style="cursor: help;" /></td>
-					</tr>
-					<tr>
-						<td>'.$instlang['s1_leo_available'].'</td><td>'.$instlang['s1_yes'].'</td><td>'.($ini['LEO']?$instlang['s1_yes']:$instlang['s1_no']).'</td>
-						<td align="center">'.$checks[($ini['LEO'] ? 2 : 1)].'</td>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_leo_status'].'" style="cursor: help;" /></td>
-					</tr>
-					<tr>
-						<td colspan="5"><hr noshade="noshade" size="1" /></td>
-					</tr>
-					<tr>
-						<th colspan="4" nowrap="nowrap">'.$instlang['s1_directory_write'].'</th>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_writeaccess'].'" style="cursor: help;" /></td>
-					</tr>';
-				foreach ($dirs as $key => $data) {
-					$data[2] = ($data[2] ? 2 : ($data[1] ? 0 : 1));
-					echo '<tr>
-						<td colspan="3" align="left">/'.$data[0].'/</td>
-						<td align="center">'.$checks[$data[2]].'</td>
-						<td><img src="images/help.png" alt="" title="'.$instlang['s1_'.$key].'" style="cursor: help;" /></td>
-					</tr>';
-				}
-					echo'</table>';
-				if ($passed) {
-					echo $instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '2').'" /><br />
-					<input class="button" id="button" type="submit" value="'.$instlang['next'].'" /></p>';
-				} else {
-					echo '<p style="color:#FF0000; font-style:bold">'.$instlang['s1_fixerrors'].'</p>';
-				}
-				disp_footer();
+		//Check directory read/write and server settings
+		disp_header();
+		echo '
+		<script>
+			$(function() {
+				$( "#progressbar" ).progressbar({
+					value: 16
+				});
+			});
+		</script>
+		<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="5" nowrap="nowrap" align="center">
+				'.$checks[2].' '.$instlang['s1_dot_ok'].' |
+				'.$checks[1].' '.$instlang['s1_dot_critical'].' |
+				'.$checks[0].' '.$instlang['s1_dot_failed'].'</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>					
+			<tr>
+				<th colspan="4" nowrap="nowrap">'.$instlang['s1_server_settings'].'</th>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_setting'].'" style="cursor: help;" /></td>
+			</tr>
+			<tr>
+				<td>'.$instlang['s1_setting'].'</td><td>'.$instlang['s1_preferred'].'</td><td>'.$instlang['s1_yours'].'</td><td>'.$instlang['s1_status'].'</td><td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>PHP</td><td>5.3.x</td><td>'.phpversion().'</td>
+				<td align="center">'.$checks[((PHPVERS < 53) ? 0 : 2)].'</td>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_phpver'].'" style="cursor: help;" /></td>
+			</tr>
+			<tr>
+				<td>GD</td><td>2.0</td><td>'.$gd.'</td>
+				<td align="center">'.$checks[((strpos($gd, '2.') === false)? 1 : 2)].'</td>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_gdver'].'" style="cursor: help;" /></td>
+			</tr>
+			<tr>
+				<td>magic_quotes</td><td>'.$instlang['s1_off'].'</td><td>'.($ini['magic_quotes']?$instlang['s1_on']:$instlang['s1_off']).'</td>
+				<td align="center">'.$checks[($ini['magic_quotes'] ? 1 : 2)].'</td>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_magic_quotes_status'].'" style="cursor: help;" /></td>
+			</tr>
+			<tr>
+				<td>magic_quotes_sybase</td><td>'.$instlang['s1_off'].'</td><td>'.($ini['magic_quotes_sybase']?$instlang['s1_on']:$instlang['s1_off']).'</td>
+				<td align="center">'.$checks[($ini['magic_quotes_sybase'] ? 1 : 2)].'</td>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_magic_quotes_sybase_status'].'" style="cursor: help;" /></td>
+			</tr>
+			<tr>
+				<td>register_globals</td><td>'.$instlang['s1_off'].'</td><td>'.($ini['register_globals']?$instlang['s1_on']:$instlang['s1_off']).'</td>
+				<td align="center">'.$checks[($ini['register_globals'] ? 1 : 2)].'</td>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_register_globals_status'].'" style="cursor: help;" /></td>
+			</tr>
+			<tr>
+				<td>ini_set()</td><td>'.$instlang['s1_on'].'</td><td>'.($ini['ini_set']?$instlang['s1_on']:$instlang['s1_off']).'</td>
+				<td align="center">'.$checks[($ini['ini_set'] ? 2 : 1)].'</td>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_ini_set_status'].'" style="cursor: help;" /></td>
+			</tr>
+			<tr>
+				<td>'.$instlang['s1_leo_available'].'</td><td>'.$instlang['s1_yes'].'</td><td>'.($ini['LEO']?$instlang['s1_yes']:$instlang['s1_no']).'</td>
+				<td align="center">'.$checks[($ini['LEO'] ? 2 : 1)].'</td>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_leo_status'].'" style="cursor: help;" /></td>
+			</tr>
+			<tr>
+				<td colspan="5"><hr noshade="noshade" size="1" /></td>
+			</tr>
+			<tr>
+				<th colspan="4" nowrap="nowrap">'.$instlang['s1_directory_write'].'</th>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_writeaccess'].'" style="cursor: help;" /></td>
+			</tr>';
+		foreach ($dirs as $key => $data) {
+			$data[2] = ($data[2] ? 2 : ($data[1] ? 0 : 1));
+			echo '<tr>
+				<td colspan="3" align="left">/'.$data[0].'/</td>
+				<td align="center">'.$checks[$data[2]].'</td>
+				<td><img src="images/help.png" alt="" title="'.$instlang['s1_'.$key].'" style="cursor: help;" /></td>
+			</tr>';
+		}
+			echo'</table>';
+		if ($passed) {
+			echo $instlang['s1_correct'].'<p align="center"><input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '2').'" /><br />
+			<input class="button" id="button" type="submit" value="'.$instlang['next'].'" /></p>';
+		} else {
+			echo '<p style="color:#FF0000; font-style:bold">'.$instlang['s1_fixerrors'].'</p>';
+		}
+		disp_footer();
         break;
     case 2:
-				//If the config file exists, grab the DB connection info and see if the database connects, otherwise .
-				$connected = false;
-				$db_layers = array(
-					'MySQL' => 'pdo_mysql',
-					'SQLite' => 'pdo_sqlite',
-					'PostgreSQL' => 'pdo_pgsql',
-					'Oracle' => 'pdo_oci8',
-					'SQLServer' => 'pdo_sqlsrv'
+		//If the config file exists, grab the DB connection info and see if the database connects, otherwise .
+		$connected = false;
+		$db_layers = array(
+			'MySQL' => 'pdo_mysql',
+			'SQLite' => 'pdo_sqlite',
+			'PostgreSQL' => 'pdo_pgsql',
+			'Oracle' => 'pdo_oci8',
+			'SQLServer' => 'pdo_sqlsrv'
+		);
+		disp_header();
+		if ($nxs_not_installed) {
+			if ($action <> "testdb") {
+				$connect = array(
+					'layer' => 'pdo_mysql',
+					'charset' => NULL,
+					'host' => 'localhost',
+					'port' => null,
+					'database' => 'nexos',
+					'username' => '',
+					'password' => '',
+					'prefix' => 'nxscms_',
+					'user_prefix' => 'nxscms_'
 				);
-				disp_header();
-				if ($nxs_not_installed) {
-					if ($action <> "testdb") {
-						$connect = array(
-							'layer' => 'pdo_mysql',
-							'charset' => NULL,
-							'host' => 'localhost',
-							'port' => null,
-							'database' => 'nexos',
-							'username' => '',
-							'password' => '',
-							'prefix' => 'nxscms',
-							'user_prefix' => 'nxscms'
-						);
-						echo '
-						<script>
-							$( "#progressbar" ).progressbar({
-								value: 32
-							});
-						</script>
-						<h2>'.$instlang['s2_noconfig1'].'</h2>
-						<center>
-						<table>
-							<tr>
-								<th colspan="2" nowrap="nowrap">'.$instlang['s1_dbconfig'].'</th>
-								<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_dbase'].'" style="cursor: help;" /></td>
-							</tr><tr>
-								<td colspan="3"><hr noshade="noshade" size="1" /></td>
-							</tr><tr>
-								<td>'.$instlang['s1_layer'].'</td><td><select name="connect[layer]">';
-							foreach ($db_layers as $layer => $func) {
-								echo ($connect['layer'] == $layer) ? "<option selected=\"selected\">$layer</option>" : "<option>$layer</option>";
+				echo '
+				<script>
+					$( "#progressbar" ).progressbar({
+						value: 32
+					});
+				</script>
+				<h2>'.$instlang['s2_noconfig1'].'</h2>
+				<center>
+				<table>
+					<tr>
+						<th colspan="2" nowrap="nowrap">'.$instlang['s1_dbconfig'].'</th>
+						<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_dbase'].'" style="cursor: help;" /></td>
+					</tr><tr>
+						<td colspan="3"><hr noshade="noshade" size="1" /></td>
+					</tr><tr>
+						<td>'.$instlang['s1_layer'].'</td><td><select name="connect[layer]">';
+					foreach ($db_layers as $layer => $func) {
+						echo ($connect['layer'] == $layer) ? "<option selected=\"selected\">$layer</option>" : "<option>$layer</option>";
+					}
+					echo '</td>
+						<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_layer'].'" style="cursor: help;" /></td>
+					</tr>
+					<tr>
+						<td>'.$instlang['s1_host'].'</td>
+						<td><input type="text" name="connect[host]" value="'.$connect['host'].'"></td>
+						<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_hostname'].'" style="cursor: help;" /></td>
+					</tr>
+					<tr>
+						<td>'.$instlang['s1_username'].'</td>
+						<td><input type="text" name="connect[username]" value="'.$connect['username'].'"></td>
+						<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_username'].'" style="cursor: help;" /></td>
+					</tr>
+					<tr>
+						<td>'.$instlang['s1_password'].'</td>
+						<td><input type="password" name="connect[password]" value="'.$connect['password'].'"></td>
+						<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_password'].'" style="cursor: help;" /></td>
+					</tr>
+					<tr>
+						<td>'.$instlang['s1_dbname'].'</td>
+						<td><input type="text" name="connect[database]" value="'.$connect['database'].'"></td>
+						<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_dbname'].'" style="cursor: help;" /></td>
+					</tr><tr>
+						<td>'.$instlang['s1_prefix'].'</td>
+						<td><input type="text" name="connect[prefix]" value="'.$connect['prefix'].'"></td>
+						<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_prefix'].'" style="cursor: help;" /></td>
+					</tr>
+					<tr>
+						<td>'.$instlang['s1_userprefix'].'&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td><input type="text" name="connect[user_prefix]" value="'.$connect['user_prefix'].'"></td>
+						<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_uprefix'].'" style="cursor: help;" /></td>
+					</tr>
+					<tr>
+						<td colspan="3"><hr noshade="noshade" size="1" /></td>
+					</tr>
+				</table>
+				</center>'
+					.$instlang['s2_noconfig'].'<p align="center"><input type="hidden" name="step" value="2" /><input type="hidden" name="action" value="testdb" /><br />
+					<input class="button" id="button" type="submit" value="'.$instlang['next'].'" /></p>';
+			} else {
+				try {
+					echo '<h3>'.$instlang['s1_trying_to_connect'].'......</h3>';
+					$connectionParams = array(
+						'dbname' => $_POST['connect']['database'],
+						'user' => $_POST['connect']['username'],
+						'password' => $_POST['connect']['password'],
+						'host' => $_POST['connect']['host'],
+						'driver' => $db_layers[$_POST['connect']['layer']]
+					);
+					$conn = DriverManager::getConnection($connectionParams, $config);
+					$conn->connect();
+					if ($conn->isConnected()) {
+						$written = false;
+						if (!isset($CensorList)) {
+							include(INSTALL_PATH.'config.php');
+							if (isset($_POST['download'])) {
+								header('Content-Type: text/x-delimtext; name="config.php"');
+								header('Content-disposition: attachment; filename=config.php');
+								echo $content;
+								exit;
 							}
-							echo '</td>
-								<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_layer'].'" style="cursor: help;" /></td>
-							</tr>
-							<tr>
-								<td>'.$instlang['s1_host'].'</td>
-								<td><input type="text" name="connect[host]" value="'.$connect['host'].'"></td>
-								<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_hostname'].'" style="cursor: help;" /></td>
-							</tr>
-							<tr>
-								<td>'.$instlang['s1_username'].'</td>
-								<td><input type="text" name="connect[username]" value="'.$connect['username'].'"></td>
-								<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_username'].'" style="cursor: help;" /></td>
-							</tr>
-							<tr>
-								<td>'.$instlang['s1_password'].'</td>
-								<td><input type="password" name="connect[password]" value="'.$connect['password'].'"></td>
-								<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_password'].'" style="cursor: help;" /></td>
-							</tr>
-							<tr>
-								<td>'.$instlang['s1_dbname'].'</td>
-								<td><input type="text" name="connect[database]" value="'.$connect['database'].'"></td>
-								<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_dbname'].'" style="cursor: help;" /></td>
-							</tr><tr>
-								<td>'.$instlang['s1_prefix'].'</td>
-								<td><input type="text" name="connect[prefix]" value="'.$connect['prefix'].'"></td>
-								<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_prefix'].'" style="cursor: help;" /></td>
-							</tr>
-							<tr>
-								<td>'.$instlang['s1_userprefix'].'&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td><input type="text" name="connect[user_prefix]" value="'.$connect['user_prefix'].'"></td>
-								<td>&nbsp;&nbsp;<img src="images/help.png" alt="" title="'.$instlang['s2_uprefix'].'" style="cursor: help;" /></td>
-							</tr>
-							<tr>
-								<td colspan="3"><hr noshade="noshade" size="1" /></td>
-							</tr>
-						</table>
-						</center>'
-							.$instlang['s2_noconfig'].'<p align="center"><input type="hidden" name="step" value="2" /><input type="hidden" name="action" value="testdb" /><br />
-							<input class="button" id="button" type="submit" value="'.$instlang['next'].'" /></p>';
-					} else {
-						try {
-							echo '<h3>'.$instlang['s1_trying_to_connect'].'......</h3>';
-							$connectionParams = array(
-								'dbname' => $_POST['connect']['database'],
-								'user' => $_POST['connect']['username'],
-								'password' => $_POST['connect']['password'],
-								'host' => $_POST['connect']['host'],
-								'driver' => $db_layers[$_POST['connect']['layer']]
-							);
-							$conn = DriverManager::getConnection($connectionParams, $config);
-							$conn->connect();
-							if ($conn->isConnected()) {
-								$written = false;
-								if (!isset($CensorList)) {
-									include(INSTALL_PATH.'config.php');
-									if (isset($_POST['download'])) {
-										header('Content-Type: text/x-delimtext; name="config.php"');
-										header('Content-disposition: attachment; filename=config.php');
-										echo $content;
-										exit;
-									}
-									$written = false;
-									if ($fp = fopen(CONFIG_FILE, 'wb')) {
-										$written = (fwrite($fp, $content) !== false);
-										fclose($fp);
-										chmod(CONFIG_FILE, 0644);
-									}
-									if ($written) {
-										echo '<h1>'.$instlang['s1_save_conf_succeed'].'</h1>';
-									} else {
-										echo '<h1>'.$instlang['s1_save_conf_failed'].'</h1>';
-									}
-								} else {
-									echo '<h1>'.$instlang['s1_db_connection_succeeded'].'</h1>';
-									$written = true;
-								}
-								if ($written) {
-									echo '<p><input type="hidden" name="step" value="3" />
-									<input class="button" id="button" type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
-								} else {
-									echo 'Instead download the config.php file and upload it to the server into:<br/>
-									'.dirname(CONFIG_FILE).'/
-									<p><input type="hidden" name="step" value="2" />
-									<input type="hidden" name="connect[layer]" value="'.$connect['layer'].'" />
-									<input type="hidden" name="connect[host]" value="'.$connect['host'].'" />
-									<input type="hidden" name="connect[username]" value="'.$connect['username'].'" />
-									<input type="hidden" name="connect[password]" value="'.$connect['password'].'" />
-									<input type="hidden" name="connect[database]" value="'.$connect['database'].'" />
-									<input type="hidden" name="connect[prefix]" value="'.$connect['prefix'].'" />
-									<input type="hidden" name="connect[user_prefix]" value="'.$connect['user_prefix'].'" />
-									<input type="submit" name="download" value="Download config.php" class="formfield" />
-									<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
-								}
+							$written = false;
+							if ($fp = fopen(CONFIG_FILE, 'wb')) {
+								$written = (fwrite($fp, $content) !== false);
+								fclose($fp);
+								chmod(CONFIG_FILE, 0644);
 							}
+							if ($written) {
+								echo '<script>
+									$( "#progressbar" ).progressbar({
+										value: 50
+									});
+								</script>
+								<h1>'.$instlang['s1_save_conf_succeed'].'</h1>';
+							} else {
+								echo '<h1>'.$instlang['s1_save_conf_failed'].'</h1>';
+							}
+						} else {
+							echo '<h1>'.$instlang['s1_db_connection_succeeded'].'</h1>';
+							$written = true;
 						}
-						catch(Exception $e) {
-							//echo $e->getMessage();
-							echo $instlang['s2_error_connection'];
-							echo '<br /><br /><input class="button" id="button" type=button value="'.$instlang['back'].'" onClick="history.go(-1)">';
+						if ($written) {
+							echo '<p><input type="hidden" name="step" value="3" />
+							<input class="button" id="button" type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
+						} else {
+							echo 'Instead download the config.php file and upload it to the server into:<br/>
+							'.dirname(CONFIG_FILE).'/
+							<p><input type="hidden" name="step" value="2" />
+							<input type="hidden" name="connect[layer]" value="'.$connect['layer'].'" />
+							<input type="hidden" name="connect[host]" value="'.$connect['host'].'" />
+							<input type="hidden" name="connect[username]" value="'.$connect['username'].'" />
+							<input type="hidden" name="connect[password]" value="'.$connect['password'].'" />
+							<input type="hidden" name="connect[database]" value="'.$connect['database'].'" />
+							<input type="hidden" name="connect[prefix]" value="'.$connect['prefix'].'" />
+							<input type="hidden" name="connect[user_prefix]" value="'.$connect['user_prefix'].'" />
+							<input type="submit" name="download" value="Download config.php" class="formfield" />
+							<input type="submit" value="'.$instlang['next'].'" class="formfield" /></p>';
 						}
 					}
-				} else {
-					//Valid config file found, testing DB connection with connection info from config file
-					require_once(CONFIG_FILE);
 				}
-				disp_footer();
+				catch(Exception $e) {
+					//echo $e->getMessage();
+					echo $instlang['s2_error_connection'];
+					echo '<br /><br /><input class="button" id="button" type=button value="'.$instlang['back'].'" onClick="history.go(-1)">';
+				}
+			}
+		} else {
+			//Valid config file found, testing DB connection with connection info from config file
+			require_once(CONFIG_FILE);
+		}
+		disp_footer();
         break;
     case 3:
-				disp_header();
-				if ($nxs_not_installed) {
-				//NexOS has not yet been installed, let's build the database
-				echo $instlang['s1_new'];
-				$current_version = 0;
-				require_once(INSTALL_PATH."schema/");
-				} else {
-				//NexOS exists, let's check for the upgrade
-				}
+		disp_header();
+		if ($nxs_not_installed) {
+			//NexOS has not yet been installed, let's build the database
+			echo $instlang['s1_new'];
+			try {
+				$schema = new \Doctrine\DBAL\Schema\Schema();
+				$adminTable = $schema->createTable("nexoscms_admins");
+				$adminTable->addColumn("admin_id", "integer", array("length" => 11, "unsigned" => true, "autoincrement" => true));
+				$adminTable->addColumn("aid", "string", array("length" => 40, "index" => true));
+				$adminTable->addColumn("email", "string", array("length" => 255));
+				$adminTable->addColumn("pwd", "string", array("length" => 40));
+				$adminTable->addColumn("counter", "integer", array("length" => 11));
+				$adminTable->addColumn("radminsuper", "integer", array("length" => 1));
+				$adminTable->addColumn("radminnews", "integer", array("length" => 1));
+				$adminTable->addColumn("radmintopics", "integer", array("length" => 1));
+				$adminTable->addColumn("radminmembers", "integer", array("length" => 1));
+				$adminTable->addColumn("radminsurveys", "integer", array("length" => 1));
+				$adminTable->addColumn("radminhistory", "integer", array("length" => 1));
+				$adminTable->addColumn("radminnewsletter", "integer", array("length" => 1));
+				$adminTable->addColumn("radminforums", "integer", array("length" => 1));
+				$adminTable->addColumn("radmingroups", "integer", array("length" => 1));
+				$adminTable->addColumn("radminmessages", "integer", array("length" => 1));
+				$adminTable->addColumn("radminblocks", "integer", array("length" => 1));
+				$adminTable->addColumn("radmincache", "integer", array("length" => 1));
+				$adminTable->addColumn("radmincpgmm", "integer", array("length" => 1));
+				$adminTable->addColumn("radmindatabase", "integer", array("length" => 1));
+				$adminTable->addColumn("radminheadlines", "integer", array("length" => 1));
+				$adminTable->addColumn("radmininfo", "integer", array("length" => 1));
+				$adminTable->addColumn("radminl10n", "integer", array("length" => 1));
+				$adminTable->addColumn("radminmodules", "integer", array("length" => 1));
+				$adminTable->addColumn("radminranks", "integer", array("length" => 1));
+				$adminTable->addColumn("radminreferers", "integer", array("length" => 1));
+				$adminTable->addColumn("radminsecurity", "integer", array("length" => 1));
+				$adminTable->addColumn("radminsettings", "integer", array("length" => 1));
+				$adminTable->addColumn("radminsmilies", "integer", array("length" => 1));
+				$adminTable->addColumn("radmincoppermine", "integer", array("length" => 1));
+				$adminTable->setPrimaryKey(array("admin_id"));
+				$adminTable->addIndex("aid");
+				$platform = $conn->getDatabasePlatform();
+				$queries = $schema->toSql($platform);
 				disp_footer();
+			}
+			catch(Exception $e) {
+				echo $e->getMessage();
+			}
+		} else {
+		//NexOS exists, let's check for the upgrade
+		}
         break;
     case 4:
-				disp_header();
-				//Main content
-				disp_footer();
+		disp_header();
+		//Main content
+		disp_footer();
         break;
     case 5:
-				disp_header();
-				//Main content
-				disp_footer();
+		disp_header();
+		//Main content
+		disp_footer();
         break;
-		default:
-			disp_header();
-			echo '<h2>'.$instlang['welcome'].'</h2>
-			<p style="font-size:12px">'.$instlang['info'].'</p><p style="font-size:12px">'.$instlang['click'].'</p>';
-			echo '<p>';
-			if (function_exists('readgzfile')) {
-				echo '<textarea name="textfield" rows="15" cols="80">';
-				readgzfile('GPL.gz');
-				echo '</textarea>';
-			} else {
-				echo '<h2 align="center">'.$instlang['no_zlib'].'</h2>';
-			}
-			echo '
-			<script>
-				$(function() {
-					$( "#progressbar" ).progressbar({
-						value: 5
-					});
+	default:
+		disp_header();
+		echo '<h2>'.$instlang['welcome'].'</h2>
+		<p style="font-size:12px">'.$instlang['info'].'</p><p style="font-size:12px">'.$instlang['click'].'</p>';
+		echo '<p>';
+		if (function_exists('readgzfile')) {
+			echo '<textarea name="textfield" rows="15" cols="80">';
+			readgzfile('GPL.gz');
+			echo '</textarea>';
+		} else {
+			echo '<h2 align="center">'.$instlang['no_zlib'].'</h2>';
+		}
+		echo '
+		<script>
+			$(function() {
+				$( "#progressbar" ).progressbar({
+					value: 5
 				});
-			</script>
-			<br clear="all" /><br />
-			<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
-			<input id="button" type="submit" value="'.$instlang['agree'].'" />
-			</form></p>';
-			disp_footer();
+			});
+		</script>
+		<br clear="all" /><br />
+		<input type="hidden" name="step" value="'.(!empty($current_version) ? '3' : '1').'" />
+		<input id="button" type="submit" value="'.$instlang['agree'].'" />
+		</form></p>';
+		disp_footer();
 }
 
 $arr = get_defined_vars();
