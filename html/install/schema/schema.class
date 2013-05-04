@@ -1,0 +1,33 @@
+<?php
+$adminTable = $schema->createTable();
+$adminTable->addColumn("admin_id", "integer", array("unsigned" => true, "autoincrement" => true));
+$adminTable->addColumn("aid", "string", array("length" => 40, "index" => true));
+$adminTable->addColumn("email", "string", array("length" => 255));
+$adminTable->addColumn("pwd", "string", array("length" => 40));
+$adminTable->addColumn("counter", "integer", array("length" => 11));
+$adminTable->addColumn("radminsuper", "integer", array("length" => 1));
+$adminTable->addColumn("radminnews", "integer", array("length" => 1));
+$adminTable->addColumn("radmintopics", "integer", array("length" => 1));
+$adminTable->addColumn("radminmembers", "integer", array("length" => 1));
+$adminTable->addColumn("radminsurveys", "integer", array("length" => 1));
+$adminTable->addColumn("radminhistory", "integer", array("length" => 1));
+$adminTable->addColumn("radminnewsletter", "integer", array("length" => 1));
+$adminTable->addColumn("radminforums", "integer", array("length" => 1));
+$adminTable->addColumn("radmingroups", "integer", array("length" => 1));
+$adminTable->addColumn("radminmessages", "integer", array("length" => 1));
+$adminTable->addColumn("radminblocks", "integer", array("length" => 1));
+$adminTable->addColumn("radmincache", "integer", array("length" => 1));
+$adminTable->addColumn("radmincpgmm", "integer", array("length" => 1));
+$adminTable->addColumn("radmindatabase", "integer", array("length" => 1));
+$adminTable->addColumn("radminheadlines", "integer", array("length" => 1));
+$adminTable->addColumn("radmininfo", "integer", array("length" => 1));
+$adminTable->addColumn("radminl10n", "integer", array("length" => 1));
+$adminTable->addColumn("radminmodules", "integer", array("length" => 1));
+$adminTable->addColumn("radminranks", "integer", array("length" => 1));
+$adminTable->addColumn("radminreferers", "integer", array("length" => 1));
+$adminTable->addColumn("radminsecurity", "integer", array("length" => 1));
+$adminTable->addColumn("radminsettings", "integer", array("length" => 1));
+$adminTable->addColumn("radminsmilies", "integer", array("length" => 1));
+$adminTable->addColumn("radmincoppermine", "integer", array("length" => 1));
+$adminTable->setPrimaryKey(array("admin_id"));
+?>

@@ -561,7 +561,7 @@ switch ($go) {
 				//NexOS has not yet been installed, let's build the database
 				echo $instlang['s1_new'];
 				$current_version = 0;
-				
+				require_once(INSTALL_PATH."schema/");
 				} else {
 				//NexOS exists, let's check for the upgrade
 				}
