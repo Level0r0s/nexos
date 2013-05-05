@@ -112,17 +112,17 @@ if (isset($_POST['action'])) {
 
 //Set up images array for completion status images (Checked/Unchecked)
 $images = array();
-for ($i=0; $i<7; ++$i) {
+for ($i=0; $i<6; ++$i) {
 	$images[$i] = (($go == $i) ? 'box_current' : (($go > $i) ? 'checked' : 'unchecked'));
 }
 if ($go < 4 && isset($_COOKIE['installtest'])) { setcookie('installtest','',-1); }
 // Doctrine DBAL
 use Doctrine\Common\ClassLoader, Doctrine\DBAL\DriverManager;
+require_once '../includes/lib/Doctrine/Common/ClassLoader.php';
+$classLoader = new ClassLoader('Doctrine', '../includes/lib/');
+$classLoader->register();
+$config = new \Doctrine\DBAL\Configuration();
 if (!file_exists(CONFIG_FILE)) {
-	require_once '../includes/lib/Doctrine/Common/ClassLoader.php';
-	$classLoader = new ClassLoader('Doctrine', '../includes/lib/');
-	$classLoader->register();
-	$config = new \Doctrine\DBAL\Configuration();
 	$connectionParams = array(
 		'dbname'    => 'test',
 		'user'      => 'root',
@@ -130,6 +130,8 @@ if (!file_exists(CONFIG_FILE)) {
 		'host'      => 'localhost',
 		'driver'    => 'pdo_mysql',
 	);
+} else {
+	include_once(CONFIG_FILE);
 }
 
 //Load the language
@@ -160,7 +162,8 @@ if ($MAIN_CFG['global']['multilingual']) {
 }
 require(INSTALL_PATH."language/$currentlang.php");
 
-//Check for existance of the config file to determine if NexOS is potentially already installed
+//Check for existance of the config file to determine if NexOS is potentially 
+//already installed, but only if we are not in the middle of the install process
 if (!$go){
 	if (!file_exists(CONFIG_FILE)) {
 		$nxs_not_installed = 0;
@@ -501,7 +504,7 @@ switch ($go) {
 					$conn->connect();
 					if ($conn->isConnected()) {
 						$written = false;
-						if (!isset($CensorList)) {
+						if (!isset($CensorList)) {`
 							include(INSTALL_PATH.'config.php');
 							if (isset($_POST['download'])) {
 								header('Content-Type: text/x-delimtext; name="config.php"');
@@ -565,47 +568,53 @@ switch ($go) {
 		if ($nxs_not_installed) {
 			//NexOS has not yet been installed, let's build the database
 			echo $instlang['s1_new'];
-			try {
-				$schema = new \Doctrine\DBAL\Schema\Schema();
-				$adminTable = $schema->createTable("nexoscms_admins");
-				$adminTable->addColumn("admin_id", "integer", array("length" => 11, "unsigned" => true, "autoincrement" => true));
-				$adminTable->addColumn("aid", "string", array("length" => 40, "index" => true));
-				$adminTable->addColumn("email", "string", array("length" => 255));
-				$adminTable->addColumn("pwd", "string", array("length" => 40));
-				$adminTable->addColumn("counter", "integer", array("length" => 11));
-				$adminTable->addColumn("radminsuper", "integer", array("length" => 1));
-				$adminTable->addColumn("radminnews", "integer", array("length" => 1));
-				$adminTable->addColumn("radmintopics", "integer", array("length" => 1));
-				$adminTable->addColumn("radminmembers", "integer", array("length" => 1));
-				$adminTable->addColumn("radminsurveys", "integer", array("length" => 1));
-				$adminTable->addColumn("radminhistory", "integer", array("length" => 1));
-				$adminTable->addColumn("radminnewsletter", "integer", array("length" => 1));
-				$adminTable->addColumn("radminforums", "integer", array("length" => 1));
-				$adminTable->addColumn("radmingroups", "integer", array("length" => 1));
-				$adminTable->addColumn("radminmessages", "integer", array("length" => 1));
-				$adminTable->addColumn("radminblocks", "integer", array("length" => 1));
-				$adminTable->addColumn("radmincache", "integer", array("length" => 1));
-				$adminTable->addColumn("radmincpgmm", "integer", array("length" => 1));
-				$adminTable->addColumn("radmindatabase", "integer", array("length" => 1));
-				$adminTable->addColumn("radminheadlines", "integer", array("length" => 1));
-				$adminTable->addColumn("radmininfo", "integer", array("length" => 1));
-				$adminTable->addColumn("radminl10n", "integer", array("length" => 1));
-				$adminTable->addColumn("radminmodules", "integer", array("length" => 1));
-				$adminTable->addColumn("radminranks", "integer", array("length" => 1));
-				$adminTable->addColumn("radminreferers", "integer", array("length" => 1));
-				$adminTable->addColumn("radminsecurity", "integer", array("length" => 1));
-				$adminTable->addColumn("radminsettings", "integer", array("length" => 1));
-				$adminTable->addColumn("radminsmilies", "integer", array("length" => 1));
-				$adminTable->addColumn("radmincoppermine", "integer", array("length" => 1));
-				$adminTable->setPrimaryKey(array("admin_id"));
-				$adminTable->addIndex("aid");
-				$platform = $conn->getDatabasePlatform();
-				$queries = $schema->toSql($platform);
-				disp_footer();
-			}
-			catch(Exception $e) {
-				echo $e->getMessage();
-			}
+			$connectionParams = array(
+				'dbname' => $dbname,
+				'user' => $dbuname,
+				'password' => $dbpass,
+				'host' => $dbhost,
+				'driver' => DB_TYPE
+			);
+			$conn = DriverManager::getConnection($connectionParams, $config);
+			//$conn->connect();
+			$arr = get_defined_vars();
+			krumo($arr);
+			$schema = new \Doctrine\DBAL\Schema\Schema();
+			$adminTable = $schema->createTable("nexoscms_admins");
+			$adminTable->addColumn("admin_id", "integer", array("length" => 11, "unsigned" => true, "autoincrement" => true));
+			$adminTable->addColumn("aid", "string", array("length" => 40, "index" => true));
+			$adminTable->addColumn("email", "string", array("length" => 255));
+			$adminTable->addColumn("pwd", "string", array("length" => 40));
+			$adminTable->addColumn("counter", "integer", array("length" => 11));
+			$adminTable->addColumn("radminsuper", "integer", array("length" => 1));
+			$adminTable->addColumn("radminnews", "integer", array("length" => 1));
+			$adminTable->addColumn("radmintopics", "integer", array("length" => 1));
+			$adminTable->addColumn("radminmembers", "integer", array("length" => 1));
+			$adminTable->addColumn("radminsurveys", "integer", array("length" => 1));
+			$adminTable->addColumn("radminhistory", "integer", array("length" => 1));
+			$adminTable->addColumn("radminnewsletter", "integer", array("length" => 1));
+			$adminTable->addColumn("radminforums", "integer", array("length" => 1));
+			$adminTable->addColumn("radmingroups", "integer", array("length" => 1));
+			$adminTable->addColumn("radminmessages", "integer", array("length" => 1));
+			$adminTable->addColumn("radminblocks", "integer", array("length" => 1));
+			$adminTable->addColumn("radmincache", "integer", array("length" => 1));
+			$adminTable->addColumn("radmincpgmm", "integer", array("length" => 1));
+			$adminTable->addColumn("radmindatabase", "integer", array("length" => 1));
+			$adminTable->addColumn("radminheadlines", "integer", array("length" => 1));
+			$adminTable->addColumn("radmininfo", "integer", array("length" => 1));
+			$adminTable->addColumn("radminl10n", "integer", array("length" => 1));
+			$adminTable->addColumn("radminmodules", "integer", array("length" => 1));
+			$adminTable->addColumn("radminranks", "integer", array("length" => 1));
+			$adminTable->addColumn("radminreferers", "integer", array("length" => 1));
+			$adminTable->addColumn("radminsecurity", "integer", array("length" => 1));
+			$adminTable->addColumn("radminsettings", "integer", array("length" => 1));
+			$adminTable->addColumn("radminsmilies", "integer", array("length" => 1));
+			$adminTable->addColumn("radmincoppermine", "integer", array("length" => 1));
+			$adminTable->setPrimaryKey(array("admin_id"));
+			$adminTable->addIndex("aid");
+			$platform = $conn->getDatabasePlatform();
+			$queries = $schema->toSql($platform);
+			disp_footer();
 		} else {
 		//NexOS exists, let's check for the upgrade
 		}
